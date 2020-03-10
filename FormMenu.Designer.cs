@@ -39,15 +39,19 @@
             // 
             this.button_start.BackColor = System.Drawing.Color.Transparent;
             this.button_start.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_start.FlatAppearance.BorderSize = 0;
+            this.button_start.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button_start.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button_start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_start.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_start.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button_start.ForeColor = System.Drawing.Color.Blue;
             this.button_start.Location = new System.Drawing.Point(371, 245);
             this.button_start.Name = "button_start";
             this.button_start.Size = new System.Drawing.Size(87, 79);
             this.button_start.TabIndex = 0;
             this.button_start.Text = "START";
-            this.button_start.UseVisualStyleBackColor = false;
+            this.button_start.UseCompatibleTextRendering = true;
+            this.button_start.UseVisualStyleBackColor = true;
             this.button_start.Click += new System.EventHandler(this.button_start_Click);
             // 
             // button_exit
@@ -101,7 +105,6 @@
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormMenu";
@@ -115,11 +118,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button_start;
         private System.Windows.Forms.Button button_exit;
         private System.Windows.Forms.CheckBox check_sound;
         private System.Windows.Forms.PictureBox picture_background;
+        private System.Windows.Forms.Button button_start;
     }
 }
 
