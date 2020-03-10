@@ -24,7 +24,7 @@ namespace Project
 
         private void button_exit_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void button_start_Click(object sender, EventArgs e)
