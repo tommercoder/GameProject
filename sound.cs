@@ -22,12 +22,11 @@ namespace Project
         public static void sound_on()
         {
             sound_enabled = true;
-
         }
         public static void sound_off()
         {
             sound_enabled = false;
-
+            
         }
         public static void play_1()
         {
@@ -58,6 +57,11 @@ namespace Project
         {
             if (sound_enabled)
                 sound_menu.Play();
+            
+        }
+        public static void dont_play_menu()
+        {
+            sound_menu.Stop();
         }
         public static void play_teleport()
         {
