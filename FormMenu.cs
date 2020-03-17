@@ -42,12 +42,18 @@ namespace Project
             sound.play_button_exit();
             this.Close();
         }
-
+        private void start_level1()
+        {
+            FormLevelONE level1 = new FormLevelONE();
+            level1.ShowDialog();
+            
+        }
         private void button_start_Click(object sender, EventArgs e)
         {
             
                 sound.play_button_start();
-            
+                start_level1();
+           
             
             
                 //button_start.Font = new Font(" ", 14, FontStyle.Bold);
