@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormLevelONE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLevelONE.Designer.cs">
+      <DependentUpon>FormLevelONE.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="sound.cs" />
+    <EmbeddedResource Include="FormLevelONE.resx">
+      <DependentUpon>FormLevelONE.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </EmbeddedResource>
