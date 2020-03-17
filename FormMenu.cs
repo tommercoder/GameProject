@@ -34,13 +34,11 @@ namespace Project
 
         private void button_exit_Click(object sender, EventArgs e)
         {
-            sound.play_button_exit();
             this.Close();
         }
 
         private void button_start_Click(object sender, EventArgs e)
         {
-            sound.play_button_start();
             //button_start.Font = new Font(" ", 14, FontStyle.Bold);
             //button_start.ForeColor = Color.Red;
         }
