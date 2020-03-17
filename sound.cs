@@ -56,7 +56,7 @@ namespace Project
         public static void play_menu()
         {
             if (sound_enabled)
-                sound_menu.Play();
+                sound_menu.PlayLooping();
             
         }
         public static void dont_play_menu()
