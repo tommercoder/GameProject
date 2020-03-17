@@ -72,6 +72,8 @@
             this.check_sound.AutoSize = true;
             this.check_sound.BackColor = System.Drawing.Color.Transparent;
             this.check_sound.BackgroundImage = global::Project.Properties.Resources.orig;
+            this.check_sound.Checked = true;
+            this.check_sound.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_sound.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.check_sound.Location = new System.Drawing.Point(12, 480);
             this.check_sound.Name = "check_sound";

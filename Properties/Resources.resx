@@ -130,4 +130,25 @@
   <data name="button_back1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\button_back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="sound_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sound_1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sound_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sound_2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sound_button_exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sound_button_exit.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sound_button_start" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sound_button_start.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sound_collect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sound_collect.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sound_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sound_menu.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sound_teleport" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sound_teleport.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
