@@ -15,6 +15,7 @@ namespace Project
         
         public FormMenu()
         {
+            sound.play_menu();
             InitializeComponent();
             button_start.MouseEnter += (s, e) => {
                 button_start.ForeColor = Color.Coral;
@@ -22,7 +23,7 @@ namespace Project
             button_start.MouseLeave += (s, e) => {
                 button_start.ForeColor = Color.Blue;
             };
-            sound.play_menu();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,15 +35,16 @@ namespace Project
 
         private void button_exit_Click(object sender, EventArgs e)
         {
+            sound.play_button_exit();
             this.Close();
         }
 
         private void button_start_Click(object sender, EventArgs e)
         {
+            sound.play_button_start();
             //button_start.Font = new Font(" ", 14, FontStyle.Bold);
             //button_start.ForeColor = Color.Red;
         }
-
       
         private void button_start_MouseEnter(object sender,EventArgs e)
         {
@@ -52,7 +54,17 @@ namespace Project
         
         private void check_sound_CheckedChanged(object sender, EventArgs e)
         {
-            
+            if(check_sound.Checked)
+            {
+                sound.sound_on();
+                check_sound.Text = "Sound ON";
+                sound.play_button_exit();
+            }
+            else
+            {
+                sound.sound_off();
+                check_sound.Text = "Sound Off";
+            }
         }
     }
 }

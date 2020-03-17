@@ -17,33 +17,52 @@ namespace Project
         static SoundPlayer sound_menu = new SoundPlayer(Properties.Resources.sound_menu);
         static SoundPlayer sound_teleport = new SoundPlayer(Properties.Resources.sound_teleport);
 
+        static bool sound_enabled = true;
+
+        public static void sound_on()
+        {
+            sound_enabled = true;
+
+        }
+        public static void sound_off()
+        {
+            sound_enabled = false;
+
+        }
         public static void play_1()
         {
+            if(sound_enabled)
             sound_1.Play();
         }
         public static void play_2()
         {
-            sound_2.Play();
+            if (sound_enabled)
+                sound_2.Play();
         }
         public static void play_button_exit()
         {
-            sound_button_exit.Play();
+            if (sound_enabled)
+                sound_button_exit.Play();
         }
         public static void play_button_start()
         {
-            sound_button_start.Play();
+            if (sound_enabled)
+                sound_button_start.Play();
         }
         public static void play_collect()
         {
-            sound_collect.Play();
+            if (sound_enabled)
+                sound_collect.Play();
         }
         public static void play_menu()
         {
-            sound_menu.Play();
+            if (sound_enabled)
+                sound_menu.Play();
         }
         public static void play_teleport()
         {
-            sound_teleport.Play();
+            if (sound_enabled)
+                sound_teleport.Play();
         }
     }
 }
