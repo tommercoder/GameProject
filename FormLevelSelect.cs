@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    public partial class FormLevelONE : Form
+    public partial class FormLevelSelect : Form
     {
-        public FormLevelONE()
+        public FormLevelSelect()
         {
             InitializeComponent();
         }
@@ -21,10 +21,17 @@ namespace Project
         {
 
         }
+        private void start_level()
+        {
+            Level1 level = new Level1();
+            level.ShowDialog();
+
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            sound.play_button_exit();
+            start_level();
         }
     }
 }

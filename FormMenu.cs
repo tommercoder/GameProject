@@ -44,7 +44,7 @@ namespace Project
         }
         private void start_level1()
         {
-            FormLevelONE level1 = new FormLevelONE();
+            FormLevelSelect level1 = new FormLevelSelect();
             level1.ShowDialog();
             
         }
@@ -73,7 +73,7 @@ namespace Project
                 sound.sound_on();
                 check_sound.Text = "Sound ON";
                 sound.play_button_exit();
-                //sound.play_menu();
+                sound.play_menu();
 
                 
 
@@ -85,6 +85,11 @@ namespace Project
                 sound.dont_play_menu();
                 
             }
+        }
+
+        private void picture_background_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
