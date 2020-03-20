@@ -39,5 +39,11 @@ namespace Project
             sound.play_button_exit();
             start_level1();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            sound.play_button_exit();
+            start_level1();
+        }
     }
 }
