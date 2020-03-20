@@ -73,7 +73,7 @@ namespace Project
                 sound.sound_on();
                 check_sound.Text = "Sound ON";
                 sound.play_button_exit();
-                sound.play_menu();
+                //sound.play_menu();
 
                 
 
