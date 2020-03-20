@@ -92,6 +92,7 @@
             this.picture_background.Size = new System.Drawing.Size(800, 600);
             this.picture_background.TabIndex = 3;
             this.picture_background.TabStop = false;
+            this.picture_background.Click += new System.EventHandler(this.picture_background_Click);
             // 
             // FormMenu
             // 

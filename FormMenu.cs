@@ -44,14 +44,14 @@ namespace Project
         }
         private void start_level1()
         {
-            FormLevelONE level1 = new FormLevelONE();
+            FormLevelSelect level1 = new FormLevelSelect();
             level1.ShowDialog();
             
         }
         private void button_start_Click(object sender, EventArgs e)
         {
             
-                sound.play_button_start();
+                sound.play_button_exit();
                 start_level1();
            
             
@@ -85,6 +85,11 @@ namespace Project
                 sound.dont_play_menu();
                 
             }
+        }
+
+        private void picture_background_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
