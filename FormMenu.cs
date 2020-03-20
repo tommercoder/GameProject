@@ -51,7 +51,7 @@ namespace Project
         private void button_start_Click(object sender, EventArgs e)
         {
             
-                sound.play_button_start();
+                sound.play_button_exit();
                 start_level1();
            
             
