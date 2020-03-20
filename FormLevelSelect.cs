@@ -21,7 +21,7 @@ namespace Project
         {
 
         }
-        private void start_level()
+        private void start_level1()
         {
             Level1 level = new Level1();
             level.ShowDialog();
@@ -31,7 +31,13 @@ namespace Project
         private void button1_Click(object sender, EventArgs e)
         {
             sound.play_button_exit();
-            start_level();
+            start_level1();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            sound.play_button_exit();
+            start_level1();
         }
     }
 }

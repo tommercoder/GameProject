@@ -77,9 +77,9 @@
             this.check_sound.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.check_sound.Location = new System.Drawing.Point(12, 480);
             this.check_sound.Name = "check_sound";
-            this.check_sound.Size = new System.Drawing.Size(68, 24);
+            this.check_sound.Size = new System.Drawing.Size(91, 24);
             this.check_sound.TabIndex = 2;
-            this.check_sound.Text = "Sound";
+            this.check_sound.Text = "Sound ON";
             this.check_sound.UseVisualStyleBackColor = false;
             this.check_sound.CheckedChanged += new System.EventHandler(this.check_sound_CheckedChanged);
             // 
