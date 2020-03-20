@@ -56,7 +56,7 @@ namespace Project
             start_level1();
             
             
-                //button_start.Font = new Font(" ", 14, FontStyle.Bold);
+            //button_start.Font = new Font(" ", 14, FontStyle.Bold);
             //button_start.ForeColor = Color.Red;
         }
       
