@@ -42,7 +42,13 @@ namespace Project
 
         private void button3_Click(object sender, EventArgs e)
         {
-            sound.play_button_exit();
+            sound.play_menu();
+            start_level1();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            sound.play_menu();
             start_level1();
         }
     }
