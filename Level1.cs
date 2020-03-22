@@ -16,5 +16,19 @@ namespace Project
         {
             InitializeComponent();
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;///зробити запрос при закритті вікно "ЗАКІНЧИТИ ЛВЛ ЧИ ПРОДОВЖИТИ";
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+        private void exit_level1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            sound.play_menu();
+        }
     }
 }
