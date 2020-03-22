@@ -135,5 +135,8 @@
   <ItemGroup>
     <None Include="Resources\astronaut.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level1background.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

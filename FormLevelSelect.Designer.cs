@@ -29,27 +29,29 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
+            this.LEVEL1_button_enter = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.exit_from_selecting = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // LEVEL1_button_enter
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(81, 100);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 114);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.LEVEL1_button_enter.BackColor = System.Drawing.Color.Transparent;
+            this.LEVEL1_button_enter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LEVEL1_button_enter.Font = new System.Drawing.Font("Open Sans Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LEVEL1_button_enter.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.LEVEL1_button_enter.Location = new System.Drawing.Point(81, 100);
+            this.LEVEL1_button_enter.Name = "LEVEL1_button_enter";
+            this.LEVEL1_button_enter.Size = new System.Drawing.Size(115, 114);
+            this.LEVEL1_button_enter.TabIndex = 0;
+            this.LEVEL1_button_enter.Text = "level 1";
+            this.LEVEL1_button_enter.UseVisualStyleBackColor = true;
+            this.LEVEL1_button_enter.Click += new System.EventHandler(this.LEVEL1_button_enter_Click);
             // 
             // imageList1
             // 
@@ -62,9 +64,10 @@
             this.pictureBox1.Image = global::Project.Properties.Resources.astronaut;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(785, 563);
+            this.pictureBox1.Size = new System.Drawing.Size(800, 600);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // button2
             // 
@@ -99,6 +102,20 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // exit_from_selecting
+            // 
+            this.exit_from_selecting.BackColor = System.Drawing.Color.Transparent;
+            this.exit_from_selecting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exit_from_selecting.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.exit_from_selecting.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.exit_from_selecting.Location = new System.Drawing.Point(704, 541);
+            this.exit_from_selecting.Name = "exit_from_selecting";
+            this.exit_from_selecting.Size = new System.Drawing.Size(84, 47);
+            this.exit_from_selecting.TabIndex = 5;
+            this.exit_from_selecting.Text = "EXIT MENU";
+            this.exit_from_selecting.UseVisualStyleBackColor = false;
+            this.exit_from_selecting.Click += new System.EventHandler(this.exit_from_selecting_Click);
+            // 
             // FormLevelSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -106,17 +123,21 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::Project.Properties.Resources.astronaut;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.exit_from_selecting);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.LEVEL1_button_enter);
             this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "FormLevelSelect";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "LevelSelect";
-            this.Load += new System.EventHandler(this.FormLevelONE_Load);
+            this.Text = "SELECT LVL";
+            this.Load += new System.EventHandler(this.FormLevelSelect_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -124,11 +145,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button LEVEL1_button_enter;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button exit_from_selecting;
     }
 }
