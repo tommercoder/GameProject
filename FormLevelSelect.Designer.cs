@@ -38,10 +38,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.exit_from_selecting = new System.Windows.Forms.Button();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
-            this.axWindowsMediaPlayer2 = new AxWMPLib.AxWindowsMediaPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer2)).BeginInit();
             this.SuspendLayout();
             // 
             // LEVEL1_button_enter
@@ -132,16 +130,6 @@
             this.axWindowsMediaPlayer1.Visible = false;
             this.axWindowsMediaPlayer1.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter);
             // 
-            // axWindowsMediaPlayer2
-            // 
-            this.axWindowsMediaPlayer2.Enabled = true;
-            this.axWindowsMediaPlayer2.Location = new System.Drawing.Point(639, 164);
-            this.axWindowsMediaPlayer2.Name = "axWindowsMediaPlayer2";
-            this.axWindowsMediaPlayer2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer2.OcxState")));
-            this.axWindowsMediaPlayer2.Size = new System.Drawing.Size(75, 50);
-            this.axWindowsMediaPlayer2.TabIndex = 7;
-            this.axWindowsMediaPlayer2.Visible = false;
-            // 
             // FormLevelSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -150,7 +138,6 @@
             this.BackgroundImage = global::Project.Properties.Resources.astronaut;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.axWindowsMediaPlayer2);
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.exit_from_selecting);
             this.Controls.Add(this.button4);
@@ -168,7 +155,6 @@
             this.Load += new System.EventHandler(this.FormLevelSelect_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -183,6 +169,5 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button exit_from_selecting;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
-        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer2;
     }
 }

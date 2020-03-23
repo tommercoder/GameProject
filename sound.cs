@@ -59,11 +59,22 @@ namespace Project
         {
             if (sound_enabled)
                 sound_menu.PlayLooping();
-            
+          
+        }
+        public static bool if_music()
+        {
+            if (sound_enabled)
+                return true;
+            else
+                return false;
         }
         public static void dont_play_menu()
         {
             sound_menu.Stop();
+        }
+        public static void dont_play_exit()
+        {
+            sound_button_exit.Stop();
         }
         public static void play_teleport()
         {

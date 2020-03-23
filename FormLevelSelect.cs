@@ -13,7 +13,7 @@ namespace Project
 {
     public partial class FormLevelSelect : Form
     {
-       
+        //public 
         public FormLevelSelect()
         {
             InitializeComponent();
@@ -52,31 +52,35 @@ namespace Project
             {
                 this.Close();
                 //sound.play_menu();
-
                 return true;
             }
             
             return base.ProcessCmdKey(ref msg, keyData);
             
         }
+        private void Wait(double seconds)
+        {
+            int ticks = System.Environment.TickCount + (int)Math.Round(seconds * 1000.0);
+            while (System.Environment.TickCount < ticks)
+            {
+                Application.DoEvents();
+            }
+        }
+
         private void exit_from_selecting_Click(object sender, EventArgs e)
         {
 
-
-            axWindowsMediaPlayer1.URL = "C:\\Users\\admin\\Desktop\\projectGITHUB\\Resources\\sound_button_exit.wav";
-            axWindowsMediaPlayer1.Ctlcontrols.play();
+            if (sound.if_music())
+            //if (Program.fm.check_sound.Checked)
+            {
+                axWindowsMediaPlayer1.URL = "C:\\Users\\admin\\Desktop\\projectGITHUB\\Resources\\sound_button_exit.wav";
+                axWindowsMediaPlayer1.Ctlcontrols.play();
+            }
             //SoundPlayer player = new SoundPlayer(Properties.Resources.sound_button_exit);//@"C:\Users\admin\Desktop\projectGITHUB\Resources\sound_button_exit.wav");
-            //player.Play();
+            //player.PlaySync();
+            Wait(0.4);
 
-            //Thread.Sleep(100);
             this.Close();
-            //player = new SoundPlayer(Properties.Resources.sound_menu);//@"C:\Users\admin\Desktop\projectGITHUB\Resources\sound_menu.wav");
-            //player.Play();
-
-
-
-
-            //sound.play_menu();
         }
 
 
@@ -104,6 +108,11 @@ namespace Project
         }
 
         private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void axWindowsMediaPlayer2_Enter(object sender, EventArgs e)
         {
 
         }

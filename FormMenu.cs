@@ -11,17 +11,17 @@ using System.Threading;
 using System.Media;
 namespace Project
 {
+    
     public partial class FormMenu : Form
     {
-        
-
+        public bool isCheckedMusicButton = false;
         public FormMenu()
         {
-            
+            Program.fm = this;
             InitializeComponent();
             
-                //sound.play_menu();
-            
+            //sound.play_menu();
+
             button_start.MouseEnter += (s, e) => {
                 button_start.ForeColor = Color.Coral;//change color to coral
             };
@@ -64,18 +64,18 @@ namespace Project
         private void button_exit_Click(object sender, EventArgs e)
         {
 
-
-            //axWindowsMediaPlayer1.URL = "C:\\Users\\admin\\Desktop\\projectGITHUB\\Resources\\sound_button_exit.wav";
-            //axWindowsMediaPlayer1.Ctlcontrols.play();
-            sound.play_button_exit();
+            if (check_sound.Checked)
+            {
+                axWindowsMediaPlayer1.URL = "C:\\Users\\admin\\Desktop\\projectGITHUB\\Resources\\sound_button_exit.wav";
+                axWindowsMediaPlayer1.Ctlcontrols.play();
+            }
+            //sound.play_button_exit();
+            
             Wait(0.4);
-
 
             //SoundPlayer player = new SoundPlayer(Properties.Resources.sound_button_exit);
 
             //player.PlaySync();
-
-           
 
             this.Close();
         }
@@ -89,18 +89,32 @@ namespace Project
 
             // sound.play_button_exit();
             //start_level1();
-            start_selectionForm(); 
+            
+            start_selectionForm();
+            
         }
       
         private void button_start_MouseEnter(object sender,EventArgs e)
         {
           
         }
-        
+
+        //public bool optionselected
+        //{
+        //    get
+        //    {
+        //        return check_sound.checked; }
+        //        set {
+        //            check_sound.checked = value; } // the set is optional
+        //        }
+
+       
         private void check_sound_CheckedChanged(object sender, EventArgs e)
         {
-            if(check_sound.Checked)
+            if(check_sound.Checked)//check_sound is a button name
             {
+                //chk = check_sound.Checked;
+                //isCheckedMusicButton = true;
                 sound.sound_on();
                 check_sound.Text = "Sound ON";
                 sound.play_button_exit();
@@ -108,6 +122,7 @@ namespace Project
             }
             else
             {
+                //isCheckedMusicButton = fals
                 sound.sound_off();
                 check_sound.Text = "Sound Off";
                 sound.dont_play_menu();           

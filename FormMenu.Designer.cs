@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenu));
             this.button_start = new System.Windows.Forms.Button();
             this.button_exit = new System.Windows.Forms.Button();
             this.check_sound = new System.Windows.Forms.CheckBox();
             this.picture_background = new System.Windows.Forms.PictureBox();
+            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.picture_background)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
             // button_start
@@ -87,12 +90,22 @@
             // 
             this.picture_background.BackColor = System.Drawing.Color.Transparent;
             this.picture_background.Image = global::Project.Properties.Resources.orig;
-            this.picture_background.Location = new System.Drawing.Point(0, -1);
+            this.picture_background.Location = new System.Drawing.Point(1, 0);
             this.picture_background.Name = "picture_background";
-            this.picture_background.Size = new System.Drawing.Size(800, 600);
+            this.picture_background.Size = new System.Drawing.Size(800, 603);
             this.picture_background.TabIndex = 3;
             this.picture_background.TabStop = false;
             this.picture_background.Click += new System.EventHandler(this.picture_background_Click);
+            //  
+            // axWindowsMediaPlayer1
+            // 
+            this.axWindowsMediaPlayer1.Enabled = true;
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(9, 8);
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(75, 23);
+            this.axWindowsMediaPlayer1.TabIndex = 4;
+            this.axWindowsMediaPlayer1.Visible = false;
             // 
             // FormMenu
             // 
@@ -101,6 +114,7 @@
             this.BackgroundImage = global::Project.Properties.Resources.orig;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.check_sound);
             this.Controls.Add(this.button_exit);
             this.Controls.Add(this.button_start);
@@ -115,6 +129,7 @@
             this.Text = "GeometryGame";
             this.Load += new System.EventHandler(this.FormMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picture_background)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,9 +137,10 @@
 
         #endregion
         private System.Windows.Forms.Button button_exit;
-        private System.Windows.Forms.CheckBox check_sound;
         private System.Windows.Forms.PictureBox picture_background;
         private System.Windows.Forms.Button button_start;
+        public System.Windows.Forms.CheckBox check_sound;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
     }
 }
 
