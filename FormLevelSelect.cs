@@ -20,7 +20,7 @@ namespace Project
             
             
         }
-
+        
         private void FormLevelSelect_Load(object sender, EventArgs e)
         {
 
@@ -51,25 +51,29 @@ namespace Project
             if (keyData == Keys.Escape)
             {
                 this.Close();
+                //sound.play_menu();
+
                 return true;
             }
+            
             return base.ProcessCmdKey(ref msg, keyData);
+            
         }
         private void exit_from_selecting_Click(object sender, EventArgs e)
         {
-            //sound.play_button_exit();
 
 
+            axWindowsMediaPlayer1.URL = "C:\\Users\\admin\\Desktop\\projectGITHUB\\Resources\\sound_button_exit.wav";
+            axWindowsMediaPlayer1.Ctlcontrols.play();
+            //SoundPlayer player = new SoundPlayer(Properties.Resources.sound_button_exit);//@"C:\Users\admin\Desktop\projectGITHUB\Resources\sound_button_exit.wav");
+            //player.Play();
 
-            SoundPlayer player = new SoundPlayer(Properties.Resources.sound_button_exit);//@"C:\Users\admin\Desktop\projectGITHUB\Resources\sound_button_exit.wav");
-            player.PlaySync();
-
-            Thread.Sleep(100);
-
-            player = new SoundPlayer(Properties.Resources.sound_menu);//@"C:\Users\admin\Desktop\projectGITHUB\Resources\sound_menu.wav");
-            player.Play();
-
+            //Thread.Sleep(100);
             this.Close();
+            //player = new SoundPlayer(Properties.Resources.sound_menu);//@"C:\Users\admin\Desktop\projectGITHUB\Resources\sound_menu.wav");
+            //player.Play();
+
+
 
 
             //sound.play_menu();
@@ -95,6 +99,11 @@ namespace Project
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
         {
 
         }

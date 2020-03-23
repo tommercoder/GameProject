@@ -21,6 +21,7 @@ namespace Project
             if (keyData == Keys.Escape)
             {
                 this.Close();
+                sound.play_menu();
                 return true;///зробити запрос при закритті вікно "ЗАКІНЧИТИ ЛВЛ ЧИ ПРОДОВЖИТИ";
             }
             return base.ProcessCmdKey(ref msg, keyData);

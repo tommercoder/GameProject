@@ -53,12 +53,29 @@ namespace Project
             // button_start.FlatAppearance.BorderSize = 0;
             //    button_start.FlatStyle = FlatStyle.Flat;
         }
-       
+        private void Wait(double seconds)
+        {
+            int ticks = System.Environment.TickCount + (int)Math.Round(seconds * 1000.0);
+            while (System.Environment.TickCount < ticks)
+            {
+                Application.DoEvents();
+            }
+        }
         private void button_exit_Click(object sender, EventArgs e)
         {
-            SoundPlayer player = new SoundPlayer(Properties.Resources.sound_button_exit);
-            player.PlaySync();
-            //sound.play_button_exit();
+
+
+            //axWindowsMediaPlayer1.URL = "C:\\Users\\admin\\Desktop\\projectGITHUB\\Resources\\sound_button_exit.wav";
+            //axWindowsMediaPlayer1.Ctlcontrols.play();
+            sound.play_button_exit();
+            Wait(0.4);
+
+
+            //SoundPlayer player = new SoundPlayer(Properties.Resources.sound_button_exit);
+
+            //player.PlaySync();
+
+           
 
             this.Close();
         }
@@ -69,6 +86,7 @@ namespace Project
         }
         private void button_start_Click(object sender, EventArgs e)
         {
+
             // sound.play_button_exit();
             //start_level1();
             start_selectionForm(); 
@@ -97,6 +115,11 @@ namespace Project
         }
 
         private void picture_background_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
         {
 
         }
