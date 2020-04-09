@@ -157,4 +157,22 @@
   <data name="level1background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\level1background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ac437514941877_5628af57d47fd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ac437514941877.5628af57d47fd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="holden_decor_holden_intergalactic_stars_pattern_childrens_wallpaper_space_planets_astronaut_12500_p4862_13099_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\holden-decor-holden-intergalactic-stars-pattern-childrens-wallpaper-space-planets-astronaut-12500-p4862-13099_image.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="planety_kosmos_minimalizm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\planety-kosmos-minimalizm.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zvezdy_kosmos_galaktika_prostranstvo_118131_3840x2160" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zvezdy_kosmos_galaktika_prostranstvo_118131_3840x2160.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_100122928_astronaut_wallpaper_and_planets_illustration_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\100122928-astronaut-wallpaper-and-planets-illustration-.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_80678036_seamless_pattern_on_the_theme_of_space_astronaut_in_open_cosmos_space_ships_and_a_set_of_various_pla" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\80678036-seamless-pattern-on-the-theme-of-space-astronaut-in-open-cosmos-space-ships-and-a-set-of-various-pla.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
