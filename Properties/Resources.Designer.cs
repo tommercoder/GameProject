@@ -63,37 +63,6 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _100122928_astronaut_wallpaper_and_planets_illustration_ {
-            get {
-                object obj = ResourceManager.GetObject("_100122928_astronaut_wallpaper_and_planets_illustration_", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _80678036_seamless_pattern_on_the_theme_of_space_astronaut_in_open_cosmos_space_ships_and_a_set_of_various_pla {
-            get {
-                object obj = ResourceManager.GetObject("_80678036_seamless_pattern_on_the_theme_of_space_astronaut_in_open_cosmos_space_s" +
-                        "hips_and_a_set_of_various_pla", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ac437514941877_5628af57d47fd {
-            get {
-                object obj = ResourceManager.GetObject("ac437514941877_5628af57d47fd", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap astronaut {
             get {
                 object obj = ResourceManager.GetObject("astronaut", resourceCulture);
@@ -134,40 +103,9 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap holden_decor_holden_intergalactic_stars_pattern_childrens_wallpaper_space_planets_astronaut_12500_p4862_13099_image {
-            get {
-                object obj = ResourceManager.GetObject("holden_decor_holden_intergalactic_stars_pattern_childrens_wallpaper_space_planets" +
-                        "_astronaut_12500_p4862_13099_image", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap level1background {
-            get {
-                object obj = ResourceManager.GetObject("level1background", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap orig {
             get {
                 object obj = ResourceManager.GetObject("orig", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap planety_kosmos_minimalizm {
-            get {
-                object obj = ResourceManager.GetObject("planety_kosmos_minimalizm", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -232,16 +170,6 @@ namespace Project.Properties {
         internal static System.IO.UnmanagedMemoryStream sound_teleport {
             get {
                 return ResourceManager.GetStream("sound_teleport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap zvezdy_kosmos_galaktika_prostranstvo_118131_3840x2160 {
-            get {
-                object obj = ResourceManager.GetObject("zvezdy_kosmos_galaktika_prostranstvo_118131_3840x2160", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

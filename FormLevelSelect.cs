@@ -13,12 +13,10 @@ namespace Project
 {
     public partial class FormLevelSelect : Form
     {
-        //public 
+        
         public FormLevelSelect()
         {
             InitializeComponent();
-            
-            
         }
         
         private void FormLevelSelect_Load(object sender, EventArgs e)
@@ -46,6 +44,7 @@ namespace Project
         //           escape_Pressed = true;
         //    }
         //}
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Escape)
@@ -67,6 +66,7 @@ namespace Project
             }
         }
 
+        
         private void exit_from_selecting_Click(object sender, EventArgs e)
         {
 

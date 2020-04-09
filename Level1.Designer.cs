@@ -28,7 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.PictureBox bottom;
             this.exit_level1 = new System.Windows.Forms.Button();
+            this.player = new System.Windows.Forms.PictureBox();
+            bottom = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(bottom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             this.SuspendLayout();
             // 
             // exit_level1
@@ -45,12 +50,34 @@
             this.exit_level1.UseVisualStyleBackColor = false;
             this.exit_level1.Click += new System.EventHandler(this.exit_level1_Click);
             // 
+            // bottom
+            // 
+            bottom.BackColor = System.Drawing.Color.Silver;
+            bottom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            bottom.Location = new System.Drawing.Point(-1, 550);
+            bottom.Name = "bottom";
+            bottom.Size = new System.Drawing.Size(801, 50);
+            bottom.TabIndex = 1;
+            bottom.TabStop = false;
+            // 
+            // player
+            // 
+            this.player.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.player.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.player.Location = new System.Drawing.Point(12, 487);
+            this.player.Name = "player";
+            this.player.Size = new System.Drawing.Size(69, 57);
+            this.player.TabIndex = 2;
+            this.player.TabStop = false;
+            this.player.Click += new System.EventHandler(this.player_Click);
+            // 
             // Level1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Project.Properties.Resources.holden_decor_holden_intergalactic_stars_pattern_childrens_wallpaper_space_planets_astronaut_12500_p4862_13099_image;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.player);
+            this.Controls.Add(bottom);
             this.Controls.Add(this.exit_level1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(0, -1);
@@ -59,6 +86,9 @@
             this.Name = "Level1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Level1";
+            this.Load += new System.EventHandler(this.Level1_Load);
+            ((System.ComponentModel.ISupportInitialize)(bottom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -66,5 +96,6 @@
         #endregion
 
         private System.Windows.Forms.Button exit_level1;
+        private System.Windows.Forms.PictureBox player;
     }
 }

@@ -18,6 +18,7 @@ namespace Project
         public FormMenu()
         {
             Program.fm = this;
+
             InitializeComponent();
             
             //sound.play_menu();
