@@ -49,7 +49,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Project.Properties.Resources.level1background;
+            this.BackgroundImage = global::Project.Properties.Resources.holden_decor_holden_intergalactic_stars_pattern_childrens_wallpaper_space_planets_astronaut_12500_p4862_13099_image;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.exit_level1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

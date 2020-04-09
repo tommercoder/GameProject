@@ -157,5 +157,23 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\holden-decor-holden-intergalactic-stars-pattern-childrens-wallpaper-space-planets-astronaut-12500-p4862-13099_image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\100122928-astronaut-wallpaper-and-planets-illustration-.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zvezdy_kosmos_galaktika_prostranstvo_118131_3840x2160.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ac437514941877.5628af57d47fd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planety-kosmos-minimalizm.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\80678036-seamless-pattern-on-the-theme-of-space-astronaut-in-open-cosmos-space-ships-and-a-set-of-various-pla.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
