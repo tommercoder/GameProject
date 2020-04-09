@@ -29,7 +29,18 @@ namespace Project
         private void exit_level1_Click(object sender, EventArgs e)
         {
             this.Close();
+
             sound.play_menu();
+        }
+
+        private void Level1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void player_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
