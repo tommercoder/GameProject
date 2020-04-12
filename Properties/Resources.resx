@@ -154,4 +154,13 @@
   <data name="astronaut" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\astronaut.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Dwarf2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dwarf2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="space_cadet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\space_cadet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dwarf1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dwarf1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -20,7 +20,8 @@ namespace Project
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMenu());
+            //Application.Run(new FormMenu());main
+            Application.Run(new Level1());//level1 testing so
 
 
         }

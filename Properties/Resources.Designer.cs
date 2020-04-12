@@ -103,6 +103,26 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Dwarf1 {
+            get {
+                object obj = ResourceManager.GetObject("Dwarf1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Dwarf2 {
+            get {
+                object obj = ResourceManager.GetObject("Dwarf2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap orig {
             get {
                 object obj = ResourceManager.GetObject("orig", resourceCulture);
@@ -170,6 +190,16 @@ namespace Project.Properties {
         internal static System.IO.UnmanagedMemoryStream sound_teleport {
             get {
                 return ResourceManager.GetStream("sound_teleport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap space_cadet {
+            get {
+                object obj = ResourceManager.GetObject("space_cadet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

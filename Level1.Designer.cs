@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.PictureBox bottom;
+            this.components = new System.ComponentModel.Container();
             this.exit_level1 = new System.Windows.Forms.Button();
-            this.player = new System.Windows.Forms.PictureBox();
-            bottom = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(bottom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
+            this.platform = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.platform)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // exit_level1
@@ -50,52 +52,66 @@
             this.exit_level1.UseVisualStyleBackColor = false;
             this.exit_level1.Click += new System.EventHandler(this.exit_level1_Click);
             // 
-            // bottom
+            // platform
             // 
-            bottom.BackColor = System.Drawing.Color.Silver;
-            bottom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            bottom.Location = new System.Drawing.Point(-1, 550);
-            bottom.Name = "bottom";
-            bottom.Size = new System.Drawing.Size(801, 50);
-            bottom.TabIndex = 1;
-            bottom.TabStop = false;
+            this.platform.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.platform.Location = new System.Drawing.Point(177, 427);
+            this.platform.Name = "platform";
+            this.platform.Size = new System.Drawing.Size(325, 35);
+            this.platform.TabIndex = 3;
+            this.platform.TabStop = false;
             // 
-            // player
+            // pictureBox1
             // 
-            this.player.BackColor = System.Drawing.Color.MediumSpringGreen;
-            this.player.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.player.Location = new System.Drawing.Point(12, 487);
-            this.player.Name = "player";
-            this.player.Size = new System.Drawing.Size(69, 57);
-            this.player.TabIndex = 2;
-            this.player.TabStop = false;
-            this.player.Click += new System.EventHandler(this.player_Click);
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pictureBox1.Location = new System.Drawing.Point(366, 345);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(325, 35);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(193, 103);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "label1";
             // 
             // Level1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.player);
-            this.Controls.Add(bottom);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.platform);
             this.Controls.Add(this.exit_level1);
+            this.DoubleBuffered = true;
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Location = new System.Drawing.Point(0, -1);
-            this.MaximumSize = new System.Drawing.Size(800, 600);
-            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Level1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Level1";
             this.Load += new System.EventHandler(this.Level1_Load);
-            ((System.ComponentModel.ISupportInitialize)(bottom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
+            ((System.ComponentModel.ISupportInitialize)(this.platform)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button exit_level1;
-        private System.Windows.Forms.PictureBox player;
+        
+        private System.Windows.Forms.PictureBox platform;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label1;
     }
 }
