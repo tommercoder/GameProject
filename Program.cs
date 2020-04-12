@@ -11,14 +11,19 @@ namespace Project
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
-        /// 
+        
         public static FormMenu fm;//all formMenu.cs is in "fm" remember it
+
         [STAThread]
         static void Main()
         {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMenu());
+            //Application.Run(new FormMenu());main
+            Application.Run(new Level1());//level1 testing so
+
+
         }
     }
 }

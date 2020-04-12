@@ -17,9 +17,11 @@ namespace Project
         public bool isCheckedMusicButton = false;
         public FormMenu()
         {
-            Program.fm = this;
-            InitializeComponent();
             
+            Program.fm = this;
+
+            InitializeComponent();
+            //start_level1();///for level1 
             //sound.play_menu();
 
             button_start.MouseEnter += (s, e) => {
@@ -84,6 +86,11 @@ namespace Project
             FormLevelSelect levelSelect = new FormLevelSelect();
             levelSelect.ShowDialog();
         }
+        //private void start_level1()
+        //{
+        //    Level1 level1 = new Level1();
+        //    level1.ShowDialog();
+        //}
         private void button_start_Click(object sender, EventArgs e)
         {
 
