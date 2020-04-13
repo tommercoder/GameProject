@@ -39,7 +39,7 @@ namespace Project
 
             init();
 
-            grassImg = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\grass.png"));
+            grassImg = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\ground.png"));
             
             map = new int [10,10] 
             {
@@ -163,7 +163,7 @@ namespace Project
                 {
                     if (map[i, j] == 1)
                     {
-                        g.DrawImage(grassImg, j * 90, i * 90, new Rectangle(new Point(0, 0), new Size(180, 180)), GraphicsUnit.Pixel);
+                        g.DrawImage(grassImg, j * 70, i * 75, new Rectangle(new Point(0, 0), new Size(70, 75)), GraphicsUnit.Pixel);
                     }
                 }
             }
