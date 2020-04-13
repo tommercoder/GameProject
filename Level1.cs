@@ -21,7 +21,7 @@ namespace Project
         public Entity player;
         public Image grassImg;
         int[,] map;
-        private object g;
+      // private object g;
         const int width=10;
        const int height=10;
         //bool isJumping = false;
@@ -39,9 +39,11 @@ namespace Project
 
             init();
 
-            grassImg = new Bitmap("Resources\\grass.png");
+            grassImg = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\grass.png"));
             
-            map = new int [10,10] { {1,1,1,1,1,1,1,1,1,1},
+            map = new int [10,10] 
+            {
+            {1,1,1,1,1,1,1,1,1,1},
             {1,1,1,1,1,1,1,1,1,1},
             {1,1,1,1,1,1,1,1,1,1},
             {1,1,1,1,1,1,1,1,1,1},
