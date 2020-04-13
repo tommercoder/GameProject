@@ -19,7 +19,11 @@ namespace Project
     {
         public Image dwarfSheet;//for sprites 
         public Entity player;
-
+        Image grassImg;
+        int[,] map;
+        private object g;
+        const int width=10;
+       const int height=10;
         //bool isJumping = false;
         public Level1()
         {
@@ -34,9 +38,35 @@ namespace Project
             KeyUp += new KeyEventHandler(OnKeyUp);
 
             init();
+            grassImg = new Bitmap("C:\\Users\\vkaly\\Downloads\\trees_plants_rocks.png");
             
+            map = new int [10,10] { {1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1},
+            };
         }
-        
+       /* public void createMap()
+            {
+            //Graphics g = e.Graphics;
+            for (int i=0;i<width;i++)
+                {
+            for(int j=0;j<height;j++)
+                    {
+                    if(map[i,j]==1)
+                    {
+                        g.DrawImage(grassImg, j * 80, i * 80, new Rectangle(new Point(0, 0), new Size(80, 80)), GraphicsUnit.Pixel);
+                    }
+                }
+            }
+        }*/
+
         public void OnKeyUp(object sender,KeyEventArgs e)
         {
             player.dirX = 0;
@@ -111,6 +141,7 @@ namespace Project
         
         public void Update(object sender, EventArgs e)
         {
+           // createMap();
             if (player.isMoving)
                 player.Move();
 
@@ -123,9 +154,20 @@ namespace Project
         private void OnPaint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    if (map[i, j] == 1)
+                    {
+                        g.DrawImage(grassImg, j * 90, i * 90, new Rectangle(new Point(0, 0), new Size(180, 180)), GraphicsUnit.Pixel);
+                    }
+                }
+            }
+        //}
 
-            // g.DrawImage(player.spriteSheet, new Rectangle(new Point(player.posX, player.posY), new Size(player.size, player.size)), 0, 0, player.size, player.size , GraphicsUnit.Pixel);
-            player.PlayAnimation(g);
+        // g.DrawImage(player.spriteSheet, new Rectangle(new Point(player.posX, player.posY), new Size(player.size, player.size)), 0, 0, player.size, player.size , GraphicsUnit.Pixel);
+        player.PlayAnimation(g);
         }
 
         public void collision()
