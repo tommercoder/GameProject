@@ -53,7 +53,7 @@ namespace Project
             {1,1,1,1,1,1,1,1,1,1},
             };
         }
-       /* public void createMap()
+       /* public void createMapw()
             {
             //Graphics g = e.Graphics;
             for (int i=0;i<width;i++)
