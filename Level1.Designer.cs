@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.exit_level1 = new System.Windows.Forms.Button();
             this.platform = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -37,20 +36,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.platform)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // exit_level1
-            // 
-            this.exit_level1.BackColor = System.Drawing.Color.Transparent;
-            this.exit_level1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exit_level1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.exit_level1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.exit_level1.Location = new System.Drawing.Point(713, 12);
-            this.exit_level1.Name = "exit_level1";
-            this.exit_level1.Size = new System.Drawing.Size(75, 33);
-            this.exit_level1.TabIndex = 0;
-            this.exit_level1.Text = "END";
-            this.exit_level1.UseVisualStyleBackColor = false;
-            this.exit_level1.Click += new System.EventHandler(this.exit_level1_Click);
             // 
             // platform
             // 
@@ -87,7 +72,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.platform);
-            this.Controls.Add(this.exit_level1);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -106,8 +90,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button exit_level1;
         
         private System.Windows.Forms.PictureBox platform;
         private System.Windows.Forms.PictureBox pictureBox1;

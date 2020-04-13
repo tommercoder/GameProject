@@ -42,14 +42,15 @@ namespace Project
             player.dirX = 0;
             player.dirY = 0;
             player.isMoving = false;
+            player.isJumping = false;
             player.setAnimationConfiguration(0);
         }
 
         public void init()
         {
-            dwarfSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Dwarf1.png"));
+            dwarfSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Dwarf2.png"));
 
-            player = new Entity(200, 200, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames, dwarfSheet);
+            player = new Entity(200, 200, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames,Hero.jumpFrames, dwarfSheet);
            
             timer1.Start();
 
@@ -89,7 +90,18 @@ namespace Project
                     player.dirY = 0;
                     player.isMoving = false;
                     player.setAnimationConfiguration(2);
+                    break;
+                case Keys.Space:
 
+                    player.setAnimationConfiguration(5);
+                    
+                    break;
+
+
+                case Keys.Escape:
+                    //sound.play_menu();
+                    this.Close();
+                    
                     break;
 
             }
@@ -102,6 +114,9 @@ namespace Project
             if (player.isMoving)
                 player.Move();
 
+            //if (player.isJumping)
+            //    player.jump();
+
             Invalidate();
         }
 
@@ -113,22 +128,30 @@ namespace Project
             player.PlayAnimation(g);
         }
 
-        
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        public void collision()
         {
-            if (keyData == Keys.Escape)
-            {
-                this.Close();
-                sound.play_menu();
-                return true;///зробити запрос при закритті вікно "ЗАКІНЧИТИ ЛВЛ ЧИ ПРОДОВЖИТИ";
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
+            
         }
+        
+        //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        //{
+        //    if (keyData == Keys.Space)
+        //    {
+                
+        //    }
+        //    if (keyData == Keys.Escape)
+        //    {
+        //        this.Close();
+        //        sound.play_menu();
+        //        return true;///зробити запрос при закритті вікно "ЗАКІНЧИТИ ЛВЛ ЧИ ПРОДОВЖИТИ";
+        //    }
+        //    return base.ProcessCmdKey(ref msg, keyData);
+        //}
         private void exit_level1_Click(object sender, EventArgs e)
         {
-            this.Close();
+           // this.Close();
 
-            sound.play_menu();
+            //sound.play_menu();
         }
 
         private void Level1_Load(object sender, EventArgs e)

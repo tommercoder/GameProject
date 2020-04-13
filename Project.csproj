@@ -178,13 +178,13 @@
     <None Include="Resources\80678036-seamless-pattern-on-the-theme-of-space-astronaut-in-open-cosmos-space-ships-and-a-set-of-various-pla.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dwarf2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\space_cadet.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Dwarf1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dwarf2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
