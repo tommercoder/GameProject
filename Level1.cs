@@ -19,7 +19,7 @@ namespace Project
     {
         public Image dwarfSheet;//for sprites 
         public Entity player;
-        Image grassImg;
+        public Image grassImg;
         int[,] map;
         private object g;
         const int width=10;
@@ -38,7 +38,8 @@ namespace Project
             KeyUp += new KeyEventHandler(OnKeyUp);
 
             init();
-            grassImg = new Bitmap("C:\\Users\\vkaly\\Downloads\\trees_plants_rocks.png");
+
+            grassImg = new Bitmap("Resources\\grass.png");
             
             map = new int [10,10] { {1,1,1,1,1,1,1,1,1,1},
             {1,1,1,1,1,1,1,1,1,1},
