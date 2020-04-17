@@ -14,6 +14,7 @@ using System.IO;
 namespace Project
 {
     
+    
 
     public partial class Level1 : Form
     {
@@ -31,7 +32,6 @@ namespace Project
             
             InitializeComponent();
 
-
             timer1.Interval = 20;
             timer1.Tick += new EventHandler(Update);
             
@@ -40,20 +40,35 @@ namespace Project
 
             init();
 
-            grassImg = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\ground.png"));
-            backImg = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\BackGr.png"));
-            map = new int [10,12] 
+            grassImg = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\grass-tile.png"));
+            backImg = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\forest.png"));
+            map = new int [25,25] 
             {
-            {0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,1,1,1,1,1,1,1,1,1,1,0},
-             {0,1,1,1,1,1,1,1,1,1,1,0},
-             {0,1,1,1,1,1,1,1,1,1,1,0},
-             {0,1,1,1,1,1,1,1,1,1,1,0},
-             {0,1,1,1,1,1,1,1,1,1,1,0},
-             {0,1,1,1,1,1,1,1,1,1,1,0},
-             {0,1,1,1,1,1,1,1,1,1,1,0},
-             {0,1,1,1,1,1,1,1,1,1,1,0},
-             {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
             };
         }
        /* public void createMapw()
@@ -79,7 +94,7 @@ namespace Project
             player.isJumping = false;
             player.setAnimationConfiguration(0);
         }
-
+       
         public void init()
         {
             dwarfSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Dwarf2.png"));
@@ -162,14 +177,15 @@ namespace Project
             {
                 for (int j = 0; j < height; j++)
                 {
-                    if (map[i, j] == 1)
-                    {
-                        g.DrawImage(grassImg, j * 70, i * 75, new Rectangle(new Point(0, 0), new Size(70, 75)), GraphicsUnit.Pixel);
-                    }
                     if (map[i, j] == 0)
                     {
-                        g.DrawImage(backImg, j * 70, i * 75, new Rectangle(new Point(0, 0), new Size(70, 75)), GraphicsUnit.Pixel);
+                        g.DrawImage(backImg, j * 120, i * 131, new Rectangle(new Point(0, 0), new Size(120, 131)), GraphicsUnit.Pixel);
                     }
+                    if (map[i, j] == 1)
+                    {
+                        g.DrawImage(grassImg, j * 48, i * 48, new Rectangle(new Point(0, 0), new Size(48, 48)), GraphicsUnit.Pixel);
+                    }
+                   
                 }
             }
         //}

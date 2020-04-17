@@ -196,5 +196,29 @@
   <ItemGroup>
     <None Include="Resources\BackGr.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grass-tile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grass-tile-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grass-tile-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forest2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\transparent-bg-tiles.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\desert_1_0_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PokemonLike.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
