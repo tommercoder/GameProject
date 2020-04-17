@@ -4,11 +4,15 @@ namespace Project.Entities
 {
     public class Entity
     {
-        public int posX;
-        public int posY;
+        public float posX;
+        public float posY;
 
-        public int dirX;
-        public int dirY;
+        public float velocityX;//speed
+        public float velocityY;//speed
+        public float gravity = 0.5f;
+
+        public float dirX;
+        public float dirY;
         public bool isMoving;
         public bool isJumping;
 
@@ -17,7 +21,6 @@ namespace Project.Entities
         public int currentAnimation;
         public int currentFrame;
         public int currentLimit;
-        public int offset;
 
         public  int IdleFrames;
         public  int runFrames;
@@ -26,11 +29,11 @@ namespace Project.Entities
         public int jumpFrames;
 
         public int size;
-        public int height;
+        public float height;
 
         public Image spriteSheet;
 
-        public Entity(int posX,int posY,int IdleFrames,int runFrames,int attackFrames,int deathFrames,int jumpFrames,Image spriteSheet)
+        public Entity(float posX,float posY,int IdleFrames,int runFrames,int attackFrames,int deathFrames,int jumpFrames,Image spriteSheet)
         {
             this.posX = posX;
             this.posY = posY;
@@ -57,9 +60,9 @@ namespace Project.Entities
 
         public void PlayAnimation(Graphics g)
         {
-
-           g.DrawImage(spriteSheet, new Rectangle(new Point(posX - flip * size / 2, posY), new Size(flip * size, size)), 38 * currentFrame, 31 * currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
             
+           g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 38 * currentFrame, 31 * currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
+               
             if (currentFrame < currentLimit - 1)//2 for space cadet
                 currentFrame++;
             else
