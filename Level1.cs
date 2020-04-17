@@ -20,10 +20,11 @@ namespace Project
         public Image dwarfSheet;//for sprites 
         public Entity player;
         public Image grassImg;
+        public Image backImg;
         int[,] map;
       // private object g;
         const int width=10;
-       const int height=10;
+       const int height=12;
         //bool isJumping = false;
         public Level1()
         {
@@ -40,19 +41,19 @@ namespace Project
             init();
 
             grassImg = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\ground.png"));
-            
-            map = new int [10,10] 
+            backImg = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\BackGr.png"));
+            map = new int [10,12] 
             {
-            {1,1,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1},
+            {0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,1,1,1,1,1,1,1,1,1,1,0},
+             {0,1,1,1,1,1,1,1,1,1,1,0},
+             {0,1,1,1,1,1,1,1,1,1,1,0},
+             {0,1,1,1,1,1,1,1,1,1,1,0},
+             {0,1,1,1,1,1,1,1,1,1,1,0},
+             {0,1,1,1,1,1,1,1,1,1,1,0},
+             {0,1,1,1,1,1,1,1,1,1,1,0},
+             {0,1,1,1,1,1,1,1,1,1,1,0},
+             {0,0,0,0,0,0,0,0,0,0,0,0},
             };
         }
        /* public void createMapw()
@@ -164,6 +165,10 @@ namespace Project
                     if (map[i, j] == 1)
                     {
                         g.DrawImage(grassImg, j * 70, i * 75, new Rectangle(new Point(0, 0), new Size(70, 75)), GraphicsUnit.Pixel);
+                    }
+                    if (map[i, j] == 0)
+                    {
+                        g.DrawImage(backImg, j * 70, i * 75, new Rectangle(new Point(0, 0), new Size(70, 75)), GraphicsUnit.Pixel);
                     }
                 }
             }
