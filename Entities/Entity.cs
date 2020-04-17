@@ -31,6 +31,10 @@ namespace Project.Entities
         public int size;
         public float height;
 
+        private static float scalingFactor = 10;
+        private static float mapSizeX = 19;
+        private static float mapSizeY = 29;
+
         public Image spriteSheet;
 
         public Entity(float posX,float posY,int IdleFrames,int runFrames,int attackFrames,int deathFrames,int jumpFrames,Image spriteSheet)

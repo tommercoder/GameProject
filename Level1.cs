@@ -164,11 +164,13 @@ namespace Project
             player.posY += player.velocityY;
             player.posX += player.velocityX;
 
+            
             if (player.posY > 500)
             {
                 player.posY = 500;
                 player.velocityY = 0;//gravity to posY
             }
+
             if (player.posX < 10f || player.posX > 190f)
             {
                 player.velocityX *= -1;//go back to bottom
