@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="map006" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\map006.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\background.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -166,28 +163,22 @@
   <data name="space_cadet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\space_cadet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="map0061" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\map0061.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="BackGr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackGr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="justTry" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\justTry.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="desert_1_0_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\desert_1_0_7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tile1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tile1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PokemonLike" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PokemonLike.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tile2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tile2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Wall" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Wall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="transparent_bg_tiles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\transparent-bg-tiles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Forest" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Forest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tileset" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tileset.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

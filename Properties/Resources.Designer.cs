@@ -113,6 +113,16 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap desert_1_0_7 {
+            get {
+                object obj = ResourceManager.GetObject("desert_1_0_7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Dwarf1 {
             get {
                 object obj = ResourceManager.GetObject("Dwarf1", resourceCulture);
@@ -143,49 +153,19 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ground {
-            get {
-                object obj = ResourceManager.GetObject("ground", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap justTry {
-            get {
-                object obj = ResourceManager.GetObject("justTry", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap map006 {
-            get {
-                object obj = ResourceManager.GetObject("map006", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap map0061 {
-            get {
-                object obj = ResourceManager.GetObject("map0061", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap orig {
             get {
                 object obj = ResourceManager.GetObject("orig", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PokemonLike {
+            get {
+                object obj = ResourceManager.GetObject("PokemonLike", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -266,9 +246,9 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Tile1 {
+        internal static System.Drawing.Bitmap Tileset {
             get {
-                object obj = ResourceManager.GetObject("Tile1", resourceCulture);
+                object obj = ResourceManager.GetObject("Tileset", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -276,19 +256,9 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Tile2 {
+        internal static System.Drawing.Bitmap transparent_bg_tiles {
             get {
-                object obj = ResourceManager.GetObject("Tile2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Wall {
-            get {
-                object obj = ResourceManager.GetObject("Wall", resourceCulture);
+                object obj = ResourceManager.GetObject("transparent_bg_tiles", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
