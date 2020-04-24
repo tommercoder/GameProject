@@ -17,8 +17,10 @@ namespace Project.MapCollision
         public const int mapHeight = 20;
         public const int mapWidth = 20;
         public static int cellSize = 31;
+
         public static int[,] map = new int[mapHeight, mapWidth];
         public static Image spriteSheet;
+        
         public static List<rock> rocks = new List<rock>();
 
         public static void Init()
@@ -39,9 +41,9 @@ namespace Project.MapCollision
                 { 5,-1,-1,-1,0,0,0,0,11,0,0,0,0,0,0,0,-1,-1,-1,7},
                 { 5,10,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,10,-1,-1,7},
                 { 5,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,7},
-                { 5,10,-1,-1,0,0,0,0,0,0,11,0,0,0,0,0,10,-1,-1,7},
+                { 5,10,-1,-1,0,0,0,0,0,0,11,0,0,0,0,0,0,-1,-1,7},
                 { 5,-1,-1,-1,0,0,11,0,0,0,0,0,0,0,0,0,-1,-1,-1,7},
-                { 5,10,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,10,-1,-1,7},
+                { 5,10,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,7},
                 { 5,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,7},
                 { 5,10,-1,-1,0,0,0,11,0,0,0,0,0,0,0,0,10,-1,-1,7},
                 { 5,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,7},
@@ -84,7 +86,8 @@ namespace Project.MapCollision
                 {
                     if (map[i, j] == 10)
                     {
-                       
+                        //rock Rock = new rock(j * cellSize, i * cellSize);
+                        //rocks.Add(Rock);
                         
                         g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize * 3, cellSize * 3)), 202, 298, 107, 114, GraphicsUnit.Pixel);
                     }
@@ -98,23 +101,23 @@ namespace Project.MapCollision
                 }
             }
         }
-        public static bool Collide(Entity player)
-        {
-            for (int i = 0; i < rocks.Count; i++)
-            {
-                int deltaX = (player.posX + player.size / 2) - (rocks[i].posX + rocks[i].sizeX / 2);
-                int deltaY = (player.posY + player.size / 2) - (rocks[i].posY + rocks[i].sizeY / 2);
+        //public static bool Collide(Entity player)
+        //{
+        //    for (int i = 0; i < rocks.Count; i++)
+        //    {
+        //        int deltaX = (player.posX + player.size / 2) - (rocks[i].posX + rocks[i].sizeX / 2);
+        //        int deltaY = (player.posY + player.size / 2) - (rocks[i].posY + rocks[i].sizeY / 2);
 
-                if (Math.Abs(deltaX) <= player.size / 2 + rocks[i].sizeX / 2)
-                {
-                    if (Math.Abs(deltaY) <= player.size / 2 + rocks[i].sizeY / 2)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
+        //        if (Math.Abs(deltaX) <= player.size / 2 + rocks[i].sizeX / 2)
+        //        {
+        //            if (Math.Abs(deltaY) <= player.size / 2 + rocks[i].sizeY / 2)
+        //            {
+        //                return true;
+        //            }
+        //        }
+        //    }
+        //    return false;
+        //}
 
         public static void DrawMap(Graphics g)
         {

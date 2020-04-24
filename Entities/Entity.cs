@@ -80,8 +80,9 @@ namespace Project.Entities
            g.DrawImage(spriteSheet, new System.Drawing.Rectangle(new System.Drawing.Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 38 * currentFrame, 32 * currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
                else
                 g.DrawImage(spriteSheet, new System.Drawing.Rectangle(new System.Drawing.Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 38 * currentFrame, 32 * currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
+            
             if (currentFrame < currentLimit - 1)//2 for space cadet
-                currentFrame++;
+                currentFrame++; 
             else
                 currentFrame = 0;
         }
@@ -118,7 +119,6 @@ namespace Project.Entities
                 case 5:
                     currentLimit = jumpFrames;
                     break;
-
 
             }
         }

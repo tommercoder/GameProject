@@ -46,42 +46,23 @@ namespace Project
             
             KeyDown += new KeyEventHandler(OnPress);
 
-             timer1.Tick += new EventHandler(Update);
-            timeOf += 20;
+            timer1.Tick += new EventHandler(Update);
+            //timeOf += 20;
             
             KeyUp += new KeyEventHandler(OnKeyUp);
 
-
-            init();
-
-            //map.generate(new int[,] {
-            //    { 0,0,0,0,0,0,0,0,0},
-            //    { 0,0,1,0,0,0,0,0,0},
-            //    { 0,0,0,0,0,0,0,0,0},
-            //    { 0,0,0,0,1,0,0,0,0},
-            //    { 0,0,0,0,0,1,0,0,0},
-            //    { 0,0,0,0,0,0,1,0,0},
-            //    { 0,0,0,1,0,0,0,0,0},
-            //    { 0,0,0,0,0,0,0,0,0},
-            //    { 0,0,0,0,0,0,0,0,0},
-            //}, 32);
-
-
-           
-
-            
-
-            
+            init(); 
         }
 
         public void OnKeyUp(object sender, KeyEventArgs e)
         {
-            if (Map.Collide(player))
-            {
-                label2.Text = "collide";
-            }
-            else
-                label2.Text = "no collide";
+            //if (Map.Collide(player))
+            //{
+            //    label2.Text = "collide";
+            //}
+            //else
+            //    label2.Text = "no collide";
+
             player.isMoving = false;
             player.isJumping = false;
 
@@ -89,10 +70,7 @@ namespace Project
             player.dirY = 0;
             
             player.setAnimationConfiguration(0);
-            if(Map.Collide(player))
-            {
-                label2.Text = "collide";
-            }
+          
             //label2.Text = Convert.ToString(mapX);
             //label3.Text = Convert.ToString("map:" + mapX + mapY);
 
@@ -111,11 +89,10 @@ namespace Project
 
             this.Width = Map.GetWidth();
             this.Height = Map.GetHeight();
-            dwarfSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Dwarf2.png"));
 
+            dwarfSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Dwarf2.png"));
             player = new Entity (100,100, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames, Hero.jumpFrames, dwarfSheet);
 
-           
             timer1.Start();
 
         }
@@ -297,9 +274,6 @@ namespace Project
             Graphics g = e.Graphics;
 
 
-            //map.Draw(g);
-            
-          
             Map.DrawMap(g);
             // Map
             //for (int i = 0; i < width; i++)
@@ -313,10 +287,10 @@ namespace Project
             //    }
 
             //}
-
             //if (player.isJumping)
             //    player.PlayJumpAnimation(g);
             //else
+
             player.PlayAnimation(g);
         }
 
