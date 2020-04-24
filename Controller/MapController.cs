@@ -19,32 +19,31 @@ namespace Project.Controller
         public static void Init()
         {
             map = GetMap();
-            spriteSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Forest.png"));
+            spriteSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Tileset.png"));
         }
         public static int[,] GetMap()
         {
             return map = new int[,] {
-                { 1,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,2},
-                { 5,10,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,10,-1,-1,7},
-                { 5,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,7},
-                { 5,10,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,10,-1,-1,7},
-                { 5,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,7},
-                { 5,10,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,10,-1,-1,7},
-                { 5,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,7},
-                { 5,10,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,10,-1,-1,7},
-                { 5,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,7},
-                { 5,10,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,10,-1,-1,7},
-                { 5,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,7},
-                { 5,10,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,10,-1,-1,7},
-                { 5,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,7},
-                { 5,10,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,10,-1,-1,7},
-                { 5,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,7},
-                { 5,10,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,10,-1,-1,7},
-                { 5,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,7},
-                { 5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
-                { 5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
-                { 3,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,4},
-
+                { 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,13,12,13,20},
+                { 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,11,20,20},
+                { 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,11,20,20},
+                { 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,11,20,20},
+                { 20,20,20,20,20,20,20,20,20,20,20,18,16,16,16,16,16,14,20,20},
+                { 20,20,20,20,20,26,98,98,98,98,98,21,17,17,17,17,17,17,20,20},
+                { 20,20,20,20,20,25,99,99,99,99,20,21,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,25,99,27,99,88,20,21,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,25,99,99,99,99,20,21,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,25,99,28,99,99,20,21,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,24,22,22,22,22,22,23,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,17,17,17,17,17,17,17,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20},
             };
         }
 
@@ -54,13 +53,64 @@ namespace Project.Controller
             {
                 for (int j = 0; j < mapHeight; j++)
                 {
-                    if (map[i, j] == 10)
+                    if (map[i, j] == 99)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize * 3, cellSize * 3)), 202, 298, 107, 114, GraphicsUnit.Pixel);
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize * 2, cellSize * 2)), 47, 268, 16, 16, GraphicsUnit.Pixel);//сірий
                     }
-                    if (map[i, j] == 11)
+                    else
+                    if (map[i, j] == 0)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 581, 114, 19, 11, GraphicsUnit.Pixel);
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 328, 155, 16, 16, GraphicsUnit.Pixel);
+                    }
+                    else
+                    if (map[i, j] == 88)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(9, 12)), 166, 320, 9,12, GraphicsUnit.Pixel);//кувшин
+                    }
+                    else
+                    if (map[i, j] == 17)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 88, 317, 16, 16, GraphicsUnit.Pixel);
+                    }
+                    else
+                    if (map[i, j] == 98)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 41, 32, 16, 16, GraphicsUnit.Pixel);//верхня частина дороги
+                    }
+                    else
+                    if (map[i, j] == 22)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 39, 100, 16, 16, GraphicsUnit.Pixel);//верхня частина дороги
+                    }
+                    else
+                    if (map[i, j] == 23)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 96, 99, 16, 16, GraphicsUnit.Pixel);//правий нижній край
+                    }
+                    else
+                    if (map[i, j] == 24)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 32, 100, 16, 16, GraphicsUnit.Pixel);//лівий нижній край
+                    }
+                    else
+                    if (map[i, j] == 25)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 32, 48, 16, 16, GraphicsUnit.Pixel);//лівий край
+                    }
+                    else
+                    if (map[i, j] == 26)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 33, 32, 16, 16, GraphicsUnit.Pixel);//лівий верхній край
+                    }
+                    else
+                    if (map[i, j] == 27)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(16, 11)), 214, 354, 16, 11, GraphicsUnit.Pixel);//сундук
+                    }
+                    else
+                    if (map[i, j] == 28)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(48, 16)), 166, 367, 48, 16, GraphicsUnit.Pixel);//труна
                     }
                 }
             }
@@ -71,48 +121,108 @@ namespace Project.Controller
             {
                 for(int j=0;j<mapHeight;j++)
                 {
-                    if (map[i, j] == 1)
+                    if (map[i, j] == 11)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 96, 0, 20, 20, GraphicsUnit.Pixel);
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 140, 172, 16, 16, GraphicsUnit.Pixel);//вертикальна дорога
+                    }
+                    else
+                   if (map[i, j] == 12)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 156, 212, 16, 16, GraphicsUnit.Pixel);//двері
+                    }
+                    else
+                   if (map[i, j] == 13)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 103, 308, 16, 16, GraphicsUnit.Pixel);//горизонтальна стіна
+                    }
+                    else
+                   if (map[i, j] == 14)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 120, 292, 16, 16, GraphicsUnit.Pixel);//дорога поворот ліво
+                    }
+                    else
+                   if (map[i, j] == 15)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 88, 289, 16, 16, GraphicsUnit.Pixel);//дорога поворот право
+                    }
+                    else
+                   if (map[i, j] == 16)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 104, 292, 16, 16, GraphicsUnit.Pixel);//горизонтальна дорога
+                    }
+                    else
+                   if (map[i, j] == 88)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 88, 317, 16, 16, GraphicsUnit.Pixel);//фронтальна частина дороги
+                    }
+                    else
+                   if (map[i, j] == 18)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 89, 160, 16, 16, GraphicsUnit.Pixel);//верхній поворот вправо
+                    }
+                    else
+                   if (map[i, j] == 19)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 119, 160, 16, 16, GraphicsUnit.Pixel);//верхній поворот вліво
+                    }
+                    else
+                   if (map[i, j] == 20)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 249, 47, 16, 16, GraphicsUnit.Pixel);//лава
+                    }
+                    else
+                   if (map[i, j] == 21)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 96, 37, 16, 16, GraphicsUnit.Pixel);//розширення для дороги права частина
                     }
                     else
                    if (map[i, j] == 2)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 170, 0, 20, 20, GraphicsUnit.Pixel);
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 39, 100, 16, 16, GraphicsUnit.Pixel);//нижня частина дороги
                     }
                     else
-                   if (map[i, j] == 3)
+                   if (map[i, j] == 23)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 96, 75, 20, 20, GraphicsUnit.Pixel);
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 89, 160, 16, 16, GraphicsUnit.Pixel);
                     }
                     else
-                   if (map[i, j] == 4)
+                   if (map[i, j] == 24)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 170, 75, 20, 20, GraphicsUnit.Pixel);
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 89, 160, 16, 16, GraphicsUnit.Pixel);
                     }
                     else
-                   if (map[i, j] == 5)
+                   if (map[i, j] == 25)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 96, 20, 20, 20, GraphicsUnit.Pixel);
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 89, 160, 16, 16, GraphicsUnit.Pixel);
                     }
                     else
-                   if (map[i, j] == 6)
+                   if (map[i, j] == 26)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 120, 0, 20, 20, GraphicsUnit.Pixel);
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 89, 160, 16, 16, GraphicsUnit.Pixel);
                     }
                     else
-                   if (map[i, j] == 7)
+                   if (map[i, j] == 27)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 170, 30, 20, 20, GraphicsUnit.Pixel);
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 89, 160, 16, 16, GraphicsUnit.Pixel);
                     }
                     else
-                   if (map[i, j] == 8)
+                   if (map[i, j] == 28)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 120, 75, 20, 20, GraphicsUnit.Pixel);
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 89, 160, 16, 16, GraphicsUnit.Pixel);
+                    }
+                    else
+                   if (map[i, j] == 29)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 89, 160, 16, 16, GraphicsUnit.Pixel);
+                    }
+                    else
+                   if (map[i, j] == 30)
+                    {
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 89, 160, 16, 16, GraphicsUnit.Pixel);
                     }
                     else
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 0, 0, 20, 20, GraphicsUnit.Pixel);
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 249, 47, 16, 16, GraphicsUnit.Pixel);
                     }
                 }
             }
