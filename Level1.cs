@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Project.Controller;
 
 namespace Project
 {
@@ -18,15 +19,13 @@ namespace Project
 
     public partial class Level1 : Form
     {
+        
         public Image dwarfSheet;//for sprites 
         public Entity player;
         public Image grassImg;
         public Image backImg;
-        int[,] map;
-      // private object g;
-        const int width=10;
-       const int height=12;
-        //bool isJumping = false;
+       
+
         public Level1()
         {
             
@@ -40,52 +39,9 @@ namespace Project
 
             init();
 
-            grassImg = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\grass-tile.png"));
-            backImg = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\forest.png"));
-            map = new int [25,25] 
-            {
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            };
+            
         }
-       /* public void createMapw()
-            {
-            //Graphics g = e.Graphics;
-            for (int i=0;i<width;i++)
-                {
-            for(int j=0;j<height;j++)
-                    {
-                    if(map[i,j]==1)
-                    {
-                        g.DrawImage(grassImg, j * 80, i * 80, new Rectangle(new Point(0, 0), new Size(80, 80)), GraphicsUnit.Pixel);
-                    }
-                }
-            }
-        }*/
-
+       
         public void OnKeyUp(object sender,KeyEventArgs e)
         {
             player.dirX = 0;
@@ -97,6 +53,10 @@ namespace Project
        
         public void init()
         {
+            MapController.Init();
+
+            this.Width = MapController.GetWidth();
+            this.Height = MapController.GetHeight();
             dwarfSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Dwarf2.png"));
 
             player = new Entity(200, 200, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames,Hero.jumpFrames, dwarfSheet);
@@ -157,62 +117,33 @@ namespace Project
           
 
         }
+
+
         
         public void Update(object sender, EventArgs e)
         {
-           // createMap();
+         
+            //PhysicsController.IsCollide(player);
             if (player.isMoving)
                 player.Move();
-
-            //if (player.isJumping)
-            //    player.jump();
 
             Invalidate();
         }
 
-        private void OnPaint(object sender, PaintEventArgs e)
+         private void OnPaint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            for (int i = 0; i < width; i++)
-            {
-                for (int j = 0; j < height; j++)
-                {
-                    if (map[i, j] == 0)
-                    {
-                        g.DrawImage(backImg, j * 120, i * 131, new Rectangle(new Point(0, 0), new Size(120, 131)), GraphicsUnit.Pixel);
-                    }
-                    if (map[i, j] == 1)
-                    {
-                        g.DrawImage(grassImg, j * 48, i * 48, new Rectangle(new Point(0, 0), new Size(48, 48)), GraphicsUnit.Pixel);
-                    }
-                   
-                }
-            }
-        //}
 
-        // g.DrawImage(player.spriteSheet, new Rectangle(new Point(player.posX, player.posY), new Size(player.size, player.size)), 0, 0, player.size, player.size , GraphicsUnit.Pixel);
-        player.PlayAnimation(g);
+            MapController.DrawMap(g);
+            player.PlayAnimation(g);           
         }
 
         public void collision()
         {
             
         }
-        
-        //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        //{
-        //    if (keyData == Keys.Space)
-        //    {
-                
-        //    }
-        //    if (keyData == Keys.Escape)
-        //    {
-        //        this.Close();
-        //        sound.play_menu();
-        //        return true;///зробити запрос при закритті вікно "ЗАКІНЧИТИ ЛВЛ ЧИ ПРОДОВЖИТИ";
-        //    }
-        //    return base.ProcessCmdKey(ref msg, keyData);
-        //}
+ 
+
         private void exit_level1_Click(object sender, EventArgs e)
         {
            // this.Close();

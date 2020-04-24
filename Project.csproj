@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\MapController.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="FormLevelSelect.cs">
       <SubType>Form</SubType>
@@ -209,9 +210,6 @@
     <None Include="Resources\forest2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\forest.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\transparent-bg-tiles.png" />
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +217,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PokemonLike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Forest.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

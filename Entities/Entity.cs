@@ -60,13 +60,12 @@ namespace Project.Entities
 
         public void PlayAnimation(Graphics g)
         {
-            
-           g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 38 * currentFrame, 31 * currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
                
             if (currentFrame < currentLimit - 1)//2 for space cadet
                 currentFrame++;
             else
                 currentFrame = 0;
+            g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 38 * currentFrame, 31 * currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
         }
 
         public void setAnimationConfiguration(int currentAnimation)
