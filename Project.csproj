@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.GamerServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Input.Touch, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Xna.Framework.Net, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,7 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\MapController.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="FormLevelSelect.cs">
       <SubType>Form</SubType>
@@ -66,8 +71,10 @@
     <Compile Include="Level1.Designer.cs">
       <DependentUpon>Level1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MapCollision\Map.cs" />
+    <Compile Include="MapCollision\newMap.cs" />
+    <Compile Include="MapCollision\tiles.cs" />
     <Compile Include="Models\Hero.cs" />
-    <Compile Include="objects\objects.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -198,31 +205,19 @@
     <None Include="Resources\BackGr.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\grass-tile.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\grass-tile-2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\grass-tile-3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\forest2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\transparent-bg-tiles.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\desert_1_0_7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\PokemonLike.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Forest.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Tileset.png" />
+    <None Include="Resources\justTry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tile1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tile2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Wall.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
