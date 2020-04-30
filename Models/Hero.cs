@@ -9,11 +9,16 @@ namespace Project.Models
     public static class Hero
     {
 
-        public static int IdleFrames = 5;
-        public static int runFrames = 8;
-        public static int attackFrames = 7;
+        public static int IdleFrames = 7;
+        public static int runFrames = 7;
+        public static int attackFrames = 2;
         public static int deathFrames = 7;
-        public static int jumpFrames = 5;
+        public static int jumpFrames = 2;
 
+        public static int EnemyIdleFrames = 8;
+        public static int EnemyRunFrames = 8;
+
+        public static int Enemy2RunFrames = 4;
+        public static int Enemy2IdleFrames = 4;
     }
 }

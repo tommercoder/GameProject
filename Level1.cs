@@ -1,336 +1,283 @@
 ﻿using Project.Models;
 using Project.Entities;
-using Project.MapCollision;
+using Project.weapons;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
+using Project.Controller;
+using Project.Enemies;
 
 namespace Project
 {
+    
+    
+
     public partial class Level1 : Form
     {
+        
         public Image dwarfSheet;//for sprites 
+        public Image weaponSheet;
+        public Image mobSheet;
+        public Image mobSheet2;
+
+        public Weapons weapon;
         public Entity player;
-        public Image grassImg;
-        public int timeOf;
-        
-        
 
-        public int ButtonPressedW = 0;
-        public int ButtonPressedS = 0;
-        public int ButtonPressedA = 0;
-        public int ButtonPressedD = 0;
-        public int mapX = 1;
-        public int mapY = 1;
-
-        
-
-
-        //newMap map = new newMap();
-        //int[,] map;
-        const int width = 10;
-        const int height = 10;
-
+        public Enemy2 enemy1;
+        public Enemy2 enemy2;
+        public Enemy2 enemy3;
+        public Enemy2 enemy4;
+        public List<Enemy> enemies;
+        public List<Enemy2> enemies2  = new List<Enemy2>();
+       
 
         public Level1()
         {
-
+            
             InitializeComponent();
-            
-            
+
             timer1.Interval = 20;
+            timer2.Interval = 20;
+
+            timer2.Tick += new EventHandler(EnemyUpdate);
+            timer1.Tick += new EventHandler(Update);
             
             KeyDown += new KeyEventHandler(OnPress);
-
-            timer1.Tick += new EventHandler(Update);
-            //timeOf += 20;
-            
             KeyUp += new KeyEventHandler(OnKeyUp);
 
-            init(); 
-        }
+            init();
 
-        public void OnKeyUp(object sender, KeyEventArgs e)
-        {
-            //if (Map.Collide(player))
-            //{
-            //    label2.Text = "collide";
-            //}
-            //else
-            //    label2.Text = "no collide";
-
-            player.isMoving = false;
-            player.isJumping = false;
-
-            player.dirX = 0;
-            player.dirY = 0;
             
-            player.setAnimationConfiguration(0);
-          
-            //label2.Text = Convert.ToString(mapX);
-            //label3.Text = Convert.ToString("map:" + mapX + mapY);
-
-            //player.posXnow = Math.Floor(player.posX / Map.cellSize);//player current x position
-            //player.posYnow = Math.Floor(player.posY / Map.cellSize);//player current y position
-            //player.player_position = player.posYnow * Map.mapWidth + player.posXnow;//player current position
-            //label2.Text = Convert.ToString("pos:" + player.player_position);
-            //label3.Text = Convert.ToString("posX:" + player.posXnow);
-            //label4.Text = Convert.ToString("posY:" + player.posYnow);
-
         }
-        
+       
+        public void OnKeyUp(object sender,KeyEventArgs e)
+        {
+
+
+            switch (e.KeyCode)
+            {
+                case Keys.W:
+                    player.dirY = 0;
+                    break;
+                case Keys.S:
+                    player.dirY = 0;
+                    break;
+                case Keys.A:
+                    player.dirX = 0;
+                    break;
+                case Keys.D:
+                    player.dirX = 0;
+                    break;
+                case Keys.E:
+                    player.hitPressed = false;
+                    break;
+                //case Keys.R:
+                //    player.ShiftPressed = false;
+                //    break;
+
+
+                    
+            }
+            
+            if (player.dirX == 0 && player.dirY == 0)
+            {
+                player.isMoving = false;
+                player.setAnimationConfiguration(0);
+                player.ShiftPressed = false;
+                //player.hitPressed = false;
+            }
+        }
+       
         public void init()
         {
-            Map.Init();
+            MapController.Init();
 
-            this.Width = Map.GetWidth();
-            this.Height = Map.GetHeight();
+            this.Width = MapController.GetWidth();
+            this.Height = MapController.GetHeight();
 
-            dwarfSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Dwarf2.png"));
-            player = new Entity (100,100, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames, Hero.jumpFrames, dwarfSheet);
+            dwarfSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\player.png"));
+            weaponSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\weapon3_1.png"));
+            mobSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Enemy1.png"));
+            mobSheet2 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\enemy2.png"));
 
+
+            enemies = new List<Enemy>
+            {
+                new Enemy(400, 400, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                new Enemy(400, 440, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                new Enemy(420, 400, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                new Enemy(420, 440, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+            };
+
+            //enemies2 = new List<Enemy2>
+            //{
+            //    new Enemy2(300, 300, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
+            //    new Enemy2(300, 340, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
+            //    new Enemy2(320, 300, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
+            //    new Enemy2(320, 340, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
+            //};
+            enemy1 = new Enemy2(300, 300, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2);
+            enemy2 = new Enemy2(300, 360, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2);
+            enemy3 = new Enemy2(340, 300, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2);
+            enemy4 = new Enemy2(360, 340, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2);
+
+            enemies2.Add(enemy1);
+            enemies2.Add(enemy2);
+            enemies2.Add(enemy3);
+            enemies2.Add(enemy4);
+
+
+            weapon = new Weapons(0, 0, weaponSheet);
+            player = new Entity(500, 500, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames,Hero.jumpFrames, dwarfSheet);
+           
             timer1.Start();
 
         }
-               
+
         public void OnPress(object sender, KeyEventArgs e)
         {
+          
+           switch (e.KeyCode)
+                {
+                    case Keys.W:
+
+                        player.dirY = -2;
+                        player.isMoving = true;
+                    
+                        player.setAnimationConfiguration(0);
+                        break;
+                    case Keys.S:
+                        player.dirY = 2;
+                        player.isMoving = true;
+                        player.setAnimationConfiguration(0);
+                        break;
+
+                    case Keys.A:
+                        player.dirX = -2;
+                        player.flip = -1;
+                    //if (enemy1.isMoving)
+                    //{ enemy1.flip = -1; }
+                    player.isMoving = true;
+                        player.setAnimationConfiguration(0);
+                        break;
+
+                    case Keys.D:
+                        player.dirX = 2;
+
+                        player.isMoving = true;
+                        player.flip = 1;
+                    //if (enemy1.isMoving)
+                    //{ enemy1.flip = 1; }
+                    player.setAnimationConfiguration(0);
+                        break;
+                    case Keys.E:
+                        // player.dirX = 0;
+                        // player.dirY = 0;
+                        //player.isMoving = false;
+                        player.hitPressed = true;
+                        //player.setAnimationConfiguration();
+                        break;
+                    case Keys.Space:
+                        player.setAnimationConfiguration(1);
+                        break;
+                    case Keys.Escape:
+                        //sound.play_menu();
+                        this.Close();
+                        break;
+                }
+       }
             
-            switch(e.KeyCode)
+            
+          
+            
+        
+
+
+        public void EnemyUpdate(object sedner,EventArgs e)
+        {
+            foreach(Enemy enemy in enemies)
             {
-                case System.Windows.Forms.Keys.W:
-                    player.dirY = -1;
-                    player.isMoving = true;
-         
-                    player.setAnimationConfiguration(1);
-                    break;
-                //if (mapY - 1 != 10)
-                //{
-                //    player.dirY = -1;
-                //    player.isMoving = true;
-                //    player.flip = 1;
-                //    player.setAnimationConfiguration(1);
-                //    ButtonPressedW++;
-
-                //    if (ButtonPressedW == 32)
-                //    {
-                //        mapY -= 1;
-                //        ButtonPressedW = 0;
-                //    }
-                //}
-                //else
-                //{
-                //    MessageBox.Show("asdasdsa");
-                //}
-                //break;
-
-                case System.Windows.Forms.Keys.S:
-
-                    player.dirY = 1;
-                    player.isMoving = true;
-                    player.setAnimationConfiguration(1);
-                    break;
-                    //if (mapY + 1 != 10)
-                    //{
-                    //    player.dirY = 1;
-                    //    player.isMoving = true;
-                    //    player.flip = 1;
-                    //    player.setAnimationConfiguration(1);
-                    //    ButtonPressedS++;
-
-                    //    if (ButtonPressedS == 32)
-                    //    {
-                    //        mapY += 1;
-                    //        ButtonPressedS = 0;
-                    //    }
-                    //    // else
-                    //    // ButtonPressed = 0;
-
-                    //}
-                    //else
-                    //{
-
-                    //    MessageBox.Show("asdasdsa");
-                    //}
-                    //break;
-
-                case System.Windows.Forms.Keys.A:
-                    player.dirX = -1;
-                    player.isMoving = true;
-                    player.flip = -1;
-                    player.setAnimationConfiguration(1);
-                    break;
-
-                    //for(int i = 0;i < 10;i++)
-                    //{
-                    //    if(map[i,0] == 5) MessageBox.Show("01");
-                    //}
-                    
-
-                   //if (mapX - 1 != 10)
-                   // {
-                   //     player.dirX = -1;
-                   //     player.isMoving = true;
-                   //     player.flip = -1;
-                   //     player.setAnimationConfiguration(1);
-                   //     ButtonPressedA++;
-
-                   //     if (ButtonPressedA == 32)
-                   //     {
-                   //         mapX-= 1;
-                   //         ButtonPressedA = 0;
-                   //     }
-                       
-
-                   // }
-                   // else
-                   // {
-
-                   //     MessageBox.Show("asdasdsa");
-                   // }
-                   // break;  
-
-                case System.Windows.Forms.Keys.D:
-
-                    player.dirX = 1;
-                    player.isMoving = true;
-                    player.flip = 1;
-                    player.setAnimationConfiguration(1);
-                    break;
-
-                    //if (mapX + 1 != 10)
-                    //{
-                    //    player.dirX = 1;
-                    //    player.isMoving = true;
-                    //    player.flip = 1;
-                    //    player.setAnimationConfiguration(1);
-                    //    ButtonPressedD++;
-
-                    //    if (ButtonPressedD == 32)
-                    //    {
-                    //        mapX += 1;
-                    //        ButtonPressedD = 0;
-                    //    }
-                    //   // else
-                    //       // ButtonPressed = 0;
-
-                    //}
-                    //else
-                    //{
-
-                    //    MessageBox.Show("asdasdsa");
-                    //}
-                    
-                    //break;
-                case System.Windows.Forms.Keys.E:
-                    player.dirX = 0;
-                    player.dirY = 0;
-                    player.isMoving = false;
-                    player.setAnimationConfiguration(2);
-              
-                    break;
-                
-                case System.Windows.Forms.Keys.Space:
-                    player.isJumping = true;
-                    //to stop infinity jumping if you want it:)
-                    player.dirX = 0;
-                     player.dirY = 0;
-                    player.isMoving = false;
-
-
-                    //player.velocity.Y = -15.0f;
-                    player.setAnimationConfiguration(5);
-                    break;
-                case System.Windows.Forms.Keys.Escape:
-                    this.Close();
-                    break;
+                enemy.ownMove(player);
             }
 
-        }
+            foreach (Enemy2 enemy2 in enemies2)
+            {
+                enemy2.ownMove(player);
+            }
+            //enemy1.ownMove(player);
 
-  
+            //label1.Text = Convert.ToString(enemy1.posX);
+            //label4.Text = Convert.ToString(enemy1.posY);
+            label2.Text = Convert.ToString("player.posX:" + player.posX);
+            label3.Text = Convert.ToString("player.posY:" + player.posY);
+        }
         public void Update(object sender, EventArgs e)
         {
-            // jumping
+
+            //PhysicsController.IsCollide(player);
+
+            //enemy1.setEnemyAnimationConfiguration(0);
+
             
-            //float time = (float)timeOf;
-            //player.velocity += player.gravity * time;
-            //player.position += player.velocity * time;
            
-            //createMap();
             if (player.isMoving)
                 player.Move();
 
             Invalidate();
         }
 
-
-        private void OnPaint(object sender, PaintEventArgs e)
+         private void OnPaint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
 
+            MapController.DrawMap(g);
 
-            Map.DrawMap(g);
-            // Map
-            //for (int i = 0; i < width; i++)
-            //{
-            //    for (int j = 0; j < height; j++)
-            //    {
-            //        if (map[i, j] == 1)
-            //        {
-            //            g.DrawImage(grassImg, j * 70, i * 75, new System.Drawing.Rectangle(new System.Drawing.Point(0, 0), new Size(70, 75)), GraphicsUnit.Pixel);
-            //        }
-            //    }
+            foreach(Enemy enemy in enemies)
+            {
+                enemy.playEnemyAnimation(g);
+            }
 
-            //}
-            //if (player.isJumping)
-            //    player.PlayJumpAnimation(g);
-            //else
-
+            foreach (Enemy2 enemy2 in enemies2)
+            {
+                enemy2.playEnemyAnimation(g);
+            }
+            //enemy1.playEnemyAnimation(g);
             player.PlayAnimation(g);
+            weapon.drawWeapon(g, player);
+
         }
 
-        
-       
+        public void collision()
+        {
+            
+        }
+ 
 
-        //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        //{
-        //    if (keyData == Keys.Space)
-        //    {
-
-        //    }
-        //    if (keyData == Keys.Escape)
-        //    {
-        //        this.Close();
-        //        sound.play_menu();
-        //        return true;///зробити запрос при закритті вікно "ЗАКІНЧИТИ ЛВЛ ЧИ ПРОДОВЖИТИ";
-        //    }
-        //    return base.ProcessCmdKey(ref msg, keyData);
-        //}
         private void exit_level1_Click(object sender, EventArgs e)
         {
-            // this.Close();
+           // this.Close();
+
             //sound.play_menu();
         }
 
         private void Level1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
-
+   
         private void bottom_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-            
-        }
+        
     }
 }

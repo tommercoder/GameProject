@@ -1,29 +1,22 @@
-﻿using System.Data;
-using System;
-using Microsoft.Xna.Framework;
-using System.Drawing;
-using Microsoft.Xna.Framework.Graphics;
-
+﻿using System.Drawing;
+using Project.weapons;
 namespace Project.Entities
 {
     public class Entity
     {
-       
-        public int posX;
-        public int posY;
+        public float posX;
+        public float posY;
 
-        public double player_position;
-        public double posXnow;
-        public double posYnow;
+        public float velocityX = 0.5f;//speed
+        public float velocityY = 0.5f;//speed
+        public float gravity = 0.5f;
 
-        //public Vector2 position;
-        //public Vector2 velocity;
-        //public readonly Vector2 gravity = new Vector2(0, -9.8f);
-        
-        public int dirX;
-        public int dirY;
+        public float dirX;
+        public float dirY;
         public bool isMoving;
         public bool isJumping;
+        public bool hitPressed;
+        public bool ShiftPressed ;
 
         public int flip;
 
@@ -40,64 +33,48 @@ namespace Project.Entities
         public int size;
         public float height;
 
-        
-
         public Image spriteSheet;
 
-        public Entity(int posX,int posY,int IdleFrames,int runFrames,int attackFrames,int deathFrames,int jumpFrames,Image spriteSheet)
+        public Entity(float posX,float posY,int IdleFrames,int runFrames,int attackFrames,int deathFrames,int jumpFrames,Image spriteSheet)
         {
-           // position = new Vector2(posX, posY);
-           // velocity = Vector2.Zero;
             this.posX = posX;
             this.posY = posY;
-
-
-
             this.IdleFrames = IdleFrames;
             this.runFrames = runFrames;
             this.attackFrames = attackFrames;
             this.deathFrames = deathFrames;
             this.spriteSheet = spriteSheet;
             this.jumpFrames = jumpFrames;
-
+            //sizeW = 32;
             size = 31;
             currentAnimation = 0;
             currentFrame = 0;
             currentLimit = IdleFrames;
-
             flip = 1;
         }
 
         public void Move()
         {
-                posX += dirX;
-                posY += dirY;
+            posX += dirX;
+            posY += dirY;
         }
+
+        
 
         public void PlayAnimation(Graphics g)
         {
-            if (isJumping) 
-           g.DrawImage(spriteSheet, new System.Drawing.Rectangle(new System.Drawing.Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 38 * currentFrame, 32 * currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
-               else
-                g.DrawImage(spriteSheet, new System.Drawing.Rectangle(new System.Drawing.Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 38 * currentFrame, 32 * currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
-            
-            if (currentFrame < currentLimit - 1)//2 for space cadet
-                currentFrame++; 
-            else
-                currentFrame = 0;
-        }
 
-        public void PlayJumpAnimation(Graphics g)
-        {
-
-
-            g.DrawImage(spriteSheet, new System.Drawing.Rectangle(new System.Drawing.Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 38 * currentFrame, 32 * currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
-
-            if (currentFrame < currentLimit - 1)//2 for space cadet
+            if(currentFrame < currentLimit - 3)//2 for space cadet
                 currentFrame++;
             else
                 currentFrame = 0;
+
+            g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 26 * currentFrame, 32* currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
+            //g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 26 * currentFrame, 32* currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
+            
+
         }
+
         public void setAnimationConfiguration(int currentAnimation)
         {
             this.currentAnimation = currentAnimation;
@@ -105,24 +82,18 @@ namespace Project.Entities
             switch(currentAnimation)
             {
                 case 0:
-                    currentLimit = IdleFrames;
+                    if (isMoving)
+                        currentLimit = runFrames;
+                    else
+                        currentLimit = IdleFrames;
                     break;
                 case 1:
-                    currentLimit = runFrames;
-                    break;
-                case 2:
-                    currentLimit = attackFrames;
-                    break;
-                case 7:
-                    currentLimit = deathFrames;
-                    break;
-                case 5:
                     currentLimit = jumpFrames;
                     break;
+               
+
 
             }
         }
-
-        
     }
 }
