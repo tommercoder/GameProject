@@ -15,7 +15,9 @@ namespace Project.Controller
         public static int cellSize = 31;
         public static int[,] map = new int[mapHeight, mapWidth];
         public static Image spriteSheet;
+       
 
+      
         public static void Init()
         {
             map = GetMap();
@@ -30,10 +32,10 @@ namespace Project.Controller
                 { 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,11,20,20},
                 { 20,20,20,20,20,20,20,20,20,20,20,18,16,16,16,16,16,14,20,20},
                 { 20,20,20,20,20,26,98,98,98,98,98,21,17,17,17,17,17,17,20,20},
-                { 20,20,20,20,20,25,99,99,99,99,20,21,20,20,20,20,20,20,20,20},
-                { 20,20,20,20,20,25,99,27,99,88,20,21,20,20,20,20,20,20,20,20},
-                { 20,20,20,20,20,25,99,99,99,99,20,21,20,20,20,20,20,20,20,20},
-                { 20,20,20,20,20,25,99,28,99,99,20,21,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,25,99,99,99,99,11,21,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,25,99,27,99,88,11,21,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,25,99,99,99,99,11,21,20,20,20,20,20,20,20,20},
+                { 20,20,20,20,20,25,99,28,99,99,11,21,20,20,20,20,20,20,20,20},
                 { 20,20,20,20,20,24,22,22,22,22,22,23,20,20,20,20,20,20,20,20},
                 { 20,20,20,20,20,17,17,17,17,17,17,17,20,20,20,20,20,20,20,20},
                 { 20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20},
@@ -49,6 +51,9 @@ namespace Project.Controller
 
         public static void SeedMap(Graphics g)
         {
+             //Bitmap grass = new Bitmap("Resources\\Tileset.png");
+             //   Bitmap croppedImage = grass.Clone(new Rectangle(0, 0, 16, 16),grass.PixelFormat);
+         
             for (int i = 0; i < mapWidth; i++)
             {
                 for (int j = 0; j < mapHeight; j++)
@@ -166,7 +171,7 @@ namespace Project.Controller
                         g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 119, 160, 16, 16, GraphicsUnit.Pixel);//верхній поворот вліво
                     }
                     else
-                   if (map[i, j] == 20)
+                   if (map[i, j] == 11)
                     {
                         g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 249, 47, 16, 16, GraphicsUnit.Pixel);//лава
                     }

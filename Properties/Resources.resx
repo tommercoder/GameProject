@@ -175,10 +175,43 @@
   <data name="transparent_bg_tiles" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\transparent-bg-tiles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Forest" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Forest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Tileset" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tileset.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="player" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\player.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="player1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\player1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="weapon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\weapon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="player_more" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\player_more.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="weapon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\weapon2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="weapon3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\weapon3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="weapon3_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\weapon3_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="weapon_golden_sword" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\weapon_golden_sword.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="weapon_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\weapon_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="weapon_knight_sword" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\weapon_knight_sword.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Enemy1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Enemy1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enemy2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemy2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-
+using Project.weapons;
 namespace Project.Entities
 {
     public class Entity
@@ -7,14 +7,16 @@ namespace Project.Entities
         public float posX;
         public float posY;
 
-        public float velocityX;//speed
-        public float velocityY;//speed
+        public float velocityX = 0.5f;//speed
+        public float velocityY = 0.5f;//speed
         public float gravity = 0.5f;
 
         public float dirX;
         public float dirY;
         public bool isMoving;
         public bool isJumping;
+        public bool hitPressed;
+        public bool ShiftPressed ;
 
         public int flip;
 
@@ -43,6 +45,7 @@ namespace Project.Entities
             this.deathFrames = deathFrames;
             this.spriteSheet = spriteSheet;
             this.jumpFrames = jumpFrames;
+            //sizeW = 32;
             size = 31;
             currentAnimation = 0;
             currentFrame = 0;
@@ -60,12 +63,16 @@ namespace Project.Entities
 
         public void PlayAnimation(Graphics g)
         {
-               
-            if (currentFrame < currentLimit - 1)//2 for space cadet
+
+            if(currentFrame < currentLimit - 3)//2 for space cadet
                 currentFrame++;
             else
                 currentFrame = 0;
-            g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 38 * currentFrame, 31 * currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
+
+            g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 26 * currentFrame, 32* currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
+            //g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 26 * currentFrame, 32* currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
+            
+
         }
 
         public void setAnimationConfiguration(int currentAnimation)
@@ -75,20 +82,15 @@ namespace Project.Entities
             switch(currentAnimation)
             {
                 case 0:
-                    currentLimit = IdleFrames;
+                    if (isMoving)
+                        currentLimit = runFrames;
+                    else
+                        currentLimit = IdleFrames;
                     break;
                 case 1:
-                    currentLimit = runFrames;
-                    break;
-                case 2:
-                    currentLimit = attackFrames;
-                    break;
-                case 7:
-                    currentLimit = deathFrames;
-                    break;
-                case 5:
                     currentLimit = jumpFrames;
                     break;
+               
 
 
             }
