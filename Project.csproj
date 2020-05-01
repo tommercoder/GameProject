@@ -35,6 +35,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,6 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\MapController.cs" />
+    <Compile Include="Controller\PhysicsController.cs" />
+    <Compile Include="Enemies\Enemy.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="FormLevelSelect.cs">
       <SubType>Form</SubType>
@@ -67,7 +73,6 @@
       <DependentUpon>Level1.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Hero.cs" />
-    <Compile Include="objects\objects.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -76,6 +81,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="sound.cs" />
+    <Compile Include="weapons\Weapons.cs" />
     <EmbeddedResource Include="FormLevelSelect.resx">
       <DependentUpon>FormLevelSelect.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,6 +96,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -219,13 +226,49 @@
     <None Include="Resources\PokemonLike.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Forest.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Tileset.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Tileset1.png" />
+    <None Include="Resources\player.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weapon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player_more.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weapon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weapon3.png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weapon3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weapon3_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weapon_knight_sword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weapon_golden_sword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weapon_green_magic_staff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weapon_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Enemy1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
