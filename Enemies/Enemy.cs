@@ -194,6 +194,24 @@ namespace Project.Enemies
             }
 
         }
+
+        public static bool Collide(Enemy2 enemy2)
+        {
+            for (int i = 0; i < Level1.enemies.Count; i++)
+            {
+                int deltaX = (enemy2.posX + enemy2.size / 2) - (Level1.enemies[i].posX + Level1.enemies[i].size / 2);
+                int deltaY = (enemy2.posY + enemy2.size / 2) - (Level1.enemies[i].posY + Level1.enemies[i].size / 2);
+
+                if (Math.Abs(deltaX) <= enemy2.size / 2 + Level1.enemies[i].size / 2)
+                {
+                    if (Math.Abs(deltaY) <= enemy2.size / 2 + Level1.enemies[i].size / 2)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
 
     public class Enemy2 
@@ -232,7 +250,7 @@ namespace Project.Enemies
             this.Enemy2IdleFrames = Enemy2IdleFrames;
             this.Enemy2RunFrames = Enemy2RunFrames;
             this.mobSheet = mobSheet;
-           // size = 16;
+            size = 35;
             currentFrame = 0;
             currentLimit = Enemy2IdleFrames;
             flip = 1;
