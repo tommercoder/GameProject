@@ -256,6 +256,16 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Tileset1 {
+            get {
+                object obj = ResourceManager.GetObject("Tileset1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap transparent_bg_tiles {
             get {
                 object obj = ResourceManager.GetObject("transparent_bg_tiles", resourceCulture);
