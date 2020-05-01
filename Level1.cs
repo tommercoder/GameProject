@@ -20,7 +20,7 @@ namespace Project
     public partial class Level1 : Form
     {
         
-        public Image dwarfSheet;//for sprites 
+        public Image dwarfSheet;//for sprits 
         public Entity player;
         public Image grassImg;
         public Image backImg;
