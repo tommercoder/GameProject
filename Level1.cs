@@ -16,9 +16,6 @@ using Project.Enemies;
 
 namespace Project
 {
-    
-    
-
     public partial class Level1 : Form
     {
         
