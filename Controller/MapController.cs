@@ -12,7 +12,7 @@ namespace Project.Controller
     {
         public const int mapHeight = 20;
         public const int mapWidth = 20;
-        public static int cellSize = 32;
+        public static int cellSize = 31;
         public static int[,] map = new int[mapHeight, mapWidth];
         public static Image spriteSheet;
 
