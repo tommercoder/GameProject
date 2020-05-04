@@ -51,7 +51,7 @@ namespace Project
             InitializeComponent();
 
             timer1.Interval = 20;
-            timer2.Interval = 20;
+            timer2.Interval = 50;
 
             
             timer1.Tick += new EventHandler(Update);
