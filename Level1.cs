@@ -13,29 +13,36 @@ using System.Windows.Forms;
 using System.IO;
 using Project.Controller;
 using Project.Enemies;
+using static Project.Enemies.Enemy;
 
 namespace Project
 {
-    
-    
-
     public partial class Level1 : Form
     {
         
         public Image dwarfSheet;//for sprites 
+       
         public Image weaponSheet;
+        public Image weaponSheet1;
+        public Image weaponSheet2;
+        
         public Image mobSheet;
         public Image mobSheet2;
 
         public Weapons weapon;
+        public Weapons weapon1;
+        public Weapons weapon2;
+        
+        public static List<Weapons> weapons = new List<Weapons>();
+        
         public Entity player;
 
         public Enemy2 enemy1;
         public Enemy2 enemy2;
         public Enemy2 enemy3;
         public Enemy2 enemy4;
-        public List<Enemy> enemies;
-        public List<Enemy2> enemies2  = new List<Enemy2>();
+        public static List<Enemy> enemies;
+        public  List<Enemy2> enemies2  = new List<Enemy2>();
        
 
         public Level1()
@@ -46,9 +53,10 @@ namespace Project
             timer1.Interval = 20;
             timer2.Interval = 20;
 
-            timer2.Tick += new EventHandler(EnemyUpdate);
-            timer1.Tick += new EventHandler(Update);
             
+            timer1.Tick += new EventHandler(Update);
+            timer2.Tick += new EventHandler(EnemyUpdate);
+
             KeyDown += new KeyEventHandler(OnPress);
             KeyUp += new KeyEventHandler(OnKeyUp);
 
@@ -77,24 +85,51 @@ namespace Project
                     break;
                 case Keys.E:
                     player.hitPressed = false;
-                    break;
-                //case Keys.R:
-                //    player.ShiftPressed = false;
-                //    break;
-
-
-                    
+                    break;          
             }
             
             if (player.dirX == 0 && player.dirY == 0)
             {
                 player.isMoving = false;
-                player.setAnimationConfiguration(0);
-                player.ShiftPressed = false;
-                //player.hitPressed = false;
+                player.setAnimationConfiguration(0); 
             }
         }
-       
+       public void WeaponCollide(Entity player, List<Weapons> weapons)
+       {
+            foreach(Weapons weapon in weapons)
+            {
+                double distance = GetDistance(weapon.posX, weapon.posY, player.posX, player.posY);
+                if (player.Freehands == true)
+                    if (distance < 15)
+                    {
+                        weapon.onFloor = false;
+                        player.id = weapon.id;
+                        player.Freehands = false;     
+                    }
+            }
+        }
+
+        public void Qpressed(Entity player,List<Weapons> weapons)
+        {
+            for(int i = 0;i < weapons.Count;i++)
+            {
+                if(!weapons[i].onFloor)
+                {
+                    weapons[i].onFloor = true;
+                    if(player.posX > player.OldposX + 5)
+                        weapons[i].posX = player.posX - 5;
+                    else
+                        weapons[i].posX = player.posX + 5;
+                   
+                    if (player.posY > player.OldposY + 5)
+                        weapons[i].posY = player.posY - 5;
+                else
+                        weapons[i].posY = player.posY + 5;
+                }
+            }
+            player.id = 0;
+            player.Freehands = true;
+        }
         public void init()
         {
             MapController.Init();
@@ -104,25 +139,23 @@ namespace Project
 
             dwarfSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\player.png"));
             weaponSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\weapon3_1.png"));
+            weaponSheet1 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\weapon2.png"));
+            weaponSheet2 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\weapon_knight_sword.png"));
+            
             mobSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Enemy1.png"));
             mobSheet2 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\enemy2.png"));
 
-
+            //enemies
             enemies = new List<Enemy>
             {
-                new Enemy(400, 400, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-                new Enemy(400, 440, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-                new Enemy(420, 400, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-                new Enemy(420, 440, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                new Enemy(200, 520, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                new Enemy(134, 540, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                new Enemy(45, 500, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                new Enemy(45, 380, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+
+                
             };
 
-            //enemies2 = new List<Enemy2>
-            //{
-            //    new Enemy2(300, 300, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
-            //    new Enemy2(300, 340, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
-            //    new Enemy2(320, 300, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
-            //    new Enemy2(320, 340, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
-            //};
             enemy1 = new Enemy2(300, 300, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2);
             enemy2 = new Enemy2(300, 360, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2);
             enemy3 = new Enemy2(340, 300, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2);
@@ -133,13 +166,22 @@ namespace Project
             enemies2.Add(enemy3);
             enemies2.Add(enemy4);
 
+            
+            //player
+            player = new Entity(500, 500, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames, Hero.jumpFrames, dwarfSheet);
+            //weapons
+            weapon = new Weapons(510, 500, 1, weaponSheet);
+            weapon1 = new Weapons(490, 500, 2, weaponSheet1);
+            weapon2 = new Weapons(540, 500, 3, weaponSheet2);
+            weapons.Add(weapon);
+            weapons.Add(weapon1);
+            weapons.Add(weapon2);
 
-            weapon = new Weapons(0, 0, weaponSheet);
-            player = new Entity(500, 500, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames,Hero.jumpFrames, dwarfSheet);
-           
+
             timer1.Start();
-
+            //timer2.Start();
         }
+
 
         public void OnPress(object sender, KeyEventArgs e)
         {
@@ -162,8 +204,7 @@ namespace Project
                     case Keys.A:
                         player.dirX = -2;
                         player.flip = -1;
-                    //if (enemy1.isMoving)
-                    //{ enemy1.flip = -1; }
+                    
                     player.isMoving = true;
                         player.setAnimationConfiguration(0);
                         break;
@@ -173,17 +214,17 @@ namespace Project
 
                         player.isMoving = true;
                         player.flip = 1;
-                    //if (enemy1.isMoving)
-                    //{ enemy1.flip = 1; }
                     player.setAnimationConfiguration(0);
                         break;
                     case Keys.E:
-                        // player.dirX = 0;
-                        // player.dirY = 0;
-                        //player.isMoving = false;
-                        player.hitPressed = true;
-                        //player.setAnimationConfiguration();
+                     player.hitPressed = true;             
                         break;
+                case Keys.Q:
+                    Qpressed(player, weapons);
+                    break;
+                case Keys.F:
+                    WeaponCollide(player, weapons);
+                    break;
                     case Keys.Space:
                         player.setAnimationConfiguration(1);
                         break;
@@ -202,31 +243,38 @@ namespace Project
 
         public void EnemyUpdate(object sedner,EventArgs e)
         {
-            foreach(Enemy enemy in enemies)
+            
+            
+            //foreach (Enemy enemy in enemies)
+            //{
+            
+            //    ////LET ENEMIES UNDERSTAND THAT THEY CANT STAY AT THE SAME POSITION!!
+            //}
+        
+            //foreach(Enemy enemy in enemies)
+            for(int i = 0;i < enemies.Count;i++)
             {
-                enemy.ownMove(player);
+                enemies[i].ownMove(player);
             }
 
-            foreach (Enemy2 enemy2 in enemies2)
+            //foreach (Enemy2 enemy2 in enemies2)
+            for (int i = 0; i < enemies2.Count; i++)
             {
-                enemy2.ownMove(player);
+                enemies2[i].ownMove(player);
             }
-            //enemy1.ownMove(player);
-
-            //label1.Text = Convert.ToString(enemy1.posX);
-            //label4.Text = Convert.ToString(enemy1.posY);
+           
+            
+            
+               
+    
             label2.Text = Convert.ToString("player.posX:" + player.posX);
             label3.Text = Convert.ToString("player.posY:" + player.posY);
+            label6.Text = Convert.ToString("player.id:" + player.id);
         }
         public void Update(object sender, EventArgs e)
         {
-
-            //PhysicsController.IsCollide(player);
-
-            //enemy1.setEnemyAnimationConfiguration(0);
-
             
-           
+            
             if (player.isMoving)
                 player.Move();
 
@@ -239,26 +287,51 @@ namespace Project
 
             MapController.DrawMap(g);
 
-            foreach(Enemy enemy in enemies)
+            //foreach (Enemy enemy in enemies)
+            for (int i = 0; i < enemies.Count; i++)
             {
-                enemy.playEnemyAnimation(g);
+                enemies[i].playEnemyAnimation(g);
             }
 
-            foreach (Enemy2 enemy2 in enemies2)
+            //foreach (Enemy2 enemy2 in enemies2)
+            for (int i = 0; i < enemies2.Count; i++)
             {
-                enemy2.playEnemyAnimation(g);
+                enemies2[i].playEnemyAnimation(g);
             }
-            //enemy1.playEnemyAnimation(g);
+           
+
             player.PlayAnimation(g);
-            weapon.drawWeapon(g, player);
 
-        }
-
-        public void collision()
-        {
             
+
+            for (int i = 0; i < weapons.Count; i++)
+            {   
+                    weapons[i].drawWeapon(g, player);
+            }
+
+            for (int i = 0;i < weapons.Count;i++)
+            {
+                
+                if (weapons[i].onFloor == false)
+                {
+                    weapons[i].hit(g, player);
+
+                }
+            }        
+            if(player.id == 1 )
+            weapon.drawHandWeapon(g, player);
+            
+            else if (player.id == 2 )
+                weapon1.drawHandWeapon(g, player);
+
+            else if (player.id == 3 )
+                weapon2.drawHandWeapon(g,player);
         }
- 
+        public static double GetDistance(double x1, double y1, double x2, double y2)
+        {
+            return Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
+        }
+       
 
         private void exit_level1_Click(object sender, EventArgs e)
         {
