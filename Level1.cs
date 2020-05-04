@@ -13,12 +13,14 @@ using System.Windows.Forms;
 using System.IO;
 using Project.Controller;
 using Project.Enemies;
+using System.Windows;
 
 namespace Project
 {
     public partial class Level1 : Form
     {
         
+
         public Image dwarfSheet;//for sprites 
         public Image weaponSheet;
         public Image mobSheet;
@@ -37,7 +39,7 @@ namespace Project
 
         public Level1()
         {
-            
+            this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
 
             timer1.Interval = 20;
