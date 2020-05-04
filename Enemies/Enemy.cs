@@ -202,7 +202,7 @@ namespace Project.Enemies
             public int Enemy2RunFrames;
             public int currentAnimation;
 
-            public Enemy2() { }
+            //public Enemy2() { }
             public Enemy2(int posx, int posy, int Enemy2IdleFrames, int Enemy2RunFrames, Image mobSheet)
             {
                 oldPosX = posx;
