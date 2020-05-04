@@ -34,8 +34,8 @@ namespace Project
         public Enemy2 enemy2;
         public Enemy2 enemy3;
         public Enemy2 enemy4;
-        public static List<Enemy> enemies;
-        public  List<Enemy2> enemies2  = new List<Enemy2>();
+        public List<Enemy> enemies;
+        public List<Enemy2> enemies2  = new List<Enemy2>();
        
 
         public Level1()
@@ -202,13 +202,6 @@ namespace Project
 
         public void EnemyUpdate(object sedner,EventArgs e)
         {
-            foreach(Enemy enemy in enemies)
-            {
-                //if(enemy.Collide(enemy1))
-                //{
-                //    enemy.posX -= 1;
-                //}
-            }
             foreach(Enemy enemy in enemies)
             {
                 enemy.ownMove(player);
