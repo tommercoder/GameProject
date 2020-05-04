@@ -250,9 +250,6 @@
     <None Include="Resources\weapon3.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\weapon3_1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\weapon_knight_sword.png" />
   </ItemGroup>
   <ItemGroup>
@@ -269,6 +266,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\enemy2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weapon3_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
