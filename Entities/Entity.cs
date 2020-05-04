@@ -6,6 +6,8 @@ namespace Project.Entities
     {
         public float posX;
         public float posY;
+        public float OldposX;
+        public float OldposY;
 
         public float velocityX = 0.5f;//speed
         public float velocityY = 0.5f;//speed
@@ -34,9 +36,12 @@ namespace Project.Entities
         public float height;
 
         public Image spriteSheet;
-
+        public bool Freehands = true;
+        public int id;
         public Entity(float posX,float posY,int IdleFrames,int runFrames,int attackFrames,int deathFrames,int jumpFrames,Image spriteSheet)
         {
+            this.OldposX = posX;
+            this.OldposY = posY;
             this.posX = posX;
             this.posY = posY;
             this.IdleFrames = IdleFrames;
@@ -45,7 +50,6 @@ namespace Project.Entities
             this.deathFrames = deathFrames;
             this.spriteSheet = spriteSheet;
             this.jumpFrames = jumpFrames;
-            //sizeW = 32;
             size = 31;
             currentAnimation = 0;
             currentFrame = 0;
