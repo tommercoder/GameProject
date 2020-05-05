@@ -20,6 +20,7 @@ namespace Project
 {
     public partial class Level1 : Form
     {
+        public static Point delta;
         
         public Image dwarfSheet;//for sprites 
        
@@ -55,7 +56,7 @@ namespace Project
 
             KeyDown += new KeyEventHandler(OnPress);
             KeyUp += new KeyEventHandler(OnKeyUp);
-
+            delta = new Point(0, 0);
             init();
 
             
@@ -148,8 +149,8 @@ namespace Project
                 new Enemy(134, 540,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                 new Enemy(45, 500,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                 new Enemy(45, 380, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-                new Enemy(100, 100, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
-                new Enemy(150, 150,2, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
+                new Enemy(350, 350, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
+                new Enemy(300, 350,2, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
 
             };
 
@@ -178,19 +179,21 @@ namespace Project
                 {
                     case Keys.W:
 
-                        player.dirY = -2;
+                        player.dirY = -5;
                         player.isMoving = true;
-                    
+                    delta.Y++;
                         player.setAnimationConfiguration(0);
                         break;
                     case Keys.S:
-                        player.dirY = 2;
+                    delta.Y--; 
+                        player.dirY = 5;
                         player.isMoving = true;
                         player.setAnimationConfiguration(0);
                         break;
 
                     case Keys.A:
-                        player.dirX = -2;
+                    delta.X++;
+                        player.dirX = -5;
                         player.flip = -1;
                     
                     player.isMoving = true;
@@ -198,7 +201,8 @@ namespace Project
                         break;
 
                     case Keys.D:
-                        player.dirX = 2;
+                    delta.X--;
+                        player.dirX = 5;
 
                         player.isMoving = true;
                         player.flip = 1;
@@ -238,28 +242,38 @@ namespace Project
 
             //    ////LET ENEMIES UNDERSTAND THAT THEY CANT STAY AT THE SAME POSITION!!
             //}
-           
-
 
             //foreach(Enemy enemy in enemies)
-            for (int i = 0;i < enemies.Count;i++)
-            {
-                enemies[i].ownMove(player);
-            }
 
-   
-            
 
             for (int i = 0; i < enemies.Count; i++)
             {
-                if(!enemies[i].isMoving)
-                enemies[i].posX += enemies[i].EnemySpeedX;
+                enemies[i].IfEnemiesCollide(enemies);
 
             }
+            for (int i = 0;i < enemies.Count;i++)
+            {
+                enemies[i].ownMove(player);
+   
+            }
 
-            label2.Text = Convert.ToString("player.posX:" + player.posX);
-            label3.Text = Convert.ToString("player.posY:" + player.posY);
-            label6.Text = Convert.ToString("player.id:" + player.id);
+
+            //for (int i = 0; i < enemies.Count; i++)
+            //{
+            //    if(!enemies[i].isMoving)
+            //    enemies[i].posX += enemies[i].EnemySpeedX;
+
+            //}
+            label1.Text = Convert.ToString("enemy 0 X:" + enemies[0].posX);
+            label2.Text = Convert.ToString("enemy 0 Y:" + enemies[0].posY);
+            label3.Text = Convert.ToString("player.posX:" + player.posX);
+            label4.Text = Convert.ToString("player.posY:" + player.posY);
+            //label6.Text = Convert.ToString("enemy 0 pos X" + player.id);
+        }
+
+        public  void SetTextForLabel(string myText)
+        {
+            this.label1.Text = myText;
         }
         public void Update(object sender, EventArgs e)
         {
@@ -337,6 +351,9 @@ namespace Project
 
         }
 
-        
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

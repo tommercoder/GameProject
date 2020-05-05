@@ -5,6 +5,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Project.Entities;
 using Project.Models;
 
@@ -12,10 +13,13 @@ namespace Project.Enemies
 {
     public class Enemy
     {
+
+
         public float posX;
         public float posY;
 
-        public int size;
+        public int sizeid1;
+        public int sizeid2;
 
         public float oldPosX;
         public float oldPosY;
@@ -48,7 +52,8 @@ namespace Project.Enemies
             this.EnemyIdleFrames = EnemyIdleFrames;
             this.EnemyRunFrames = EnemyRunFrames;
             this.mobSheet = mobSheet;
-            size = 16;
+            sizeid1 = 16;
+            sizeid2 = 34;
             currentFrame = 0;
             currentLimit = EnemyIdleFrames;
             flip = 1;
@@ -59,6 +64,42 @@ namespace Project.Enemies
             return Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
         }
        
+        public void IfEnemiesCollide(List <Enemy> enemies)
+        {
+            
+            for(int i = 0; i < enemies.Count-1;i++)
+            {
+                double distance = GetDistance(enemies[i].posX, enemies[i].posY, enemies[i + 1].posX, enemies[i + 1].posY);
+               if (distance <= 20)
+                {
+                    if(enemies[i].posX < enemies[i+1].posX)
+                    {
+                        enemies[i + 1].posX += 2;
+                    }
+                    else if(enemies[i].posX > enemies[i + 1].posX)
+                    {
+                        enemies[i + 1].posX -= 2;
+                    }
+
+                    if (enemies[i].posY > enemies[i + 1].posY)
+                    {
+                        enemies[i + 1].posY += 2; 
+                        //sMessageBox.Show("fuck");
+                    }
+                    else if(enemies[i].posY < enemies[i + 1].posY)
+                    {
+                        enemies[i + 1].posY -= 2;
+                    }
+
+                }
+               else
+                {
+                    
+
+                }
+            }
+            
+        }
         public void ownMove(Entity player)
         {
             float posXvar = posX;
@@ -105,12 +146,19 @@ namespace Project.Enemies
                 else if (player.flip == -1 && player.posX < posX)
                     flip = -1;
             }
-            
+
             if (distance >= 100)
+            {
                 flip = 1;
+            }
+            
+
+
+
 
             if (distance <= 100)
             {
+
                 if (player.posX > posX)
                 {
                     posX += EnemySpeedX;
@@ -127,6 +175,7 @@ namespace Project.Enemies
                 }
                 else
                     posY -= EnemySpeedY;
+                
             }  
             else
             {
@@ -163,11 +212,11 @@ namespace Project.Enemies
 
             if (id == 1)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 16 * currentFrame, 16 * currentAnimation, size, size, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid1 / 2, (int)posY), new Size(flip * sizeid1, sizeid1)), 16 * currentFrame, 16 * currentAnimation, sizeid1, sizeid1, GraphicsUnit.Pixel);
             }
             if (id == 2)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * 34 / 2, (int)posY), new Size(flip * 34, 34)), 32 * currentFrame, 34 * currentAnimation, 34, 34, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2, (int)posY), new Size(flip * sizeid2, sizeid2)), 32 * currentFrame, 34 * currentAnimation, sizeid2, sizeid2, GraphicsUnit.Pixel);
             }
         }
 
