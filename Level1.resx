@@ -123,4 +123,40 @@
   <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>104, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAFBUAAAEAIAAMBwAAFgAAACgAAAAUAAAAKgAAAAEAIAAAAAAAkAYAABILAAASCwAAAAAAAAAA
+        AAD/////IiIi/yIjIf8fIyT/ISEh/yUjI/8gIiL/ICMh/yAjIf8iIiL/ICIi/yIjIf8kIyX/////////
+        /////v//+Pj4///////////////////9//8kIiH/v1Vc/7tVWv+8Vlf/vFVY/79WWf+8VVj/vFVY/71W
+        W/+9Vln/vFVa/yQlI//////////+///////4+Pj//////////////////f/+//////8iIiL/zZdW/82Z
+        V//Nl1b/yphW/8yYVf/MmFX/zZdW/8qYVv8gIiP////+//79///9//////7/////////////////////
+        ///8//3////////+//8hICL/zJhV/8uYWv/NmFX/0JlW/82XVv/NmVf/zJhV/yUjIv/+//3/////////
+        /v////7////////////////////////+/////f//ICIi/+z2/f8kIiL/zZhV/8yYVv/MmFb/yphW/82Y
+        Vf/NmVf/zJhW/yUkJv///////f/////+///4+Pj/////////////////JCIi/+z2/f/s9///7fb//+z4
+        /P/OmFf/7Pb9/8yYVf/MmFX/zZdW/82ZV//Ml1j/7Pf///D5/f9vcnD///7/////////////////////
+        //////7/ISMk/+34/P/t+Pz/8Pf6/+/4/P/s9v//v1ZZ/79XWP9UXHn/vVZZ/7xWV//v9/7/NDQ0//3/
+        //////7//////////////////////////////v//ISEh/+r3///s+P7/6/f9/zo8R/9UXnb/VVp5/1Vc
+        d/9YXHj/V155/yUjIv/9/////////////v////////////////////////////////8kIiH/8Pb7/+v3
+        /f87O0n/OztH/zs6Sv9TXHf/VF52/1Vcd/9TXXX/JiQk/zEzM/////////7////////9/f3/////////
+        //////7/ICIi/+z4/v/s9f7/PDxI/zk7Rv8kIiH/ICIi/1hedf9WWnf/U1x3/yAiI/8mJCP//f////z+
+        /v////7////////////+/v7/////////////////HiMi/+/3/v/s9f7/OjtJ/yMiJP8iIyH/V1t4/1Zd
+        eP9YXHj/HyEi/yQkJP///v/////+/////////////f39///////+/v7///79/yAiI/+qv9X/q77T/6jA
+        1P86PEf/7PX+/+33/v9RXXX/VVx1/1Zad//t9/7/7ff+/zUzMv/7/////f//////////////////////
+        ///9////NBcg/y8ZG/83GB//MRYf/zIYHv8xFx3/NBkd/zQXIP8yFyD/NBge/zMYHP82GSL/QSoy/3Rh
+        ZP///v////////39/f////////////3////+/f//Mhge/71YWv+8VVj/vFVa/86ZVv/MmFb/z5dW/8qY
+        Vv/MllX/zJhV/82ZV/9DKzP//P7+/////////////v7+/////////////v/9//79//////7/Mxgc/71W
+        W//OmFf/zJhW/8qYVv/Lmlb/u1ZY/75XXP+8V1n/Nhog///+////////////////////////////////
+        /////////v7+/zQZHf+9V1z/u1ZY/7tWWP/NmVf/zJdY/8iYWP/NmVb/zZhV/zEWH/////7/+/////3/
+        /v///v////////////////////////3////9//////3//zUYIf+9Vln/vlZX/7xVWP+9Vln/zZdW/zQY
+        Hv8yFyD///7//////P////////7+///+///////////////////////////+/////v8yFyD/vVZZ/8FV
+        W/8wGR3/Mhge/zQXIP8yFyD////8///+///9//////////////////7////+////////////////////
+        ///7/v////7//zIZHf+9Vln/Mhcg///+///9/////f/////////+//3////+//3//////v////////3/
+        /////v////////////////////////3//////v3/Mhge/zEXHf/9/////v7+//3//v///v///P7+////
+        /v////7///7///////////7///7//////P////////////39/f///////v7+///////7///////////+
+        /f/9//7///7//////v/////////////+///7//7//v7+/////////v///f//////////////+fn5//r6
+        +v8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+</value>
+  </data>
 </root>

@@ -14,6 +14,7 @@ using System.IO;
 using Project.Controller;
 using Project.Enemies;
 using static Project.Enemies.Enemy;
+using System.Numerics;
 
 namespace Project
 {
@@ -34,15 +35,10 @@ namespace Project
         public Weapons weapon2;
         
         public static List<Weapons> weapons = new List<Weapons>();
-        
+        public static List<Enemy> enemies;
         public Entity player;
 
-        public Enemy2 enemy1;
-        public Enemy2 enemy2;
-        public Enemy2 enemy3;
-        public Enemy2 enemy4;
-        public static List<Enemy> enemies;
-        public  List<Enemy2> enemies2  = new List<Enemy2>();
+       
        
 
         public Level1()
@@ -148,38 +144,30 @@ namespace Project
             //enemies
             enemies = new List<Enemy>
             {
-                new Enemy(200, 520, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-                new Enemy(134, 540, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-                new Enemy(45, 500, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-                new Enemy(45, 380, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                new Enemy(200, 520, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                new Enemy(134, 540,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                new Enemy(45, 500,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                new Enemy(45, 380, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                new Enemy(100, 100, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
+                new Enemy(150, 150,2, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
 
-                
             };
 
-            enemy1 = new Enemy2(300, 300, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2);
-            enemy2 = new Enemy2(300, 360, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2);
-            enemy3 = new Enemy2(340, 300, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2);
-            enemy4 = new Enemy2(360, 340, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2);
-
-            enemies2.Add(enemy1);
-            enemies2.Add(enemy2);
-            enemies2.Add(enemy3);
-            enemies2.Add(enemy4);
-
+            
             
             //player
-            player = new Entity(500, 500, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames, Hero.jumpFrames, dwarfSheet);
+            player = new Entity(90, 30, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames, Hero.jumpFrames, dwarfSheet);
             //weapons
-            weapon = new Weapons(510, 500, 1, weaponSheet);
-            weapon1 = new Weapons(490, 500, 2, weaponSheet1);
-            weapon2 = new Weapons(540, 500, 3, weaponSheet2);
+            weapon = new Weapons(90, 30, 1, weaponSheet);
+            weapon1 = new Weapons(80, 30, 2, weaponSheet1);
+            weapon2 = new Weapons(70, 30, 3, weaponSheet2);
             weapons.Add(weapon);
             weapons.Add(weapon1);
             weapons.Add(weapon2);
 
 
             timer1.Start();
-            //timer2.Start();
+            timer2.Start();
         }
 
 
@@ -243,30 +231,32 @@ namespace Project
 
         public void EnemyUpdate(object sedner,EventArgs e)
         {
-            
-            
+
+
             //foreach (Enemy enemy in enemies)
             //{
-            
+
             //    ////LET ENEMIES UNDERSTAND THAT THEY CANT STAY AT THE SAME POSITION!!
             //}
-        
+           
+
+
             //foreach(Enemy enemy in enemies)
-            for(int i = 0;i < enemies.Count;i++)
+            for (int i = 0;i < enemies.Count;i++)
             {
                 enemies[i].ownMove(player);
             }
 
-            //foreach (Enemy2 enemy2 in enemies2)
-            for (int i = 0; i < enemies2.Count; i++)
+   
+            
+
+            for (int i = 0; i < enemies.Count; i++)
             {
-                enemies2[i].ownMove(player);
+                if(!enemies[i].isMoving)
+                enemies[i].posX += enemies[i].EnemySpeedX;
+
             }
-           
-            
-            
-               
-    
+
             label2.Text = Convert.ToString("player.posX:" + player.posX);
             label3.Text = Convert.ToString("player.posY:" + player.posY);
             label6.Text = Convert.ToString("player.id:" + player.id);
@@ -293,11 +283,7 @@ namespace Project
                 enemies[i].playEnemyAnimation(g);
             }
 
-            //foreach (Enemy2 enemy2 in enemies2)
-            for (int i = 0; i < enemies2.Count; i++)
-            {
-                enemies2[i].playEnemyAnimation(g);
-            }
+            
            
 
             player.PlayAnimation(g);
