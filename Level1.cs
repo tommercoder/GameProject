@@ -97,7 +97,7 @@ namespace Project
             {
                 double distance = GetDistance(weapon.posX, weapon.posY, player.posX, player.posY);
                 if (player.Freehands == true)
-                    if (distance < 15)
+                    if (distance < 30)
                     {
                         weapon.onFloor = false;
                         player.id = weapon.id;
@@ -178,22 +178,28 @@ namespace Project
            switch (e.KeyCode)
                 {
                     case Keys.W:
-
-                        player.dirY = -5;
-                        player.isMoving = true;
-                    delta.Y++;
+                   
+                    player.dirY = -5;
+                    if (player.posY > this.Height / 2 +50 && player.posY < MapController.cellSize * 60 - this.Height / 2+50)
+                        delta.Y += 5;
+                    player.isMoving = true;
+                    
                         player.setAnimationConfiguration(0);
                         break;
                     case Keys.S:
-                    delta.Y--; 
-                        player.dirY = 5;
+                    player.dirY = 5;
+                    if (player.posY > this.Height / 2 +50 && player.posY < MapController.cellSize * 60 - this.Height / 2 +50)
+                        delta.Y-=5; 
+                        
                         player.isMoving = true;
                         player.setAnimationConfiguration(0);
                         break;
 
                     case Keys.A:
-                    delta.X++;
-                        player.dirX = -5;
+                    player.dirX = -5;
+                    if (player.posX > this.Width/2 && player.posX <MapController.cellSize*60 -this.Width/2)
+                    delta.X+=5;
+                        
                         player.flip = -1;
                     
                     player.isMoving = true;
@@ -201,8 +207,10 @@ namespace Project
                         break;
 
                     case Keys.D:
-                    delta.X--;
-                        player.dirX = 5;
+                    player.dirX = 5;
+                    if (player.posX > this.Width / 2 && player.posX < MapController.cellSize * 60 - this.Width / 2)
+                    delta.X-=5;
+                       
 
                         player.isMoving = true;
                         player.flip = 1;

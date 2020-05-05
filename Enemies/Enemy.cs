@@ -67,7 +67,7 @@ namespace Project.Enemies
         public void IfEnemiesCollide(List <Enemy> enemies)
         {
             
-            for(int i = 0; i < enemies.Count-1;i++)
+            for(int i = 0; i < enemies.Count - 1;i++)
             {
                 double distance = GetDistance(enemies[i].posX, enemies[i].posY, enemies[i + 1].posX, enemies[i + 1].posY);
                if (distance <= 20)
@@ -81,14 +81,14 @@ namespace Project.Enemies
                         enemies[i + 1].posX -= 2;
                     }
 
-                    if (enemies[i].posY > enemies[i + 1].posY)
+                    if (enemies[i].posY < enemies[i + 1].posY)
                     {
-                        enemies[i + 1].posY += 2; 
-                        //sMessageBox.Show("fuck");
+                        enemies[i + 1].posY -= 2; 
+                       
                     }
-                    else if(enemies[i].posY < enemies[i + 1].posY)
+                    else if(enemies[i].posY > enemies[i + 1].posY)
                     {
-                        enemies[i + 1].posY -= 2;
+                        enemies[i + 1].posY += 2;
                     }
 
                 }

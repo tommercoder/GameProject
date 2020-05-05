@@ -73,7 +73,7 @@ namespace Project.Entities
             else
                 currentFrame = 0;
 
-            g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2 + +Level1.delta.X, (int)posY + Level1.delta.Y), new Size(flip * size, size)), 26 * currentFrame, 32* currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
+            g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2 + +Level1.delta.X - Level1.delta.X, (int)posY + Level1.delta.Y - Level1.delta.Y), new Size(flip * size, size)), 26 * currentFrame, 32* currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
             //g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 26 * currentFrame, 32* currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
             
 

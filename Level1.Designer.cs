@@ -98,6 +98,7 @@
             // Level1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScroll = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -114,8 +115,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Location = new System.Drawing.Point(0, -1);
-            this.MaximumSize = new System.Drawing.Size(750, 750);
-            this.MinimumSize = new System.Drawing.Size(750, 750);
             this.Name = "Level1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Level1";
