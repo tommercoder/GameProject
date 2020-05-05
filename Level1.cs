@@ -181,18 +181,18 @@ namespace Project
 
                         player.dirY = -5;
                         player.isMoving = true;
-                    delta.Y++;
+                    delta.Y+=6;
                         player.setAnimationConfiguration(0);
                         break;
                     case Keys.S:
-                    delta.Y--; 
+                    delta.Y-=6; 
                         player.dirY = 5;
                         player.isMoving = true;
                         player.setAnimationConfiguration(0);
                         break;
 
                     case Keys.A:
-                    delta.X++;
+                    delta.X+=6;
                         player.dirX = -5;
                         player.flip = -1;
                     
@@ -201,7 +201,7 @@ namespace Project
                         break;
 
                     case Keys.D:
-                    delta.X--;
+                    delta.X-=6;
                         player.dirX = 5;
 
                         player.isMoving = true;
