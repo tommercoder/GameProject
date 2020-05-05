@@ -103,7 +103,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(784, 425);
+            this.ClientSize = new System.Drawing.Size(604, 461);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -114,6 +114,8 @@
             this.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.KeyPreview = true;
             this.Location = new System.Drawing.Point(0, -1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(750, 750);
             this.Name = "Level1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Level1";

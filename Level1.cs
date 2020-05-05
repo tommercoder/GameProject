@@ -19,7 +19,6 @@ namespace Project
 {
     public partial class Level1 : Form
     {
-        
         public Image dwarfSheet;//for sprites 
        
         public Image weaponSheet;
@@ -60,6 +59,7 @@ namespace Project
             KeyDown += new KeyEventHandler(OnPress);
             KeyUp += new KeyEventHandler(OnKeyUp);
 
+
             init();
 
             
@@ -73,15 +73,18 @@ namespace Project
             {
                 case Keys.W:
                     player.dirY = 0;
+                    
                     break;
                 case Keys.S:
                     player.dirY = 0;
                     break;
                 case Keys.A:
                     player.dirX = 0;
+                   
                     break;
                 case Keys.D:
                     player.dirX = 0;
+                   
                     break;
                 case Keys.E:
                     player.hitPressed = false;
@@ -351,6 +354,9 @@ namespace Project
 
         }
 
-        
+        private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
     }
 }
