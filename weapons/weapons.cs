@@ -58,33 +58,33 @@ namespace Project.weapons
         {
             if (id == 1 && !onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 18 / 2) + (int)player.posX - (int)posX, (int)posY - 1 - player.currentFrame + (int)player.posY - (int)posY), new Size(player.flip * 6, 30)), 0, 0, 6, 30, GraphicsUnit.Pixel);//catana
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 18 / 2 ) + (int)player.posX - (int)posX + Level1.delta.X, (int)posY - 1 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y), new Size(player.flip * 6, 30)), 0, 0, 6, 30, GraphicsUnit.Pixel);//catana
             }
 
             if (id == 2 && !onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2) + (int)player.posX - (int)posX, (int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY), new Size(player.flip * 12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2) + (int)player.posX - (int)posX + Level1.delta.X, (int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y), new Size(player.flip * 12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
             }
 
             if (id == 3 && !onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2) + (int)player.posX - (int)posX, (int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY), new Size(player.flip * 12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2) + (int)player.posX - (int)posX + Level1.delta.X, (int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y), new Size(player.flip * 12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
             }
         }
         public void drawWeapon(Graphics g, Entity player)
         {
             if (id == 1 && onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX), (int)posY - player.currentFrame), new Size(6, 30)), 0, 0, 6, 30, GraphicsUnit.Pixel);//catana
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX) + Level1.delta.X, (int)posY - player.currentFrame + Level1.delta.Y), new Size(6, 30)), 0, 0, 6, 30, GraphicsUnit.Pixel);//catana
             }
             if (id == 2 && onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX, (int)posY - player.currentFrame), new Size(12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + Level1.delta.X, (int)posY - player.currentFrame + Level1.delta.Y), new Size(12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
             }
 
             if (id == 3 && onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX, (int)posY - player.currentFrame), new Size(12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + Level1.delta.X, (int)posY - player.currentFrame + Level1.delta.Y), new Size(12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
             }
 
             

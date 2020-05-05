@@ -212,11 +212,11 @@ namespace Project.Enemies
 
             if (id == 1)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid1 / 2, (int)posY), new Size(flip * sizeid1, sizeid1)), 16 * currentFrame, 16 * currentAnimation, sizeid1, sizeid1, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid1 / 2 + Level1.delta.X, (int)posY+Level1.delta.Y), new Size(flip * sizeid1, sizeid1)), 16 * currentFrame, 16 * currentAnimation, sizeid1, sizeid1, GraphicsUnit.Pixel);
             }
             if (id == 2)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2, (int)posY), new Size(flip * sizeid2, sizeid2)), 32 * currentFrame, 34 * currentAnimation, sizeid2, sizeid2, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2 + Level1.delta.X, (int)posY + Level1.delta.Y), new Size(flip * sizeid2, sizeid2)), 32 * currentFrame, 34 * currentAnimation, sizeid2, sizeid2, GraphicsUnit.Pixel);
             }
         }
 
