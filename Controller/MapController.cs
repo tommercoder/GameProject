@@ -16,7 +16,15 @@ namespace Project.Controller
         public static int cellSize = 32;
         public static int[,] map = new int[mapHeight, mapWidth];
         public static Image spriteSheet;
-
+        /// <summary>
+        /// old collision
+        /// List <Rectangle> tile = new List<Rectangle>();
+        /// in every g.draw image
+        /// Rectangle r = new Rectangle(j*cellsize,i*cellsize);
+        /// tile.add(r);
+        /// 
+        /// 
+        /// </summary>
         public static void Init()
         {
             map = GetMap();
@@ -98,57 +106,57 @@ namespace Project.Controller
                 {
                     if (map[i, j] == 1)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize * 30, cellSize * 30)), 157, 290, 10, 10, GraphicsUnit.Pixel);//black fon
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize+Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(cellSize * 30, cellSize * 30)), 157, 290, 10, 10, GraphicsUnit.Pixel);//black fon
                     }
                     else
                     if (map[i, j] == 2)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(32, 40)), 119, 19, 32, 40, GraphicsUnit.Pixel);//wall
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(32, 40)), 119, 19, 32, 40, GraphicsUnit.Pixel);//wall
                     }
                     else
                     if (map[i, j] == 3)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(32, 32)), 55, 27, 32, 32, GraphicsUnit.Pixel);//left wall
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(32, 32)), 55, 27, 32, 32, GraphicsUnit.Pixel);//left wall
                     }
                     else
                     if (map[i, j] == 4)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(32, 32)), 119, 20, 32, 32, GraphicsUnit.Pixel);//фронт сітна
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(32, 32)), 119, 20, 32, 32, GraphicsUnit.Pixel);//фронт сітна
                     }
                     else
                     if (map[i, j] == 5)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(32, 32)), 9, 27, 32, 32, GraphicsUnit.Pixel);//right wall
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(32, 32)), 9, 27, 32, 32, GraphicsUnit.Pixel);//right wall
                     }
                     else
                     if (map[i, j] == 6)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(32, 32)), 192, 160, 32, 32, GraphicsUnit.Pixel);//половина плитки
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(32, 32)), 192, 160, 32, 32, GraphicsUnit.Pixel);//половина плитки
                     }
                     else
                     if (map[i, j] == 7)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(32, 32)), 160, 192, 32, 32, GraphicsUnit.Pixel);//плитка без куска
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(32, 32)), 160, 192, 32, 32, GraphicsUnit.Pixel);//плитка без куска
                     }
                     else
                     if (map[i, j] == 8)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(32, 32)), 10, 595, 48, 29, GraphicsUnit.Pixel);//ворота
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(32, 32)), 10, 595, 48, 29, GraphicsUnit.Pixel);//ворота
                     }
                     else
                    if (map[i, j] == 32)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 199, 606, 25, 28, GraphicsUnit.Pixel);//Грязна верхня дорога
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(cellSize, cellSize)), 199, 606, 25, 28, GraphicsUnit.Pixel);//Грязна верхня дорога
                     }
                     else
                    if (map[i, j] == 33)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 224, 606, 25, 28, GraphicsUnit.Pixel);//Грязна верхня дорога
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(cellSize, cellSize)), 224, 606, 25, 28, GraphicsUnit.Pixel);//Грязна верхня дорога
                     }
                     else
                    if (map[i, j] == 34)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 248, 606, 32, 28, GraphicsUnit.Pixel);//Грязна верхня дорога
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(cellSize, cellSize)), 248, 606, 32, 28, GraphicsUnit.Pixel);//Грязна верхня дорога
                     }
                 }
             }
@@ -161,56 +169,56 @@ namespace Project.Controller
                 {
                     if (map[i, j] == 22)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 160, 383, 32, 32, GraphicsUnit.Pixel);// дорога
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(cellSize, cellSize)), 160, 383, 32, 32, GraphicsUnit.Pixel);// дорога
                     }
                     else
                    if (map[i, j] == 23)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 385, 407, 32, 32, GraphicsUnit.Pixel);//грязьова дорога
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(cellSize, cellSize)), 385, 407, 32, 32, GraphicsUnit.Pixel);//грязьова дорога
                     }
                     else
                    if (map[i, j] == 24)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 256, 480, 32, 32, GraphicsUnit.Pixel);//тріснута плитка
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(cellSize, cellSize)), 256, 480, 32, 32, GraphicsUnit.Pixel);//тріснута плитка
                     }
                     else
                    if (map[i, j] == 25)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 288, 191, 32, 32, GraphicsUnit.Pixel);//4 плитки
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(cellSize, cellSize)), 288, 191, 32, 32, GraphicsUnit.Pixel);//4 плитки
                     }
                     else
                    if (map[i, j] == 26)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 384, 160, 32, 32, GraphicsUnit.Pixel);//4 тріснуті плитки
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(cellSize, cellSize)), 384, 160, 32, 32, GraphicsUnit.Pixel);//4 тріснуті плитки
                     }
                     else
                    if (map[i, j] == 27)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 416, 160, 32, 32, GraphicsUnit.Pixel);//Г плитка
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(cellSize, cellSize)), 416, 160, 32, 32, GraphicsUnit.Pixel);//Г плитка
                     }
                     else
                    if (map[i, j] == 28)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 10, 595, 48, 29, GraphicsUnit.Pixel);//ворота
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(cellSize, cellSize)), 10, 595, 48, 29, GraphicsUnit.Pixel);//ворота
                     }
                     else
                    if (map[i, j] == 29)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 480, 160, 32, 32, GraphicsUnit.Pixel);//ціла плитка
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(cellSize, cellSize)), 480, 160, 32, 32, GraphicsUnit.Pixel);//ціла плитка
                     }
                     else
                    if (map[i, j] == 30)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 376, 428, 32, 32, GraphicsUnit.Pixel);//Грязна дорога
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(cellSize, cellSize)), 376, 428, 32, 32, GraphicsUnit.Pixel);//Грязна дорога
                     }
                     else
                    if (map[i, j] == 31)
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 377, 544, 32, 32, GraphicsUnit.Pixel);//Грязна верхня дорога
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(cellSize, cellSize)), 377, 544, 32, 32, GraphicsUnit.Pixel);//Грязна верхня дорога
                     }
                     else
                     {
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 219, 319, 32, 32, GraphicsUnit.Pixel);
+                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize + Level1.delta.X, i * cellSize + Level1.delta.Y), new Size(cellSize, cellSize)), 219, 319, 32, 32, GraphicsUnit.Pixel);
                     }
                 }
             }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Project.Entities;
 using Project.Models;
 
@@ -12,16 +13,19 @@ namespace Project.Enemies
 {
     public class Enemy
     {
+
+
         public float posX;
         public float posY;
 
-        public int size;
+        public int sizeid1;
+        public int sizeid2;
 
         public float oldPosX;
         public float oldPosY;
 
-        public float EnemySpeedX = 2;
-        public float EnemySpeedY = 2;
+        public float EnemySpeedX = 1;
+        public float EnemySpeedY = 1;
 
         public double radius;
         public double radius2;
@@ -35,10 +39,12 @@ namespace Project.Enemies
         public int EnemyIdleFrames;
         public int EnemyRunFrames;
         public int currentAnimation;
+        public int id;
 
         public Enemy() { }
-        public Enemy(int posx, int posy, int EnemyIdleFrames, int EnemyRunFrames, Image mobSheet)
+        public Enemy(int posx, int posy,int id, int EnemyIdleFrames, int EnemyRunFrames, Image mobSheet)
         {
+            this.id = id;
             oldPosX = posx;
             oldPosY = posy;
             posX = posx;
@@ -46,7 +52,8 @@ namespace Project.Enemies
             this.EnemyIdleFrames = EnemyIdleFrames;
             this.EnemyRunFrames = EnemyRunFrames;
             this.mobSheet = mobSheet;
-            size = 16;
+            sizeid1 = 16;
+            sizeid2 = 34;
             currentFrame = 0;
             currentLimit = EnemyIdleFrames;
             flip = 1;
@@ -56,7 +63,43 @@ namespace Project.Enemies
         {
             return Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
         }
+       
+        public void IfEnemiesCollide(List <Enemy> enemies)
+        {
+            
+            for(int i = 0; i < enemies.Count-1;i++)
+            {
+                double distance = GetDistance(enemies[i].posX, enemies[i].posY, enemies[i + 1].posX, enemies[i + 1].posY);
+               if (distance <= 20)
+                {
+                    if(enemies[i].posX < enemies[i+1].posX)
+                    {
+                        enemies[i + 1].posX += 2;
+                    }
+                    else if(enemies[i].posX > enemies[i + 1].posX)
+                    {
+                        enemies[i + 1].posX -= 2;
+                    }
 
+                    if (enemies[i].posY > enemies[i + 1].posY)
+                    {
+                        enemies[i + 1].posY += 2; 
+                        //sMessageBox.Show("fuck");
+                    }
+                    else if(enemies[i].posY < enemies[i + 1].posY)
+                    {
+                        enemies[i + 1].posY -= 2;
+                    }
+
+                }
+               else
+                {
+                    
+
+                }
+            }
+            
+        }
         public void ownMove(Entity player)
         {
             float posXvar = posX;
@@ -71,7 +114,6 @@ namespace Project.Enemies
             }
             else
                 isMoving = false;
-
 
             if (posX < 0)
                 posXvar = (-1) * posX;
@@ -106,10 +148,17 @@ namespace Project.Enemies
             }
 
             if (distance >= 100)
+            {
                 flip = 1;
+            }
+            
+
+
+
 
             if (distance <= 100)
             {
+
                 if (player.posX > posX)
                 {
                     posX += EnemySpeedX;
@@ -126,6 +175,7 @@ namespace Project.Enemies
                 }
                 else
                     posY -= EnemySpeedY;
+                
             }  
             else
             {
@@ -149,7 +199,7 @@ namespace Project.Enemies
                 }
 
             }
-
+           
 
         }
 
@@ -160,7 +210,14 @@ namespace Project.Enemies
             else
                 currentFrame = 0;
 
-            g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 16 * currentFrame, 16 * currentAnimation, size, size, GraphicsUnit.Pixel);
+            if (id == 1)
+            {
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid1 / 2 + Level1.delta.X, (int)posY+Level1.delta.Y), new Size(flip * sizeid1, sizeid1)), 16 * currentFrame, 16 * currentAnimation, sizeid1, sizeid1, GraphicsUnit.Pixel);
+            }
+            if (id == 2)
+            {
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2 + Level1.delta.X, (int)posY + Level1.delta.Y), new Size(flip * sizeid2, sizeid2)), 32 * currentFrame, 34 * currentAnimation, sizeid2, sizeid2, GraphicsUnit.Pixel);
+            }
         }
 
         public void setEnemyAnimationConfiguration(int currentAnimation)
@@ -170,209 +227,211 @@ namespace Project.Enemies
             switch (currentAnimation)
             {
                 case 0:
+                 
                     currentLimit = EnemyIdleFrames;
+                 
                     break;
             }
 
         }
 
-        public class Enemy2
-        {
-            public int posX;
-            public int posY;
+    //    public class Enemy2
+    //    {
+    //        public int posX;
+    //        public int posY;
 
-            public int size;
+    //        public int size;
 
-            public float oldPosX;
-            public float oldPosY;
+    //        public float oldPosX;
+    //        public float oldPosY;
 
-            public int EnemySpeedX = 2;
-            public int EnemySpeedY = 2;
+    //        public int EnemySpeedX = 1;
+    //        public int EnemySpeedY = 1;
 
-            public double radius;
-            public double radius2;
+    //        public double radius;
+    //        public double radius2;
 
-            public bool isMoving;
-            public Image mobSheet;
+    //        public bool isMoving;
+    //        public Image mobSheet;
 
-            public int flip;
-            public int currentFrame;
-            public int currentLimit;
-            public int Enemy2IdleFrames;
-            public int Enemy2RunFrames;
-            public int currentAnimation;
+    //        public int flip;
+    //        public int currentFrame;
+    //        public int currentLimit;
+    //        public int Enemy2IdleFrames;
+    //        public int Enemy2RunFrames;
+    //        public int currentAnimation;
 
-            //public Enemy2() { }
-            public Enemy2(int posx, int posy, int Enemy2IdleFrames, int Enemy2RunFrames, Image mobSheet)
-            {
-                oldPosX = posx;
-                oldPosY = posy;
-                posX = posx;
-                posY = posy;
-                this.Enemy2IdleFrames = Enemy2IdleFrames;
-                this.Enemy2RunFrames = Enemy2RunFrames;
-                this.mobSheet = mobSheet;
-                size = 35;
-                currentFrame = 0;
-                currentLimit = Enemy2IdleFrames;
-                flip = 1;
+    //        //public Enemy2() { }
+    //        public Enemy2(int posx, int posy, int Enemy2IdleFrames, int Enemy2RunFrames, Image mobSheet)
+    //        {
+    //            oldPosX = posx;
+    //            oldPosY = posy;
+    //            posX = posx;
+    //            posY = posy;
+    //            this.Enemy2IdleFrames = Enemy2IdleFrames;
+    //            this.Enemy2RunFrames = Enemy2RunFrames;
+    //            this.mobSheet = mobSheet;
+    //            size = 35;
+    //            currentFrame = 0;
+    //            currentLimit = Enemy2IdleFrames;
+    //            flip = 1;
 
-                currentAnimation = 0;
+    //            currentAnimation = 0;
 
-            }
-            public static double GetDistance(double x1, double y1, double x2, double y2)
-            {
-                return Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
-            }
+    //        }
+    //        public static double GetDistance(double x1, double y1, double x2, double y2)
+    //        {
+    //            return Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
+    //        }
 
-            public void ownMove(Entity player)
-            {
-                int posXvar = posX;
-                int posYvar = posY;
-                float playerposXvar = player.posX;
-                float playerposYvar = player.posY;
+    //        public void ownMove(Entity player)
+    //        {
+    //            int posXvar = posX;
+    //            int posYvar = posY;
+    //            float playerposXvar = player.posX;
+    //            float playerposYvar = player.posY;
 
 
-                if (posX > oldPosX + 2 || posY > oldPosY + 2 || posX < oldPosX || posY < oldPosY)
-                {
-                    isMoving = true;
+    //            if (posX > oldPosX + 2 || posY > oldPosY + 2 || posX < oldPosX || posY < oldPosY)
+    //            {
+    //                isMoving = true;
 
-                }
-                else
-                    isMoving = false;
+    //            }
+    //            else
+    //                isMoving = false;
 
                
 
-                if (posX < 0)
-                    posXvar = (-1) * posX;
+    //            if (posX < 0)
+    //                posXvar = (-1) * posX;
 
-                if (posY < 0)
-                    posYvar = (-1) * posY;
+    //            if (posY < 0)
+    //                posYvar = (-1) * posY;
 
-                if (player.posX < 0)
-                    playerposXvar = (-1) * player.posX;
+    //            if (player.posX < 0)
+    //                playerposXvar = (-1) * player.posX;
 
-                if (player.posY < 0)
-                    playerposYvar = player.posY * (-1);
+    //            if (player.posY < 0)
+    //                playerposYvar = player.posY * (-1);
 
-                if (playerposXvar - posXvar < 0)
-                    radius = (-1) * (playerposXvar - posXvar);
-                else
-                    radius = (playerposXvar - posXvar);
+    //            if (playerposXvar - posXvar < 0)
+    //                radius = (-1) * (playerposXvar - posXvar);
+    //            else
+    //                radius = (playerposXvar - posXvar);
 
-                if (playerposYvar - posYvar < 0)
-                    radius2 = (-1) * (playerposYvar - posYvar);
-                else
-                    radius2 = (playerposYvar - posYvar);
+    //            if (playerposYvar - posYvar < 0)
+    //                radius2 = (-1) * (playerposYvar - posYvar);
+    //            else
+    //                radius2 = (playerposYvar - posYvar);
 
-                double distance = GetDistance((double)player.posX, (double)player.posY, (double)posX, (double)posY);
+    //            double distance = GetDistance((double)player.posX, (double)player.posY, (double)posX, (double)posY);
 
-                if ((radius <= 20 || radius2 <= 20))
-                {
-                    if (player.flip == 1 && player.posX > posX)
-                        flip = 1;
-                    else if (player.flip == -1 && player.posX < posX)
-                        flip = -1;
-                }
+    //            if ((radius <= 20 || radius2 <= 20))
+    //            {
+    //                if (player.flip == 1 && player.posX > posX)
+    //                    flip = 1;
+    //                else if (player.flip == -1 && player.posX < posX)
+    //                    flip = -1;
+    //            }
 
-                if (distance >= 100)
-                    flip = 1;
+    //            if (distance >= 100)
+    //                flip = 1;
 
-                if (distance <= 100)
-                {
+    //            if (distance <= 100)
+    //            {
 
-                    if (player.posX > posX)
-                    {
-                        posX += EnemySpeedX;
-                    }
-                    else
-                    {
-                        posX -= EnemySpeedX;
-                    }
+    //                if (player.posX > posX)
+    //                {
+    //                    posX += EnemySpeedX;
+    //                }
+    //                else
+    //                {
+    //                    posX -= EnemySpeedX;
+    //                }
 
-                    if (player.posY > posY)
-                    {
+    //                if (player.posY > posY)
+    //                {
 
-                        posY += EnemySpeedY;
-                    }
-                    else
-                        posY -= EnemySpeedY;
-                }
-                else if (distance <= 100)
-                {
+    //                    posY += EnemySpeedY;
+    //                }
+    //                else
+    //                    posY -= EnemySpeedY;
+    //            }
+    //            else if (distance <= 100)
+    //            {
 
-                    if (player.posX > posX)
-                    {
-                        posX += EnemySpeedX;
-                    }
-                    else
-                    {
-                        posX -= EnemySpeedX;
+    //                if (player.posX > posX)
+    //                {
+    //                    posX += EnemySpeedX;
+    //                }
+    //                else
+    //                {
+    //                    posX -= EnemySpeedX;
 
-                    }
-                    if (player.posY > posY)
-                    {
+    //                }
+    //                if (player.posY > posY)
+    //                {
 
-                        posY += EnemySpeedY;
-                    }
-                    else
-                        posY -= EnemySpeedY;
+    //                    posY += EnemySpeedY;
+    //                }
+    //                else
+    //                    posY -= EnemySpeedY;
 
-                }
-                else
-                {
+    //            }
+    //            else
+    //            {
 
-                    if (posX < oldPosX)
-                    {
-                        posX += EnemySpeedX;
-                    }
-                    else
-                    {
-                        posX -= EnemySpeedX;
-                    }
+    //                if (posX < oldPosX)
+    //                {
+    //                    posX += EnemySpeedX;
+    //                }
+    //                else
+    //                {
+    //                    posX -= EnemySpeedX;
+    //                }
 
-                    if (posY < oldPosY)
-                    {
-                        posY += EnemySpeedY;
-                    }
-                    else
-                    {
+    //                if (posY < oldPosY)
+    //                {
+    //                    posY += EnemySpeedY;
+    //                }
+    //                else
+    //                {
 
-                        posY -= EnemySpeedY;
-                    }
+    //                    posY -= EnemySpeedY;
+    //                }
 
-                }
+    //            }
 
 
-            }
+    //        }
 
-            public void playEnemyAnimation(Graphics g)
-            {
-                if (currentFrame < currentLimit - 1)
-                    currentFrame++;
-                else
-                    currentFrame = 0;
-                g.DrawImage(mobSheet, new Rectangle(new Point(posX - flip * 34 / 2, posY), new Size(flip * 34, 34)), 32 * currentFrame, 34 * currentAnimation, 34, 34, GraphicsUnit.Pixel);
+    //        public void playEnemyAnimation(Graphics g)
+    //        {
+    //            if (currentFrame < currentLimit - 1)
+    //                currentFrame++;
+    //            else
+    //                currentFrame = 0;
+    //            g.DrawImage(mobSheet, new Rectangle(new Point(posX - flip * 34 / 2, posY), new Size(flip * 34, 34)), 32 * currentFrame, 34 * currentAnimation, 34, 34, GraphicsUnit.Pixel);
 
             
 
-            }
+    //        }
 
-            public void setEnemyAnimationConfiguration(int currentAnimation)
-            {
-                this.currentAnimation = currentAnimation;
+    //        public void setEnemyAnimationConfiguration(int currentAnimation)
+    //        {
+    //            this.currentAnimation = currentAnimation;
 
-                switch (currentAnimation)
-                {
-                    case 0:
-                        currentLimit = Enemy2IdleFrames;
-                        break;
-                    case 1:
-                        currentLimit = Enemy2RunFrames;
-                        break;
-                }
+    //            switch (currentAnimation)
+    //            {
+    //                case 0:
+    //                    currentLimit = Enemy2IdleFrames;
+    //                    break;
+    //                case 1:
+    //                    currentLimit = Enemy2RunFrames;
+    //                    break;
+    //            }
 
-            }
-        }
+    //        }
+    //    }
     }
 }
