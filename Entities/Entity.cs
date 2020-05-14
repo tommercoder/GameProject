@@ -1,4 +1,7 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using Project.Controller;
 using Project.weapons;
 namespace Project.Entities
 {
@@ -8,17 +11,23 @@ namespace Project.Entities
         public float posY;
         public float OldposX;
         public float OldposY;
-
+        public int howmuchDamaged;
+        public int HP;
         public float velocityX = 0.5f;//speed
         public float velocityY = 0.5f;//speed
         public float gravity = 0.5f;
+        public int offset = 1;
+
+        public int playerSpeed;
 
         public float dirX;
         public float dirY;
         public bool isMoving;
-        public bool isJumping;
+        public bool falling;
         public bool hitPressed;
-        public bool ShiftPressed ;
+        public bool ShiftPressed;
+        public bool dead;
+        
 
         public int flip;
 
@@ -37,9 +46,11 @@ namespace Project.Entities
 
         public Image spriteSheet;
         public bool Freehands = true;
-        public int id;
+        public int id; 
+   
         public Entity(float posX,float posY,int IdleFrames,int runFrames,int attackFrames,int deathFrames,int jumpFrames,Image spriteSheet)
         {
+            HP = 100;
             this.OldposX = posX;
             this.OldposY = posY;
             this.posX = posX;
@@ -55,15 +66,18 @@ namespace Project.Entities
             currentFrame = 0;
             currentLimit = IdleFrames;
             flip = 1;
+            playerSpeed = 3;
+            falling = false;
+            dead = false;
         }
 
         public void Move()
         {
+            if(Level1.Apressed || Level1.Dpressed)
             posX += dirX;
+            if(Level1.Wpressed || Level1.Spressed)
             posY += dirY;
         }
-
-        
 
         public void PlayAnimation(Graphics g)
         {
@@ -72,12 +86,15 @@ namespace Project.Entities
                 currentFrame++;
             else
                 currentFrame = 0;
-
-            g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 26 * currentFrame, 32* currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
-            //g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 26 * currentFrame, 32* currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
             
+                g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2 + Level1.delta.X + 14, (int)posY + Level1.delta.Y), new Size(flip * size, size)), 26 * currentFrame, 32 * currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
+            
+            //g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 26 * currentFrame, 32* currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
+
 
         }
+
+        
 
         public void setAnimationConfiguration(int currentAnimation)
         {

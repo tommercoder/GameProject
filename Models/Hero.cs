@@ -20,5 +20,12 @@ namespace Project.Models
 
         public static int Enemy2RunFrames = 4;
         public static int Enemy2IdleFrames = 4;
+
+
+        public static int OpenChestFrames = 2;
+        public static int IdleChestFrames = 1;
+
+        public static int fullHearts = 5;
+        public static int heartsFrames = 5;
     }
 }
