@@ -91,14 +91,17 @@ namespace Project
         //    Level1 level1 = new Level1();
         //    level1.ShowDialog();
         //}
+        private void start_level1()
+        {
+            Level1 level = new Level1();
+            level.ShowDialog();
+        }
         private void button_start_Click(object sender, EventArgs e)
         {
-
+            start_level1();
             // sound.play_button_exit();
-            //start_level1();
-            
-            start_selectionForm();
-            
+            //start_selectionForm();
+
         }
       
         private void button_start_MouseEnter(object sender,EventArgs e)

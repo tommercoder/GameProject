@@ -32,9 +32,7 @@
             this.button_start = new System.Windows.Forms.Button();
             this.button_exit = new System.Windows.Forms.Button();
             this.check_sound = new System.Windows.Forms.CheckBox();
-            this.picture_background = new System.Windows.Forms.PictureBox();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
-            ((System.ComponentModel.ISupportInitialize)(this.picture_background)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,6 +60,7 @@
             this.button_exit.BackColor = System.Drawing.Color.Transparent;
             this.button_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_exit.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_exit.ForeColor = System.Drawing.Color.Aqua;
             this.button_exit.Location = new System.Drawing.Point(710, 540);
             this.button_exit.Name = "button_exit";
             this.button_exit.Size = new System.Drawing.Size(78, 48);
@@ -74,11 +73,11 @@
             // 
             this.check_sound.AutoSize = true;
             this.check_sound.BackColor = System.Drawing.Color.Transparent;
-            this.check_sound.BackgroundImage = global::Project.Properties.Resources.orig;
             this.check_sound.Checked = true;
             this.check_sound.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_sound.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.check_sound.Location = new System.Drawing.Point(12, 480);
+            this.check_sound.ForeColor = System.Drawing.Color.Aqua;
+            this.check_sound.Location = new System.Drawing.Point(12, 540);
             this.check_sound.Name = "check_sound";
             this.check_sound.Size = new System.Drawing.Size(91, 24);
             this.check_sound.TabIndex = 2;
@@ -86,17 +85,6 @@
             this.check_sound.UseVisualStyleBackColor = false;
             this.check_sound.CheckedChanged += new System.EventHandler(this.check_sound_CheckedChanged);
             // 
-            // picture_background
-            // 
-            this.picture_background.BackColor = System.Drawing.Color.Transparent;
-            this.picture_background.Image = global::Project.Properties.Resources.orig;
-            this.picture_background.Location = new System.Drawing.Point(1, 0);
-            this.picture_background.Name = "picture_background";
-            this.picture_background.Size = new System.Drawing.Size(800, 603);
-            this.picture_background.TabIndex = 3;
-            this.picture_background.TabStop = false;
-            this.picture_background.Click += new System.EventHandler(this.picture_background_Click);
-            //  
             // axWindowsMediaPlayer1
             // 
             this.axWindowsMediaPlayer1.Enabled = true;
@@ -111,14 +99,13 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Desktop;
-            this.BackgroundImage = global::Project.Properties.Resources.orig;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.check_sound);
             this.Controls.Add(this.button_exit);
             this.Controls.Add(this.button_start);
-            this.Controls.Add(this.picture_background);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -128,7 +115,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GeometryGame";
             this.Load += new System.EventHandler(this.FormMenu_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.picture_background)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -137,7 +123,6 @@
 
         #endregion
         private System.Windows.Forms.Button button_exit;
-        private System.Windows.Forms.PictureBox picture_background;
         private System.Windows.Forms.Button button_start;
         public System.Windows.Forms.CheckBox check_sound;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
