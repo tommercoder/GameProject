@@ -52,7 +52,10 @@ namespace Project
         public static bool Xpressed;
         public static bool collide= false;
         public static bool hitPlayer = false;
+        public static bool reDrawHearts = false;
 
+        public int newDeltaX;
+        public int newDeltaY;
 
         public Level1()
         {
@@ -117,7 +120,7 @@ namespace Project
             {
                 player.isMoving = false;
                 player.setAnimationConfiguration(0);
-               // collide = false;
+               
             }
             
         }
@@ -137,8 +140,7 @@ namespace Project
         }
         public void chestOpen(staff staff)
         {
-            //foreach (Weapons weapon in weapons)
-            //{
+            
             double distance = GetDistance(player.posX,player.posY,staff.posX,staff.posY);
 
             if (distance < 20)
@@ -151,7 +153,7 @@ namespace Project
             }
             else
                 label1.Text = " >20";
-            //}
+            
         }
         public void Qpressed(Entity player,List<Weapons> weapons)
         {
@@ -238,183 +240,84 @@ namespace Project
                 switch (e.KeyCode)
                 {
                  case Keys.W:
-                    //for (int pj = ((int)player.posX + 16) / MapController.cellSize; pj < (player.posX + MapController.cellSize) / (MapController.cellSize + 1); pj++)
-                    //{
-                    //    for (int pi = ((int)player.posY + 16) / MapController.cellSize; pi < (player.posY + MapController.cellSize) / (MapController.cellSize + 1); pi++)
-                    //    {
-                    //        label1.Text = Convert.ToString(pj + " " + pi);
-                    //        if (pj < MapController.mapHeight - 1 && pj >= 1 && pi < MapController.mapWidth - 1 && pi > 0)
-                    //        {
 
-                    //            for (int i = 0; i < 3; i++)
-                    //            {
-                    //                if (MapController.map[pj, pi - 1] != 0)
-                    //                {
-
-                    //                    posx = pj;
-                    //                    posy = pi;
-                                        player.dirY = -3;
-                                     player.OldposY -= 2;
-                                        Wpressed = true;
-                                        player.isMoving = true;
-                                        player.setAnimationConfiguration(0);
-                    
-                    //                    collide = false;
-                    //                }
-                    //                else
-                    //                {
-                    //                    player.posY += 3;
-                    //                }
-                    //            }
-                    //        }
-                    //    }
-                    //}
+                     player.dirY = -3;
+                  
+                     Wpressed = true;
+                     player.isMoving = true;
+                     player.setAnimationConfiguration(0);
+ 
+ 
                     break;
                  case Keys.S:
-                    //for (int pj = ((int)player.posX + 16) / MapController.cellSize; pj < (player.posX + MapController.cellSize) / (MapController.cellSize + 1); pj++)
-                    //{
-                    //    for (int pi = ((int)player.posY + 16) / MapController.cellSize; pi < (player.posY + MapController.cellSize) / (MapController.cellSize + 1); pi++)
-                    //    {
-                    //        label1.Text = Convert.ToString(pj + " " + pi);
-                    //        if (pj < MapController.mapHeight - 1 && pj >= 1 && pi < MapController.mapWidth - 1 && pi > 0)
-                    //        {
-                    //            for (int i = 0; i < 3; i++)
-                    //            {
-                    //                if (MapController.map[pj, pi + 1] != 0)
-                    //                {
-                    //                    posx = pj;
-                    //                    posy = pi;
-                                        player.dirY = 3;
-                    player.OldposY += 2;
-                                        Spressed = true;
-                                        player.isMoving = true;
-                                        player.setAnimationConfiguration(0);
-                                       // collide = false;
-                    //                }
-                    //                else
-                    //                {
-                    //                    player.posY -= 3;
-                    //                }
-                    //            }
-                    //        }
-                    //    }
-                    //}
+               
+                   player.dirY = 3;
+                  
+                   Spressed = true;
+                   player.isMoving = true;
+                   player.setAnimationConfiguration(0);
+
 
                     break;
                 case Keys.A:
-                    //for (int pj = ((int)player.posX + 16) / MapController.cellSize; pj < (player.posX + MapController.cellSize) / (MapController.cellSize + 1); pj++)
-                    //{
-                    //    for (int pi = ((int)player.posY + 16) / MapController.cellSize; pi < (player.posY + MapController.cellSize) / (MapController.cellSize + 1); pi++)
-                    //    {
-                    //        label1.Text = Convert.ToString(pj + " " + pi);
-                    //        label2.Text = Convert.ToString(MapController.map[pj, pi]);
-                    //        if (pj < MapController.mapHeight - 1 && pj >= 1 && pi < MapController.mapWidth - 1 && pi > 0)
-                    //        {
-                    //            for (int i = 0; i < 3; i++)
-                    //            {
-                    //                if (MapController.map[pj - 1, pi] != 0)
-                    //                {
-                    //                    posx = pj;
-                    //                    posy = pi;
-                                        Apressed = true;
-                                        player.dirX = -3;
-                    player.OldposX -= 2;
-                                        player.flip = -1;
-                                        player.isMoving = true;
-                                        player.setAnimationConfiguration(0);
-                    //                    collide = false;
 
-                    //                }
-                    //                else
-                    //                {
-                    //                    player.posX += 3;
-                    //                }
-                    //            }
-                    //        }
-                    //    }
-                    //}
+                    Apressed = true;
+                    player.dirX = -3;
+                    
+                    player.flip = -1;
+                    player.isMoving = true;
+                    player.setAnimationConfiguration(0);
 
                     break;
                 case Keys.D:
 
-                    //for (int pj = ((int)player.posX + 16) / MapController.cellSize; pj < (player.posX + MapController.cellSize) / (MapController.cellSize + 1); pj++)
-                    //{
-                    //    for (int pi = ((int)player.posY + 16) / MapController.cellSize; pi < (player.posY + MapController.cellSize) / (MapController.cellSize + 1); pi++)
-                    //    {
-                    //        label1.Text = Convert.ToString(pj + " " + pi);
-                    //        label1.Text = Convert.ToString(MapController.map[pj, pi]);
-                    //        if (pj < MapController.mapHeight - 1 && pj >= 1 && pi < MapController.mapWidth - 1 && pi > 0)
-                    //        {
-                    //            for (int i = 0; i < 3; i++)
-                    //            {
-                    //                if (MapController.map[pj + 1, pi] != 0)
-                    //                {
 
-                    //                    posx = pj;
-                    //                    posy = pi;
-                                        Dpressed = true;
-                                        player.dirX = 3;
-                    player.OldposX += 2;
-                                        player.flip = 1;
-                                        player.isMoving = true;
-                                        player.setAnimationConfiguration(0);
-                                        //collide = false;
-                    //                }
-                    //                else
-                    //                {
-                    //                    player.posX -= 3;
-
-                    //                }
-                    //            }
-                    //        }
-                    //    }
-                    //}
+                    Dpressed = true;
+                    player.dirX = 3;
+                  
+                    player.flip = 1;
+                    player.isMoving = true;
+                    player.setAnimationConfiguration(0);
+  
 
                     break;
                           
                 
                 //hit
                 case Keys.E:
-                                player.hitPressed = true;
-                                break;
-
-                            case Keys.Q:
+                  player.hitPressed = true;
+                  break;
+        
+                case Keys.Q:
                     //throw out
-                                Qpressed(player, weapons);
-                                break;
-                            case Keys.F:
-                                WeaponCollide(player, weapons);
-                                break;
-                            case Keys.X:
-                                Xpressed = true;
-                                if (!Chest.isOpened)
-                                {
-                                    chestOpen(Chest);
-                                    double distance = GetDistance(player.posX, player.posY, Chest.posX, Chest.posY);
+                    Qpressed(player, weapons);
+                     break;
+                case Keys.F:
+                    WeaponCollide(player, weapons);
+                    break;
+                case Keys.X:
+                    Xpressed = true;
+                    if (!Chest.isOpened)
+                    {
+                        chestOpen(Chest);
+                        double distance = GetDistance(player.posX, player.posY, Chest.posX, Chest.posY);
+           
+                        if (distance < 20)
+                            Chest.setAnimation(1);
+                    }
 
-                                    if (distance < 20)
-                                        Chest.setAnimation(1);
-                                }
-
-                                break;
-                            case Keys.Space:
-                    
-                               // player.setAnimationConfiguration(1);
-                                break;
-                            case Keys.Escape:
-                                //sound.play_menu();
-                                this.Close();
-                                break;
-                        }
-
-
-      
+                     break;
+                 case Keys.Space:
+         
+                   
+                     break;
+                 case Keys.Escape:
+                     
+                     this.Close();
+                     break;
+             }
 
         }
-
-
-
-
 
         public void checkTimeCollide(object sender, EventArgs e)
         {
@@ -446,46 +349,48 @@ namespace Project
 
         public void EnemyUpdate(object sedner,EventArgs e)
         {
-            foreach(Enemy enemy in enemies)
+
+            if (player.HP == 0)
+                player.deadFromEnemy = true;
+            foreach (Enemy enemy in enemies)
             {
                 enemy.hitEntity(player);
             }
-
+            if(player.dead)
+            {
+                player.HP = 100;
+                player.dead = false;
+                reDrawHearts = true;
+                ///ADD CHECKPOINTS TO GAME
+                //player.posX = player.OldposX;
+                //player.posY = player.OldposY - 80;
+                
+                
+                             
+            }
+            
             //foreach (Enemy enemy in enemies)
             //{
 
             //    ////LET ENEMIES UNDERSTAND THAT THEY CANT STAY AT THE SAME POSITION!!
             //}
 
-            //foreach(Enemy enemy in enemies)
-
-
-            //for (int i = 0; i < enemies.Count; i++)
-            //{
-            //    enemies[i].IfEnemiesCollide(enemies);
-
-            //}
+            
+          
             for (int i = 0;i < enemies.Count;i++)
             {
                 enemies[i].ownMove(player);
    
             }
 
-
-            //for (int i = 0; i < enemies.Count; i++)
-            //{
-            //    if(!enemies[i].isMoving)
-            //    enemies[i].posX += enemies[i].EnemySpeedX;
-
-            //}
-
-            label1.Text = Convert.ToString(player.HP);
+            label1.Text = Convert.ToString(player.howmuchDamaged);
+            label2.Text = Convert.ToString(player.HP);
             label3.Text = Convert.ToString("player.posX:" + player.posX);
             label4.Text = Convert.ToString("player.posY:" + player.posY);
-            label5.Text = Convert.ToString("oldposX:" + player.OldposX);
-            label6.Text = Convert.ToString("oldposY:" + player.OldposY);
+            label5.Text = Convert.ToString("enemyposx:" + enemies[3].posX);
+            label6.Text = Convert.ToString("enemyposY:" + enemies[3].posY);
 
-            //label1.Text = Convert.ToString(player.HP);
+            
         }
 
         public  void SetTextForLabel(string myText)
@@ -502,55 +407,44 @@ namespace Project
                 
                     player.Move();
                 if (Wpressed)
-                    if (player.posY > ((this.Height / 2) - 200) && player.posY < MapController.cellSize * 60 - ((this.Height) / 2))
-                    {
-                        if(!collide && !hitPlayer)
-                        delta.Y += player.playerSpeed;
-
-
-                    }
-                if (Spressed)
-                    if (player.posY > ((this.Height / 2) - 200) && player.posY < MapController.cellSize * 60 - (this.Height + 50) / 2)
+                    if (player.posY > ((this.Height / 2) - 260) && player.posY < MapController.cellSize * 60 - ((this.Height) / 2))
                     {
                         if (!collide && !hitPlayer)
+                        {
+                            delta.Y += player.playerSpeed;
+                            newDeltaY -= 2;
+                        }
+                    }
+                if (Spressed)
+                    if (player.posY > ((this.Height / 2) - 260) && player.posY < MapController.cellSize * 60 - (this.Height + 50) / 2)
+                    {
+                        if (!collide && !hitPlayer)
+                        {
                             delta.Y -= player.playerSpeed;
-
+                            newDeltaY += 2;
+                        }
                     }
                 if (Apressed)
                     if (player.posX > ((this.Width / 2)) && player.posX < MapController.cellSize * 60 - this.Width / 2)
                     {
                         if (!collide && !hitPlayer)
+                        {
                             delta.X += player.playerSpeed;
-
+                            newDeltaX -= 2;
+                        }
                     }
                 if (Dpressed)
                     if (player.posX > ((this.Width / 2)) && player.posX < MapController.cellSize * 60 - this.Width / 2)
                     {
                         if (!collide && !hitPlayer)
+                        {
                             delta.X -= player.playerSpeed;
-
+                            newDeltaX += 2;
+                        }
                     }
 
             }
-            //if (player.dead)
-            //{
-            //    player.posX = player.OldposX;
-            //    player.posY = player.OldposY;
-            //    //delta.X = 0;
-            //    //delta.Y = 0;
-            //    //player.Freehands = true;
-            //    //player.id = 0;
-            //    //foreach (Weapons wp in weapons)
-            //    //{
-            //    //    wp.onFloor = true;
-            //    //}
-            //    ////timer1.Stop();
-            //    ////timer2.Stop();
-            //    ////timer3.Stop();
-            //    //init();
-
-            //    //player.death();
-            //}
+         
 
             Invalidate();
         }
@@ -561,28 +455,27 @@ namespace Project
 
             MapController.DrawMap(g);
 
-            //foreach (Enemy enemy in enemies)
+         
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].playEnemyAnimation(g);
             }
 
-            
-           
 
 
-            //Chest.drawIdleChest(g);
+
+
+          
             double distance = GetDistance(player.posX, player.posY, Chest.posX, Chest.posY);
-            //if(Chest.isOpened == false)
-            //{
-            //    Chest.PlayAnimation(g);
-            //}
-
-           //s if (distance < 20 && Xpressed && !Chest.isOpened)
-                Chest.PlayAnimation(g);
             
+            Chest.PlayAnimation(g);
+
 
             player.PlayAnimation(g);
+            if (reDrawHearts && player.HP >0)
+            {
+                hearts.drawHearts(g, player);
+            }
             hearts.drawHearts(g, player);
             for (int i = 0; i < weapons.Count; i++)
             {   
@@ -617,9 +510,7 @@ namespace Project
 
         private void exit_level1_Click(object sender, EventArgs e)
         {
-           // this.Close();
-
-            //sound.play_menu();
+         
         }
 
         private void Level1_Load(object sender, EventArgs e)

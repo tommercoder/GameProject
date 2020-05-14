@@ -67,65 +67,69 @@ namespace Project.Enemies
         }
         public void hitEntity(Entity player)
         {
-            double distance = GetDistance(player.posX, player.posY, posX, posY);
-            if (distance <=20)
+           //double distance = GetDistance(player.posX, player.posY, posX, posY);
+           // if (distance <= 30 && isMoving)
+            if(player.posX -20 == posX || player.posY - 20 == posY || player.posX +20 == posX || player.posY+20 == posY)
             {
-                if (player.posX > posX)
-                {
-                    player.howmuchDamaged++;
-                    player.posX += 3;
-                    Level1.hitPlayer = true;
-                    //Level1.delta.X-=3;
-                    if (player.HP > 0)
-                        player.HP -= 10;//- 10 hp
-                    else
-                        player.dead = true;//death
-                }
-                
-                if (player.posX < posX)
-                {
-                    player.howmuchDamaged++;//for frames hearts
+                Level1.hitPlayer = true;
+                if (player.HP > 0)
+                       player.HP -= 10;
 
-                    player.posX -= 3;
-                    Level1.hitPlayer = true;
-                    //Level1.delta.X+=3;
-                    if (player.HP > 0)
-                        player.HP -= 10;//- 10 hp
-                    else
-                        player.dead = true;//death
-                }
-                
-                if (player.posY > posY)
-                {
-                    player.howmuchDamaged++;//for frames hearts
-                    player.posY += 3;
-                    Level1.hitPlayer = true;
-                    //Level1.delta.Y+=3;
-                    if (player.HP > 0)
-                        player.HP -= 10;//- 10 hp
-                    else
-                        player.dead = true;//death
-                }
-               
-                if (player.posY < posY)
-                {
-                    player.howmuchDamaged++;//for frames hearts
-                    player.posY -= 3;
-                    Level1.hitPlayer = true;
-                    //Level1.delta.Y-=3;
-                    if (player.HP > 0)
-                        player.HP -= 10;//- 10 hp
-                    else
-                        player.dead = true;//death
-                }
-                
-               
-                
+                    // if (player.posX > posX)
+                    // {
 
-                
+                    //    // player.posX += 10;
+                    //     Level1.hitPlayer = true;
+
+                    //     if (player.HP > 0)
+                    //         player.HP -= 5;
+
+                    // }
+                    //else
+                    // {
+
+
+                    // //  player.posX -= 10;
+                    //     Level1.hitPlayer = true;
+
+                    //    if (player.HP > 0)
+                    //         player.HP -= 5;
+
+                    // }
+
+                    //if (player.posY > posY)
+                    // {
+
+                    //    // player.posY += 10;
+                    //     Level1.hitPlayer = true;
+
+                    //    if (player.HP > 0)
+                    //         player.HP -= 5;
+
+                    // }
+                    // else
+                    // {
+
+                    //    // player.posY -= 10;
+                    //     Level1.hitPlayer = true;
+
+                    //     if (player.HP > 0)
+                    //         player.HP -= 5;
+
+                    // }
+                 player.howmuchDamaged++;//for frames hearts
+               if (player.HP == 0)
+                {
+                    player.dead = true;
+                    //MessageBox.Show("SUKA");
+                }
             }
             else
+            {
                 Level1.hitPlayer = false;
+               
+            }
+
         }
         public void IfEnemiesCollide(List<Enemy> enemies)
         {
@@ -209,19 +213,17 @@ namespace Project.Enemies
                     flip = -1;
             }
 
-            if (distance >= 100)
+            if (distance >= 40)
             {
                 flip = 1;
             }
 
 
 
-
-
-            if (distance <= 100)
+            if (distance <= 40)
             {
 
-                if (player.posX  +14 > posX )
+                if (player.posX + 14 > posX)
                 {
                     posX += EnemySpeedX;
                 }

@@ -27,6 +27,7 @@ namespace Project.Entities
         public bool hitPressed;
         public bool ShiftPressed;
         public bool dead;
+        public bool deadFromEnemy;
         
 
         public int flip;
@@ -69,14 +70,21 @@ namespace Project.Entities
             playerSpeed = 3;
             falling = false;
             dead = false;
+            deadFromEnemy = false;
         }
 
         public void Move()
         {
-            if(Level1.Apressed || Level1.Dpressed)
-            posX += dirX;
-            if(Level1.Wpressed || Level1.Spressed)
-            posY += dirY;
+            if (Level1.Apressed || Level1.Dpressed)
+            {
+                posX += dirX;
+                OldposX += dirX;
+            }
+            if (Level1.Wpressed || Level1.Spressed)
+            {
+                OldposY += dirY;
+                posY += dirY;
+            }
         }
 
         public void PlayAnimation(Graphics g)

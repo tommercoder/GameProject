@@ -36,7 +36,7 @@ namespace Project
                 currentFrame++;
             else
             {
-                if (entity.howmuchDamaged > 0)
+                if (entity.howmuchDamaged > 0 && !entity.deadFromEnemy)
                 {
                     currentAnimation = entity.howmuchDamaged;
                 }
@@ -44,11 +44,8 @@ namespace Project
                     currentAnimation = 0;
 
                 currentFrame = 5;
-                
-
             }
-            
-            g.DrawImage(heartsImage,new Rectangle(new Point(posX ,posY ), new Size(370, 40)), 0, 16*currentAnimation, 200, 17, GraphicsUnit.Pixel);
+            g.DrawImage(heartsImage,new Rectangle(new Point(posX ,posY ), new Size(350, 30)), 0, 16*currentAnimation, 200, 17, GraphicsUnit.Pixel);
             
         }
         public void setAnimation(int currentAnimation)
