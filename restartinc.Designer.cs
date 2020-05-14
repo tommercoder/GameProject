@@ -71,6 +71,7 @@
             this.Controls.Add(this.button1);
             this.Name = "restartinc";
             this.Text = "restartinc";
+            this.Load += new System.EventHandler(this.restartinc_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

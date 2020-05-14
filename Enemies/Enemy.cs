@@ -72,34 +72,57 @@ namespace Project.Enemies
             {
                 if (player.posX > posX)
                 {
+                    player.howmuchDamaged++;
                     player.posX += 3;
                     Level1.hitPlayer = true;
                     //Level1.delta.X-=3;
+                    if (player.HP > 0)
+                        player.HP -= 10;//- 10 hp
+                    else
+                        player.dead = true;//death
                 }
                 
                 if (player.posX < posX)
                 {
+                    player.howmuchDamaged++;//for frames hearts
+
                     player.posX -= 3;
                     Level1.hitPlayer = true;
                     //Level1.delta.X+=3;
+                    if (player.HP > 0)
+                        player.HP -= 10;//- 10 hp
+                    else
+                        player.dead = true;//death
                 }
                 
                 if (player.posY > posY)
                 {
+                    player.howmuchDamaged++;//for frames hearts
                     player.posY += 3;
                     Level1.hitPlayer = true;
                     //Level1.delta.Y+=3;
+                    if (player.HP > 0)
+                        player.HP -= 10;//- 10 hp
+                    else
+                        player.dead = true;//death
                 }
                
                 if (player.posY < posY)
                 {
+                    player.howmuchDamaged++;//for frames hearts
                     player.posY -= 3;
                     Level1.hitPlayer = true;
                     //Level1.delta.Y-=3;
+                    if (player.HP > 0)
+                        player.HP -= 10;//- 10 hp
+                    else
+                        player.dead = true;//death
                 }
                 
-                player.howmuchDamaged++;
-                player.HP -= 10;
+               
+                
+
+                
             }
             else
                 Level1.hitPlayer = false;
