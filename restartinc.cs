@@ -20,21 +20,19 @@ namespace Project
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             lvl1.init();
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close();   
+            lvl1.Close();
             
         }
 
         private void restartinc_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

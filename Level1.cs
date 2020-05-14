@@ -60,9 +60,11 @@ namespace Project
             
             InitializeComponent();
 
-            timer1.Interval = 20;
-            timer2.Interval = 20;
+            timer1.Interval = 30;
+            timer2.Interval = 30;
            timer3.Interval = 10;
+      
+         
             
             timer1.Tick += new EventHandler(Update);
             timer2.Tick += new EventHandler(EnemyUpdate);
@@ -70,19 +72,15 @@ namespace Project
             KeyDown += new KeyEventHandler(OnPress);
             KeyUp += new KeyEventHandler(OnKeyUp);
             delta = new Point(0, 0);//camera
+
             init();
 
-            
+           
         }
        
         public void OnKeyUp(object sender,KeyEventArgs e)
         {
-            if (player.HP == 0)
-            {
-                restartinc r = new restartinc();
-                r.ShowDialog();
-                
-            }
+           
             
             switch (e.KeyCode)
             {
@@ -226,8 +224,13 @@ namespace Project
             timer1.Start();
             timer2.Start();
             timer3.Start();
+
         }
 
+        public void Death(object sender,EventArgs e)
+        {
+           
+        }
 
         public void OnPress(object sender, KeyEventArgs e)
         {
@@ -251,6 +254,7 @@ namespace Project
                     //                    posx = pj;
                     //                    posy = pi;
                                         player.dirY = -3;
+                                     player.OldposY -= 2;
                                         Wpressed = true;
                                         player.isMoving = true;
                                         player.setAnimationConfiguration(0);
@@ -281,6 +285,7 @@ namespace Project
                     //                    posx = pj;
                     //                    posy = pi;
                                         player.dirY = 3;
+                    player.OldposY += 2;
                                         Spressed = true;
                                         player.isMoving = true;
                                         player.setAnimationConfiguration(0);
@@ -313,6 +318,7 @@ namespace Project
                     //                    posy = pi;
                                         Apressed = true;
                                         player.dirX = -3;
+                    player.OldposX -= 2;
                                         player.flip = -1;
                                         player.isMoving = true;
                                         player.setAnimationConfiguration(0);
@@ -348,6 +354,7 @@ namespace Project
                     //                    posy = pi;
                                         Dpressed = true;
                                         player.dirX = 3;
+                    player.OldposX += 2;
                                         player.flip = 1;
                                         player.isMoving = true;
                                         player.setAnimationConfiguration(0);
@@ -472,13 +479,13 @@ namespace Project
 
             //}
 
-            label1.Text = Convert.ToString(collide);
+            label1.Text = Convert.ToString(player.HP);
             label3.Text = Convert.ToString("player.posX:" + player.posX);
             label4.Text = Convert.ToString("player.posY:" + player.posY);
             label5.Text = Convert.ToString("oldposX:" + player.OldposX);
             label6.Text = Convert.ToString("oldposY:" + player.OldposY);
 
-            label1.Text = Convert.ToString(hitPlayer);
+            //label1.Text = Convert.ToString(player.HP);
         }
 
         public  void SetTextForLabel(string myText)
@@ -488,42 +495,8 @@ namespace Project
         
         public void Update(object sender, EventArgs e)
         {
-            
-
-            //if (player.posX > player.OldposX + 100)
-            //    player.OldposX = player.OldposX + 100;
            
-
-            //if (player.posY > player.OldposY + 100)
-            //    player.OldposY = player.OldposY + 100;
            
-
-            //if (PhysicsController.Collide(player))
-            //{
-
-            //    if (player.dirY < 0)
-            //        player.posY += 3;
-
-            //    if (player.dirY > 0)
-            //        player.posY -= 3;
-
-            //    if (player.dirX < 0)
-            //        player.posX += 3;
-            //    else
-            //        label1.Text = "soka";
-
-            //    if (player.dirX > 0)
-            //        player.posX -= 3;
-            //    collide = true;
-            //}
-            //else
-            //{
-            //    collide = false;
-            //    //player.dirX = 0;
-            //   // player.dirY = 0;
-            //}
-
-
             if (player.isMoving)
             {
                 
@@ -559,8 +532,26 @@ namespace Project
                     }
 
             }
+            //if (player.dead)
+            //{
+            //    player.posX = player.OldposX;
+            //    player.posY = player.OldposY;
+            //    //delta.X = 0;
+            //    //delta.Y = 0;
+            //    //player.Freehands = true;
+            //    //player.id = 0;
+            //    //foreach (Weapons wp in weapons)
+            //    //{
+            //    //    wp.onFloor = true;
+            //    //}
+            //    ////timer1.Stop();
+            //    ////timer2.Stop();
+            //    ////timer3.Stop();
+            //    //init();
 
-           
+            //    //player.death();
+            //}
+
             Invalidate();
         }
 
@@ -645,6 +636,11 @@ namespace Project
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Level1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+          
         }
     }
 }

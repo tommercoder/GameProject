@@ -25,13 +25,7 @@ namespace Project.Controller
                         
                         Level1.collide = true;
                         entity.dead = true;
-                        // if(Level1.Apressed || Level1.Dpressed)
-                        // entity.posX = entity.OldposX;
-                        //if (Level1.Wpressed || Level1.Spressed)
-                        //entity.posY = entity.OldposY;
-
-                        //Level1.delta.X = 0;
-                        // Level1.delta.Y = 0;
+                       
                         
                     }
                     else

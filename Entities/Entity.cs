@@ -94,6 +94,14 @@ namespace Project.Entities
 
         }
 
+        public void death()
+        {
+            if(HP == 0)
+            {
+                restartinc r = new restartinc();
+                r.ShowDialog();
+            }
+        }
         
 
         public void setAnimationConfiguration(int currentAnimation)
