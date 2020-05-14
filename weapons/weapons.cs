@@ -40,16 +40,16 @@ namespace Project.weapons
                 {
                     if (player.flip == 1)
                     {
-                        g.TranslateTransform(player.posX - 6 /*/ 2.0f*/, player.posY + 44 / 2.0f);
+                        g.TranslateTransform(player.posX - 6 + Level1.delta.X+14/*/ 2.0f*/, player.posY + 44 / 2.0f + Level1.delta.Y);
                         g.RotateTransform(90);
-                        g.TranslateTransform(-(player.posX - 6), -(player.posY + 44 / 2.0F));
+                        g.TranslateTransform(-(player.posX - 6 + Level1.delta.X+14), -(player.posY + 44 / 2.0F + Level1.delta.Y)) ;
 
                     }
                     else if (player.flip == -1)
                     {
-                        g.TranslateTransform(player.posX + 6 /*/ 2.0f*/, player.posY + 66 / 2.0f);
+                        g.TranslateTransform(player.posX + 6 + Level1.delta.X+14/*/ 2.0f*/, player.posY + 66 / 2.0f + Level1.delta.Y);
                         g.RotateTransform(-90);
-                        g.TranslateTransform(-(player.posX - 6), -(player.posY + 44 / 2.0F));
+                        g.TranslateTransform(-(player.posX - 6 + Level1.delta.X+14), -(player.posY + 44 / 2.0F + Level1.delta.Y));
                     }
                 }
             }
@@ -58,17 +58,17 @@ namespace Project.weapons
         {
             if (id == 1 && !onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 18 / 2 ) + (int)player.posX - (int)posX + Level1.delta.X - Level1.delta.X, (int)posY - 1 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y - Level1.delta.Y), new Size(player.flip * 6, 30)), 0, 0, 6, 30, GraphicsUnit.Pixel);//catana
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 18 / 2 +14 ) + (int)player.posX - (int)posX + Level1.delta.X , (int)posY - 1 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y), new Size(player.flip * 6, 30)), 0, 0, 6, 30, GraphicsUnit.Pixel);//catana
             }
 
             if (id == 2 && !onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2) + (int)player.posX - (int)posX + Level1.delta.X - Level1.delta.X, (int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y - Level1.delta.Y), new Size(player.flip * 12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2 + 14) + (int)player.posX - (int)posX + Level1.delta.X , (int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y ), new Size(player.flip * 12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
             }
 
             if (id == 3 && !onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2) + (int)player.posX - (int)posX + Level1.delta.X - Level1.delta.X, (int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y - Level1.delta.Y), new Size(player.flip * 12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2 + 14) + (int)player.posX - (int)posX + Level1.delta.X , (int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y ), new Size(player.flip * 12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
             }
         }
         public void drawWeapon(Graphics g, Entity player)

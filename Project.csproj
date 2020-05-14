@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="chests and staff\staff.cs" />
+    <Compile Include="Controller\collideobjects.cs" />
     <Compile Include="Controller\MapController.cs" />
     <Compile Include="Controller\PhysicsController.cs" />
     <Compile Include="Enemies\Enemy.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="FormMenu.Designer.cs">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="hearts.cs" />
     <Compile Include="Level1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +83,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="restartinc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="restartinc.Designer.cs">
+      <DependentUpon>restartinc.cs</DependentUpon>
     </Compile>
     <Compile Include="sound.cs" />
     <Compile Include="weapons\Weapons.cs" />
@@ -96,6 +105,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="restartinc.resx">
+      <DependentUpon>restartinc.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -270,6 +282,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\weapon3_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\player1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hearts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hearts2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
