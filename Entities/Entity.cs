@@ -11,7 +11,7 @@ namespace Project.Entities
         public float posY;
         public float OldposX;
         public float OldposY;
-        public int howmuchDamaged;
+        public float howmuchDamaged;
         public int HP;
         public float velocityX = 0.5f;//speed
         public float velocityY = 0.5f;//speed
@@ -27,7 +27,7 @@ namespace Project.Entities
         public bool hitPressed;
         public bool ShiftPressed;
         public bool dead;
-        public bool deadFromEnemy;
+        public bool collidedead;
         
 
         public int flip;
@@ -51,7 +51,8 @@ namespace Project.Entities
    
         public Entity(float posX,float posY,int IdleFrames,int runFrames,int attackFrames,int deathFrames,int jumpFrames,Image spriteSheet)
         {
-            HP = 100;
+            
+            HP = 200;
             this.OldposX = posX;
             this.OldposY = posY;
             this.posX = posX;
@@ -70,7 +71,7 @@ namespace Project.Entities
             playerSpeed = 3;
             falling = false;
             dead = false;
-            deadFromEnemy = false;
+            collidedead = false;
         }
 
         public void Move()
@@ -78,11 +79,11 @@ namespace Project.Entities
             if (Level1.Apressed || Level1.Dpressed)
             {
                 posX += dirX;
-                OldposX += dirX;
+                //OldposX += dirX;
             }
             if (Level1.Wpressed || Level1.Spressed)
             {
-                OldposY += dirY;
+                //OldposY += dirY;
                 posY += dirY;
             }
         }

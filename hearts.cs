@@ -15,7 +15,7 @@ namespace Project
         public int posY;
         public int currentLimit;
         public int currentFrame;
-        public int currentAnimation;
+        public float currentAnimation;
         public int currentState;
         public int fullHearts;
         public hearts(int posX,int posY,int fullHearts,int currentState,Image heartsImage)
@@ -32,16 +32,26 @@ namespace Project
 
         public void drawHearts(Graphics g,Entity entity)
         {
-            if (currentFrame < currentLimit - 1)
+            if(currentFrame < currentLimit - 1)
                 currentFrame++;
             else
             {
-                if (entity.howmuchDamaged > 0 && !entity.deadFromEnemy)
+
+                if (entity.howmuchDamaged > 0 && !entity.dead)
                 {
+                    if(Math.Abs(entity.howmuchDamaged%1) < double.Epsilon)
                     currentAnimation = entity.howmuchDamaged;
                 }
-                else
+                else if (entity.HP < 200 && entity.collidedead)
+                {
+                
                     currentAnimation = 0;
+                
+                }
+                else if(!entity.dead)
+                {
+                    currentAnimation = 0;
+                }
 
                 currentFrame = 5;
             }

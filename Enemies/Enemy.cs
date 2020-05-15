@@ -14,7 +14,7 @@ namespace Project.Enemies
 {
     public class Enemy
     {
-
+     
 
         public float posX;
         public float posY;
@@ -67,14 +67,28 @@ namespace Project.Enemies
         }
         public void hitEntity(Entity player)
         {
-           //double distance = GetDistance(player.posX, player.posY, posX, posY);
-           // if (distance <= 30 && isMoving)
-            if(player.posX -20 == posX || player.posY - 20 == posY || player.posX +20 == posX || player.posY+20 == posY)
+           double distance = GetDistance(player.posX, player.posY, posX, posY);
+            if (distance <= 15 )
+            //if(player.posX - 20 == posX || player.posY - 20 == posY || player.posX +20 == posX || player.posY+20 == posY)
             {
+
                 Level1.hitPlayer = true;
                 if (player.HP > 0)
-                       player.HP -= 10;
+                {
+                   
+                        player.howmuchDamaged+=0.5f;//for frames hearts
+                    if(Math.Abs(player.howmuchDamaged%1) < double.Epsilon)
+                        player.HP -= 20;
+                    if (player.HP == 0)
+                    {
 
+                        player.dead = true;
+                        player.howmuchDamaged = 0;
+
+                    }
+
+                }
+             
                     // if (player.posX > posX)
                     // {
 
@@ -117,19 +131,24 @@ namespace Project.Enemies
                     //         player.HP -= 5;
 
                     // }
-                 player.howmuchDamaged++;//for frames hearts
-               if (player.HP == 0)
-                {
-                    player.dead = true;
-                    //MessageBox.Show("SUKA");
-                }
+                    
+                 
+               
             }
             else
             {
                 Level1.hitPlayer = false;
-               
+              
             }
-
+            if(player.dead)
+            {
+                player.posX = player.OldposX;
+                player.posY = player.OldposY;
+                Level1.delta.X = 0;
+                Level1.delta.Y = 0;
+                player.HP = 200;
+                player.dead = false;
+            }
         }
         public void IfEnemiesCollide(List<Enemy> enemies)
         {
@@ -205,7 +224,7 @@ namespace Project.Enemies
 
             double distance = GetDistance((double)player.posX, (double)player.posY, (double)posX, (double)posY);
 
-            if ((radius <= 20 || radius2 <= 20))
+            if ((radius <= 30 || radius2 <= 30))
             {
                 if (player.flip == 1 && player.posX > posX)
                     flip = 1;
@@ -213,26 +232,26 @@ namespace Project.Enemies
                     flip = -1;
             }
 
-            if (distance >= 40)
+            if (distance >= 30)
             {
                 flip = 1;
             }
 
 
 
-            if (distance <= 40)
+            if (distance <= 30)
             {
 
-                if (player.posX + 14 > posX)
+                if (player.posX  > posX)
                 {
-                    posX += EnemySpeedX;
+                    posX  += EnemySpeedX;
                 }
                 else
                 {
-                    posX -= EnemySpeedX;
+                    posX  -= EnemySpeedX;
                 }
 
-                if (player.posY + 14 > posY)
+                if (player.posY  > posY)
                 {
 
                     posY += EnemySpeedY;
@@ -263,25 +282,33 @@ namespace Project.Enemies
                 }
 
             }
-
-
+            
         }
 
         public void playEnemyAnimation(Graphics g)
         {
-            if (currentFrame < currentLimit - 1)
-                currentFrame++;
-            else
-                currentFrame = 0;
-
+            if (id == 1) 
+            {
+                if (currentFrame < currentLimit - 1 )
+                    currentFrame++;
+                else
+                    currentFrame = 0;
+            }
+            if (id == 2) 
+            { 
+                if (currentFrame < currentLimit -1)
+                    currentFrame++;
+                else
+                    currentFrame = 0; 
+            }
             if (id == 1)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid1 / 2 + Level1.delta.X, (int)posY + Level1.delta.Y), new Size(flip * sizeid1, sizeid1)), 16 * currentFrame, 16 * currentAnimation, sizeid1, sizeid1, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid1 / 2 + Level1.delta.X+14, (int)posY + Level1.delta.Y + 5), new Size(flip * sizeid1, sizeid1)), 16 * currentFrame, 16 * currentAnimation, sizeid1, sizeid1, GraphicsUnit.Pixel);
                 
             }
             if (id == 2)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2 + Level1.delta.X, (int)posY + Level1.delta.Y), new Size(flip * sizeid2, sizeid2)), 32 * currentFrame, 34 * currentAnimation, sizeid2, sizeid2, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2 + Level1.delta.X+14, (int)posY + Level1.delta.Y + 5), new Size(flip * sizeid2, sizeid2)), 32 * currentFrame, 34 * currentAnimation, sizeid2, sizeid2, GraphicsUnit.Pixel);
             }
         }
 

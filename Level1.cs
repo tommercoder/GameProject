@@ -66,12 +66,15 @@ namespace Project
             timer1.Interval = 30;
             timer2.Interval = 30;
            timer3.Interval = 10;
-      
+            timer4.Interval = 20;
          
             
             timer1.Tick += new EventHandler(Update);
             timer2.Tick += new EventHandler(EnemyUpdate);
             timer3.Tick += new EventHandler(checkTimeCollide);
+            timer4.Tick += new EventHandler(fighing);
+
+
             KeyDown += new KeyEventHandler(OnPress);
             KeyUp += new KeyEventHandler(OnKeyUp);
             delta = new Point(0, 0);//camera
@@ -147,12 +150,12 @@ namespace Project
             {
                 staff.isOpened = true;
                 
-                label1.Text = "chest opened";
+                //label1.Text = "chest opened";
 
 
             }
-            else
-                label1.Text = " >20";
+           // else
+              //  label1.Text = " >20";
             
         }
         public void Qpressed(Entity player,List<Weapons> weapons)
@@ -198,7 +201,7 @@ namespace Project
                 new Enemy(200, 520, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                 new Enemy(134, 540,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                 new Enemy(45, 500,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-                new Enemy(45, 380, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                new Enemy(32, 380, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                 new Enemy(350, 350, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
                 new Enemy(300, 350,2, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
 
@@ -226,6 +229,7 @@ namespace Project
             timer1.Start();
             timer2.Start();
             timer3.Start();
+            timer4.Start();
 
         }
 
@@ -318,13 +322,49 @@ namespace Project
              }
 
         }
+        
+        public void fighing(object sender,EventArgs e)
+        {
 
+            //for (int i = 0; i < enemies.Count; i++)
+            //{
+            //    enemies[i].hitEntity(player);
+            //    // label2.Text = Convert.ToString(player.HP); ////UDAR PO PLAYERU
+
+            //}
+
+            foreach (Weapons wp in weapons)
+            {
+                wp.hitEnemy(enemies, weapons, player);
+            }
+            foreach (Weapons wp in weapons)
+            {
+                wp.weaponMove(weapons, player);
+            }
+        }
         public void checkTimeCollide(object sender, EventArgs e)
         {
-            PhysicsController.Collide(player);
-           // if (!player.isMoving && PhysicsController.timer == 3)
-           //     player.isMoving = true;
             
+           //PhysicsController.Collide(player);////COLLIDE
+           
+
+            if(player.collidedead) 
+            {
+                player.posX = player.OldposX;
+                player.posY = player.OldposY;
+                Level1.delta.X = 0;
+                Level1.delta.Y = 0;
+                player.HP = 200;
+                player.dead = false;
+
+                hearts.currentAnimation = 0;
+                reDrawHearts = true;
+            }
+               
+
+            
+
+
             //////////////////////////////////////////////////////////////////////
             //foreach (collideobjects col in MapController.collideList)
             //{
@@ -350,23 +390,13 @@ namespace Project
         public void EnemyUpdate(object sedner,EventArgs e)
         {
 
-            if (player.HP == 0)
-                player.deadFromEnemy = true;
-            foreach (Enemy enemy in enemies)
+            
+            for(int i = 0;i < enemies.Count;i++)
             {
-                enemy.hitEntity(player);
-            }
-            if(player.dead)
-            {
-                player.HP = 100;
-                player.dead = false;
-                reDrawHearts = true;
-                ///ADD CHECKPOINTS TO GAME
-                //player.posX = player.OldposX;
-                //player.posY = player.OldposY - 80;
-                
-                
-                             
+                if (enemies[i].posX < enemies[i].posX + 10)
+                    enemies[i].posX++;
+          
+
             }
             
             //foreach (Enemy enemy in enemies)
@@ -382,22 +412,22 @@ namespace Project
                 enemies[i].ownMove(player);
    
             }
-
-            label1.Text = Convert.ToString(player.howmuchDamaged);
-            label2.Text = Convert.ToString(player.HP);
-            label3.Text = Convert.ToString("player.posX:" + player.posX);
-            label4.Text = Convert.ToString("player.posY:" + player.posY);
-            label5.Text = Convert.ToString("enemyposx:" + enemies[3].posX);
-            label6.Text = Convert.ToString("enemyposY:" + enemies[3].posY);
+            int bebe = (weapons[0].posXforHit + 32 + weapons[0].posYforHit + 32);
+            //label1.Text = Convert.ToString(bebe);
+            label2.Text = Convert.ToString(player.posX + " " + player.posY);
+            label3.Text = Convert.ToString("posX:" + weapons[0].posXforHit);
+            label4.Text = Convert.ToString("posY:" + weapons[0].posYforHit);
+            label5.Text = Convert.ToString("posX:" + enemies[3].posX);
+            label6.Text = Convert.ToString("posY:" + enemies[3].posY);
+            //label7.Text = Convert.ToString(GetDistance(player.posX, player.posY, enemies[3].posX, enemies[3].posY));
 
             
         }
 
-        public  void SetTextForLabel(string myText)
+        public void SetTextForLabel(string myText)
         {
             this.label1.Text = myText;
         }
-        
         public void Update(object sender, EventArgs e)
         {
            
@@ -461,22 +491,20 @@ namespace Project
                 enemies[i].playEnemyAnimation(g);
             }
 
-
-
-
-
-          
             double distance = GetDistance(player.posX, player.posY, Chest.posX, Chest.posY);
             
             Chest.PlayAnimation(g);
 
 
             player.PlayAnimation(g);
-            if (reDrawHearts && player.HP >0)
-            {
-                hearts.drawHearts(g, player);
-            }
+           
             hearts.drawHearts(g, player);
+            
+            //if (reDrawHearts)
+            //{
+            //    hearts.drawHearts(g, player);
+            //}
+
             for (int i = 0; i < weapons.Count; i++)
             {   
                     weapons[i].drawWeapon(g, player);
@@ -532,6 +560,11 @@ namespace Project
         private void Level1_FormClosing(object sender, FormClosingEventArgs e)
         {
           
+        }
+
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }
