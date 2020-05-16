@@ -15,6 +15,7 @@ namespace Project
     public partial class FormMenu : Form
     {
         public bool isCheckedMusicButton = false;
+        public Level1 level = new Level1();
         public FormMenu()
         {
             
@@ -23,7 +24,7 @@ namespace Project
             InitializeComponent();
             //start_level1();///for level1 
             //sound.play_menu();
-
+            
             button_start.MouseEnter += (s, e) => {
                 button_start.ForeColor = Color.Coral;//change color to coral
             };
@@ -40,6 +41,7 @@ namespace Project
             if (keyData == Keys.Escape)
             {
                 this.Close();
+                sound.dont_play_menu();
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
@@ -52,6 +54,7 @@ namespace Project
                 sound.play_menu();
             }
 
+           
             // button_start.FlatAppearance.BorderSize = 0;
             //    button_start.FlatStyle = FlatStyle.Flat;
         }
@@ -78,7 +81,8 @@ namespace Project
             //SoundPlayer player = new SoundPlayer(Properties.Resources.sound_button_exit);
 
             //player.PlaySync();
-
+            sound.dont_play_menu();
+            //this.Hide();
             this.Close();
         }
         private void start_selectionForm()
@@ -86,19 +90,24 @@ namespace Project
             FormLevelSelect levelSelect = new FormLevelSelect();
             levelSelect.ShowDialog();
         }
-        //private void start_level1()
-        //{
-        //    Level1 level1 = new Level1();
-        //    level1.ShowDialog();
-        //}
+        
         private void start_level1()
         {
-            Level1 level = new Level1();
+            this.Hide();
             level.ShowDialog();
+            sound.dont_play_menu();
+            this.Close();
+           
+           
+           
+           
+
+           
         }
         private void button_start_Click(object sender, EventArgs e)
         {
             start_level1();
+       
             // sound.play_button_exit();
             //start_selectionForm();
 
@@ -147,6 +156,11 @@ namespace Project
         private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

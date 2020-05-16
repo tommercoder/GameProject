@@ -193,6 +193,16 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap EnlightenedWarmheartedAlligatorsnappingturtle_max_1mb {
+            get {
+                object obj = ResourceManager.GetObject("EnlightenedWarmheartedAlligatorsnappingturtle_max_1mb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hearts {
             get {
                 object obj = ResourceManager.GetObject("hearts", resourceCulture);

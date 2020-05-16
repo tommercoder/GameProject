@@ -21,8 +21,11 @@ using System.Windows;
 
 namespace Project
 {
+   
     public partial class Level1 : Form
     {
+        
+       
         public static Point delta;
         
         public Image dwarfSheet;//for sprites 
@@ -53,7 +56,8 @@ namespace Project
         public static bool collide= false;
         public static bool hitPlayer = false;
         public static bool reDrawHearts = false;
-
+        public static bool escapePressed = false;
+        public string nicknameRemember = " ";
         public int newDeltaX;
         public int newDeltaY;
 
@@ -230,6 +234,8 @@ namespace Project
             timer2.Start();
             timer3.Start();
             timer4.Start();
+            
+            
 
         }
 
@@ -316,9 +322,14 @@ namespace Project
                    
                      break;
                  case Keys.Escape:
-                     
-                     this.Close();
-                     break;
+
+                    this.Hide();
+                    FormMenu fm = new FormMenu();
+                    EnterNickName en = new EnterNickName();
+                    fm.label1.Text = nicknameRemember;
+                    fm.ShowDialog();
+                    escapePressed = true;
+                    break;
              }
 
         }
@@ -393,8 +404,8 @@ namespace Project
             
             for(int i = 0;i < enemies.Count;i++)
             {
-                if (enemies[i].posX < enemies[i].posX + 10)
-                    enemies[i].posX++;
+                //if (enemies[i].posX < enemies[i].posX + 10)
+                   //enemies[i].posX++;
           
 
             }
@@ -412,8 +423,8 @@ namespace Project
                 enemies[i].ownMove(player);
    
             }
-            int bebe = (weapons[0].posXforHit + 32 + weapons[0].posYforHit + 32);
-            //label1.Text = Convert.ToString(bebe);
+           
+            label1.Text = nicknameRemember;
             label2.Text = Convert.ToString(player.posX + " " + player.posY);
             label3.Text = Convert.ToString("posX:" + weapons[0].posXforHit);
             label4.Text = Convert.ToString("posY:" + weapons[0].posYforHit);
@@ -538,7 +549,7 @@ namespace Project
 
         private void exit_level1_Click(object sender, EventArgs e)
         {
-         
+            
         }
 
         private void Level1_Load(object sender, EventArgs e)
@@ -559,12 +570,23 @@ namespace Project
 
         private void Level1_FormClosing(object sender, FormClosingEventArgs e)
         {
-          
+            
         }
 
         private void timer4_Tick(object sender, EventArgs e)
         {
 
+        }
+
+        private void Level1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (escapePressed || !escapePressed)
+            {
+                this.Hide();
+                FormMenu fm = new FormMenu();
+                fm.ShowDialog();
+                this.Close();
+            }
         }
     }
 }

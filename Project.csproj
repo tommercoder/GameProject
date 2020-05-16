@@ -56,6 +56,12 @@
     <Compile Include="Controller\MapController.cs" />
     <Compile Include="Controller\PhysicsController.cs" />
     <Compile Include="Enemies\Enemy.cs" />
+    <Compile Include="EnterNickName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnterNickName.Designer.cs">
+      <DependentUpon>EnterNickName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="FormLevelSelect.cs">
       <SubType>Form</SubType>
@@ -92,6 +98,9 @@
     </Compile>
     <Compile Include="sound.cs" />
     <Compile Include="weapons\Weapons.cs" />
+    <EmbeddedResource Include="EnterNickName.resx">
+      <DependentUpon>EnterNickName.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLevelSelect.resx">
       <DependentUpon>FormLevelSelect.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,6 +309,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\dark.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EnlightenedWarmheartedAlligatorsnappingturtle-max-1mb.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
