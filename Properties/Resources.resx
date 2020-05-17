@@ -214,9 +214,6 @@
   <data name="hearts2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hearts2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dark.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="flask_big_blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flask_big_blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -234,5 +231,8 @@
   </data>
   <data name="playerred" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\playerred.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dark.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

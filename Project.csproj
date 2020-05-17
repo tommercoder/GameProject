@@ -151,9 +151,6 @@
     <None Include="Resources\sound_1.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\sound_menu.wav" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\sound_teleport.wav" />
   </ItemGroup>
   <ItemGroup>
@@ -354,6 +351,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\playerred.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sound_menu.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -25,13 +25,13 @@ namespace Project
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        /*private void button2_Click(object sender, EventArgs e)
         {
             this.Close();   
             lvl1.Close();
             
         }
-
+        */
         private void restartinc_Load(object sender, EventArgs e)
         {
 
