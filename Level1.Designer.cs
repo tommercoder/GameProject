@@ -140,7 +140,7 @@
             this.MaximumSize = new System.Drawing.Size(750, 750);
             this.Name = "Level1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Level1";
+            this.Text = "Shadow Knight";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Level1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Level1_FormClosed);
             this.Load += new System.EventHandler(this.Level1_Load);
@@ -160,7 +160,7 @@
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.Timer timer4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label1;
     }
 }

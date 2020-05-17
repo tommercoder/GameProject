@@ -313,5 +313,47 @@
   <ItemGroup>
     <None Include="Resources\EnlightenedWarmheartedAlligatorsnappingturtle-max-1mb.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ice_zombie_run_anim_f3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ice_zombie_idle_anim_f0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ice_zombie_idle_anim_f1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ice_zombie_idle_anim_f2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ice_zombie_idle_anim_f3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ice_zombie_run_anim_f0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ice_zombie_run_anim_f1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ice_zombie_run_anim_f2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weapon_axe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weapon_big_hammer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flask_big_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flask_big_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flask_big_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playerred.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

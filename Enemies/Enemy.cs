@@ -15,7 +15,7 @@ namespace Project.Enemies
     public class Enemy
     {
      
-
+        //Image[] image = 
         public float posX;
         public float posY;
 
@@ -42,10 +42,11 @@ namespace Project.Enemies
         public int EnemyRunFrames;
         public int currentAnimation;
         public int id;
-    
+        public int HP;
         public Enemy() { }
         public Enemy(int posx, int posy, int id, int EnemyIdleFrames, int EnemyRunFrames, Image mobSheet)
         {
+            
             this.id = id;
             oldPosX = posx;
             oldPosY = posy;
@@ -59,6 +60,16 @@ namespace Project.Enemies
             currentFrame = 0;
             currentLimit = EnemyIdleFrames;
             flip = 1;
+            if (id == 1)
+                HP = 20;
+            if (id == 2)
+                HP = 110;
+            if (id == 3)//blue
+                HP = 30;
+            if (id == 4)//red demon
+                HP = 40;
+            if (id == 5)//white
+                HP = 20;
 
         }
         public static double GetDistance(double x1, double y1, double x2, double y2)
@@ -75,64 +86,24 @@ namespace Project.Enemies
                 Level1.hitPlayer = true;
                 if (player.HP > 0)
                 {
-                   
-                        player.howmuchDamaged+=0.5f;//for frames hearts
-                    if(Math.Abs(player.howmuchDamaged%1) < double.Epsilon)
-                        player.HP -= 20;
+                   player.howmuchDamaged++;//for frames hearts
+                   //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
+                       player.HP -= 20;
+                    player.setAnimationConfiguration(1);
+                    if (player.howmuchDamaged % 5 == 0)
+                        player.Ih++;
+               
+
                     if (player.HP == 0)
                     {
 
                         player.dead = true;
                         player.howmuchDamaged = 0;
+                        player.Ih = 0;
 
                     }
 
                 }
-             
-                    // if (player.posX > posX)
-                    // {
-
-                    //    // player.posX += 10;
-                    //     Level1.hitPlayer = true;
-
-                    //     if (player.HP > 0)
-                    //         player.HP -= 5;
-
-                    // }
-                    //else
-                    // {
-
-
-                    // //  player.posX -= 10;
-                    //     Level1.hitPlayer = true;
-
-                    //    if (player.HP > 0)
-                    //         player.HP -= 5;
-
-                    // }
-
-                    //if (player.posY > posY)
-                    // {
-
-                    //    // player.posY += 10;
-                    //     Level1.hitPlayer = true;
-
-                    //    if (player.HP > 0)
-                    //         player.HP -= 5;
-
-                    // }
-                    // else
-                    // {
-
-                    //    // player.posY -= 10;
-                    //     Level1.hitPlayer = true;
-
-                    //     if (player.HP > 0)
-                    //         player.HP -= 5;
-
-                    // }
-                    
-                 
                
             }
             else
@@ -146,8 +117,9 @@ namespace Project.Enemies
                 player.posY = player.OldposY;
                 Level1.delta.X = 0;
                 Level1.delta.Y = 0;
-                player.HP = 200;
+                player.HP = 1000;
                 player.dead = false;
+                player.Ih = 0;
             }
         }
         public void IfEnemiesCollide(List<Enemy> enemies)
@@ -224,7 +196,7 @@ namespace Project.Enemies
 
             double distance = GetDistance((double)player.posX, (double)player.posY, (double)posX, (double)posY);
 
-            if ((radius <= 30 || radius2 <= 30))
+            if ((radius <= 20 || radius2 <= 20))
             {
                 if (player.flip == 1 && player.posX > posX)
                     flip = 1;
@@ -236,6 +208,7 @@ namespace Project.Enemies
             {
                 flip = 1;
             }
+            
 
 
 
@@ -289,6 +262,7 @@ namespace Project.Enemies
         {
             if (id == 1) 
             {
+                
                 if (currentFrame < currentLimit - 1 )
                     currentFrame++;
                 else

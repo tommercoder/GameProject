@@ -40,19 +40,20 @@ namespace Project.Entities
         public  int runFrames;
         public  int attackFrames;
         public  int deathFrames;
-        public int jumpFrames;
+        public int RedFrames;
 
         public int size;
         public float height;
 
         public Image spriteSheet;
         public bool Freehands = true;
-        public int id; 
+        public int id;
+        public int Ih;
    
-        public Entity(float posX,float posY,int IdleFrames,int runFrames,int attackFrames,int deathFrames,int jumpFrames,Image spriteSheet)
+        public Entity(float posX,float posY,int IdleFrames,int runFrames,int attackFrames,int deathFrames,int RedFrames,Image spriteSheet)
         {
             
-            HP = 200;
+            HP = 1000;
             this.OldposX = posX;
             this.OldposY = posY;
             this.posX = posX;
@@ -62,7 +63,7 @@ namespace Project.Entities
             this.attackFrames = attackFrames;
             this.deathFrames = deathFrames;
             this.spriteSheet = spriteSheet;
-            this.jumpFrames = jumpFrames;
+            this.RedFrames = RedFrames;
             size = 31;
             currentAnimation = 0;
             currentFrame = 0;
@@ -126,7 +127,7 @@ namespace Project.Entities
                         currentLimit = IdleFrames;
                     break;
                 case 1:
-                    currentLimit = jumpFrames;
+                    currentLimit = RedFrames;
                     break;
                
 

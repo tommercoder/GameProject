@@ -38,13 +38,15 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Press Start K", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Blue;
+            this.button1.ForeColor = System.Drawing.Color.Aqua;
             this.button1.Location = new System.Drawing.Point(92, 210);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(200, 58);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 1;
             this.button1.Text = "ENTER";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -56,11 +58,15 @@
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.textBox1.Location = new System.Drawing.Point(191, 122);
-            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(101, 26);
-            this.textBox1.TabIndex = 2;
+            this.textBox1.Size = new System.Drawing.Size(101, 20);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "\r\n";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
@@ -68,7 +74,7 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Press Start", 8.25F);
-            this.label1.ForeColor = System.Drawing.Color.Blue;
+            this.label1.ForeColor = System.Drawing.Color.Aqua;
             this.label1.Location = new System.Drawing.Point(90, 122);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 26);

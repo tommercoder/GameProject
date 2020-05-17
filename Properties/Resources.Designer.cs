@@ -73,26 +73,6 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BackGr {
-            get {
-                object obj = ResourceManager.GetObject("BackGr", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap background {
-            get {
-                object obj = ResourceManager.GetObject("background", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap button_back {
             get {
                 object obj = ResourceManager.GetObject("button_back", resourceCulture);
@@ -193,9 +173,29 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap EnlightenedWarmheartedAlligatorsnappingturtle_max_1mb {
+        internal static System.Drawing.Bitmap flask_big_blue {
             get {
-                object obj = ResourceManager.GetObject("EnlightenedWarmheartedAlligatorsnappingturtle_max_1mb", resourceCulture);
+                object obj = ResourceManager.GetObject("flask_big_blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flask_big_green {
+            get {
+                object obj = ResourceManager.GetObject("flask_big_green", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flask_big_red {
+            get {
+                object obj = ResourceManager.GetObject("flask_big_red", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +273,9 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PokemonLike {
+        internal static System.Drawing.Bitmap playerred {
             get {
-                object obj = ResourceManager.GetObject("PokemonLike", resourceCulture);
+                object obj = ResourceManager.GetObject("playerred", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -356,9 +356,9 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Tileset {
+        internal static System.Drawing.Bitmap weapon_axe {
             get {
-                object obj = ResourceManager.GetObject("Tileset", resourceCulture);
+                object obj = ResourceManager.GetObject("weapon_axe", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -366,9 +366,9 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap transparent_bg_tiles {
+        internal static System.Drawing.Bitmap weapon_big_hammer {
             get {
-                object obj = ResourceManager.GetObject("transparent_bg_tiles", resourceCulture);
+                object obj = ResourceManager.GetObject("weapon_big_hammer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

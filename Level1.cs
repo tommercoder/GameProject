@@ -190,7 +190,7 @@ namespace Project
             this.Width = MapController.GetWidth();
             this.Height = MapController.GetHeight();
 
-            dwarfSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\player.png"));
+            dwarfSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\playerred.png"));
             weaponSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\weapon3_1.png"));
             weaponSheet1 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\weapon2.png"));
             weaponSheet2 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\weapon_knight_sword.png"));
@@ -202,6 +202,8 @@ namespace Project
             //enemies
             enemies = new List<Enemy>
             {
+                new Enemy(-20,-20,1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                
                 new Enemy(200, 520, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                 new Enemy(134, 540,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                 new Enemy(45, 500,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
@@ -214,7 +216,7 @@ namespace Project
             
             
             //player
-            player = new Entity(32, 32, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames, Hero.jumpFrames, dwarfSheet);
+            player = new Entity(32, 32, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames, Hero.RedFrames, dwarfSheet);
             //chest
             Chest = new staff(100, 40, 1,Hero.IdleChestFrames, Hero.OpenChestFrames, chest);
 
@@ -322,13 +324,13 @@ namespace Project
                    
                      break;
                  case Keys.Escape:
-
-                    this.Hide();
-                    FormMenu fm = new FormMenu();
-                    EnterNickName en = new EnterNickName();
-                    fm.label1.Text = nicknameRemember;
-                    fm.ShowDialog();
-                    escapePressed = true;
+                    this.Close();
+                    //this.Hide();
+                    //FormMenu fm = new FormMenu();
+                    //EnterNickName en = new EnterNickName();
+                    //fm.label1.Text = nicknameRemember;
+                    //fm.ShowDialog();
+                    //escapePressed = true;
                     break;
              }
 
@@ -337,12 +339,12 @@ namespace Project
         public void fighing(object sender,EventArgs e)
         {
 
-            //for (int i = 0; i < enemies.Count; i++)
-            //{
-            //    enemies[i].hitEntity(player);
-            //    // label2.Text = Convert.ToString(player.HP); ////UDAR PO PLAYERU
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                enemies[i].hitEntity(player);
+                // label2.Text = Convert.ToString(player.HP); ////UDAR PO PLAYERU
 
-            //}
+            }
 
             foreach (Weapons wp in weapons)
             {
@@ -356,7 +358,7 @@ namespace Project
         public void checkTimeCollide(object sender, EventArgs e)
         {
             
-           //PhysicsController.Collide(player);////COLLIDE
+           PhysicsController.Collide(player);////COLLIDE
            
 
             if(player.collidedead) 
@@ -365,7 +367,7 @@ namespace Project
                 player.posY = player.OldposY;
                 Level1.delta.X = 0;
                 Level1.delta.Y = 0;
-                player.HP = 200;
+                player.HP = 1000;
                 player.dead = false;
 
                 hearts.currentAnimation = 0;
@@ -424,12 +426,12 @@ namespace Project
    
             }
            
-            label1.Text = nicknameRemember;
-            label2.Text = Convert.ToString(player.posX + " " + player.posY);
-            label3.Text = Convert.ToString("posX:" + weapons[0].posXforHit);
-            label4.Text = Convert.ToString("posY:" + weapons[0].posYforHit);
-            label5.Text = Convert.ToString("posX:" + enemies[3].posX);
-            label6.Text = Convert.ToString("posY:" + enemies[3].posY);
+            label1.Text = Convert.ToString(player.howmuchDamaged);
+            //label2.Text = Convert.ToString("enemy 3 HP:" + enemies[4].HP);
+            label3.Text = Convert.ToString("catana damage:" + weapons[2].damage); 
+            label4.Text = Convert.ToString("id 2:" + weapons[1].id);
+            label5.Text = Convert.ToString("floor:" + weapons[1].onFloor);
+            //label6.Text = Convert.ToString("posY:" + enemies[3].posY);
             //label7.Text = Convert.ToString(GetDistance(player.posX, player.posY, enemies[3].posX, enemies[3].posY));
 
             
@@ -545,8 +547,17 @@ namespace Project
         {
             return Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
         }
-       
 
+        private void Level1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //if (escapePressed || !escapePressed)
+            //{
+            //    this.Hide();
+            //    FormMenu fm = new FormMenu();
+            //    fm.ShowDialog();
+            //    this.Close();
+            //}
+        }
         private void exit_level1_Click(object sender, EventArgs e)
         {
             
@@ -578,15 +589,6 @@ namespace Project
 
         }
 
-        private void Level1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (escapePressed || !escapePressed)
-            {
-                this.Hide();
-                FormMenu fm = new FormMenu();
-                fm.ShowDialog();
-                this.Close();
-            }
-        }
+       
     }
 }

@@ -26,14 +26,26 @@ namespace Project
             //sound.play_menu();
             
             button_start.MouseEnter += (s, e) => {
-                button_start.ForeColor = Color.Coral;//change color to coral
+                button_start.ForeColor = Color.White;//change color to coral
             };
             button_start.MouseLeave += (s, e) => {
-                button_start.ForeColor = Color.Blue;//change color back
+                button_start.ForeColor = Color.Aqua;//change color back
             };
 
-            
-            
+            button1.MouseEnter += (s, e) => {
+                button1.ForeColor = Color.White;//change color to coral
+            };
+            button1.MouseLeave += (s, e) => {
+                button1.ForeColor = Color.Aqua;//change color back
+            };
+
+            button_exit.MouseEnter += (s, e) => {
+                button_exit.ForeColor = Color.White;//change color to coral
+            };
+            button_exit.MouseLeave += (s, e) => {
+                button_exit.ForeColor = Color.Aqua;//change color back
+            };
+
 
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -94,15 +106,11 @@ namespace Project
         private void start_level1()
         {
             this.Hide();
-            level.ShowDialog();
             sound.dont_play_menu();
+            level.ShowDialog();
+            //sound.sound_off();
+            
             this.Close();
-           
-           
-           
-           
-
-           
         }
         private void button_start_Click(object sender, EventArgs e)
         {
@@ -161,6 +169,19 @@ namespace Project
         private void label1_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            EnterNickName en = new EnterNickName();
+            en.ShowDialog();
+            this.Close();
+        }
+
+        private void button1_Paint(object sender, PaintEventArgs e)
+        {
+           
         }
     }
 }

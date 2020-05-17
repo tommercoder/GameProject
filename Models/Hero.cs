@@ -13,7 +13,7 @@ namespace Project.Models
         public static int runFrames = 7;
         public static int attackFrames = 2;
         public static int deathFrames = 7;
-        public static int jumpFrames = 2;
+        public static int RedFrames = 7;
 
         public static int EnemyIdleFrames = 8;
         public static int EnemyRunFrames = 8;
