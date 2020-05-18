@@ -355,5 +355,11 @@
   <ItemGroup>
     <None Include="Resources\sound_menu.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sound_sword.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sound_sword.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
