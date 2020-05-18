@@ -293,9 +293,11 @@ namespace Project
                 
                 //hit
                 case Keys.E:
-                    sound.play_sound_sword();
-                  player.hitPressed = true;
-                  break;
+                    axWindowsMediaPlayer1.URL = "C:\\Users\\admin\\Desktop\\projectGITHUB\\Resources\\sound_sword.wav";
+                    axWindowsMediaPlayer1.Ctlcontrols.play();
+                    player.hitPressed = true;
+                   
+                    break;
         
                 case Keys.Q:
                     //throw out
@@ -332,6 +334,8 @@ namespace Project
                         FormMenu fm = new FormMenu();
                         EnterNickName en = new EnterNickName();
                         fm.label1.Text = nicknameRemember;
+                        axWindowsMediaPlayer1.Ctlcontrols.stop();
+                        axWindowsMediaPlayer2.Ctlcontrols.stop();
                         fm.ShowDialog();
                         escapePressed = true;
                         this.Close();
@@ -587,7 +591,8 @@ namespace Project
 
         private void Level1_Load(object sender, EventArgs e)
         {
-            //sound.play_sound_battle();
+            axWindowsMediaPlayer2.URL = "C:\\Users\\admin\\Desktop\\projectGITHUB\\Resources\\sound_battle.wav";
+            axWindowsMediaPlayer2.Ctlcontrols.play();
         }
 
         private void bottom_Click(object sender, EventArgs e)
@@ -613,6 +618,9 @@ namespace Project
 
         }
 
-       
+        private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

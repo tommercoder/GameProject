@@ -45,12 +45,12 @@ namespace Project
         public static void play_sound_sword()
         {
             if (sound_enabled)
-                sound_sword.Play();
+                sound_sword.PlaySync();
         }
         public static void play_sound_battle()
         {
             if (sound_enabled)
-                sound_battle.Play();
+                sound_battle.PlaySync();
         }
         public static void play_button_exit()
         {

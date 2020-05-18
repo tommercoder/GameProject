@@ -82,7 +82,7 @@ namespace Project
         private void button_exit_Click(object sender, EventArgs e)
         {
 
-            if (check_sound.Checked)
+            if(check_sound.Checked)
             {
                 axWindowsMediaPlayer1.URL = "C:\\Users\\admin\\Desktop\\projectGITHUB\\Resources\\sound_button_exit.wav";
                 axWindowsMediaPlayer1.Ctlcontrols.play();
