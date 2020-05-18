@@ -12,6 +12,7 @@ using Project.chests_and_staff;
 using System.Windows;
 using MessageBox = System.Windows.Forms.MessageBox;
 
+
 namespace Project
 {
 
@@ -293,8 +294,13 @@ namespace Project
                 
                 //hit
                 case Keys.E:
-                    axWindowsMediaPlayer1.URL = "C:\\Users\\admin\\Desktop\\projectGITHUB\\Resources\\sound_sword.wav";
-                    axWindowsMediaPlayer1.Ctlcontrols.play();
+
+                    //axWindowsMediaPlayer1.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\sound_sword.png");
+                    //axWindowsMediaPlayer1.Ctlcontrols.play();
+                    System.Media.SoundPlayer pl = new System.Media.SoundPlayer();
+                    pl.Stream = Properties.Resources.sound_sword;
+                    pl.Play();
+                    
                     player.hitPressed = true;
                    
                     break;
@@ -591,7 +597,7 @@ namespace Project
 
         private void Level1_Load(object sender, EventArgs e)
         {
-            axWindowsMediaPlayer2.URL = "C:\\Users\\admin\\Desktop\\projectGITHUB\\Resources\\sound_battle.wav";
+            axWindowsMediaPlayer2.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\sound_battle.wav");
             axWindowsMediaPlayer2.Ctlcontrols.play();
         }
 

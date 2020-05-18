@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -356,13 +357,13 @@
     <None Include="Resources\sound_menu.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\sound_sword.wav" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\5074b60051bcd63719329c03cf53b754.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sound_battle.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sound_sword.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
