@@ -63,6 +63,16 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _5074b60051bcd63719329c03cf53b754 {
+            get {
+                object obj = ResourceManager.GetObject("_5074b60051bcd63719329c03cf53b754", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap astronaut {
             get {
                 object obj = ResourceManager.GetObject("astronaut", resourceCulture);
@@ -305,6 +315,15 @@ namespace Project.Properties {
         internal static System.IO.UnmanagedMemoryStream sound_2 {
             get {
                 return ResourceManager.GetStream("sound_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream sound_battle {
+            get {
+                return ResourceManager.GetStream("sound_battle", resourceCulture);
             }
         }
         

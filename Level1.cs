@@ -586,10 +586,9 @@ namespace Project
 
         private void Level1_Load(object sender, EventArgs e)
         {
-            
+            sound.play_sound_battle();
         }
 
-   
         private void bottom_Click(object sender, EventArgs e)
         {
 

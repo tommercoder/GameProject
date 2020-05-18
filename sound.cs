@@ -19,6 +19,7 @@ namespace Project
         static SoundPlayer sound_menu = new SoundPlayer(Properties.Resources.sound_menu);
         static SoundPlayer sound_teleport = new SoundPlayer(Properties.Resources.sound_teleport);
         static SoundPlayer sound_sword = new SoundPlayer(Properties.Resources.sound_sword);
+        static SoundPlayer sound_battle = new SoundPlayer(Properties.Resources.sound_battle);
 
         static bool sound_enabled = true;
 
@@ -45,6 +46,11 @@ namespace Project
         {
             if (sound_enabled)
                 sound_sword.Play();
+        }
+        public static void play_sound_battle()
+        {
+            if (sound_enabled)
+                sound_battle.Play();
         }
         public static void play_button_exit()
         {
