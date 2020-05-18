@@ -21,6 +21,7 @@ namespace Project.Enemies
 
         public int sizeid1;
         public int sizeid2;
+        public int sizeid10;
 
         public float oldPosX;
         public float oldPosY;
@@ -57,6 +58,7 @@ namespace Project.Enemies
             this.mobSheet = mobSheet;
             sizeid1 = 16;
             sizeid2 = 34;
+            sizeid10 = 32;
             currentFrame = 0;
             currentLimit = EnemyIdleFrames;
             flip = 1;
@@ -289,6 +291,13 @@ namespace Project.Enemies
                 else
                     currentFrame = 0; 
             }
+            if(id == 10)
+            {
+                if (currentFrame < currentLimit - 1)
+                    currentFrame++;
+                else
+                    currentFrame = 0;
+            }
             if (id == 1)
             {
                 g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid1 / 2 + Level1.delta.X+14, (int)posY + Level1.delta.Y + 5), new Size(flip * sizeid1, sizeid1)), 16 * currentFrame, 16 * currentAnimation, sizeid1, sizeid1, GraphicsUnit.Pixel);
@@ -297,6 +306,10 @@ namespace Project.Enemies
             if (id == 2)
             {
                 g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2 + Level1.delta.X+14, (int)posY + Level1.delta.Y + 5), new Size(flip * sizeid2, sizeid2)), 32 * currentFrame, 34 * currentAnimation, sizeid2, sizeid2, GraphicsUnit.Pixel);
+            }
+            if(id == 10)
+            {
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2 + Level1.delta.X + 14, (int)posY + Level1.delta.Y + 5), new Size(flip * sizeid10, sizeid10)), 32 * currentFrame, 34 * currentAnimation, sizeid10, sizeid10, GraphicsUnit.Pixel);
             }
         }
 
