@@ -70,6 +70,8 @@ namespace Project.Enemies
                 HP = 40;
             if (id == 5)//white
                 HP = 20;
+            if (id == 10)
+                HP = 1500;
 
         }
         public static double GetDistance(double x1, double y1, double x2, double y2)

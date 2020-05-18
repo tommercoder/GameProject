@@ -100,6 +100,7 @@
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(75, 23);
             this.axWindowsMediaPlayer1.TabIndex = 4;
             this.axWindowsMediaPlayer1.Visible = false;
+            this.axWindowsMediaPlayer1.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter_1);
             // 
             // label1
             // 

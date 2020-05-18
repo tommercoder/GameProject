@@ -189,5 +189,10 @@ namespace Project
         {
             
         }
+
+        private void axWindowsMediaPlayer1_Enter_1(object sender, EventArgs e)
+        {
+              
+        }
     }
 }
