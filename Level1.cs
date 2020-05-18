@@ -293,6 +293,7 @@ namespace Project
                 
                 //hit
                 case Keys.E:
+                    sound.play_sound_sword();
                   player.hitPressed = true;
                   break;
         
