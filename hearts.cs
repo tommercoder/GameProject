@@ -19,6 +19,7 @@ namespace Project
         public int currentState;
         public int fullHearts;
         public int i;
+
         public hearts(int posX,int posY,int fullHearts,int currentState,Image heartsImage)
         {
             this.posX = posX;

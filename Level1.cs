@@ -553,13 +553,12 @@ namespace Project
 
                 }
             }        
-            if(player.id == 1 )
-            weapon.drawHandWeapon(g, player);
-            
-            else if (player.id == 2 )
-                weapon1.drawHandWeapon(g, player);
 
-            else if (player.id == 3 )
+            if(player.id == 1)
+            weapon.drawHandWeapon(g, player);
+            else if (player.id == 2)
+                weapon1.drawHandWeapon(g, player);
+            else if (player.id == 3)
                 weapon2.drawHandWeapon(g,player);
 
            

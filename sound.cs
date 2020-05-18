@@ -65,6 +65,7 @@ namespace Project
         {
             if (sound_enabled)
                 sound_menu.PlayLooping();
+            
           
         }
         public static bool if_music()

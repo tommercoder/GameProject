@@ -15,9 +15,9 @@ namespace Project.Controller
         public static void Collide(Entity entity)
         {
            
-            for (int j = (int)entity.posX / MapController.cellSize; j < (entity.posX + MapController.cellSize) / MapController.cellSize; j++)
+            for (int j = (int)entity.posX + 16 / MapController.cellSize; j < (entity.posX + 16 + MapController.cellSize) / MapController.cellSize; j++)
             {
-                for (int i = (int)entity.posY / MapController.cellSize; i < (entity.posY + MapController.cellSize) / MapController.cellSize; i++)
+                for (int i = (int)entity.posY + 16 / MapController.cellSize; i < (entity.posY + 16 + MapController.cellSize) / MapController.cellSize; i++)
                 {
                     if (MapController.map[i, j] == 0)
                     {
