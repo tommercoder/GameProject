@@ -11,7 +11,7 @@ namespace Project.Controller
 
     public class PhysicsController
     {
-        public static int timer;
+
         public static void Collide(Entity entity)
         {
            
@@ -22,51 +22,27 @@ namespace Project.Controller
                     if (MapController.map[i, j] == 0)
                     {
                         
-                        
+                        entity.posX = entity.OldposX;  
+                        entity.posY = entity.OldposY;
+                        Level1.delta.X = 0;
+                        Level1.delta.Y = 0;
                         Level1.collide = true;
                         entity.dead = true;
-                        // if(Level1.Apressed || Level1.Dpressed)
-                        // entity.posX = entity.OldposX;
-                        //if (Level1.Wpressed || Level1.Spressed)
-                        //entity.posY = entity.OldposY;
+                        entity.collidedead = true;
+                        entity.howmuchDamaged = 0;
 
-                        //Level1.delta.X = 0;
-                        // Level1.delta.Y = 0;
-                        
+                      
                     }
                     else
                     {
                         entity.isMoving = true;
                         Level1.collide = false;
                         entity.dead = false;
+                        entity.collidedead = false;
                     }
                 }
             }
-
-
-
-                //for (int i = 0; i < MapController.collideList.Count; i++)
-                //{
-                //    //deltaX = ((int)player.posX + (int)player.size / 2) - (MapController.collideList[i].posX + (MapController.collideList[i].size - 10) / 2);
-                //    //deltaY = ((int)player.posY + (int)player.size / 2) - (MapController.collideList[i].posY + (MapController.collideList[i].size - 16) / 2);
-
-                //    if (Math.Abs(deltaX) <= player.size / 2 + (MapController.collideList[i].size - 10) / 2)
-                //    {
-                //        if (Math.Abs(deltaY) <= player.size / 2 + (MapController.collideList[i].size - 16) / 2)
-                //        {
-
-                //            return true;
-
-                //        }
-                //    }
-                //}
-                //return false;
-
-
-
-
-
-            }
+        }
 
     }
 

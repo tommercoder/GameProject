@@ -15,6 +15,7 @@ namespace Project
     public partial class FormMenu : Form
     {
         public bool isCheckedMusicButton = false;
+        public Level1 level = new Level1();
         public FormMenu()
         {
             
@@ -24,15 +25,28 @@ namespace Project
             //start_level1();///for level1 
             //sound.play_menu();
 
+            
             button_start.MouseEnter += (s, e) => {
-                button_start.ForeColor = Color.Coral;//change color to coral
+                button_start.ForeColor = Color.White;//change color to coral
             };
             button_start.MouseLeave += (s, e) => {
-                button_start.ForeColor = Color.Blue;//change color back
+                button_start.ForeColor = Color.Aqua;//change color back
             };
 
-            
-            
+            button1.MouseEnter += (s, e) => {
+                button1.ForeColor = Color.White;//change color to coral
+            };
+            button1.MouseLeave += (s, e) => {
+                button1.ForeColor = Color.Aqua;//change color back
+            };
+
+            button_exit.MouseEnter += (s, e) => {
+                button_exit.ForeColor = Color.White;//change color to coral
+            };
+            button_exit.MouseLeave += (s, e) => {
+                button_exit.ForeColor = Color.Aqua;//change color back
+            };
+            KeyDown += new KeyEventHandler(FormMenu_KeyDown);
 
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -40,6 +54,7 @@ namespace Project
             if (keyData == Keys.Escape)
             {
                 this.Close();
+                sound.dont_play_menu();
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
@@ -52,6 +67,7 @@ namespace Project
                 sound.play_menu();
             }
 
+           
             // button_start.FlatAppearance.BorderSize = 0;
             //    button_start.FlatStyle = FlatStyle.Flat;
         }
@@ -78,7 +94,8 @@ namespace Project
             //SoundPlayer player = new SoundPlayer(Properties.Resources.sound_button_exit);
 
             //player.PlaySync();
-
+            sound.dont_play_menu();
+            //this.Hide();
             this.Close();
         }
         private void start_selectionForm()
@@ -86,19 +103,23 @@ namespace Project
             FormLevelSelect levelSelect = new FormLevelSelect();
             levelSelect.ShowDialog();
         }
-        //private void start_level1()
-        //{
-        //    Level1 level1 = new Level1();
-        //    level1.ShowDialog();
-        //}
+        
+        private void start_level1()
+        {
+            this.Hide();
+            sound.dont_play_menu();
+            level.ShowDialog();
+            //sound.sound_off();
+            
+            this.Close();
+        }
         private void button_start_Click(object sender, EventArgs e)
         {
-
+            start_level1();
+       
             // sound.play_button_exit();
-            //start_level1();
-            
-            start_selectionForm();
-            
+            //start_selectionForm();
+
         }
       
         private void button_start_MouseEnter(object sender,EventArgs e)
@@ -144,6 +165,29 @@ namespace Project
         private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            EnterNickName en = new EnterNickName();
+            en.ShowDialog();
+            this.Close();
+        }
+
+        private void button1_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+
+        private void FormMenu_KeyDown(object sender, KeyEventArgs e)
+        {
+            
         }
     }
 }

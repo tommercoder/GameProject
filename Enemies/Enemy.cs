@@ -14,8 +14,8 @@ namespace Project.Enemies
 {
     public class Enemy
     {
-
-
+     
+        //Image[] image = 
         public float posX;
         public float posY;
 
@@ -42,10 +42,11 @@ namespace Project.Enemies
         public int EnemyRunFrames;
         public int currentAnimation;
         public int id;
-    
+        public int HP;
         public Enemy() { }
         public Enemy(int posx, int posy, int id, int EnemyIdleFrames, int EnemyRunFrames, Image mobSheet)
         {
+            
             this.id = id;
             oldPosX = posx;
             oldPosY = posy;
@@ -59,6 +60,16 @@ namespace Project.Enemies
             currentFrame = 0;
             currentLimit = EnemyIdleFrames;
             flip = 1;
+            if (id == 1)
+                HP = 20;
+            if (id == 2)
+                HP = 110;
+            if (id == 3)//blue
+                HP = 30;
+            if (id == 4)//red demon
+                HP = 40;
+            if (id == 5)//white
+                HP = 20;
 
         }
         public static double GetDistance(double x1, double y1, double x2, double y2)
@@ -67,42 +78,50 @@ namespace Project.Enemies
         }
         public void hitEntity(Entity player)
         {
-            double distance = GetDistance(player.posX, player.posY, posX, posY);
-            if (distance <=20)
+           double distance = GetDistance(player.posX, player.posY, posX, posY);
+            if (distance <= 15 )
+            //if(player.posX - 20 == posX || player.posY - 20 == posY || player.posX +20 == posX || player.posY+20 == posY)
             {
-                if (player.posX > posX)
+
+                Level1.hitPlayer = true;
+                if (player.HP > 0)
                 {
-                    player.posX += 3;
-                    Level1.hitPlayer = true;
-                    //Level1.delta.X-=3;
-                }
-                
-                if (player.posX < posX)
-                {
-                    player.posX -= 3;
-                    Level1.hitPlayer = true;
-                    //Level1.delta.X+=3;
-                }
-                
-                if (player.posY > posY)
-                {
-                    player.posY += 3;
-                    Level1.hitPlayer = true;
-                    //Level1.delta.Y+=3;
+                   player.howmuchDamaged++;//for frames hearts
+                   //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
+                       player.HP -= 20;
+                    player.setAnimationConfiguration(1);
+                    if (player.howmuchDamaged % 5 == 0)
+                        player.Ih++;
+
+                    
+                    if (player.HP == 0)
+                    {
+
+                        player.dead = true;
+                        player.howmuchDamaged = 0;
+                        player.Ih = 0;
+
+                    }
+
                 }
                
-                if (player.posY < posY)
-                {
-                    player.posY -= 3;
-                    Level1.hitPlayer = true;
-                    //Level1.delta.Y-=3;
-                }
-                
-                player.howmuchDamaged++;
-                player.HP -= 10;
             }
             else
+            {
                 Level1.hitPlayer = false;
+              
+            }
+            if(player.dead)
+            {
+                player.posX = player.OldposX;
+                player.posY = player.OldposY;
+                Level1.delta.X = 0;
+                Level1.delta.Y = 0;
+                player.HP = 1000;
+                player.dead = false;
+                player.Ih = 0;
+            }
+            
         }
         public void IfEnemiesCollide(List<Enemy> enemies)
         {
@@ -186,28 +205,37 @@ namespace Project.Enemies
                     flip = -1;
             }
 
-            if (distance >= 100)
+            if (distance >= 30)
             {
                 flip = 1;
             }
 
 
+            //if (distance >= 30)
+            //{
+            //    if (id == 1)
+            //    {
+            //        posX += 2;
+            //        if(posX > oldPosX)
+            //        posX -= 2;
+                    
 
 
-
-            if (distance <= 100)
+            //    }
+            //}
+            if (distance <= 30)
             {
-
-                if (player.posX  +14 > posX )
+               
+                if (player.posX  > posX)
                 {
-                    posX += EnemySpeedX;
+                    posX  += EnemySpeedX;
                 }
                 else
                 {
-                    posX -= EnemySpeedX;
+                    posX  -= EnemySpeedX;
                 }
 
-                if (player.posY + 14 > posY)
+                if (player.posY  > posY)
                 {
 
                     posY += EnemySpeedY;
@@ -218,6 +246,7 @@ namespace Project.Enemies
             }
             else
             {
+                
                 if (posX < oldPosX)
                 {
                     posX += EnemySpeedX;
@@ -238,25 +267,34 @@ namespace Project.Enemies
                 }
 
             }
-
-
+            
         }
 
         public void playEnemyAnimation(Graphics g)
         {
-            if (currentFrame < currentLimit - 1)
-                currentFrame++;
-            else
-                currentFrame = 0;
-
+            if (id == 1) 
+            {
+                
+                if (currentFrame < currentLimit - 1 )
+                    currentFrame++;
+                else
+                    currentFrame = 0;
+            }
+            if (id == 2) 
+            { 
+                if (currentFrame < currentLimit -1)
+                    currentFrame++;
+                else
+                    currentFrame = 0; 
+            }
             if (id == 1)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid1 / 2 + Level1.delta.X, (int)posY + Level1.delta.Y), new Size(flip * sizeid1, sizeid1)), 16 * currentFrame, 16 * currentAnimation, sizeid1, sizeid1, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid1 / 2 + Level1.delta.X+14, (int)posY + Level1.delta.Y + 5), new Size(flip * sizeid1, sizeid1)), 16 * currentFrame, 16 * currentAnimation, sizeid1, sizeid1, GraphicsUnit.Pixel);
                 
             }
             if (id == 2)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2 + Level1.delta.X, (int)posY + Level1.delta.Y), new Size(flip * sizeid2, sizeid2)), 32 * currentFrame, 34 * currentAnimation, sizeid2, sizeid2, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2 + Level1.delta.X+14, (int)posY + Level1.delta.Y + 5), new Size(flip * sizeid2, sizeid2)), 32 * currentFrame, 34 * currentAnimation, sizeid2, sizeid2, GraphicsUnit.Pixel);
             }
         }
 

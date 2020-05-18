@@ -11,7 +11,7 @@ namespace Project.Entities
         public float posY;
         public float OldposX;
         public float OldposY;
-        public int howmuchDamaged;
+        public float howmuchDamaged;
         public int HP;
         public float velocityX = 0.5f;//speed
         public float velocityY = 0.5f;//speed
@@ -27,6 +27,7 @@ namespace Project.Entities
         public bool hitPressed;
         public bool ShiftPressed;
         public bool dead;
+        public bool collidedead;
         
 
         public int flip;
@@ -39,18 +40,20 @@ namespace Project.Entities
         public  int runFrames;
         public  int attackFrames;
         public  int deathFrames;
-        public int jumpFrames;
+        public int RedFrames;
 
         public int size;
         public float height;
 
         public Image spriteSheet;
         public bool Freehands = true;
-        public int id; 
+        public int id;
+        public int Ih;
    
-        public Entity(float posX,float posY,int IdleFrames,int runFrames,int attackFrames,int deathFrames,int jumpFrames,Image spriteSheet)
+        public Entity(float posX,float posY,int IdleFrames,int runFrames,int attackFrames,int deathFrames,int RedFrames,Image spriteSheet)
         {
-            HP = 100;
+            
+            HP = 1000;
             this.OldposX = posX;
             this.OldposY = posY;
             this.posX = posX;
@@ -60,7 +63,7 @@ namespace Project.Entities
             this.attackFrames = attackFrames;
             this.deathFrames = deathFrames;
             this.spriteSheet = spriteSheet;
-            this.jumpFrames = jumpFrames;
+            this.RedFrames = RedFrames;
             size = 31;
             currentAnimation = 0;
             currentFrame = 0;
@@ -69,14 +72,21 @@ namespace Project.Entities
             playerSpeed = 3;
             falling = false;
             dead = false;
+            collidedead = false;
         }
 
         public void Move()
         {
-            if(Level1.Apressed || Level1.Dpressed)
-            posX += dirX;
-            if(Level1.Wpressed || Level1.Spressed)
-            posY += dirY;
+            if (Level1.Apressed || Level1.Dpressed)
+            {
+                posX += dirX;
+                //OldposX += dirX;
+            }
+            if (Level1.Wpressed || Level1.Spressed)
+            {
+                //OldposY += dirY;
+                posY += dirY;
+            }
         }
 
         public void PlayAnimation(Graphics g)
@@ -94,6 +104,14 @@ namespace Project.Entities
 
         }
 
+        public void death()
+        {
+            if(HP == 0)
+            {
+                restartinc r = new restartinc();
+                r.ShowDialog();
+            }
+        }
         
 
         public void setAnimationConfiguration(int currentAnimation)
@@ -109,7 +127,7 @@ namespace Project.Entities
                         currentLimit = IdleFrames;
                     break;
                 case 1:
-                    currentLimit = jumpFrames;
+                    currentLimit = RedFrames;
                     break;
                
 

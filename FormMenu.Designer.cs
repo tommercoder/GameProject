@@ -32,9 +32,9 @@
             this.button_start = new System.Windows.Forms.Button();
             this.button_exit = new System.Windows.Forms.Button();
             this.check_sound = new System.Windows.Forms.CheckBox();
-            this.picture_background = new System.Windows.Forms.PictureBox();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
-            ((System.ComponentModel.ISupportInitialize)(this.picture_background)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,8 +47,8 @@
             this.button_start.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button_start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_start.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_start.ForeColor = System.Drawing.Color.Blue;
-            this.button_start.Location = new System.Drawing.Point(371, 245);
+            this.button_start.ForeColor = System.Drawing.Color.Aqua;
+            this.button_start.Location = new System.Drawing.Point(350, 250);
             this.button_start.Name = "button_start";
             this.button_start.Size = new System.Drawing.Size(87, 79);
             this.button_start.TabIndex = 0;
@@ -60,25 +60,30 @@
             // button_exit
             // 
             this.button_exit.BackColor = System.Drawing.Color.Transparent;
+            this.button_exit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_exit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button_exit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_exit.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_exit.ForeColor = System.Drawing.Color.Aqua;
             this.button_exit.Location = new System.Drawing.Point(710, 540);
             this.button_exit.Name = "button_exit";
             this.button_exit.Size = new System.Drawing.Size(78, 48);
             this.button_exit.TabIndex = 1;
             this.button_exit.Text = "Exit";
-            this.button_exit.UseVisualStyleBackColor = false;
+            this.button_exit.UseCompatibleTextRendering = true;
+            this.button_exit.UseVisualStyleBackColor = true;
             this.button_exit.Click += new System.EventHandler(this.button_exit_Click);
             // 
             // check_sound
             // 
             this.check_sound.AutoSize = true;
             this.check_sound.BackColor = System.Drawing.Color.Transparent;
-            this.check_sound.BackgroundImage = global::Project.Properties.Resources.orig;
             this.check_sound.Checked = true;
             this.check_sound.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_sound.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.check_sound.Location = new System.Drawing.Point(12, 480);
+            this.check_sound.ForeColor = System.Drawing.Color.Aqua;
+            this.check_sound.Location = new System.Drawing.Point(12, 540);
             this.check_sound.Name = "check_sound";
             this.check_sound.Size = new System.Drawing.Size(91, 24);
             this.check_sound.TabIndex = 2;
@@ -86,17 +91,6 @@
             this.check_sound.UseVisualStyleBackColor = false;
             this.check_sound.CheckedChanged += new System.EventHandler(this.check_sound_CheckedChanged);
             // 
-            // picture_background
-            // 
-            this.picture_background.BackColor = System.Drawing.Color.Transparent;
-            this.picture_background.Image = global::Project.Properties.Resources.orig;
-            this.picture_background.Location = new System.Drawing.Point(1, 0);
-            this.picture_background.Name = "picture_background";
-            this.picture_background.Size = new System.Drawing.Size(800, 603);
-            this.picture_background.TabIndex = 3;
-            this.picture_background.TabStop = false;
-            this.picture_background.Click += new System.EventHandler(this.picture_background_Click);
-            //  
             // axWindowsMediaPlayer1
             // 
             this.axWindowsMediaPlayer1.Enabled = true;
@@ -107,18 +101,53 @@
             this.axWindowsMediaPlayer1.TabIndex = 4;
             this.axWindowsMediaPlayer1.Visible = false;
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Press Start K", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(615, 10);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label1.Size = new System.Drawing.Size(0, 21);
+            this.label1.TabIndex = 5;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.ForeColor = System.Drawing.Color.Aqua;
+            this.button1.Location = new System.Drawing.Point(597, 540);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 48);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Change nickname";
+            this.button1.UseCompatibleTextRendering = true;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Paint += new System.Windows.Forms.PaintEventHandler(this.button1_Paint);
+            // 
             // FormMenu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Desktop;
-            this.BackgroundImage = global::Project.Properties.Resources.orig;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.check_sound);
             this.Controls.Add(this.button_exit);
             this.Controls.Add(this.button_start);
-            this.Controls.Add(this.picture_background);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -128,7 +157,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GeometryGame";
             this.Load += new System.EventHandler(this.FormMenu_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.picture_background)).EndInit();
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMenu_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -137,10 +166,11 @@
 
         #endregion
         private System.Windows.Forms.Button button_exit;
-        private System.Windows.Forms.PictureBox picture_background;
         private System.Windows.Forms.Button button_start;
         public System.Windows.Forms.CheckBox check_sound;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
+        public System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

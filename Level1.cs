@@ -3,26 +3,22 @@ using Project.Entities;
 using Project.weapons;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Project.Controller;
 using Project.Enemies;
-using static Project.Enemies.Enemy;
-using System.Numerics;
 using Project.chests_and_staff;
 using System.Windows;
-
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace Project
 {
+
     public partial class Level1 : Form
     {
+        
+       
         public static Point delta;
         
         public Image dwarfSheet;//for sprites 
@@ -52,7 +48,11 @@ namespace Project
         public static bool Xpressed;
         public static bool collide= false;
         public static bool hitPlayer = false;
-
+        public static bool reDrawHearts = false;
+        public static bool escapePressed = false;
+        public string nicknameRemember = " ";
+        public int newDeltaX;
+        public int newDeltaY;
 
         public Level1()
         {
@@ -60,30 +60,31 @@ namespace Project
             
             InitializeComponent();
 
-            timer1.Interval = 20;
-            timer2.Interval = 20;
-           timer3.Interval = 10;
+            timer1.Interval = 30;
+            timer2.Interval = 30;
+
+           timer3.Interval = 10;//collide
+            timer4.Interval = 20;///
+         
             
             timer1.Tick += new EventHandler(Update);
             timer2.Tick += new EventHandler(EnemyUpdate);
             timer3.Tick += new EventHandler(checkTimeCollide);
+            timer4.Tick += new EventHandler(fighing);
+
+
             KeyDown += new KeyEventHandler(OnPress);
             KeyUp += new KeyEventHandler(OnKeyUp);
+            this.FormClosing += new FormClosingEventHandler(Level1_FormClosing);
             delta = new Point(0, 0);//camera
+
             init();
 
-            
+           
         }
        
         public void OnKeyUp(object sender,KeyEventArgs e)
         {
-            if (player.HP == 0)
-            {
-                restartinc r = new restartinc();
-                r.ShowDialog();
-                
-            }
-            
             switch (e.KeyCode)
             {
 
@@ -119,7 +120,7 @@ namespace Project
             {
                 player.isMoving = false;
                 player.setAnimationConfiguration(0);
-               // collide = false;
+               
             }
             
         }
@@ -129,31 +130,33 @@ namespace Project
             {
                 double distance = GetDistance(weapon.posX + Level1.delta.X - Level1.delta.X, weapon.posY + Level1.delta.Y - Level1.delta.Y, player.posX + Level1.delta.X - Level1.delta.X, player.posY + Level1.delta.Y - Level1.delta.Y);
                 if (player.Freehands == true)
+                {
                     if (distance < 15)
                     {
                         weapon.onFloor = false;
                         player.id = weapon.id;
-                        player.Freehands = false;     
+                        player.Freehands = false;
                     }
+                }
+                    
             }
         }
         public void chestOpen(staff staff)
         {
-            //foreach (Weapons weapon in weapons)
-            //{
+            
             double distance = GetDistance(player.posX,player.posY,staff.posX,staff.posY);
 
             if (distance < 20)
             {
                 staff.isOpened = true;
                 
-                label1.Text = "chest opened";
+                //label1.Text = "chest opened";
 
 
             }
-            else
-                label1.Text = " >20";
-            //}
+           // else
+              //  label1.Text = " >20";
+            
         }
         public void Qpressed(Entity player,List<Weapons> weapons)
         {
@@ -183,7 +186,7 @@ namespace Project
             this.Width = MapController.GetWidth();
             this.Height = MapController.GetHeight();
 
-            dwarfSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\player.png"));
+            dwarfSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\playerred.png"));
             weaponSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\weapon3_1.png"));
             weaponSheet1 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\weapon2.png"));
             weaponSheet2 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\weapon_knight_sword.png"));
@@ -195,19 +198,21 @@ namespace Project
             //enemies
             enemies = new List<Enemy>
             {
+               // new Enemy(-20,-20,1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                
                 new Enemy(200, 520, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                 new Enemy(134, 540,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-                new Enemy(45, 500,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-                new Enemy(45, 380, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+               // new Enemy(45, 500,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+               // new Enemy(32, 380, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                 new Enemy(350, 350, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
-                new Enemy(300, 350,2, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
+               // new Enemy(300, 350,2, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
 
             };
 
             
             
             //player
-            player = new Entity(32, 32, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames, Hero.jumpFrames, dwarfSheet);
+            player = new Entity(32, 32, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames, Hero.RedFrames, dwarfSheet);
             //chest
             Chest = new staff(100, 40, 1,Hero.IdleChestFrames, Hero.OpenChestFrames, chest);
 
@@ -226,8 +231,16 @@ namespace Project
             timer1.Start();
             timer2.Start();
             timer3.Start();
+            timer4.Start();
+            
+            
+
         }
 
+        public void Death(object sender,EventArgs e)
+        {
+           
+        }
 
         public void OnPress(object sender, KeyEventArgs e)
         {
@@ -235,186 +248,154 @@ namespace Project
                 switch (e.KeyCode)
                 {
                  case Keys.W:
-                    //for (int pj = ((int)player.posX + 16) / MapController.cellSize; pj < (player.posX + MapController.cellSize) / (MapController.cellSize + 1); pj++)
-                    //{
-                    //    for (int pi = ((int)player.posY + 16) / MapController.cellSize; pi < (player.posY + MapController.cellSize) / (MapController.cellSize + 1); pi++)
-                    //    {
-                    //        label1.Text = Convert.ToString(pj + " " + pi);
-                    //        if (pj < MapController.mapHeight - 1 && pj >= 1 && pi < MapController.mapWidth - 1 && pi > 0)
-                    //        {
 
-                    //            for (int i = 0; i < 3; i++)
-                    //            {
-                    //                if (MapController.map[pj, pi - 1] != 0)
-                    //                {
-
-                    //                    posx = pj;
-                    //                    posy = pi;
-                                        player.dirY = -3;
-                                        Wpressed = true;
-                                        player.isMoving = true;
-                                        player.setAnimationConfiguration(0);
-                    
-                    //                    collide = false;
-                    //                }
-                    //                else
-                    //                {
-                    //                    player.posY += 3;
-                    //                }
-                    //            }
-                    //        }
-                    //    }
-                    //}
+                     player.dirY = -3;
+                  
+                     Wpressed = true;
+                     player.isMoving = true;
+                     player.setAnimationConfiguration(0);
+ 
+ 
                     break;
                  case Keys.S:
-                    //for (int pj = ((int)player.posX + 16) / MapController.cellSize; pj < (player.posX + MapController.cellSize) / (MapController.cellSize + 1); pj++)
-                    //{
-                    //    for (int pi = ((int)player.posY + 16) / MapController.cellSize; pi < (player.posY + MapController.cellSize) / (MapController.cellSize + 1); pi++)
-                    //    {
-                    //        label1.Text = Convert.ToString(pj + " " + pi);
-                    //        if (pj < MapController.mapHeight - 1 && pj >= 1 && pi < MapController.mapWidth - 1 && pi > 0)
-                    //        {
-                    //            for (int i = 0; i < 3; i++)
-                    //            {
-                    //                if (MapController.map[pj, pi + 1] != 0)
-                    //                {
-                    //                    posx = pj;
-                    //                    posy = pi;
-                                        player.dirY = 3;
-                                        Spressed = true;
-                                        player.isMoving = true;
-                                        player.setAnimationConfiguration(0);
-                                       // collide = false;
-                    //                }
-                    //                else
-                    //                {
-                    //                    player.posY -= 3;
-                    //                }
-                    //            }
-                    //        }
-                    //    }
-                    //}
+               
+                   player.dirY = 3;
+                  
+                   Spressed = true;
+                   player.isMoving = true;
+                   player.setAnimationConfiguration(0);
+
 
                     break;
                 case Keys.A:
-                    //for (int pj = ((int)player.posX + 16) / MapController.cellSize; pj < (player.posX + MapController.cellSize) / (MapController.cellSize + 1); pj++)
-                    //{
-                    //    for (int pi = ((int)player.posY + 16) / MapController.cellSize; pi < (player.posY + MapController.cellSize) / (MapController.cellSize + 1); pi++)
-                    //    {
-                    //        label1.Text = Convert.ToString(pj + " " + pi);
-                    //        label2.Text = Convert.ToString(MapController.map[pj, pi]);
-                    //        if (pj < MapController.mapHeight - 1 && pj >= 1 && pi < MapController.mapWidth - 1 && pi > 0)
-                    //        {
-                    //            for (int i = 0; i < 3; i++)
-                    //            {
-                    //                if (MapController.map[pj - 1, pi] != 0)
-                    //                {
-                    //                    posx = pj;
-                    //                    posy = pi;
-                                        Apressed = true;
-                                        player.dirX = -3;
-                                        player.flip = -1;
-                                        player.isMoving = true;
-                                        player.setAnimationConfiguration(0);
-                    //                    collide = false;
 
-                    //                }
-                    //                else
-                    //                {
-                    //                    player.posX += 3;
-                    //                }
-                    //            }
-                    //        }
-                    //    }
-                    //}
+                    Apressed = true;
+                    player.dirX = -3;
+                    
+                    player.flip = -1;
+                    player.isMoving = true;
+                    player.setAnimationConfiguration(0);
 
                     break;
                 case Keys.D:
 
-                    //for (int pj = ((int)player.posX + 16) / MapController.cellSize; pj < (player.posX + MapController.cellSize) / (MapController.cellSize + 1); pj++)
-                    //{
-                    //    for (int pi = ((int)player.posY + 16) / MapController.cellSize; pi < (player.posY + MapController.cellSize) / (MapController.cellSize + 1); pi++)
-                    //    {
-                    //        label1.Text = Convert.ToString(pj + " " + pi);
-                    //        label1.Text = Convert.ToString(MapController.map[pj, pi]);
-                    //        if (pj < MapController.mapHeight - 1 && pj >= 1 && pi < MapController.mapWidth - 1 && pi > 0)
-                    //        {
-                    //            for (int i = 0; i < 3; i++)
-                    //            {
-                    //                if (MapController.map[pj + 1, pi] != 0)
-                    //                {
 
-                    //                    posx = pj;
-                    //                    posy = pi;
-                                        Dpressed = true;
-                                        player.dirX = 3;
-                                        player.flip = 1;
-                                        player.isMoving = true;
-                                        player.setAnimationConfiguration(0);
-                                        //collide = false;
-                    //                }
-                    //                else
-                    //                {
-                    //                    player.posX -= 3;
-
-                    //                }
-                    //            }
-                    //        }
-                    //    }
-                    //}
+                    Dpressed = true;
+                    player.dirX = 3;
+                  
+                    player.flip = 1;
+                    player.isMoving = true;
+                    player.setAnimationConfiguration(0);
+  
 
                     break;
                           
                 
                 //hit
                 case Keys.E:
-                                player.hitPressed = true;
-                                break;
-
-                            case Keys.Q:
+                  player.hitPressed = true;
+                  break;
+        
+                case Keys.Q:
                     //throw out
-                                Qpressed(player, weapons);
-                                break;
-                            case Keys.F:
-                                WeaponCollide(player, weapons);
-                                break;
-                            case Keys.X:
-                                Xpressed = true;
-                                if (!Chest.isOpened)
-                                {
-                                    chestOpen(Chest);
-                                    double distance = GetDistance(player.posX, player.posY, Chest.posX, Chest.posY);
+                    Qpressed(player, weapons);
+                     break;
+                case Keys.F:
+                    WeaponCollide(player, weapons);
+                    break;
+                case Keys.X:
+                    Xpressed = true;
+                    if (!Chest.isOpened)
+                    {
+                        chestOpen(Chest);
+                        double distance = GetDistance(player.posX, player.posY, Chest.posX, Chest.posY);
+           
+                        if (distance < 20)
+                            Chest.setAnimation(1);
+                    }
 
-                                    if (distance < 20)
-                                        Chest.setAnimation(1);
-                                }
+                     break;
+                 case Keys.Space:
+         
+                   
+                     break;
+                 case Keys.Escape:
+                    string message = "Do you want to close the game?\n" +
+                        "All progress will not save!";
+                    string title = "Close Window";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                    if (result == DialogResult.Yes)
+                    {
+                        this.Hide();
+                        FormMenu fm = new FormMenu();
+                        EnterNickName en = new EnterNickName();
+                        fm.label1.Text = nicknameRemember;
+                        fm.ShowDialog();
+                        escapePressed = true;
+                        this.Close();
 
-                                break;
-                            case Keys.Space:
-                    
-                               // player.setAnimationConfiguration(1);
-                                break;
-                            case Keys.Escape:
-                                //sound.play_menu();
-                                this.Close();
-                                break;
-                        }
+                    }
+                    else
+                    {
 
+                       
+                    }
 
-      
+                    //this.Close();
+                    //this.Hide();
+                    //FormMenu fm = new FormMenu();
+                    //EnterNickName en = new EnterNickName();
+                    //fm.label1.Text = nicknameRemember;
+                    //fm.ShowDialog();
+                    //escapePressed = true;
+                    break;
+             }
 
         }
+        
+        public void fighing(object sender,EventArgs e)
+        {
 
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                enemies[i].hitEntity(player);
+                // label2.Text = Convert.ToString(player.HP); ////UDAR PO PLAYERU
 
+            }
 
-
-
+            foreach (Weapons wp in weapons)
+            {
+                wp.hitEnemy(enemies, weapons, player);
+            }
+            foreach (Weapons wp in weapons)
+            {
+                wp.weaponMove(weapons, player);
+            }
+        }
         public void checkTimeCollide(object sender, EventArgs e)
         {
-            PhysicsController.Collide(player);
-           // if (!player.isMoving && PhysicsController.timer == 3)
-           //     player.isMoving = true;
             
+           //PhysicsController.Collide(player);////COLLIDE
+           
+
+            if(player.collidedead) 
+            {
+                player.posX = player.OldposX;
+                player.posY = player.OldposY;
+                Level1.delta.X = 0;
+                Level1.delta.Y = 0;
+                player.HP = 1000;
+                player.dead = false;
+
+                hearts.currentAnimation = 0;
+                reDrawHearts = true;
+            }
+               
+
+            
+
+
             //////////////////////////////////////////////////////////////////////
             //foreach (collideobjects col in MapController.collideList)
             //{
@@ -439,10 +420,16 @@ namespace Project
 
         public void EnemyUpdate(object sedner,EventArgs e)
         {
-            foreach(Enemy enemy in enemies)
-            {
-                enemy.hitEntity(player);
-            }
+
+
+            //for (int i = 0; i < enemies.Count; i++)
+            //{
+            //     //if (!enemies[i].isMoving)
+            //    // if (enemies[i].posX < enemies[i].posX + 10)
+            //    enemies[i].posX++;
+
+
+            //}
 
             //foreach (Enemy enemy in enemies)
             //{
@@ -450,117 +437,79 @@ namespace Project
             //    ////LET ENEMIES UNDERSTAND THAT THEY CANT STAY AT THE SAME POSITION!!
             //}
 
-            //foreach(Enemy enemy in enemies)
 
-
-            //for (int i = 0; i < enemies.Count; i++)
-            //{
-            //    enemies[i].IfEnemiesCollide(enemies);
-
-            //}
+            if (enemies.Count == 0)
+                hitPlayer = false;
+            
             for (int i = 0;i < enemies.Count;i++)
             {
                 enemies[i].ownMove(player);
    
             }
+           
+            label1.Text = Convert.ToString(player.howmuchDamaged);
+            //label2.Text = Convert.ToString("enemy 3 HP:" + enemies[4].HP);
+            label3.Text = Convert.ToString(hitPlayer); 
+            label4.Text = Convert.ToString("id 2:" + weapons[1].id);
+            label5.Text = Convert.ToString("floor:" + weapons[1].onFloor);
+            //label6.Text = Convert.ToString("posY:" + enemies[3].posY);
+            //label7.Text = Convert.ToString(GetDistance(player.posX, player.posY, enemies[3].posX, enemies[3].posY));
 
-
-            //for (int i = 0; i < enemies.Count; i++)
-            //{
-            //    if(!enemies[i].isMoving)
-            //    enemies[i].posX += enemies[i].EnemySpeedX;
-
-            //}
-
-            label1.Text = Convert.ToString(collide);
-            label3.Text = Convert.ToString("player.posX:" + player.posX);
-            label4.Text = Convert.ToString("player.posY:" + player.posY);
-            label5.Text = Convert.ToString("oldposX:" + player.OldposX);
-            label6.Text = Convert.ToString("oldposY:" + player.OldposY);
-
-            label1.Text = Convert.ToString(hitPlayer);
+            
         }
 
-        public  void SetTextForLabel(string myText)
+        public void SetTextForLabel(string myText)
         {
             this.label1.Text = myText;
         }
-        
         public void Update(object sender, EventArgs e)
         {
-            
-
-            //if (player.posX > player.OldposX + 100)
-            //    player.OldposX = player.OldposX + 100;
            
-
-            //if (player.posY > player.OldposY + 100)
-            //    player.OldposY = player.OldposY + 100;
            
-
-            //if (PhysicsController.Collide(player))
-            //{
-
-            //    if (player.dirY < 0)
-            //        player.posY += 3;
-
-            //    if (player.dirY > 0)
-            //        player.posY -= 3;
-
-            //    if (player.dirX < 0)
-            //        player.posX += 3;
-            //    else
-            //        label1.Text = "soka";
-
-            //    if (player.dirX > 0)
-            //        player.posX -= 3;
-            //    collide = true;
-            //}
-            //else
-            //{
-            //    collide = false;
-            //    //player.dirX = 0;
-            //   // player.dirY = 0;
-            //}
-
-
             if (player.isMoving)
             {
                 
                     player.Move();
                 if (Wpressed)
-                    if (player.posY > ((this.Height / 2) - 200) && player.posY < MapController.cellSize * 60 - ((this.Height) / 2))
-                    {
-                        if(!collide && !hitPlayer)
-                        delta.Y += player.playerSpeed;
-
-
-                    }
-                if (Spressed)
-                    if (player.posY > ((this.Height / 2) - 200) && player.posY < MapController.cellSize * 60 - (this.Height + 50) / 2)
+                    if (player.posY > ((this.Height / 2) - 260) && player.posY < MapController.cellSize * 60 - ((this.Height) / 2))
                     {
                         if (!collide && !hitPlayer)
+                        {
+                            delta.Y += player.playerSpeed;
+                            newDeltaY -= 2;
+                        }
+                    }
+                if (Spressed)
+                    if (player.posY > ((this.Height / 2) - 260) && player.posY < MapController.cellSize * 60 - (this.Height + 50) / 2)
+                    {
+                        if (!collide && !hitPlayer)
+                        {
                             delta.Y -= player.playerSpeed;
-
+                            newDeltaY += 2;
+                        }
                     }
                 if (Apressed)
                     if (player.posX > ((this.Width / 2)) && player.posX < MapController.cellSize * 60 - this.Width / 2)
                     {
                         if (!collide && !hitPlayer)
+                        {
                             delta.X += player.playerSpeed;
-
+                            newDeltaX -= 2;
+                        }
                     }
                 if (Dpressed)
                     if (player.posX > ((this.Width / 2)) && player.posX < MapController.cellSize * 60 - this.Width / 2)
                     {
                         if (!collide && !hitPlayer)
+                        {
                             delta.X -= player.playerSpeed;
-
+                            newDeltaX += 2;
+                        }
                     }
 
             }
+         
 
-           
             Invalidate();
         }
 
@@ -570,29 +519,26 @@ namespace Project
 
             MapController.DrawMap(g);
 
-            //foreach (Enemy enemy in enemies)
+         
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].playEnemyAnimation(g);
             }
 
-            
-           
-
-
-            //Chest.drawIdleChest(g);
             double distance = GetDistance(player.posX, player.posY, Chest.posX, Chest.posY);
-            //if(Chest.isOpened == false)
-            //{
-            //    Chest.PlayAnimation(g);
-            //}
-
-           //s if (distance < 20 && Xpressed && !Chest.isOpened)
-                Chest.PlayAnimation(g);
             
+            Chest.PlayAnimation(g);
+
 
             player.PlayAnimation(g);
+           
             hearts.drawHearts(g, player);
+            
+            //if (reDrawHearts)
+            //{
+            //    hearts.drawHearts(g, player);
+            //}
+
             for (int i = 0; i < weapons.Count; i++)
             {   
                     weapons[i].drawWeapon(g, player);
@@ -622,13 +568,21 @@ namespace Project
         {
             return Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
         }
-       
 
+        private void Level1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //if (escapePressed || !escapePressed)
+            //{
+            //    this.Hide();
+            //    FormMenu fm = new FormMenu();
+            //    fm.ShowDialog();
+            //    this.Close();
+            //}
+            
+        }
         private void exit_level1_Click(object sender, EventArgs e)
         {
-           // this.Close();
-
-            //sound.play_menu();
+            
         }
 
         private void Level1_Load(object sender, EventArgs e)
@@ -646,5 +600,20 @@ namespace Project
         {
 
         }
+
+        private void Level1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        
+        }
+            
+       
+
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

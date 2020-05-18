@@ -73,19 +73,9 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BackGr {
+        internal static System.Drawing.Bitmap BOSS {
             get {
-                object obj = ResourceManager.GetObject("BackGr", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap background {
-            get {
-                object obj = ResourceManager.GetObject("background", resourceCulture);
+                object obj = ResourceManager.GetObject("BOSS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -116,6 +106,16 @@ namespace Project.Properties {
         internal static System.Drawing.Bitmap chest {
             get {
                 object obj = ResourceManager.GetObject("chest", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dark {
+            get {
+                object obj = ResourceManager.GetObject("dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +176,36 @@ namespace Project.Properties {
         internal static System.Drawing.Bitmap enity {
             get {
                 object obj = ResourceManager.GetObject("enity", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flask_big_blue {
+            get {
+                object obj = ResourceManager.GetObject("flask_big_blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flask_big_green {
+            get {
+                object obj = ResourceManager.GetObject("flask_big_green", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flask_big_red {
+            get {
+                object obj = ResourceManager.GetObject("flask_big_red", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +283,9 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PokemonLike {
+        internal static System.Drawing.Bitmap playerred {
             get {
-                object obj = ResourceManager.GetObject("PokemonLike", resourceCulture);
+                object obj = ResourceManager.GetObject("playerred", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -336,9 +366,9 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Tileset {
+        internal static System.Drawing.Bitmap weapon_axe {
             get {
-                object obj = ResourceManager.GetObject("Tileset", resourceCulture);
+                object obj = ResourceManager.GetObject("weapon_axe", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -346,9 +376,9 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap transparent_bg_tiles {
+        internal static System.Drawing.Bitmap weapon_big_hammer {
             get {
-                object obj = ResourceManager.GetObject("transparent_bg_tiles", resourceCulture);
+                object obj = ResourceManager.GetObject("weapon_big_hammer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
