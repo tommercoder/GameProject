@@ -347,6 +347,15 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream sound_sword {
+            get {
+                return ResourceManager.GetStream("sound_sword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream sound_teleport {
             get {
                 return ResourceManager.GetStream("sound_teleport", resourceCulture);
