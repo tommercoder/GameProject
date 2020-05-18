@@ -202,10 +202,12 @@ namespace Project.weapons
                             }
                             else
                                 enemies.RemoveAt(i);
-                        }
+                            }
                             
                                 
                         }
+                        //if(enemies.Count==0)
+                            //enemies.Clear();
                     }
 
                 }

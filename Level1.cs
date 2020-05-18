@@ -3,25 +3,18 @@ using Project.Entities;
 using Project.weapons;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Project.Controller;
 using Project.Enemies;
-using static Project.Enemies.Enemy;
-using System.Numerics;
 using Project.chests_and_staff;
 using System.Windows;
-
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace Project
 {
-   
+
     public partial class Level1 : Form
     {
         
@@ -69,8 +62,9 @@ namespace Project
 
             timer1.Interval = 30;
             timer2.Interval = 30;
-           timer3.Interval = 10;
-            timer4.Interval = 20;
+
+           timer3.Interval = 10;//collide
+            timer4.Interval = 20;///
          
             
             timer1.Tick += new EventHandler(Update);
@@ -81,6 +75,7 @@ namespace Project
 
             KeyDown += new KeyEventHandler(OnPress);
             KeyUp += new KeyEventHandler(OnKeyUp);
+            this.FormClosing += new FormClosingEventHandler(Level1_FormClosing);
             delta = new Point(0, 0);//camera
 
             init();
@@ -90,8 +85,6 @@ namespace Project
        
         public void OnKeyUp(object sender,KeyEventArgs e)
         {
-           
-            
             switch (e.KeyCode)
             {
 
@@ -137,12 +130,15 @@ namespace Project
             {
                 double distance = GetDistance(weapon.posX + Level1.delta.X - Level1.delta.X, weapon.posY + Level1.delta.Y - Level1.delta.Y, player.posX + Level1.delta.X - Level1.delta.X, player.posY + Level1.delta.Y - Level1.delta.Y);
                 if (player.Freehands == true)
+                {
                     if (distance < 15)
                     {
                         weapon.onFloor = false;
                         player.id = weapon.id;
-                        player.Freehands = false;     
+                        player.Freehands = false;
                     }
+                }
+                    
             }
         }
         public void chestOpen(staff staff)
@@ -202,14 +198,14 @@ namespace Project
             //enemies
             enemies = new List<Enemy>
             {
-                new Enemy(-20,-20,1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+               // new Enemy(-20,-20,1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                 
                 new Enemy(200, 520, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                 new Enemy(134, 540,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-                new Enemy(45, 500,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-                new Enemy(32, 380, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+               // new Enemy(45, 500,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+               // new Enemy(32, 380, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                 new Enemy(350, 350, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
-                new Enemy(300, 350,2, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
+               // new Enemy(300, 350,2, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
 
             };
 
@@ -324,7 +320,29 @@ namespace Project
                    
                      break;
                  case Keys.Escape:
-                    this.Close();
+                    string message = "Do you want to close the game?\n" +
+                        "All progress will not save!";
+                    string title = "Close Window";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                    if (result == DialogResult.Yes)
+                    {
+                        this.Hide();
+                        FormMenu fm = new FormMenu();
+                        EnterNickName en = new EnterNickName();
+                        fm.label1.Text = nicknameRemember;
+                        fm.ShowDialog();
+                        escapePressed = true;
+                        this.Close();
+
+                    }
+                    else
+                    {
+
+                       
+                    }
+
+                    //this.Close();
                     //this.Hide();
                     //FormMenu fm = new FormMenu();
                     //EnterNickName en = new EnterNickName();
@@ -358,7 +376,7 @@ namespace Project
         public void checkTimeCollide(object sender, EventArgs e)
         {
             
-           PhysicsController.Collide(player);////COLLIDE
+           //PhysicsController.Collide(player);////COLLIDE
            
 
             if(player.collidedead) 
@@ -403,23 +421,26 @@ namespace Project
         public void EnemyUpdate(object sedner,EventArgs e)
         {
 
-            
-            for(int i = 0;i < enemies.Count;i++)
-            {
-                //if (enemies[i].posX < enemies[i].posX + 10)
-                   //enemies[i].posX++;
-          
 
-            }
-            
+            //for (int i = 0; i < enemies.Count; i++)
+            //{
+            //     //if (!enemies[i].isMoving)
+            //    // if (enemies[i].posX < enemies[i].posX + 10)
+            //    enemies[i].posX++;
+
+
+            //}
+
             //foreach (Enemy enemy in enemies)
             //{
 
             //    ////LET ENEMIES UNDERSTAND THAT THEY CANT STAY AT THE SAME POSITION!!
             //}
 
+
+            if (enemies.Count == 0)
+                hitPlayer = false;
             
-          
             for (int i = 0;i < enemies.Count;i++)
             {
                 enemies[i].ownMove(player);
@@ -428,7 +449,7 @@ namespace Project
            
             label1.Text = Convert.ToString(player.howmuchDamaged);
             //label2.Text = Convert.ToString("enemy 3 HP:" + enemies[4].HP);
-            label3.Text = Convert.ToString("catana damage:" + weapons[2].damage); 
+            label3.Text = Convert.ToString(hitPlayer); 
             label4.Text = Convert.ToString("id 2:" + weapons[1].id);
             label5.Text = Convert.ToString("floor:" + weapons[1].onFloor);
             //label6.Text = Convert.ToString("posY:" + enemies[3].posY);
@@ -557,6 +578,7 @@ namespace Project
             //    fm.ShowDialog();
             //    this.Close();
             //}
+            
         }
         private void exit_level1_Click(object sender, EventArgs e)
         {
@@ -582,7 +604,10 @@ namespace Project
         private void Level1_FormClosing(object sender, FormClosingEventArgs e)
         {
             
+        
         }
+            
+       
 
         private void timer4_Tick(object sender, EventArgs e)
         {

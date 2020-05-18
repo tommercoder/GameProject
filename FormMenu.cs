@@ -24,6 +24,7 @@ namespace Project
             InitializeComponent();
             //start_level1();///for level1 
             //sound.play_menu();
+
             
             button_start.MouseEnter += (s, e) => {
                 button_start.ForeColor = Color.White;//change color to coral
@@ -45,7 +46,7 @@ namespace Project
             button_exit.MouseLeave += (s, e) => {
                 button_exit.ForeColor = Color.Aqua;//change color back
             };
-
+            KeyDown += new KeyEventHandler(FormMenu_KeyDown);
 
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -182,6 +183,11 @@ namespace Project
         private void button1_Paint(object sender, PaintEventArgs e)
         {
            
+        }
+
+        private void FormMenu_KeyDown(object sender, KeyEventArgs e)
+        {
+            
         }
     }
 }

@@ -141,7 +141,7 @@
             this.Name = "Level1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shadow Knight";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Level1_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(Level1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Level1_FormClosed);
             this.Load += new System.EventHandler(this.Level1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);

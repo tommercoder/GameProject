@@ -92,8 +92,8 @@ namespace Project.Enemies
                     player.setAnimationConfiguration(1);
                     if (player.howmuchDamaged % 5 == 0)
                         player.Ih++;
-               
 
+                    
                     if (player.HP == 0)
                     {
 
@@ -121,6 +121,7 @@ namespace Project.Enemies
                 player.dead = false;
                 player.Ih = 0;
             }
+            
         }
         public void IfEnemiesCollide(List<Enemy> enemies)
         {
@@ -208,13 +209,23 @@ namespace Project.Enemies
             {
                 flip = 1;
             }
-            
 
 
+            //if (distance >= 30)
+            //{
+            //    if (id == 1)
+            //    {
+            //        posX += 2;
+            //        if(posX > oldPosX)
+            //        posX -= 2;
+                    
 
+
+            //    }
+            //}
             if (distance <= 30)
             {
-
+               
                 if (player.posX  > posX)
                 {
                     posX  += EnemySpeedX;
@@ -235,6 +246,7 @@ namespace Project.Enemies
             }
             else
             {
+                
                 if (posX < oldPosX)
                 {
                     posX += EnemySpeedX;
