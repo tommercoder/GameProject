@@ -6,6 +6,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using Project.Controller;
 using Project.Entities;
 using Project.Models;
@@ -14,14 +15,15 @@ namespace Project.Enemies
 {
     public class Enemy
     {
-     
+
         //Image[] image = 
         public float posX;
         public float posY;
 
         public int sizeid1;
         public int sizeid2;
-        public int sizeid10;
+        public int sizeid10W;
+        public int sizeid10H;
 
         public float oldPosX;
         public float oldPosY;
@@ -32,8 +34,9 @@ namespace Project.Enemies
         public double radius;
         public double radius2;
 
-        public bool isMoving;
-       
+        public bool isMoving = false;
+        public bool enemyDead = false;
+
         public Image mobSheet;
 
         public int flip;
@@ -41,13 +44,15 @@ namespace Project.Enemies
         public int currentLimit;
         public int EnemyIdleFrames;
         public int EnemyRunFrames;
+        public int BossAttack;
+        public int BossDeath;
         public int currentAnimation;
         public int id;
         public int HP;
         public Enemy() { }
         public Enemy(int posx, int posy, int id, int EnemyIdleFrames, int EnemyRunFrames, Image mobSheet)
         {
-            
+
             this.id = id;
             oldPosX = posx;
             oldPosY = posy;
@@ -58,7 +63,8 @@ namespace Project.Enemies
             this.mobSheet = mobSheet;
             sizeid1 = 16;
             sizeid2 = 34;
-            sizeid10 = 32;
+            isMoving = false;
+            enemyDead = false;
             currentFrame = 0;
             currentLimit = EnemyIdleFrames;
             flip = 1;
@@ -72,8 +78,32 @@ namespace Project.Enemies
                 HP = 40;
             if (id == 5)//white
                 HP = 20;
+
+
+        }
+        public Enemy(int posx, int posy, int id, int BossIdle, int BossRun, int BossAttack, int BossDeath, Image Sheet)
+        {
+
+            this.id = id;
+            oldPosX = posx;
+            oldPosY = posy;
+            posX = posx;
+            posY = posy;
+            this.EnemyIdleFrames = BossIdle;
+            this.EnemyRunFrames = BossRun;
+            this.BossAttack = BossAttack;
+
+            this.BossDeath = BossDeath;
+            enemyDead = false;
+            this.mobSheet = Sheet;
+            sizeid10W = 97;
+            sizeid10H = 97;
+            currentFrame = 0;
+            currentLimit = BossIdle;
+            flip = 1;
             if (id == 10)
-                HP = 1500;
+                HP = 150;
+            isMoving = false;
 
         }
         public static double GetDistance(double x1, double y1, double x2, double y2)
@@ -82,50 +112,105 @@ namespace Project.Enemies
         }
         public void hitEntity(Entity player)
         {
-           double distance = GetDistance(player.posX, player.posY, posX, posY);
-            if (distance <= 15 )
-            //if(player.posX - 20 == posX || player.posY - 20 == posY || player.posX +20 == posX || player.posY+20 == posY)
+            if (!enemyDead)
             {
-
-                Level1.hitPlayer = true;
-                if (player.HP > 0)
+                double distance = GetDistance(player.posX, player.posY, posX, posY);
+                double distance1 = GetDistance(player.posX, player.posY, Level1.enemies[3].posX, Level1.enemies[3].posY);
+                if (id == 10)
                 {
-                   player.howmuchDamaged++;//for frames hearts
-                   //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
-                       player.HP -= 20;
-                    player.setAnimationConfiguration(1);
-                    if (player.howmuchDamaged % 5 == 0)
-                        player.Ih++;
 
-                    
-                    if (player.HP == 0)
+
+                    if (distance <= 50)
                     {
 
-                        player.dead = true;
-                        player.howmuchDamaged = 0;
-                        player.Ih = 0;
+                        Level1.hitPlayer = true;
+                        if (player.HP > 0)
+                        {
+
+                            player.howmuchDamaged++;//for frames hearts
+                                                    //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
+                            player.HP -= 20;
+                            player.setAnimationConfiguration(1);
+                            if (player.howmuchDamaged % 5 == 0)
+                                player.Ih++;
+
+
+                            if (player.HP == 0)
+                            {
+
+
+                                player.dead = true;
+                                player.howmuchDamaged = 0;
+                                player.Ih = 0;
+
+                            }
+
+                        }
 
                     }
+                    else
+                    {
+                        Level1.hitPlayer = false;
+                        //if (id == 10)
+                        //setEnemyAnimationConfiguration(0);
 
+                    }
+                    if (player.dead)
+                    {
+                        player.posX = player.OldposX;
+                        player.posY = player.OldposY;
+                        player.setAnimationConfiguration(0);
+                        Level1.delta.X = 0;
+                        Level1.delta.Y = 0;
+                        player.HP = 1000;
+                        player.dead = false;
+                        player.Ih = 0;
+                    }
                 }
-               
+                else if (id != 10)
+                    if (distance <= 15)
+                    {
+
+                        Level1.hitPlayer = true;
+                        if (player.HP > 0)
+                        {
+                            player.howmuchDamaged++;//for frames hearts
+                                                    //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
+                            player.HP -= 20;
+                            player.setAnimationConfiguration(1);
+                            if (player.howmuchDamaged % 5 == 0)
+                                player.Ih++;
+
+
+                            if (player.HP == 0)
+                            {
+
+                                player.dead = true;
+                                player.howmuchDamaged = 0;
+                                player.Ih = 0;
+
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        Level1.hitPlayer = false;
+
+                    }
+                if (player.dead)
+                {
+                    player.posX = player.OldposX;
+                    player.posY = player.OldposY;
+                    player.setAnimationConfiguration(0);
+                    Level1.delta.X = 0;
+                    Level1.delta.Y = 0;
+                    player.HP = 1000;
+                    player.dead = false;
+                    player.Ih = 0;
+                }
             }
-            else
-            {
-                Level1.hitPlayer = false;
-              
-            }
-            if(player.dead)
-            {
-                player.posX = player.OldposX;
-                player.posY = player.OldposY;
-                Level1.delta.X = 0;
-                Level1.delta.Y = 0;
-                player.HP = 1000;
-                player.dead = false;
-                player.Ih = 0;
-            }
-            
         }
         public void IfEnemiesCollide(List<Enemy> enemies)
         {
@@ -164,139 +249,268 @@ namespace Project.Enemies
         }
         public void ownMove(Entity player)
         {
-            float posXvar = posX;
-            float posYvar = posY;
-            float playerposXvar = player.posX;
-            float playerposYvar = player.posY;
-
-
-            if (posX > oldPosX + 2 || posY > oldPosY + 2 || posX < oldPosX || posY < oldPosY)
+            if (!enemyDead)
             {
-                isMoving = true;
-            }
-            else
-                isMoving = false;
-
-            if (posX < 0)
-                posXvar = (-1) * posX;
-
-            if (posY < 0)
-                posYvar = (-1) * posY;
-
-            if (player.posX < 0)
-                playerposXvar = (-1) * player.posX;
-
-            if (player.posY < 0)
-                playerposYvar = player.posY * (-1);
-
-            if (playerposXvar - posXvar < 0)
-                radius = (-1) * (playerposXvar - posXvar);
-            else
-                radius = (playerposXvar - posXvar);
-
-            if (playerposYvar - posYvar < 0)
-                radius2 = (-1) * (playerposYvar - posYvar);
-            else
-                radius2 = (playerposYvar - posYvar);
-
-            double distance = GetDistance((double)player.posX, (double)player.posY, (double)posX, (double)posY);
-
-            if ((radius <= 20 || radius2 <= 20))
-            {
-                if (player.flip == 1 && player.posX > posX)
-                    flip = 1;
-                else if (player.flip == -1 && player.posX < posX)
-                    flip = -1;
-            }
-
-            if (distance >= 30)
-            {
-                flip = 1;
-            }
+                float posXvar = posX;
+                float posYvar = posY;
+                float playerposXvar = player.posX;
+                float playerposYvar = player.posY;
 
 
-            //if (distance >= 30)
-            //{
-            //    if (id == 1)
-            //    {
-            //        posX += 2;
-            //        if(posX > oldPosX)
-            //        posX -= 2;
-                    
 
 
-            //    }
-            //}
-            if (distance <= 30)
-            {
-               
-                if (player.posX  > posX)
-                {
-                    posX  += EnemySpeedX;
-                }
+                if (posX < 0)
+                    posXvar = (-1) * posX;
+
+                if (posY < 0)
+                    posYvar = (-1) * posY;
+
+                if (player.posX < 0)
+                    playerposXvar = (-1) * player.posX;
+
+                if (player.posY < 0)
+                    playerposYvar = player.posY * (-1);
+
+                if (playerposXvar - posXvar < 0)
+                    radius = (-1) * (playerposXvar - posXvar);
                 else
-                {
-                    posX  -= EnemySpeedX;
-                }
+                    radius = (playerposXvar - posXvar);
 
-                if (player.posY  > posY)
-                {
-
-                    posY += EnemySpeedY;
-                }
+                if (playerposYvar - posYvar < 0)
+                    radius2 = (-1) * (playerposYvar - posYvar);
                 else
-                    posY -= EnemySpeedY;
+                    radius2 = (playerposYvar - posYvar);
 
-            }
-            else
-            {
-                
-                if (posX < oldPosX)
-                {
-                    posX += EnemySpeedX;
-                }
-                else
-                {
-                    posX -= EnemySpeedX;
-                }
+                double distance = GetDistance((double)player.posX, (double)player.posY, (double)posX, (double)posY);
+                if (id != 10)
+                    if ((radius <= 30 || radius2 <= 30))
+                    {
+                        if (player.flip == 1 && player.posX > posX)
+                            flip = 1;
+                        else if (player.flip == -1 && player.posX < posX)
+                            flip = -1;
+                    }
+                if (id == 10)
+                    if ((radius <= 100 || radius2 <= 100))
+                    {
+                        if (player.flip == 1 && player.posX > posX)
+                            flip = 1;
+                        else if (player.flip == -1 && player.posX < posX)
+                            flip = -1;
+                        else if (player.flip == 1 && player.posX < posX)
+                            flip = -1;
+                        else if (player.flip == -1 && player.posX > posX)
+                            flip = 1;
 
-                if (posY < oldPosY)
-                {
-                    posY += EnemySpeedY;
-                }
-                else
-                {
+                    }
+                if (id != 10)
+                    if (distance >= 30)
+                    {
+                        flip = 1;
 
-                    posY -= EnemySpeedY;
-                }
+                    }
+                if (id == 10)
+                    if (distance >= 100)
+                    {
+                        if (player.posX < posX)
+                            flip = 1;
+                        if (player.posX > posX)
+                            flip = -1;
+                    }
 
+                //if (distance >= 30)
+                //{
+                //    if (id == 1)
+                //    {
+                //        posX += 2;
+                //        if(posX > oldPosX)
+                //        posX -= 2;
+
+
+
+                //    }
+                //}
+
+                if (id != 10)
+                {
+                    if (distance <= 30)
+                    {
+                        if (player.posX > posX)
+                        {
+                            posX += EnemySpeedX;
+                        }
+                        else
+                        {
+                            posX -= EnemySpeedX;
+                        }
+
+                        if (player.posY > posY)
+                        {
+
+                            posY += EnemySpeedY;
+                        }
+                        else
+                            posY -= EnemySpeedY;
+
+                    }
+                    else
+                    {
+
+                        if (posX < oldPosX)
+                        {
+                            posX += EnemySpeedX;
+                        }
+                        else
+                        {
+                            posX -= EnemySpeedX;
+                        }
+
+                        if (posY < oldPosY)
+                        {
+                            posY += EnemySpeedY;
+                        }
+                        else
+                        {
+
+                            posY -= EnemySpeedY;
+                        }
+
+                    }
+                }
+                else if (id == 10)
+                {
+                    if (distance <= 100)
+                    {
+
+
+                        if (isMoving)
+                        {
+                            setEnemyAnimationConfiguration(1);
+                            if (Level1.hitPlayer)
+                                setEnemyAnimationConfiguration(6);
+
+
+                        }
+                        else
+                        {
+                            setEnemyAnimationConfiguration(0);
+                            if (Level1.hitPlayer)
+                                setEnemyAnimationConfiguration(6);
+                        }
+                        if (player.posX > posX)
+                        {
+                            posX += EnemySpeedX;
+                        }
+                        else
+                        {
+                            posX -= EnemySpeedX;
+
+                        }
+
+                        if (player.posY > posY)
+                        {
+
+                            posY += EnemySpeedY;
+                        }
+                        else
+                            posY -= EnemySpeedY;
+
+                    }
+                    else
+                    {
+
+                        if (isMoving)
+                        {
+
+                            setEnemyAnimationConfiguration(1);
+
+                        }
+                        else
+                            setEnemyAnimationConfiguration(0);
+                        if (posX < oldPosX)
+                        {
+                            posX += EnemySpeedX;
+                        }
+                        else
+                        {
+                            posX -= EnemySpeedX;
+                        }
+
+                        if (posY < oldPosY)
+                        {
+                            posY += EnemySpeedY;
+                        }
+                        else
+                        {
+
+                            posY -= EnemySpeedY;
+                        }
+
+
+                    }
+
+
+                }
             }
             
-        }
+            if (enemyDead)
+            {
+                setEnemyAnimationConfiguration(9);
+                //Wait(10);
+                isMoving = false;
+                Level1.hitPlayer = false;
 
+                
+            }
+        
+    }
+
+        
+        private void Wait(double seconds)
+        {
+            int ticks = System.Environment.TickCount + (int)Math.Round(seconds * 1000.0);
+            while (System.Environment.TickCount < ticks)
+            {
+                System.Windows.Forms.Application.DoEvents();
+            }
+        }
         public void playEnemyAnimation(Graphics g)
         {
-            if (id == 1) 
+            if (id == 1)
             {
-                
-                if (currentFrame < currentLimit - 1 )
+
+                if (currentFrame < currentLimit - 1)
                     currentFrame++;
                 else
                     currentFrame = 0;
             }
-            if (id == 2) 
-            { 
-                if (currentFrame < currentLimit -1)
-                    currentFrame++;
-                else
-                    currentFrame = 0; 
-            }
-            if(id == 10)
+            if (id == 2)
             {
                 if (currentFrame < currentLimit - 1)
                     currentFrame++;
                 else
                     currentFrame = 0;
+            }
+            if (id == 10)
+            {
+
+
+
+                if (currentAnimation == 9)
+                {
+                    if (currentFrame < currentLimit - 1)
+                        currentFrame++;
+                    else
+                        currentFrame = 5;
+                }
+                else
+                {
+                    if (currentFrame < currentLimit - 2)
+                        currentFrame++;
+                    else
+                        currentFrame = 0;
+                }
+
             }
             if (id == 1)
             {
@@ -309,7 +523,8 @@ namespace Project.Enemies
             }
             if(id == 10)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2 + Level1.delta.X + 14, (int)posY + Level1.delta.Y + 5), new Size(flip * sizeid10, sizeid10)), 32 * currentFrame, 34 * currentAnimation, sizeid10, sizeid10, GraphicsUnit.Pixel);
+
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid10W / 2 + Level1.delta.X, (int)posY -30 + Level1.delta.Y + 5), new Size(flip * sizeid10W, sizeid10H)), 95 * currentFrame, 95 * currentAnimation, sizeid10W, sizeid10H, GraphicsUnit.Pixel);
             }
         }
 
@@ -320,8 +535,16 @@ namespace Project.Enemies
             switch (currentAnimation)
             {
                 case 0:
-
                     currentLimit = EnemyIdleFrames;
+                    break;
+                case 1:
+                    currentLimit = EnemyRunFrames;
+                    break;
+                case 6:
+                    currentLimit = BossAttack;
+                    break;
+                case 9:
+                    currentLimit = BossDeath;
 
                     break;
             }

@@ -11,7 +11,7 @@ using Project.Enemies;
 using Project.chests_and_staff;
 using System.Windows;
 using MessageBox = System.Windows.Forms.MessageBox;
-
+using System.Threading;
 
 namespace Project
 {
@@ -31,6 +31,7 @@ namespace Project
         public Image mobSheet;
         public Image mobSheet2;
         public Image heartsImage;
+        public Image bossSheet;
 
         public hearts hearts;
 
@@ -65,7 +66,7 @@ namespace Project
             timer2.Interval = 30;
 
            timer3.Interval = 10;//collide
-            timer4.Interval = 20;///
+            timer4.Interval = 10;///
          
             
             timer1.Tick += new EventHandler(Update);
@@ -111,6 +112,16 @@ namespace Project
                     break;
                 case Keys.E:
                     player.hitPressed = false;
+                    if (enemies[3].enemyDead)
+                    {
+
+                        player.isMoving = false;
+                        player.setAnimationConfiguration(0);
+                        msg msg = new msg();
+                        msg.Show();
+                    }
+
+            
                     break;
                 case Keys.X:
                     Xpressed = false;
@@ -194,20 +205,24 @@ namespace Project
             chest = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\chest.png"));
             mobSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Enemy1.png"));
             mobSheet2 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\enemy2.png"));
+            bossSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Minotaur - Sprite Sheet.png"));
             heartsImage = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\hearts2.png"));
 
             //enemies
             enemies = new List<Enemy>
             {
-               // new Enemy(-20,-20,1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+               
                 
                 new Enemy(200, 520, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                 new Enemy(134, 540,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-               // new Enemy(45, 500,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-               // new Enemy(32, 380, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+              
                 new Enemy(350, 350, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
-               // new Enemy(300, 350,2, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
-
+            
+               new Enemy(200,200,10,Hero.BossIdleFrames,Hero.BossRunFrames,Hero.BossAttackFrames,Hero.BossDeathFrames,bossSheet),//DO NOT CHANGE BOSS 
+                  // new Enemy(300, 350,2, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
+                   // new Enemy(45, 500,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+               // new Enemy(32, 380, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+               // new Enemy(-20,-20,1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
             };
 
             
@@ -242,7 +257,14 @@ namespace Project
         {
            
         }
-
+        private void Wait(double seconds)
+        {
+            int ticks = System.Environment.TickCount + (int)Math.Round(seconds * 1000.0);
+            while (System.Environment.TickCount < ticks)
+            {
+                System.Windows.Forms.Application.DoEvents();
+            }
+        }
         public void OnPress(object sender, KeyEventArgs e)
         {
             
@@ -302,7 +324,16 @@ namespace Project
                     pl.Play();
                     
                     player.hitPressed = true;
-                   
+
+                   if(enemies[3].enemyDead)
+                    {
+                        player.isMoving = false;
+                        player.setAnimationConfiguration(0);
+                        msg msg = new msg();
+                        msg.Show();
+                       
+
+                    }
                     break;
         
                 case Keys.Q:
@@ -367,16 +398,22 @@ namespace Project
         
         public void fighing(object sender,EventArgs e)
         {
-
+            double distance1 = GetDistance(player.posX, player.posY, enemies[3].posX, enemies[3].posY);//boss
             for (int i = 0; i < enemies.Count; i++)
             {
+                
                 enemies[i].hitEntity(player);
+
+                
+                
+
                 // label2.Text = Convert.ToString(player.HP); ////UDAR PO PLAYERU
 
             }
-
+           
             foreach (Weapons wp in weapons)
             {
+                
                 wp.hitEnemy(enemies, weapons, player);
             }
             foreach (Weapons wp in weapons)
@@ -386,11 +423,11 @@ namespace Project
         }
         public void checkTimeCollide(object sender, EventArgs e)
         {
-            
-           //PhysicsController.Collide(player);////COLLIDE
+
+            //PhysicsController.Collide(player);////COLLIDE
            
 
-            if(player.collidedead) 
+            if (player.collidedead) 
             {
                 player.posX = player.OldposX;
                 player.posY = player.OldposY;
@@ -419,20 +456,22 @@ namespace Project
 
             //        player.posY + player.size - 16 > col.posY)                       ///square to square collision
             //    {
-            //        label2.Text = Convert.ToString("playerposX:" + player.posX);
-            //        label3.Text = Convert.ToString("playerposY" + player.posY);
+                    
             //        label1.Text = "collide";
             //        player.isMoving = false;
             //        collide = true;
             //    }
             //}
         }
-
+        public void Closing()
+        {
+            this.Close();
+        }
 
         public void EnemyUpdate(object sedner,EventArgs e)
         {
 
-
+            
             //for (int i = 0; i < enemies.Count; i++)
             //{
             //     //if (!enemies[i].isMoving)
@@ -447,26 +486,53 @@ namespace Project
 
             //    ////LET ENEMIES UNDERSTAND THAT THEY CANT STAY AT THE SAME POSITION!!
             //}
-
+           
+           
 
             if (enemies.Count == 0)
                 hitPlayer = false;
-            
+
+            if (enemies[3].HP == 0)
+                enemies[3].enemyDead = true;
+
+            double distance1 = GetDistance(player.posX, player.posY, enemies[3].posX, enemies[3].posY);//boss
+           
+            double distanceBoss = GetDistance(enemies[3].posX, enemies[3].posY, enemies[3].oldPosX, enemies[3].oldPosY);
+
+            //if (distance1 < 30)
+            //    if (enemies[3].isMoving == false || enemies[3].isMoving == true)
+            //    enemies[3].setEnemyAnimationConfiguration(3);
+
             for (int i = 0;i < enemies.Count;i++)
             {
+                //if (enemies[i].posX > enemies[i].oldPosX || enemies[i].posX < enemies[i].oldPosX || enemies[i].posY > enemies[i].oldPosY || enemies[i].posY < enemies[i].oldPosY)
+                if(distanceBoss > 5)
+                {
+                    if (distance1 < 10)
+                        enemies[i].isMoving = false;
+                    else
+                    enemies[i].isMoving = true;
+
+                }
+                else
+                    enemies[i].isMoving = false;
+
+                
+                
                 enemies[i].ownMove(player);
    
             }
            
-            label1.Text = Convert.ToString(player.howmuchDamaged);
+            label1.Text = Convert.ToString(distance1);
             //label2.Text = Convert.ToString("enemy 3 HP:" + enemies[4].HP);
-            label3.Text = Convert.ToString(hitPlayer); 
-            label4.Text = Convert.ToString("id 2:" + weapons[1].id);
-            label5.Text = Convert.ToString("floor:" + weapons[1].onFloor);
-            //label6.Text = Convert.ToString("posY:" + enemies[3].posY);
-            //label7.Text = Convert.ToString(GetDistance(player.posX, player.posY, enemies[3].posX, enemies[3].posY));
+            label2.Text = Convert.ToString(enemies[3].isMoving);
+            label3.Text = Convert.ToString("oldpoX" + enemies[3].oldPosX);
+            label4.Text = Convert.ToString("poX" + enemies[3].posX);
+           label5.Text = Convert.ToString("curentanimation:" + enemies[3].currentAnimation);
+            label6.Text = Convert.ToString(enemies[3].HP);
+            label7.Text = Convert.ToString(enemies[3].enemyDead);
 
-            
+
         }
 
         public void SetTextForLabel(string myText)
@@ -597,8 +663,9 @@ namespace Project
 
         private void Level1_Load(object sender, EventArgs e)
         {
-            axWindowsMediaPlayer2.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\sound_battle.wav");
-            axWindowsMediaPlayer2.Ctlcontrols.play();
+            //axWindowsMediaPlayer2.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\sound_battle.wav");
+            //axWindowsMediaPlayer2.Ctlcontrols.play();
+            
         }
 
         private void bottom_Click(object sender, EventArgs e)
@@ -625,6 +692,11 @@ namespace Project
         }
 
         private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
         {
 
         }

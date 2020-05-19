@@ -34,7 +34,7 @@ namespace Project.weapons
             if (id == 1)
                 damage = 20;
             if (id == 2)
-                damage = 50;
+                damage = 150;
             if (id == 3)//white sword
                 damage = 40;
             if (id == 4)//yellow
@@ -151,12 +151,18 @@ namespace Project.weapons
                                 if (player.id == 1)
                                     enemies[i].HP -= 20;
                                 if (player.id == 2)
-                                    enemies[i].HP -= 50;
+                                    enemies[i].HP -= 150;
                                 if (player.id == 3)
                                     enemies[i].HP -= 40;
                             }
                             else
-                                enemies.RemoveAt(i);
+                            {
+                               
+                                if (enemies[i].id != 10)
+                                    enemies.RemoveAt(i);
+                                
+                            }
+
                         }
                             else if (player.posX <= enemies[i].posX)
                             {
@@ -166,12 +172,17 @@ namespace Project.weapons
                                 if (player.id == 1)
                                     enemies[i].HP -= 20;
                                 if (player.id == 2)
-                                    enemies[i].HP -= 50;
+                                    enemies[i].HP -= 150;
                                 if (player.id == 3)
                                     enemies[i].HP -= 40;
                             }
                             else
-                                enemies.RemoveAt(i);
+                            {
+                                
+                                if (enemies[i].id != 10)
+                                    enemies.RemoveAt(i);
+                                
+                            }
                         }
                             else if (player.posY >= enemies[i].posY)
                             {
@@ -181,12 +192,17 @@ namespace Project.weapons
                                 if (player.id == 1)
                                     enemies[i].HP -= 20;
                                 if (player.id == 2)
-                                    enemies[i].HP -= 50;
+                                    enemies[i].HP -= 150;
                                 if (player.id == 3)
                                     enemies[i].HP -= 40;
                             }
                             else
-                                enemies.RemoveAt(i);
+                            {
+                                
+                                if (enemies[i].id != 10)
+                                    enemies.RemoveAt(i);
+                                
+                            }
                         }
                             else if (player.posY <= enemies[i].posY)
                             {
@@ -196,13 +212,19 @@ namespace Project.weapons
                                 if (player.id == 1)
                                     enemies[i].HP -= 20;
                                 if (player.id == 2)
-                                    enemies[i].HP -= 50;
+                                    enemies[i].HP -= 150;
                                 if (player.id == 3)
                                     enemies[i].HP -= 40;
                             }
                             else
-                                enemies.RemoveAt(i);
+                            {
+                                
+                                if (enemies[i].id != 10)
+                                    enemies.RemoveAt(i);
+                                
                             }
+
+                        }
                             
                                 
                         }

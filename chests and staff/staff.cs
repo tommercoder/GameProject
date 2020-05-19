@@ -46,7 +46,7 @@ namespace Project.chests_and_staff
                 currentFrame++;
             else
             {
-                if(currentAnimation ==0)
+                if(currentAnimation == 0)
                 currentFrame = 0;
                 if (currentAnimation == 1)
                     currentFrame = 1;
