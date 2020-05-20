@@ -158,8 +158,12 @@ namespace Project.weapons
                             else
                             {
                                
-                                if (enemies[i].id != 10)
+                               if (enemies[i].id != 10)
+                                {
+                                    Level1.newBossIndex--;
                                     enemies.RemoveAt(i);
+
+                                }
                                 
                             }
 
@@ -178,10 +182,14 @@ namespace Project.weapons
                             }
                             else
                             {
-                                
+
                                 if (enemies[i].id != 10)
+                                {
+                                    Level1.newBossIndex--;
                                     enemies.RemoveAt(i);
-                                
+
+                                }
+
                             }
                         }
                             else if (player.posY >= enemies[i].posY)
@@ -198,10 +206,14 @@ namespace Project.weapons
                             }
                             else
                             {
-                                
+
                                 if (enemies[i].id != 10)
+                                {
+                                    Level1.newBossIndex--;
                                     enemies.RemoveAt(i);
-                                
+
+                                }
+
                             }
                         }
                             else if (player.posY <= enemies[i].posY)
@@ -218,9 +230,13 @@ namespace Project.weapons
                             }
                             else
                             {
-                                
+
                                 if (enemies[i].id != 10)
+                                {
+                                    Level1.newBossIndex--;
                                     enemies.RemoveAt(i);
+
+                                }
                                 
                             }
 

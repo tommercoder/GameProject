@@ -102,7 +102,7 @@ namespace Project.Enemies
             currentLimit = BossIdle;
             flip = 1;
             if (id == 10)
-                HP = 150;
+                HP = 1500;
             isMoving = false;
 
         }
@@ -112,10 +112,10 @@ namespace Project.Enemies
         }
         public void hitEntity(Entity player)
         {
-            if (!enemyDead)
+            if (!Level1.enemies[Level1.newBossIndex].enemyDead)
             {
                 double distance = GetDistance(player.posX, player.posY, posX, posY);
-                double distance1 = GetDistance(player.posX, player.posY, Level1.enemies[3].posX, Level1.enemies[3].posY);
+                
                 if (id == 10)
                 {
 
@@ -157,8 +157,46 @@ namespace Project.Enemies
                     }
                     if (player.dead)
                     {
-                        player.posX = player.OldposX;
-                        player.posY = player.OldposY;
+                        if (player.posX < 290 && player.posY < 14)
+                        {
+                            player.posX = player.OldposX;
+                            player.posY = player.OldposY;
+                        }
+                        else if ((player.posX > 290 && player.posY > 14) && (player.posX < 539 && player.posY < 551))
+                        {
+                            player.posX = 290;
+                            player.posY = 14;
+                        }
+                        //else if (player.posX < 539 && player.posY < 551)
+                        //{
+                        //    player.posX = 290;
+                        //    player.posY = 14;
+                        //}
+                        else if ((player.posX > 539 && player.posY > 551) && (player.posX < 50 && player.posY < 1178 ))
+                        {
+                            player.posX = 539;
+                            player.posY = 551;
+                        }
+                        //else if (player.posX < 50 && player.posY < 1178)
+                        //{
+                        //    player.posX = 539;
+                        //    player.posY = 551;
+                        //}
+                        else if ((player.posX > 50 && player.posY > 1178) && (player.posX < 1007 && player.posY < 1109))
+                        {
+                            player.posX = 50;
+                            player.posY = 1178;
+                        }
+                        //else if (player.posX < 1007 && player.posY < 1109)
+                        //{
+                        //    player.posX = 50;
+                        //    player.posY = 1178;
+                        //}
+                        else if (player.posX > 1007 && player.posY > 1109)
+                        {
+                            player.posX = 1007;
+                            player.posY = 1109;
+                        }
                         player.setAnimationConfiguration(0);
                         Level1.delta.X = 0;
                         Level1.delta.Y = 0;
@@ -201,8 +239,47 @@ namespace Project.Enemies
                     }
                 if (player.dead)
                 {
-                    player.posX = player.OldposX;
-                    player.posY = player.OldposY;
+                    if (player.posX < 290 && player.posY < 14)
+                    {
+                        player.posX = player.OldposX;
+                        player.posY = player.OldposY;
+                    }
+                    else if ((player.posX > 290 && player.posY > 14) && (player.posX < 539 && player.posY < 551))
+                    {
+                        player.posX = 290;
+                        player.posY = 14;
+                    }
+                    //else if (player.posX < 539 && player.posY < 551)
+                    //{
+                    //    player.posX = 290;
+                    //    player.posY = 14;
+                    //}
+                    else if ((player.posX > 539 && player.posY > 551) && (player.posX < 50 && player.posY < 1178))
+                    {
+                        player.posX = 539;
+                        player.posY = 551;
+                    }
+                    //else if (player.posX < 50 && player.posY < 1178)
+                    //{
+                    //    player.posX = 539;
+                    //    player.posY = 551;
+                    //}
+                    else if ((player.posX > 50 && player.posY > 1178) && (player.posX < 1007 && player.posY < 1109))
+                    {
+                        player.posX = 50;
+                        player.posY = 1178;
+                    }
+                    //else if (player.posX < 1007 && player.posY < 1109)
+                    //{
+                    //    player.posX = 50;
+                    //    player.posY = 1178;
+                    //}
+                    else if (player.posX > 1007 && player.posY > 1109)
+                    {
+                        player.posX = 1007;
+                        player.posY = 1109;
+                    }
+
                     player.setAnimationConfiguration(0);
                     Level1.delta.X = 0;
                     Level1.delta.Y = 0;
@@ -249,7 +326,7 @@ namespace Project.Enemies
         }
         public void ownMove(Entity player)
         {
-            if (!enemyDead)
+            if (!Level1.enemies[Level1.newBossIndex].enemyDead)
             {
                 float posXvar = posX;
                 float posYvar = posY;
@@ -466,14 +543,7 @@ namespace Project.Enemies
     }
 
         
-        private void Wait(double seconds)
-        {
-            int ticks = System.Environment.TickCount + (int)Math.Round(seconds * 1000.0);
-            while (System.Environment.TickCount < ticks)
-            {
-                System.Windows.Forms.Application.DoEvents();
-            }
-        }
+       
         public void playEnemyAnimation(Graphics g)
         {
             if (id == 1)

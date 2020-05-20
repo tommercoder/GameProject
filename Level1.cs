@@ -32,6 +32,7 @@ namespace Project
         public Image mobSheet2;
         public Image heartsImage;
         public Image bossSheet;
+        public Image FlaskRed;
 
         public hearts hearts;
 
@@ -41,6 +42,7 @@ namespace Project
         
         public static List<Weapons> weapons = new List<Weapons>();
         public static List<Enemy> enemies;
+        public static List<staff> flasks;
         public Entity player;
         public staff Chest;
         public static bool Wpressed;
@@ -55,7 +57,16 @@ namespace Project
         public string nicknameRemember = " ";
         public int newDeltaX;
         public int newDeltaY;
-
+        ///checkpoints
+        Point check1 = new Point(290, 14);
+        Point check2 = new Point(539, 551);
+        Point check3 = new Point(50, 1178);
+        Point check4 = new Point(1007,1109);
+       
+        /// ////////////////////
+        public static int newBossIndex = 3;
+       /// //////////////////
+      
         public Level1()
         {
             this.BackColor = Color.FromArgb(47, 47, 46);
@@ -112,7 +123,7 @@ namespace Project
                     break;
                 case Keys.E:
                     player.hitPressed = false;
-                    if (enemies[3].enemyDead)
+                    if (enemies[newBossIndex].enemyDead)
                     {
 
                         player.isMoving = false;
@@ -120,8 +131,12 @@ namespace Project
                         msg msg = new msg();
                         msg.Show();
                     }
+                    //if (enemies[newBossIndex].HP == 5)
+                    //{
+                    //    axWindowsMediaPlayer4.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\deadBoss.wav");
+                    //    axWindowsMediaPlayer4.Ctlcontrols.play();
+                    //}
 
-            
                     break;
                 case Keys.X:
                     Xpressed = false;
@@ -191,7 +206,7 @@ namespace Project
             player.id = 0;
             player.Freehands = true;
         }
-        public  void init()
+        public void init()
         {
             MapController.Init();
 
@@ -207,24 +222,28 @@ namespace Project
             mobSheet2 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\enemy2.png"));
             bossSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Minotaur - Sprite Sheet.png"));
             heartsImage = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\hearts2.png"));
+            FlaskRed = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\flask_big_red.png"));
 
             //enemies
             enemies = new List<Enemy>
             {
-               
-                
+
+
                 new Enemy(200, 520, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                 new Enemy(134, 540,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-              
+
                 new Enemy(350, 350, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
-            
-               new Enemy(200,200,10,Hero.BossIdleFrames,Hero.BossRunFrames,Hero.BossAttackFrames,Hero.BossDeathFrames,bossSheet),//DO NOT CHANGE BOSS 
+
+                new Enemy(50,1178,10,Hero.BossIdleFrames,Hero.BossRunFrames,Hero.BossAttackFrames,Hero.BossDeathFrames,bossSheet),//DO NOT CHANGE BOSS 
                   // new Enemy(300, 350,2, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
                    // new Enemy(45, 500,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                // new Enemy(32, 380, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                // new Enemy(-20,-20,1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
             };
-
+            flasks = new List<staff>
+            {
+                new staff(100,100,1,FlaskRed),
+            };
             
             
             //player
@@ -316,16 +335,26 @@ namespace Project
                 
                 //hit
                 case Keys.E:
+                    if (player.Freehands == false)
+                    {
+                        axWindowsMediaPlayer1.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\sound_sword.wav");
+                        axWindowsMediaPlayer1.settings.volume = 13;
+                        axWindowsMediaPlayer1.Ctlcontrols.play();
+                    }
+                    //if (enemies[newBossIndex].HP == 5)
+                    //{
+                    //    axWindowsMediaPlayer4.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\deadBoss.wav");
+                    //    axWindowsMediaPlayer4.Ctlcontrols.play();
+                    //}
+                    //System.Media.SoundPlayer pl = new System.Media.SoundPlayer();
 
-                    //axWindowsMediaPlayer1.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\sound_sword.png");
-                    //axWindowsMediaPlayer1.Ctlcontrols.play();
-                    System.Media.SoundPlayer pl = new System.Media.SoundPlayer();
-                    pl.Stream = Properties.Resources.sound_sword;
-                    pl.Play();
-                    
+                    //pl.Stream = Properties.Resources.sound_sword;
+
+                    //pl.Play();
+
                     player.hitPressed = true;
 
-                   if(enemies[3].enemyDead)
+                   if(enemies[newBossIndex].enemyDead)
                     {
                         player.isMoving = false;
                         player.setAnimationConfiguration(0);
@@ -338,6 +367,11 @@ namespace Project
         
                 case Keys.Q:
                     //throw out
+                    if (player.Freehands == false)
+                    {
+                        axWindowsMediaPlayer3.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\place_down_on_surface.mp3");
+                        axWindowsMediaPlayer3.Ctlcontrols.play();
+                    }
                     Qpressed(player, weapons);
                      break;
                 case Keys.F:
@@ -398,7 +432,7 @@ namespace Project
         
         public void fighing(object sender,EventArgs e)
         {
-            double distance1 = GetDistance(player.posX, player.posY, enemies[3].posX, enemies[3].posY);//boss
+         
             for (int i = 0; i < enemies.Count; i++)
             {
                 
@@ -424,13 +458,53 @@ namespace Project
         public void checkTimeCollide(object sender, EventArgs e)
         {
 
-            //PhysicsController.Collide(player);////COLLIDE
+           PhysicsController.Collide(player);////COLLIDE
            
 
             if (player.collidedead) 
             {
-                player.posX = player.OldposX;
-                player.posY = player.OldposY;
+
+                if (player.posX < 290 && player.posY < 14)
+                {
+                    player.posX = player.OldposX;
+                    player.posY = player.OldposY;
+                }
+                else if ((player.posX > 290 && player.posY > 14) && (player.posX < 539 && player.posY < 551))
+                {
+                    player.posX = 290;
+                    player.posY = 14;
+                }
+                //else if (player.posX < 539 && player.posY < 551)
+                //{
+                //    player.posX = 290;
+                //    player.posY = 14;
+                //}
+                else if ((player.posX > 539 && player.posY > 551) && (player.posX < 50 && player.posY < 1178))
+                {
+                    player.posX = 539;
+                    player.posY = 551;
+                }
+                //else if (player.posX < 50 && player.posY < 1178)
+                //{
+                //    player.posX = 539;
+                //    player.posY = 551;
+                //}
+                else if ((player.posX > 50 && player.posY > 1178) && (player.posX < 1007 && player.posY < 1109))
+                {
+                    player.posX = 50;
+                    player.posY = 1178;
+                }
+                //else if (player.posX < 1007 && player.posY < 1109)
+                //{
+                //    player.posX = 50;
+                //    player.posY = 1178;
+                //}
+                else if (player.posX > 1007 && player.posY > 1109)
+                {
+                    player.posX = 1007;
+                    player.posY = 1109;
+                }
+
                 Level1.delta.X = 0;
                 Level1.delta.Y = 0;
                 player.HP = 1000;
@@ -492,27 +566,38 @@ namespace Project
             if (enemies.Count == 0)
                 hitPlayer = false;
 
-            if (enemies[3].HP == 0)
-                enemies[3].enemyDead = true;
 
-            double distance1 = GetDistance(player.posX, player.posY, enemies[3].posX, enemies[3].posY);//boss
-           
-            double distanceBoss = GetDistance(enemies[3].posX, enemies[3].posY, enemies[3].oldPosX, enemies[3].oldPosY);
+
+
+
+
 
             //if (distance1 < 30)
             //    if (enemies[3].isMoving == false || enemies[3].isMoving == true)
             //    enemies[3].setEnemyAnimationConfiguration(3);
 
+           
+
             for (int i = 0;i < enemies.Count;i++)
             {
-                //if (enemies[i].posX > enemies[i].oldPosX || enemies[i].posX < enemies[i].oldPosX || enemies[i].posY > enemies[i].oldPosY || enemies[i].posY < enemies[i].oldPosY)
-                if(distanceBoss > 5)
+                
+                if (enemies[newBossIndex].HP == 0 || enemies[newBossIndex].HP <= 0)
+                {
+                        enemies[newBossIndex].enemyDead = true;
+
+                }
+                
+
+
+                double distance1 = GetDistance(player.posX, player.posY, enemies[i].posX, enemies[i].posY);//boss
+                double distanceBoss = GetDistance(enemies[i].posX, enemies[i].posY, enemies[i].oldPosX, enemies[i].oldPosY);
+               
+                if (distanceBoss > 5)
                 {
                     if (distance1 < 10)
                         enemies[i].isMoving = false;
                     else
                     enemies[i].isMoving = true;
-
                 }
                 else
                     enemies[i].isMoving = false;
@@ -522,15 +607,14 @@ namespace Project
                 enemies[i].ownMove(player);
    
             }
-           
-            label1.Text = Convert.ToString(distance1);
-            //label2.Text = Convert.ToString("enemy 3 HP:" + enemies[4].HP);
-            label2.Text = Convert.ToString(enemies[3].isMoving);
-            label3.Text = Convert.ToString("oldpoX" + enemies[3].oldPosX);
-            label4.Text = Convert.ToString("poX" + enemies[3].posX);
-           label5.Text = Convert.ToString("curentanimation:" + enemies[3].currentAnimation);
-            label6.Text = Convert.ToString(enemies[3].HP);
-            label7.Text = Convert.ToString(enemies[3].enemyDead);
+            label1.Text = Convert.ToString(player.posX);
+            label2.Text = Convert.ToString(player.posY);
+            //label2.Text = Convert.ToString(enemies[3].isMoving);
+            label3.Text = Convert.ToString("oldpoX" + player.OldposX);
+            label4.Text = Convert.ToString("oldposY" + player.OldposY); 
+           //label5.Text = Convert.ToString("curentanimation:" + enemies[3].currentAnimation);
+            //label6.Text = Convert.ToString(enemies[3].HP);
+           // label7.Text = Convert.ToString(enemies[3].enemyDead);
 
 
         }
@@ -605,7 +689,10 @@ namespace Project
             double distance = GetDistance(player.posX, player.posY, Chest.posX, Chest.posY);
             
             Chest.PlayAnimation(g);
-
+            for(int i = 0;i < flasks.Count;i++)
+            {
+                flasks[i].playFlask(g,player);
+            }
 
             player.PlayAnimation(g);
            
@@ -663,9 +750,10 @@ namespace Project
 
         private void Level1_Load(object sender, EventArgs e)
         {
-            //axWindowsMediaPlayer2.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\sound_battle.wav");
-            //axWindowsMediaPlayer2.Ctlcontrols.play();
-            
+            axWindowsMediaPlayer2.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\sound_battle.wav");
+            axWindowsMediaPlayer2.settings.volume = 4;
+            axWindowsMediaPlayer2.Ctlcontrols.play();
+
         }
 
         private void bottom_Click(object sender, EventArgs e)

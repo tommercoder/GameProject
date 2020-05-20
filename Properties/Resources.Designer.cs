@@ -131,6 +131,15 @@ namespace Project.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream deadBoss {
+            get {
+                return ResourceManager.GetStream("deadBoss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap desert_1_0_7 {
@@ -257,6 +266,16 @@ namespace Project.Properties {
             get {
                 object obj = ResourceManager.GetObject("orig", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] place_down_on_surface {
+            get {
+                object obj = ResourceManager.GetObject("place_down_on_surface", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

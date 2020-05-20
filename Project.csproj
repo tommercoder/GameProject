@@ -377,5 +377,11 @@
   <ItemGroup>
     <None Include="Resources\Minotaur - Sprite Sheet.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\place_down_on_surface.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deadBoss.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
