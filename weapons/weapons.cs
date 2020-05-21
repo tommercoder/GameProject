@@ -38,11 +38,11 @@ namespace Project.weapons
             if (id == 3)//white sword
                 damage = 40;
             if (id == 4)//yellow
-                damage = 30;
+                damage = 60;
             if (id == 5)//axe
                 damage = 20;
             if (id == 6)//big HAMMER FOR boss
-                damage = 70;
+                damage = 80;
         }
         public void hit(Graphics g, Entity player)
         {
@@ -53,16 +53,45 @@ namespace Project.weapons
                 {
                     if (player.flip == 1)
                     {
-                        g.TranslateTransform(player.posX - 6 + Level1.delta.X + 14/*/ 2.0f*/, player.posY + 44 / 2.0f + Level1.delta.Y);
-                        g.RotateTransform(90);
-                        g.TranslateTransform(-(player.posX - 6 + Level1.delta.X + 14), -(player.posY + 44 / 2.0F + Level1.delta.Y));
-
+                        if (id != 6 && id != 5)
+                        {
+                            g.TranslateTransform(player.posX - 6 + Level1.delta.X + 14/*/ 2.0f*/, player.posY + 44 / 2.0f + Level1.delta.Y);
+                            g.RotateTransform(90);
+                            g.TranslateTransform(-(player.posX - 6 + Level1.delta.X + 14), -(player.posY + 44 / 2.0F + Level1.delta.Y));
+                        }
+                        if(id == 6)
+                        {
+                            g.TranslateTransform(player.posX + 3 + Level1.delta.X + 14/*/ 2.0f*/, player.posY + 48 / 2.0f + Level1.delta.Y);
+                            g.RotateTransform(90);
+                            g.TranslateTransform(-(player.posX - 6 + Level1.delta.X + 14), -(player.posY + 44 / 2.0F + Level1.delta.Y));
+                        }
+                        if(id == 5)
+                        {
+                            g.TranslateTransform(player.posX + 1 + Level1.delta.X + 14/*/ 2.0f*/, player.posY + 52 / 2.0f + Level1.delta.Y);
+                            g.RotateTransform(90);
+                            g.TranslateTransform(-(player.posX - 6 + Level1.delta.X + 14), -(player.posY + 44 / 2.0F + Level1.delta.Y));
+                        }
                     }
                     else if (player.flip == -1)
                     {
-                        g.TranslateTransform(player.posX + 6 + Level1.delta.X + 14/*/ 2.0f*/, player.posY + 66 / 2.0f + Level1.delta.Y);
-                        g.RotateTransform(-90);
-                        g.TranslateTransform(-(player.posX - 6 + Level1.delta.X + 14), -(player.posY + 44 / 2.0F + Level1.delta.Y));
+                        if (id != 6 && id != 5)
+                        {
+                            g.TranslateTransform(player.posX + 6 + Level1.delta.X + 14/*/ 2.0f*/, player.posY + 66 / 2.0f + Level1.delta.Y);
+                            g.RotateTransform(-90);
+                            g.TranslateTransform(-(player.posX - 6 + Level1.delta.X + 14), -(player.posY + 50 / 2.0F + Level1.delta.Y));
+                        }
+                        if(id==6)
+                        {
+                            g.TranslateTransform(player.posX - 3 + Level1.delta.X + 14/*/ 2.0f*/, player.posY + 70 / 2.0f + Level1.delta.Y);
+                            g.RotateTransform(-90);
+                            g.TranslateTransform(-(player.posX - 6 + Level1.delta.X + 14), -(player.posY + 44 / 2.0F + Level1.delta.Y));
+                        }
+                        if(id == 5)
+                        {
+                            g.TranslateTransform(player.posX - 2 + Level1.delta.X + 14/*/ 2.0f*/, player.posY + 72 / 2.0f + Level1.delta.Y);
+                            g.RotateTransform(-90);
+                            g.TranslateTransform(-(player.posX - 6 + Level1.delta.X + 14), -(player.posY + 44 / 2.0F + Level1.delta.Y));
+                        }
                     }
                 }
             }
@@ -88,6 +117,11 @@ namespace Project.weapons
                         posXforHit = ((int)posX - player.flip * 22 / 2 + 14 + (int)player.posX - (int)posX + Level1.delta.X);
                         posYforHit = ((int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y);
                     }
+                    if(id == 5)
+                    {
+                        posXforHit = ((int)posX - player.flip * 22 / 2 + 14 + (int)player.posX - (int)posX + Level1.delta.X);
+                        posYforHit = ((int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y);
+                    }
                 }
             }
         }
@@ -107,6 +141,21 @@ namespace Project.weapons
             {
                 g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2 + 14) + (int)player.posX - (int)posX + Level1.delta.X, (int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y), new Size(player.flip * 12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
             }
+
+            if (id == 5 && !onFloor)
+            {
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 18 / 2 + 14) + (int)player.posX - (int)posX + Level1.delta.X  , (int)posY + 8 -  player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y), new Size(player.flip * 9, 21)), 0, 0, 9, 21, GraphicsUnit.Pixel);//big weapon
+            }
+            if (id == 4 && !onFloor)
+            {
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2 + 14) + (int)player.posX - (int)posX + Level1.delta.X, (int)posY - 2 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y), new Size(player.flip * 10, 30)), 0, 0, 10, 30, GraphicsUnit.Pixel);//big weapon
+            }
+            if (id == 6 && !onFloor)
+            {
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 18 / 2 + 14) + (int)player.posX - (int)posX + Level1.delta.X, (int)posY - 4  /*-player.currentFrame*/ + (int)player.posY - (int)posY + Level1.delta.Y), new Size(player.flip * 11, 37)), 0, 0, 11, 37, GraphicsUnit.Pixel);//big weapon
+            }
+
+
         }
         public void drawWeapon(Graphics g, Entity player)
         {
@@ -123,8 +172,19 @@ namespace Project.weapons
             {
                 g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + Level1.delta.X, (int)posY - player.currentFrame + Level1.delta.Y), new Size(12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
             }
+            if (id == 4 && onFloor)
+            {
+                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + Level1.delta.X, (int)posY - player.currentFrame + Level1.delta.Y), new Size(10,30)), 0, 0, 10, 30, GraphicsUnit.Pixel);//big weapon
+            }
 
-
+            if (id == 5 && onFloor )
+            {
+                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + Level1.delta.X, (int)posY - player.currentFrame + Level1.delta.Y), new Size(9, 21)), 0, 0, 9, 21, GraphicsUnit.Pixel);//big weapon
+            }
+            if (id == 6 && onFloor)
+            {
+                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + Level1.delta.X, (int)posY - player.currentFrame + Level1.delta.Y), new Size(10,37)), 0, 0, 10, 37, GraphicsUnit.Pixel);//big weapon
+            }
         }
 
         public void hitEnemy(List<Enemy> enemies, List<Weapons> weapons, Entity player)
@@ -154,6 +214,13 @@ namespace Project.weapons
                                     enemies[i].HP -= 150;
                                 if (player.id == 3)
                                     enemies[i].HP -= 40;
+                                if (player.id == 4)
+                                    enemies[i].HP -= 50;
+                                if (player.id == 5)
+                                    enemies[i].HP -= 20;
+                                if (player.id == 6)
+                                    enemies[i].HP -= 70;
+
                             }
                             else
                             {
@@ -173,12 +240,19 @@ namespace Project.weapons
                                 enemies[i].posX += 10;
                             if (enemies[i].HP > 0)
                             {
+
                                 if (player.id == 1)
                                     enemies[i].HP -= 20;
                                 if (player.id == 2)
                                     enemies[i].HP -= 150;
                                 if (player.id == 3)
                                     enemies[i].HP -= 40;
+                                if (player.id == 4)
+                                    enemies[i].HP -= 50;
+                                if (player.id == 5)
+                                    enemies[i].HP -= 20;
+                                if (player.id == 6)
+                                    enemies[i].HP -= 70;
                             }
                             else
                             {
@@ -197,12 +271,19 @@ namespace Project.weapons
                                 enemies[i].posY -= 10;
                             if (enemies[i].HP > 0)
                             {
+
                                 if (player.id == 1)
                                     enemies[i].HP -= 20;
                                 if (player.id == 2)
                                     enemies[i].HP -= 150;
                                 if (player.id == 3)
                                     enemies[i].HP -= 40;
+                                if (player.id == 4)
+                                    enemies[i].HP -= 50;
+                                if (player.id == 5)
+                                    enemies[i].HP -= 20;
+                                if (player.id == 6)
+                                    enemies[i].HP -= 70;
                             }
                             else
                             {
@@ -221,12 +302,19 @@ namespace Project.weapons
                                 enemies[i].posY += 10;
                             if (enemies[i].HP > 0)
                             {
+
                                 if (player.id == 1)
                                     enemies[i].HP -= 20;
                                 if (player.id == 2)
                                     enemies[i].HP -= 150;
                                 if (player.id == 3)
                                     enemies[i].HP -= 40;
+                                if (player.id == 4)
+                                    enemies[i].HP -= 50;
+                                if (player.id == 5)
+                                    enemies[i].HP -= 20;
+                                if (player.id == 6)
+                                    enemies[i].HP -= 70;
                             }
                             else
                             {

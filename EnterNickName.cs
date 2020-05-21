@@ -13,7 +13,7 @@ namespace Project
     public partial class EnterNickName : Form
     {
         public string nickname;
-        FormMenu fm = new FormMenu(); 
+         FormMenu fm = new FormMenu(); 
        
         public EnterNickName()
         {
@@ -26,7 +26,8 @@ namespace Project
                 button1.ForeColor = Color.Aqua;//change color back
             };
            
-            KeyDown += new KeyEventHandler(EnterNickName_KeyDown);
+            //KeyDown += new KeyEventHandler(textBox1_KeyDown);
+            //KeyUp += new KeyEventHandler(textBox1_KeyUp);
             
         }
 
@@ -43,7 +44,7 @@ namespace Project
 
         private void EnterNickName_Load(object sender, EventArgs e)
         {
-            
+               
             label1.Text = "Enter NickName:";
   
             this.Controls.Add(label1);
@@ -52,49 +53,67 @@ namespace Project
 
             textBox1.AutoSize = false;
             // Add this textbox to form 
-            
-            this.Controls.Add(textBox1);
             textBox1.SelectionStart = textBox1.Text.Length;
             textBox1.SelectionLength = 0;
-            // this.ActiveControl = textBox1;
+            
+            this.Controls.Add(textBox1);
+           
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+           
             this.Hide();
+            
             fm.ShowDialog();
             this.Close();
             
         }
-        private void EnterNickName_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                button1_Click(this, new EventArgs());
-                
-            }
-        }
+        //private void EnterNickName_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyCode == Keys.Enter)
+        //    {
+        //        e.Handled = true;
+
+        //            button1_Click(this, new EventArgs());
+
+        //    }
+        //}
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
           
             fm.label1.Text = textBox1.Text;
             //fm.label1.ForeColor = Color.Aqua;
             fm.level.nicknameRemember = textBox1.Text;
-
+            //if (fm.check_sound.Checked)
+            //{
+            //    fm.level.checkBox1.Checked = true;
+            //}
+            //else
+            //    fm.level.checkBox1.Checked = false ;
         }
-        
+        private void textBox1_KeyUp(object sender,KeyEventArgs e)
+        {
+            e.Handled = false;
+            e.SuppressKeyPress = false;
+        }
+
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
 
             if (e.KeyCode == Keys.Enter)
             {
-             
+               // Parent.SelectNextControl(textBox1, true, true, true, true);
+                e.Handled = e.SuppressKeyPress = true;
+                
                 button1_Click(this, new EventArgs());
             }
-           
+            
+                
+
         }
+        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 

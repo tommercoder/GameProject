@@ -21,13 +21,11 @@ namespace Project.Controller
                 {
                     if (MapController.map[i, j] == 0)
                     {
+
+                       
+
+                      //  Level1.collide = true;
                         
-                        //entity.posX = entity.OldposX;  
-                        //entity.posY = entity.OldposY;
-                       // Level1.delta.X = 0;
-                        //Level1.delta.Y = 0;
-                        Level1.collide = true;
-                        entity.dead = true;
                         entity.collidedead = true;
                         entity.howmuchDamaged = 0;
 
@@ -37,12 +35,14 @@ namespace Project.Controller
                     {
                         entity.isMoving = true;
                         Level1.collide = false;
-                        entity.dead = false;
+                     
                         entity.collidedead = false;
                     }
                 }
             }
         }
+
+
 
     }
 

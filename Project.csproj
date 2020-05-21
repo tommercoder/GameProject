@@ -383,5 +383,17 @@
   <ItemGroup>
     <None Include="Resources\deadBoss.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playerred2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weapon_big_gold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forcheckpoint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forcheckpoint2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

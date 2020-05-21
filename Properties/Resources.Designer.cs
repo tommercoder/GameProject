@@ -232,6 +232,26 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap forcheckpoint {
+            get {
+                object obj = ResourceManager.GetObject("forcheckpoint", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap forcheckpoint2 {
+            get {
+                object obj = ResourceManager.GetObject("forcheckpoint2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hearts {
             get {
                 object obj = ResourceManager.GetObject("hearts", resourceCulture);
@@ -325,6 +345,16 @@ namespace Project.Properties {
         internal static System.Drawing.Bitmap playerred {
             get {
                 object obj = ResourceManager.GetObject("playerred", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playerred2 {
+            get {
+                object obj = ResourceManager.GetObject("playerred2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -426,6 +456,16 @@ namespace Project.Properties {
         internal static System.Drawing.Bitmap weapon_axe {
             get {
                 object obj = ResourceManager.GetObject("weapon_axe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap weapon_big_gold {
+            get {
+                object obj = ResourceManager.GetObject("weapon_big_gold", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

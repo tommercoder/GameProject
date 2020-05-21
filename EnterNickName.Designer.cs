@@ -60,6 +60,7 @@
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.ForeColor = System.Drawing.Color.White;
             this.textBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.textBox1.Location = new System.Drawing.Point(191, 122);
             this.textBox1.Name = "textBox1";
@@ -98,7 +99,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EnterNickName";
             this.Load += new System.EventHandler(this.EnterNickName_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterNickName_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

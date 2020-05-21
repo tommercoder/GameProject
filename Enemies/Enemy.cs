@@ -118,15 +118,13 @@ namespace Project.Enemies
                 
                 if (id == 10)
                 {
-
-
                     if (distance <= 50)
                     {
 
-                        Level1.hitPlayer = true;
+                        
                         if (player.HP > 0)
                         {
-
+                            Level1.hitPlayer = true;
                             player.howmuchDamaged++;//for frames hearts
                                                     //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
                             player.HP -= 20;
@@ -157,46 +155,48 @@ namespace Project.Enemies
                     }
                     if (player.dead)
                     {
-                        if (player.posX < 290 && player.posY < 14)
-                        {
-                            player.posX = player.OldposX;
-                            player.posY = player.OldposY;
-                        }
-                        else if ((player.posX > 290 && player.posY > 14) && (player.posX < 539 && player.posY < 551))
-                        {
-                            player.posX = 290;
-                            player.posY = 14;
-                        }
-                        //else if (player.posX < 539 && player.posY < 551)
+                        //if (player.posX < 290 && player.posY < 14)
+                        //{
+                        //    player.posX = player.OldposX;
+                        //    player.posY = player.OldposY;
+                        //}
+                        //else if ((player.posX > 290 && player.posY > 14) && (player.posX < 539 && player.posY < 551))
                         //{
                         //    player.posX = 290;
                         //    player.posY = 14;
                         //}
-                        else if ((player.posX > 539 && player.posY > 551) && (player.posX < 50 && player.posY < 1178 ))
-                        {
-                            player.posX = 539;
-                            player.posY = 551;
-                        }
-                        //else if (player.posX < 50 && player.posY < 1178)
+                        ////else if (player.posX < 539 && player.posY < 551)
+                        ////{
+                        ////    player.posX = 290;
+                        ////    player.posY = 14;
+                        ////}
+                        //else if ((player.posX > 539 && player.posY > 551) && (player.posX < 50 && player.posY < 1178 ))
                         //{
                         //    player.posX = 539;
                         //    player.posY = 551;
                         //}
-                        else if ((player.posX > 50 && player.posY > 1178) && (player.posX < 1007 && player.posY < 1109))
-                        {
-                            player.posX = 50;
-                            player.posY = 1178;
-                        }
-                        //else if (player.posX < 1007 && player.posY < 1109)
+                        ////else if (player.posX < 50 && player.posY < 1178)
+                        ////{
+                        ////    player.posX = 539;
+                        ////    player.posY = 551;
+                        ////}
+                        //else if ((player.posX > 50 && player.posY > 1178) && (player.posX < 1007 && player.posY < 1109))
                         //{
                         //    player.posX = 50;
                         //    player.posY = 1178;
                         //}
-                        else if (player.posX > 1007 && player.posY > 1109)
-                        {
-                            player.posX = 1007;
-                            player.posY = 1109;
-                        }
+                        ////else if (player.posX < 1007 && player.posY < 1109)
+                        ////{
+                        ////    player.posX = 50;
+                        ////    player.posY = 1178;
+                        ////}
+                        //else if (player.posX > 1007 && player.posY > 1109)
+                        //{
+                        //    player.posX = 1007;
+                        //    player.posY = 1109;
+                        //}
+                        player.posX = player.OldposX;
+                        player.posY = player.OldposY;
                         player.setAnimationConfiguration(0);
                         Level1.delta.X = 0;
                         Level1.delta.Y = 0;
@@ -239,47 +239,48 @@ namespace Project.Enemies
                     }
                 if (player.dead)
                 {
-                    if (player.posX < 290 && player.posY < 14)
-                    {
-                        player.posX = player.OldposX;
-                        player.posY = player.OldposY;
-                    }
-                    else if ((player.posX > 290 && player.posY > 14) && (player.posX < 539 && player.posY < 551))
-                    {
-                        player.posX = 290;
-                        player.posY = 14;
-                    }
-                    //else if (player.posX < 539 && player.posY < 551)
+                    //if (player.posX < 290 && player.posY < 14)
+                    //{
+                    //    player.posX = player.OldposX;
+                    //    player.posY = player.OldposY;
+                    //}
+                    //else if ((player.posX > 290 && player.posY > 14) && (player.posX < 539 && player.posY < 551))
                     //{
                     //    player.posX = 290;
                     //    player.posY = 14;
                     //}
-                    else if ((player.posX > 539 && player.posY > 551) && (player.posX < 50 && player.posY < 1178))
-                    {
-                        player.posX = 539;
-                        player.posY = 551;
-                    }
-                    //else if (player.posX < 50 && player.posY < 1178)
+                    ////else if (player.posX < 539 && player.posY < 551)
+                    ////{
+                    ////    player.posX = 290;
+                    ////    player.posY = 14;
+                    ////}
+                    //else if ((player.posX > 539 && player.posY > 551) && (player.posX < 50 && player.posY < 1178))
                     //{
                     //    player.posX = 539;
                     //    player.posY = 551;
                     //}
-                    else if ((player.posX > 50 && player.posY > 1178) && (player.posX < 1007 && player.posY < 1109))
-                    {
-                        player.posX = 50;
-                        player.posY = 1178;
-                    }
-                    //else if (player.posX < 1007 && player.posY < 1109)
+                    ////else if (player.posX < 50 && player.posY < 1178)
+                    ////{
+                    ////    player.posX = 539;
+                    ////    player.posY = 551;
+                    ////}
+                    //else if ((player.posX > 50 && player.posY > 1178) && (player.posX < 1007 && player.posY < 1109))
                     //{
                     //    player.posX = 50;
                     //    player.posY = 1178;
                     //}
-                    else if (player.posX > 1007 && player.posY > 1109)
-                    {
-                        player.posX = 1007;
-                        player.posY = 1109;
-                    }
-
+                    ////else if (player.posX < 1007 && player.posY < 1109)
+                    ////{
+                    ////    player.posX = 50;
+                    ////    player.posY = 1178;
+                    ////}
+                    //else if (player.posX > 1007 && player.posY > 1109)
+                    //{
+                    //    player.posX = 1007;
+                    //    player.posY = 1109;
+                    //}
+                    player.posX = player.OldposX;
+                    player.posY = player.OldposY;
                     player.setAnimationConfiguration(0);
                     Level1.delta.X = 0;
                     Level1.delta.Y = 0;
@@ -458,8 +459,6 @@ namespace Project.Enemies
                 {
                     if (distance <= 100)
                     {
-
-
                         if (isMoving)
                         {
                             setEnemyAnimationConfiguration(1);
