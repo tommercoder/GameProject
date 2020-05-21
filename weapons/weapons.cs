@@ -206,7 +206,7 @@ namespace Project.weapons
                             {
                                 enemies[i].posX -= 10;
 
-                            if (enemies[i].HP > 0)
+                            if (enemies[i].HP >= 0)
                             {
                                 if (player.id == 1)
                                     enemies[i].HP -= 20;
@@ -222,13 +222,16 @@ namespace Project.weapons
                                     enemies[i].HP -= 70;
 
                             }
-                            else
+                            else if (enemies[i].HP <= 0)
                             {
                                
                                if (enemies[i].id != 10)
                                 {
+                                    player.setAnimationConfiguration(0);
                                     Level1.newBossIndex--;
                                     enemies.RemoveAt(i);
+                                    
+                                   
 
                                 }
                                 
@@ -238,7 +241,7 @@ namespace Project.weapons
                             else if (player.posX <= enemies[i].posX)
                             {
                                 enemies[i].posX += 10;
-                            if (enemies[i].HP > 0)
+                            if (enemies[i].HP >= 0)
                             {
 
                                 if (player.id == 1)
@@ -254,13 +257,16 @@ namespace Project.weapons
                                 if (player.id == 6)
                                     enemies[i].HP -= 70;
                             }
-                            else
+                            else if (enemies[i].HP <= 0)
                             {
 
                                 if (enemies[i].id != 10)
                                 {
+                                    player.setAnimationConfiguration(0);
                                     Level1.newBossIndex--;
                                     enemies.RemoveAt(i);
+                                   
+                                    
 
                                 }
 
@@ -269,7 +275,7 @@ namespace Project.weapons
                             else if (player.posY >= enemies[i].posY)
                             {
                                 enemies[i].posY -= 10;
-                            if (enemies[i].HP > 0)
+                            if (enemies[i].HP >= 0)
                             {
 
                                 if (player.id == 1)
@@ -285,13 +291,16 @@ namespace Project.weapons
                                 if (player.id == 6)
                                     enemies[i].HP -= 70;
                             }
-                            else
+                            else if (enemies[i].HP <= 0)
                             {
 
                                 if (enemies[i].id != 10)
                                 {
+                                    player.setAnimationConfiguration(0);
                                     Level1.newBossIndex--;
                                     enemies.RemoveAt(i);
+                                   
+                                   
 
                                 }
 
@@ -300,7 +309,7 @@ namespace Project.weapons
                             else if (player.posY <= enemies[i].posY)
                             {
                                 enemies[i].posY += 10;
-                            if (enemies[i].HP > 0)
+                            if (enemies[i].HP >= 0)
                             {
 
                                 if (player.id == 1)
@@ -316,14 +325,15 @@ namespace Project.weapons
                                 if (player.id == 6)
                                     enemies[i].HP -= 70;
                             }
-                            else
+                            else if(enemies[i].HP <= 0)
                             {
 
                                 if (enemies[i].id != 10)
                                 {
+                                    player.setAnimationConfiguration(0);
                                     Level1.newBossIndex--;
                                     enemies.RemoveAt(i);
-
+                                    
                                 }
                                 
                             }
@@ -333,7 +343,7 @@ namespace Project.weapons
                                 
                         }
                         //if(enemies.Count==0)
-                            //enemies.Clear();
+                           // enemies.Clear();
                     }
 
                 }

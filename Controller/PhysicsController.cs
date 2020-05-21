@@ -17,25 +17,20 @@ namespace Project.Controller
            
             for (int j = (int)entity.posX  / MapController.cellSize; j < (entity.posX + MapController.cellSize) / MapController.cellSize; j++)
             {
-                for (int i = (int)entity.posY  / MapController.cellSize; i < (entity.posY  + MapController.cellSize) / MapController.cellSize; i++)
+                for (int i = (int)entity.posY / MapController.cellSize; i < (entity.posY   + MapController.cellSize) / MapController.cellSize; i++)
                 {
                     if (MapController.map[i, j] == 0)
                     {
-
-                       
-
-                      //  Level1.collide = true;
-                        
+                        Level1.collide = true;
+                        //entity.dead = true;
                         entity.collidedead = true;
-                        entity.howmuchDamaged = 0;
-
-                      
+                        entity.howmuchDamaged = 0; 
                     }
                     else
                     {
                         entity.isMoving = true;
                         Level1.collide = false;
-                     
+                        //entity.dead = false;
                         entity.collidedead = false;
                     }
                 }

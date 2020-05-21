@@ -36,9 +36,10 @@ namespace Project
         public Image mobSheet2;
         public Image heartsImage;
         public Image bossSheet;
-        public Image FlaskRed;
+        public Image FlaskSheet;
+       
 
-        public hearts hearts;
+        public static hearts hearts;
 
         public Weapons weapon;
         public Weapons weapon1;
@@ -86,7 +87,7 @@ namespace Project
             InitializeComponent();
 
             timer1.Interval = 30;
-            timer2.Interval = 30;
+            timer2.Interval = 20;
 
             timer3.Interval = 10;//collide
             timer4.Interval = 10;///
@@ -143,11 +144,7 @@ namespace Project
                         msg msg = new msg();
                         msg.Show();
                     }
-                    //if (enemies[newBossIndex].HP == 5)
-                    //{
-                    //    axWindowsMediaPlayer4.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\deadBoss.wav");
-                    //    axWindowsMediaPlayer4.Ctlcontrols.play();
-                    //}
+                    
 
                     break;
                 case Keys.X:
@@ -238,8 +235,7 @@ namespace Project
             mobSheet2 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\enemy2.png"));
             bossSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Minotaur - Sprite Sheet.png"));
             heartsImage = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\hearts2.png"));
-            FlaskRed = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\flask_big_red.png"));
-
+            FlaskSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\flask_big_blue.png"));
             //enemies
             enemies = new List<Enemy>
             {
@@ -250,16 +246,21 @@ namespace Project
 
                 new Enemy(350, 350, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
 
-                new Enemy(1007,836,10,Hero.BossIdleFrames,Hero.BossRunFrames,Hero.BossAttackFrames,Hero.BossDeathFrames,bossSheet),//DO NOT CHANGE BOSS 
+                new Enemy(400,400,/*1007,836,*/10,Hero.BossIdleFrames,Hero.BossRunFrames,Hero.BossAttackFrames,Hero.BossDeathFrames,bossSheet),//DO NOT CHANGE BOSS 
                   // new Enemy(300, 350,2, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
                    // new Enemy(45, 500,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                // new Enemy(32, 380, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                // new Enemy(-20,-20,1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
             };
-            //flasks = new List<staff>
-            //{
-            //    new staff(100,100,1,FlaskRed),
-            //};
+
+            flasks = new List<staff>
+            {
+                new staff(100,100,1,FlaskSheet),
+                new staff(100,110,1,FlaskSheet),
+                new staff(100,120,1,FlaskSheet),
+                new staff(100,130,1,FlaskSheet),
+                new staff(100,140,1,FlaskSheet),
+            };
 
 
             //player
@@ -284,6 +285,8 @@ namespace Project
             weapons.Add(weapon4);
             weapons.Add(weapon6);
 
+          
+
             timer1.Start();
             timer2.Start();
             timer3.Start();
@@ -293,18 +296,7 @@ namespace Project
 
         }
 
-        public void Death(object sender, EventArgs e)
-        {
-
-        }
-        private void Wait(double seconds)
-        {
-            int ticks = System.Environment.TickCount + (int)Math.Round(seconds * 1000.0);
-            while (System.Environment.TickCount < ticks)
-            {
-                System.Windows.Forms.Application.DoEvents();
-            }
-        }
+    
         public void OnPress(object sender, KeyEventArgs e)
         {
 
@@ -312,7 +304,7 @@ namespace Project
             {
                 case Keys.W:
 
-                    player.dirY = -3;
+                    player.dirY = -player.velocity;
 
                     Wpressed = true;
                     player.isMoving = true;
@@ -322,7 +314,7 @@ namespace Project
                     break;
                 case Keys.S:
 
-                    player.dirY = 3;
+                    player.dirY = player.velocity;
 
                     Spressed = true;
                     player.isMoving = true;
@@ -333,7 +325,7 @@ namespace Project
                 case Keys.A:
 
                     Apressed = true;
-                    player.dirX = -3;
+                    player.dirX = -player.velocity;
 
                     player.flip = -1;
                     player.isMoving = true;
@@ -344,7 +336,7 @@ namespace Project
 
 
                     Dpressed = true;
-                    player.dirX = 3;
+                    player.dirX = player.velocity;
 
                     player.flip = 1;
                     player.isMoving = true;
@@ -356,23 +348,13 @@ namespace Project
 
                 //hit
                 case Keys.E:
-                    if (player.Freehands == false && checkBox1.Checked)
-                    {
-                        axWindowsMediaPlayer1.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\sound_sword.wav");
-                        axWindowsMediaPlayer1.settings.volume = 13;
-                        axWindowsMediaPlayer1.Ctlcontrols.play();
-                    }
-                    //if (enemies[newBossIndex].HP == 5)
+                    //if (player.Freehands == false && checkBox1.Checked)
                     //{
-                    //    axWindowsMediaPlayer4.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\deadBoss.wav");
-                    //    axWindowsMediaPlayer4.Ctlcontrols.play();
+                    //    axWindowsMediaPlayer1.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\sound_sword.wav");
+                    //    axWindowsMediaPlayer1.settings.volume = 13;
+                    //    axWindowsMediaPlayer1.Ctlcontrols.play();
                     //}
-                    //System.Media.SoundPlayer pl = new System.Media.SoundPlayer();
-
-                    //pl.Stream = Properties.Resources.sound_sword;
-
-                    //pl.Play();
-
+                    
                     player.hitPressed = true;
 
                     if (enemies[newBossIndex].enemyDead)
@@ -388,11 +370,11 @@ namespace Project
 
                 case Keys.Q:
                     //throw out
-                    if (player.Freehands == false && checkBox1.Checked)
-                    {
-                        axWindowsMediaPlayer3.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\place_down_on_surface.mp3");
-                        axWindowsMediaPlayer3.Ctlcontrols.play();
-                    }
+                    //if (player.Freehands == false && checkBox1.Checked)
+                    //{
+                    //    axWindowsMediaPlayer3.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\place_down_on_surface.mp3");
+                    //    axWindowsMediaPlayer3.Ctlcontrols.play();
+                    //}
                     Qpressed(player, weapons);
                     break;
                 case Keys.F:
@@ -438,7 +420,7 @@ namespace Project
                         axWindowsMediaPlayer1.Ctlcontrols.stop();
                         axWindowsMediaPlayer2.Ctlcontrols.stop();
                         axWindowsMediaPlayer3.Ctlcontrols.stop();
-                        axWindowsMediaPlayer4.Ctlcontrols.stop();
+                       
                         fm.ShowDialog();
 
                         escapePressed = true;
@@ -450,14 +432,6 @@ namespace Project
 
 
                     }
-
-                    //this.Close();
-                    //this.Hide();
-                    //FormMenu fm = new FormMenu();
-                    //EnterNickName en = new EnterNickName();
-                    //fm.label1.Text = nicknameRemember;
-                    //fm.ShowDialog();
-                    //escapePressed = true;
                     break;
             }
 
@@ -465,9 +439,6 @@ namespace Project
 
         public void fighing(object sender, EventArgs e)
         {
-
-           
-
             foreach (Weapons wp in weapons)
             {
 
@@ -482,11 +453,11 @@ namespace Project
         public void checkTimeCollide(object sender, EventArgs e)
         {
 
-           // PhysicsController.Collide(player);////COLLIDE
+           PhysicsController.Collide(player);////COLLIDE
 
-            for (int j = ((int)player.posX) / MapController.cellSize; j < (player.posX + MapController.cellSize) / MapController.cellSize; j++)
+            for (int j = (int)player.posX / MapController.cellSize; j < (player.posX + MapController.cellSize) / MapController.cellSize; j++)
             {
-                for (int i = ((int)player.posY) / MapController.cellSize; i < (player.posY + MapController.cellSize) / MapController.cellSize; i++)
+                for (int i = (int)player.posY / MapController.cellSize; i < (player.posY + MapController.cellSize) / MapController.cellSize; i++)
                 {
 
                     if (MapController.map[i, j] == 50)
@@ -521,12 +492,12 @@ namespace Project
 
 
 
-                    
+
                 }
 
             }
-        
-    
+
+
 
             if (player.collidedead)
             {
@@ -536,10 +507,6 @@ namespace Project
                 {
                     delta.X = 0;
                     delta.Y = 0;
-
-                    //delta = new Point()
-                    //Level1.delta.X = -(int)player.posX / 2 - 32;
-                    //Level1.delta.Y = -(int)player.posY / 2 - 32;
                 }
                 else if(newCheckPoint == 1)
                 {
@@ -566,14 +533,26 @@ namespace Project
 
 
                 player.HP = 1000;
-                player.dead = false;
+                //player.dead = false;
                 player.Ih = 0;
                 hearts.currentAnimation = 0;
                 reDrawHearts = true;
             }
-               
 
-            
+
+            for (int i = 0; i < flasks.Count; i++)
+            {
+                double distancetoflask = GetDistance((double)player.posX, (double)player.posY, (double)flasks[i].posX, (double)flasks[i].posY);
+                if (distancetoflask <= 15)
+                {
+                    player.HP = 1000;
+                    player.setAnimationConfiguration(2);
+                    // hearts.setAnimation(0);
+                    //reDrawHearts = true;
+                    player.Ih = 0;
+                    flasks.RemoveAt(i);
+                }
+            }
 
 
             //////////////////////////////////////////////////////////////////////
@@ -588,18 +567,14 @@ namespace Project
 
             //        player.posY + player.size - 16 > col.posY)                       ///square to square collision
             //    {
-                    
+
             //        label1.Text = "collide";
             //        player.isMoving = false;
             //        collide = true;
             //    }
             //}
         }
-        public void Closing()
-        {
-            this.Close();
-        }
-
+        
         public void EnemyUpdate(object sedner,EventArgs e)
         {
             if (enemies.Count == 0)
@@ -611,35 +586,26 @@ namespace Project
                 enemies[i].hitEntity(player);
 
             }
-            //for (int i = 0; i < flasks.Count; i++)
-            //{
-            //    double distanceToFlask = GetDistance(player.posX, player.posY, flasks[i].posX, flasks[i].posY);
-            //    if (distanceToFlask < 10)
-            //    {
-            //        drinkingFLask = true;
-            //        player.HP = 1000;
-            //        player.setAnimationConfiguration(2);
-            //        hearts.setAnimation(0);
-            //        flasks.RemoveAt(i);
+            
+           
 
-            //    }
 
-            //}
-            if (enemies[newBossIndex].HP == 0 || enemies[newBossIndex].HP <= 0)
+           for(int i = 0;i < enemies.Count;i++)
             {
-                enemies[newBossIndex].enemyDead = true;
-
+                enemies[i].FlipEnemy(player, enemies);
             }
 
-
-            double distance1 = GetDistance(player.posX, player.posY, enemies[newBossIndex].posX, enemies[newBossIndex].posY);//boss
-            double distanceBoss = GetDistance(enemies[newBossIndex].posX, enemies[newBossIndex].posY, enemies[newBossIndex].oldPosX, enemies[newBossIndex].oldPosY);
-
-
-
-
-            for (int i = 0;i < enemies.Count;i++)
+            for (int i = 0; i < enemies.Count; i++)
             {
+                if (enemies[i].HP == 0 || enemies[i].HP <= 0)
+                {
+                    enemies[i].enemyDead = true;
+
+                }
+
+
+                double distance1 = GetDistance(player.posX, player.posY, enemies[i].posX, enemies[i].posY);//boss
+                double distanceBoss = GetDistance(enemies[i].posX, enemies[i].posY, enemies[i].oldPosX, enemies[i].oldPosY);
                 if (distanceBoss > 5)
                 {
                     if (distance1 < 10)
@@ -650,17 +616,20 @@ namespace Project
                 else
                     enemies[i].isMoving = false;
 
+
                 enemies[i].ownMove(player);
             }
 
-            // label1.Text = Convert.ToString(player.posX);
-            // label2.Text = Convert.ToString(player.posY);
-            // //label2.Text = Convert.ToString(enemies[3].isMoving);
-            // label3.Text = Convert.ToString("oldpoX" + player.OldposX);
-           // label4.Text = Convert.ToString("old" + oldCheckPoint) ; 
-           label5.Text = Convert.ToString(distance1);
-           // label6.Text = Convert.ToString(delta.X);
-           // label7.Text = Convert.ToString(delta.Y);
+            //label1.Text = Convert.ToString(player.posX);
+            //label2.Text = Convert.ToString(player.posY);
+            //label2.Text = Convert.ToString(enemies[3].isMoving);
+            label3.Text = Convert.ToString("player.dead" + player.dead);
+
+            label4.Text = Convert.ToString(player.HP); 
+           
+            label5.Text = Convert.ToString(hearts.currentAnimation);
+            label6.Text = Convert.ToString(delta.X);
+            label7.Text = Convert.ToString(delta.Y);
 
 
         }
@@ -743,20 +712,23 @@ namespace Project
             player.PlayAnimation(g);
            
             hearts.drawHearts(g, player);
-            
+            //foreach (staff flask in flasks)
+            //{
+            //    flask.playFlask(g, player);
+            //}
             //if (reDrawHearts)
             //{
             //    hearts.drawHearts(g, player);
             //}
 
             for (int i = 0; i < weapons.Count; i++)
-            {   
-                    weapons[i].drawWeapon(g, player);
+            {
+                weapons[i].drawWeapon(g, player);
             }
 
-            for (int i = 0;i < weapons.Count;i++)
+            for (int i = 0; i < weapons.Count; i++)
             {
-                
+
                 if (weapons[i].onFloor == false)
                 {
                     weapons[i].hit(g, player);
@@ -777,7 +749,7 @@ namespace Project
             else if (player.id == 6)
                 weapon6.drawHandWeapon(g, player);
 
-           
+
         }
         public static double GetDistance(double x1, double y1, double x2, double y2)
         {
@@ -795,6 +767,7 @@ namespace Project
             //}
             
         }
+
         private void exit_level1_Click(object sender, EventArgs e)
         {
             
@@ -802,12 +775,14 @@ namespace Project
 
         private void Level1_Load(object sender, EventArgs e)
         {
+            
             if (checkBox1.Checked == true)
             {
                 axWindowsMediaPlayer2.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\sound_battle.wav");
                 axWindowsMediaPlayer2.settings.volume = 4;
-                axWindowsMediaPlayer2.Ctlcontrols.play();   
+                axWindowsMediaPlayer2.Ctlcontrols.play();
             }
+            
         }
 
         private void bottom_Click(object sender, EventArgs e)
@@ -841,6 +816,11 @@ namespace Project
         private void label1_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void tutorialLabel_TextChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

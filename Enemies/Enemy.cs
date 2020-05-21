@@ -120,11 +120,11 @@ namespace Project.Enemies
                 {
                     if (distance <= 50)
                     {
-
-                        
+                            
+                            Level1.hitPlayer = true;
                         if (player.HP > 0)
                         {
-                            Level1.hitPlayer = true;
+                           
                             player.howmuchDamaged++;//for frames hearts
                                                     //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
                             player.HP -= 20;
@@ -133,18 +133,19 @@ namespace Project.Enemies
                                 player.Ih++;
 
 
-                            if (player.HP == 0)
-                            {
-
-
-                                player.dead = true;
-                                player.howmuchDamaged = 0;
-                                player.Ih = 0;
-
-                            }
+                            
 
                         }
+                        if (player.HP == 0)
+                        {
 
+                            player.howmuchDamaged = 0;
+                            player.Ih = 0;
+                            player.dead = true;
+                            
+
+                        }
+                       
                     }
                     else
                     {
@@ -155,54 +156,46 @@ namespace Project.Enemies
                     }
                     if (player.dead)
                     {
-                        //if (player.posX < 290 && player.posY < 14)
-                        //{
-                        //    player.posX = player.OldposX;
-                        //    player.posY = player.OldposY;
-                        //}
-                        //else if ((player.posX > 290 && player.posY > 14) && (player.posX < 539 && player.posY < 551))
-                        //{
-                        //    player.posX = 290;
-                        //    player.posY = 14;
-                        //}
-                        ////else if (player.posX < 539 && player.posY < 551)
-                        ////{
-                        ////    player.posX = 290;
-                        ////    player.posY = 14;
-                        ////}
-                        //else if ((player.posX > 539 && player.posY > 551) && (player.posX < 50 && player.posY < 1178 ))
-                        //{
-                        //    player.posX = 539;
-                        //    player.posY = 551;
-                        //}
-                        ////else if (player.posX < 50 && player.posY < 1178)
-                        ////{
-                        ////    player.posX = 539;
-                        ////    player.posY = 551;
-                        ////}
-                        //else if ((player.posX > 50 && player.posY > 1178) && (player.posX < 1007 && player.posY < 1109))
-                        //{
-                        //    player.posX = 50;
-                        //    player.posY = 1178;
-                        //}
-                        ////else if (player.posX < 1007 && player.posY < 1109)
-                        ////{
-                        ////    player.posX = 50;
-                        ////    player.posY = 1178;
-                        ////}
-                        //else if (player.posX > 1007 && player.posY > 1109)
-                        //{
-                        //    player.posX = 1007;
-                        //    player.posY = 1109;
-                        //}
+
                         player.posX = player.OldposX;
                         player.posY = player.OldposY;
+                        if (Level1.newCheckPoint == 0)
+                        {
+                            Level1.delta.X = 0;
+                            Level1.delta.Y = 0;
+
+                            //delta = new Point()
+                            //Level1.delta.X = -(int)player.posX / 2 - 32;
+                            //Level1.delta.Y = -(int)player.posY / 2 - 32;
+                        }
+                        else if (Level1.newCheckPoint == 1)
+                        {
+                            Level1.delta.X = 0;
+                            Level1.delta.Y = -3;
+                        }
+                        else if (Level1.newCheckPoint == 2)
+                        {
+                            Level1.delta.X = -165;
+                            Level1.delta.Y = -459;
+
+                        }
+                        else if (Level1.newCheckPoint == 3)
+                        {
+                            Level1.delta.X = -3;
+                            Level1.delta.Y = -1074;
+
+                        }
+                        else if (Level1.newCheckPoint == 4)
+                        {
+                            Level1.delta.X = -636;
+                            Level1.delta.Y = -960;
+                        }
+                        Level1.hearts.currentAnimation = 0;
                         player.setAnimationConfiguration(0);
-                        Level1.delta.X = 0;
-                        Level1.delta.Y = 0;
                         player.HP = 1000;
-                        player.dead = false;
                         player.Ih = 0;
+                        player.dead = false;
+                       
                     }
                 }
                 else if (id != 10)
@@ -220,17 +213,18 @@ namespace Project.Enemies
                                 player.Ih++;
 
 
-                            if (player.HP == 0)
-                            {
-
-                                player.dead = true;
-                                player.howmuchDamaged = 0;
-                                player.Ih = 0;
-
-                            }
+                            
 
                         }
+                        if (player.HP == 0)
+                        {
+                            player.howmuchDamaged = 0;
+                            player.Ih = 0;
+                            player.dead = true;
+                          
 
+                        }
+                        
                     }
                     else
                     {
@@ -239,54 +233,45 @@ namespace Project.Enemies
                     }
                 if (player.dead)
                 {
-                    //if (player.posX < 290 && player.posY < 14)
-                    //{
-                    //    player.posX = player.OldposX;
-                    //    player.posY = player.OldposY;
-                    //}
-                    //else if ((player.posX > 290 && player.posY > 14) && (player.posX < 539 && player.posY < 551))
-                    //{
-                    //    player.posX = 290;
-                    //    player.posY = 14;
-                    //}
-                    ////else if (player.posX < 539 && player.posY < 551)
-                    ////{
-                    ////    player.posX = 290;
-                    ////    player.posY = 14;
-                    ////}
-                    //else if ((player.posX > 539 && player.posY > 551) && (player.posX < 50 && player.posY < 1178))
-                    //{
-                    //    player.posX = 539;
-                    //    player.posY = 551;
-                    //}
-                    ////else if (player.posX < 50 && player.posY < 1178)
-                    ////{
-                    ////    player.posX = 539;
-                    ////    player.posY = 551;
-                    ////}
-                    //else if ((player.posX > 50 && player.posY > 1178) && (player.posX < 1007 && player.posY < 1109))
-                    //{
-                    //    player.posX = 50;
-                    //    player.posY = 1178;
-                    //}
-                    ////else if (player.posX < 1007 && player.posY < 1109)
-                    ////{
-                    ////    player.posX = 50;
-                    ////    player.posY = 1178;
-                    ////}
-                    //else if (player.posX > 1007 && player.posY > 1109)
-                    //{
-                    //    player.posX = 1007;
-                    //    player.posY = 1109;
-                    //}
                     player.posX = player.OldposX;
                     player.posY = player.OldposY;
-                    player.setAnimationConfiguration(0);
-                    Level1.delta.X = 0;
-                    Level1.delta.Y = 0;
+                    if (Level1.newCheckPoint == 0)
+                    {
+                        Level1.delta.X = 0;
+                        Level1.delta.Y = 0;
+
+                        //delta = new Point()
+                        //Level1.delta.X = -(int)player.posX / 2 - 32;
+                        //Level1.delta.Y = -(int)player.posY / 2 - 32;
+                    }
+                    else if (Level1.newCheckPoint == 1)
+                    {
+                        Level1.delta.X = 0;
+                        Level1.delta.Y = -3;
+                    }
+                    else if (Level1.newCheckPoint == 2)
+                    {
+                        Level1.delta.X = -165;
+                        Level1.delta.Y = -459;
+
+                    }
+                    else if (Level1.newCheckPoint == 3)
+                    {
+                        Level1.delta.X = -3;
+                        Level1.delta.Y = -1074;
+
+                    }
+                    else if (Level1.newCheckPoint == 4)
+                    {
+                        Level1.delta.X = -636;
+                        Level1.delta.Y = -960;
+                    }
+                    Level1.hearts.currentAnimation = 0;
+                    player.setAnimationConfiguration(0);      
                     player.HP = 1000;
-                    player.dead = false;
                     player.Ih = 0;
+                    player.dead = false;
+                   
                 }
             }
         }
@@ -325,6 +310,75 @@ namespace Project.Enemies
             }
 
         }
+
+        public void FlipEnemy(Entity player,List<Enemy>enemies)
+        {
+            //if (!Level1.enemies[Level1.newBossIndex].enemyDead)
+            //{
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    double distance = GetDistance((double)player.posX, (double)player.posY, (double)enemies[i].posX, (double)enemies[i].posY);
+                    if (enemies[i].isMoving)
+                    {
+                    if (enemies[i].id != 10)
+                    {
+                        if (distance <= 30)
+                        {
+                            if (player.posX < enemies[i].posX)
+                            {
+                                enemies[i].flip = -1;
+
+                            }
+                            if (player.posX > enemies[i].posX)
+                            {
+                                enemies[i].flip = 1;
+                            }
+                        }
+                        else
+                        {
+                            if (player.posX < enemies[i].posX)
+                            {
+                                enemies[i].flip = 1;
+                            }
+                            if (player.posX > enemies[i].posX)
+                            {
+                                enemies[i].flip = -1;
+                            }
+                        }
+                    }
+                    else if(enemies[i].id == 10)
+                    {
+                        if (distance <= 100)
+                        {
+                            player.velocity = 4;
+                            if (player.posX < enemies[i].posX)
+                            {
+                                enemies[i].flip = -1;
+
+                            }
+                            if (player.posX > enemies[i].posX)
+                            {
+                                enemies[i].flip = 1;
+                            }
+                        }
+                        else
+                        {
+                            player.velocity = 3;
+                            if (player.posX < enemies[i].posX)
+                            {
+                                enemies[i].flip = 1;
+                            }
+                            if (player.posX > enemies[i].posX)
+                            {
+                                enemies[i].flip = -1;
+                            }
+                        }
+                    }
+                    }
+                //}
+            }
+        }
+
         public void ownMove(Entity player)
         {
             if (!Level1.enemies[Level1.newBossIndex].enemyDead)
@@ -337,77 +391,68 @@ namespace Project.Enemies
 
 
 
-                if (posX < 0)
-                    posXvar = (-1) * posX;
+                //if (posX < 0)
+                //    posXvar = (-1) * posX;
 
-                if (posY < 0)
-                    posYvar = (-1) * posY;
+                //if (posY < 0)
+                //    posYvar = (-1) * posY;
 
-                if (player.posX < 0)
-                    playerposXvar = (-1) * player.posX;
+                //if (player.posX < 0)
+                //    playerposXvar = (-1) * player.posX;
 
-                if (player.posY < 0)
-                    playerposYvar = player.posY * (-1);
+                //if (player.posY < 0)
+                //    playerposYvar = player.posY * (-1);
 
-                if (playerposXvar - posXvar < 0)
-                    radius = (-1) * (playerposXvar - posXvar);
-                else
-                    radius = (playerposXvar - posXvar);
+                //if (playerposXvar - posXvar < 0)
+                //    radius = (-1) * (playerposXvar - posXvar);
+                //else
+                //    radius = (playerposXvar - posXvar);
 
-                if (playerposYvar - posYvar < 0)
-                    radius2 = (-1) * (playerposYvar - posYvar);
-                else
-                    radius2 = (playerposYvar - posYvar);
+                //if (playerposYvar - posYvar < 0)
+                //    radius2 = (-1) * (playerposYvar - posYvar);
+                //else
+                //    radius2 = (playerposYvar - posYvar);
 
                 double distance = GetDistance((double)player.posX, (double)player.posY, (double)posX, (double)posY);
-                if (id != 10)
-                    if ((radius <= 30 || radius2 <= 30))
-                    {
-                        if (player.flip == 1 && player.posX > posX)
-                            flip = 1;
-                        else if (player.flip == -1 && player.posX < posX)
-                            flip = -1;
-                    }
-                if (id == 10)
-                    if ((radius <= 100 || radius2 <= 100))
-                    {
-                        if (player.flip == 1 && player.posX > posX)
-                            flip = 1;
-                        else if (player.flip == -1 && player.posX < posX)
-                            flip = -1;
-                        else if (player.flip == 1 && player.posX < posX)
-                            flip = -1;
-                        else if (player.flip == -1 && player.posX > posX)
-                            flip = 1;
 
-                    }
-                if (id != 10)
-                    if (distance >= 30)
-                    {
-                        flip = 1;
-
-                    }
-                if (id == 10)
-                    if (distance >= 100)
-                    {
-                        if (player.posX < posX)
-                            flip = 1;
-                        if (player.posX > posX)
-                            flip = -1;
-                    }
-
-                //if (distance >= 30)
-                //{
-                //    if (id == 1)
+                //if (id != 10)
+                //    if ((radius <= 30 || radius2 <= 30))
                 //    {
-                //        posX += 2;
-                //        if(posX > oldPosX)
-                //        posX -= 2;
-
-
+                //        if (player.flip == 1 && player.posX > posX)
+                //            flip = 1;
+                //        else if (player.flip == -1 && player.posX < posX)
+                //            flip = -1;
+                //    }
+                //if (id == 10)
+                //    if ((radius <= 100 || radius2 <= 100))
+                //    {
+                //        if (player.flip == 1 && player.posX > posX)
+                //            flip = 1;
+                //        else if (player.flip == -1 && player.posX < posX)
+                //            flip = -1;
+                //        else if (player.flip == 1 && player.posX < posX)
+                //            flip = -1;
+                //        else if (player.flip == -1 && player.posX > posX)
+                //            flip = 1;
 
                 //    }
-                //}
+                //if (id != 10)
+                //    if (distance >= 30)
+                //    {
+                //        flip = 1;
+
+                //    }
+                //if (id == 10)
+                //    if (distance >= 100)
+                //    {
+                //        if (player.posX < posX)
+                //            flip = 1;
+                //        if (player.posX > posX)
+                //            flip = -1;
+                //    }
+
+                
+
 
                 if (id != 10)
                 {
@@ -529,11 +574,11 @@ namespace Project.Enemies
                 }
             }
             
-            if (enemyDead)
+            if (Level1.enemies[Level1.newBossIndex].enemyDead)
             {
-                setEnemyAnimationConfiguration(9);
+                Level1.enemies[Level1.newBossIndex].setEnemyAnimationConfiguration(9);
                 //Wait(10);
-                isMoving = false;
+                Level1.enemies[Level1.newBossIndex].isMoving = false;
                 Level1.hitPlayer = false;
 
                 
@@ -593,7 +638,7 @@ namespace Project.Enemies
             if(id == 10)
             {
 
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid10W / 2 + Level1.delta.X, (int)posY -30 + Level1.delta.Y + 5), new Size(flip * sizeid10W, sizeid10H)), 95 * currentFrame, 95 * currentAnimation, sizeid10W, sizeid10H, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid10W / 2 + Level1.delta.X +14, (int)posY -30 + Level1.delta.Y + 5), new Size(flip * sizeid10W, sizeid10H)), 95 * currentFrame, 95 * currentAnimation, sizeid10W, sizeid10H, GraphicsUnit.Pixel);
             }
         }
 
