@@ -18,6 +18,8 @@ namespace Project
         static SoundPlayer sound_collect = new SoundPlayer(Properties.Resources.sound_collect);
         static SoundPlayer sound_menu = new SoundPlayer(Properties.Resources.sound_menu);
         static SoundPlayer sound_teleport = new SoundPlayer(Properties.Resources.sound_teleport);
+        static SoundPlayer sound_sword = new SoundPlayer(Properties.Resources.sound_sword);
+        static SoundPlayer sound_battle = new SoundPlayer(Properties.Resources.sound_battle);
 
         static bool sound_enabled = true;
 
@@ -40,6 +42,16 @@ namespace Project
             if (sound_enabled)
                 sound_2.Play();
         }
+        public static void play_sound_sword()
+        {
+            if (sound_enabled)
+                sound_sword.PlaySync();
+        }
+        public static void play_sound_battle()
+        {
+            if (sound_enabled)
+                sound_battle.PlaySync();
+        }
         public static void play_button_exit()
         {
             if (sound_enabled)
@@ -59,6 +71,7 @@ namespace Project
         {
             if (sound_enabled)
                 sound_menu.PlayLooping();
+            
           
         }
         public static bool if_music()

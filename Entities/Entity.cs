@@ -17,7 +17,7 @@ namespace Project.Entities
         public float velocityY = 0.5f;//speed
         public float gravity = 0.5f;
         public int offset = 1;
-
+        public float velocity = 3;
         public int playerSpeed;
 
         public float dirX;

@@ -25,6 +25,8 @@ namespace Project
             //start_level1();///for level1 
             //sound.play_menu();
 
+           
+
             
             button_start.MouseEnter += (s, e) => {
                 button_start.ForeColor = Color.White;//change color to coral
@@ -66,7 +68,7 @@ namespace Project
             {
                 sound.play_menu();
             }
-
+           
            
             // button_start.FlatAppearance.BorderSize = 0;
             //    button_start.FlatStyle = FlatStyle.Flat;
@@ -82,7 +84,7 @@ namespace Project
         private void button_exit_Click(object sender, EventArgs e)
         {
 
-            if (check_sound.Checked)
+            if(check_sound.Checked)
             {
                 axWindowsMediaPlayer1.URL = "C:\\Users\\admin\\Desktop\\projectGITHUB\\Resources\\sound_button_exit.wav";
                 axWindowsMediaPlayer1.Ctlcontrols.play();
@@ -136,13 +138,13 @@ namespace Project
         //            check_sound.checked = value; } // the set is optional
         //        }
 
-       
-        private void check_sound_CheckedChanged(object sender, EventArgs e)
+      
+        public void check_sound_CheckedChanged(object sender, EventArgs e)
         {
             if(check_sound.Checked)//check_sound is a button name
             {
-                //chk = check_sound.Checked;
-                //isCheckedMusicButton = true;
+                level.checkBox1.Checked = true;
+                
                 sound.sound_on();
                 check_sound.Text = "Sound ON";
                 sound.play_button_exit();
@@ -150,7 +152,8 @@ namespace Project
             }
             else
             {
-                //isCheckedMusicButton = fals
+                level.checkBox1.Checked = false;
+                
                 sound.sound_off();
                 check_sound.Text = "Sound Off";
                 sound.dont_play_menu();           
@@ -188,6 +191,11 @@ namespace Project
         private void FormMenu_KeyDown(object sender, KeyEventArgs e)
         {
             
+        }
+
+        private void axWindowsMediaPlayer1_Enter_1(object sender, EventArgs e)
+        {
+              
         }
     }
 }

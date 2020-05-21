@@ -6,6 +6,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using Project.Controller;
 using Project.Entities;
 using Project.Models;
@@ -14,13 +15,15 @@ namespace Project.Enemies
 {
     public class Enemy
     {
-     
+
         //Image[] image = 
         public float posX;
         public float posY;
 
         public int sizeid1;
         public int sizeid2;
+        public int sizeid10W;
+        public int sizeid10H;
 
         public float oldPosX;
         public float oldPosY;
@@ -31,8 +34,9 @@ namespace Project.Enemies
         public double radius;
         public double radius2;
 
-        public bool isMoving;
-       
+        public bool isMoving = false;
+        public bool enemyDead = false;
+
         public Image mobSheet;
 
         public int flip;
@@ -40,13 +44,15 @@ namespace Project.Enemies
         public int currentLimit;
         public int EnemyIdleFrames;
         public int EnemyRunFrames;
+        public int BossAttack;
+        public int BossDeath;
         public int currentAnimation;
         public int id;
         public int HP;
         public Enemy() { }
         public Enemy(int posx, int posy, int id, int EnemyIdleFrames, int EnemyRunFrames, Image mobSheet)
         {
-            
+
             this.id = id;
             oldPosX = posx;
             oldPosY = posy;
@@ -57,6 +63,8 @@ namespace Project.Enemies
             this.mobSheet = mobSheet;
             sizeid1 = 16;
             sizeid2 = 34;
+            isMoving = false;
+            enemyDead = false;
             currentFrame = 0;
             currentLimit = EnemyIdleFrames;
             flip = 1;
@@ -71,6 +79,32 @@ namespace Project.Enemies
             if (id == 5)//white
                 HP = 20;
 
+
+        }
+        public Enemy(int posx, int posy, int id, int BossIdle, int BossRun, int BossAttack, int BossDeath, Image Sheet)
+        {
+
+            this.id = id;
+            oldPosX = posx;
+            oldPosY = posy;
+            posX = posx;
+            posY = posy;
+            this.EnemyIdleFrames = BossIdle;
+            this.EnemyRunFrames = BossRun;
+            this.BossAttack = BossAttack;
+
+            this.BossDeath = BossDeath;
+            enemyDead = false;
+            this.mobSheet = Sheet;
+            sizeid10W = 97;
+            sizeid10H = 97;
+            currentFrame = 0;
+            currentLimit = BossIdle;
+            flip = 1;
+            if (id == 10)
+                HP = 1500;
+            isMoving = false;
+
         }
         public static double GetDistance(double x1, double y1, double x2, double y2)
         {
@@ -78,50 +112,168 @@ namespace Project.Enemies
         }
         public void hitEntity(Entity player)
         {
-           double distance = GetDistance(player.posX, player.posY, posX, posY);
-            if (distance <= 15 )
-            //if(player.posX - 20 == posX || player.posY - 20 == posY || player.posX +20 == posX || player.posY+20 == posY)
+            if (!Level1.enemies[Level1.newBossIndex].enemyDead)
             {
-
-                Level1.hitPlayer = true;
-                if (player.HP > 0)
+                double distance = GetDistance(player.posX, player.posY, posX, posY);
+                
+                if (id == 10)
                 {
-                   player.howmuchDamaged++;//for frames hearts
-                   //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
-                       player.HP -= 20;
-                    player.setAnimationConfiguration(1);
-                    if (player.howmuchDamaged % 5 == 0)
-                        player.Ih++;
-
-                    
-                    if (player.HP == 0)
+                    if (distance <= 50)
                     {
+                            
+                            Level1.hitPlayer = true;
+                        if (player.HP > 0)
+                        {
+                           
+                            player.howmuchDamaged++;//for frames hearts
+                                                    //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
+                            player.HP -= 20;
+                            player.setAnimationConfiguration(1);
+                            if (player.howmuchDamaged % 5 == 0)
+                                player.Ih++;
 
-                        player.dead = true;
-                        player.howmuchDamaged = 0;
-                        player.Ih = 0;
+
+                            
+
+                        }
+                        if (player.HP == 0)
+                        {
+
+                            player.howmuchDamaged = 0;
+                            player.Ih = 0;
+                            player.dead = true;
+                            
+
+                        }
+                       
+                    }
+                    else
+                    {
+                        Level1.hitPlayer = false;
+                        //if (id == 10)
+                        //setEnemyAnimationConfiguration(0);
 
                     }
+                    if (player.dead)
+                    {
 
+                        player.posX = player.OldposX;
+                        player.posY = player.OldposY;
+                        if (Level1.newCheckPoint == 0)
+                        {
+                            Level1.delta.X = 0;
+                            Level1.delta.Y = 0;
+
+                            //delta = new Point()
+                            //Level1.delta.X = -(int)player.posX / 2 - 32;
+                            //Level1.delta.Y = -(int)player.posY / 2 - 32;
+                        }
+                        else if (Level1.newCheckPoint == 1)
+                        {
+                            Level1.delta.X = 0;
+                            Level1.delta.Y = -3;
+                        }
+                        else if (Level1.newCheckPoint == 2)
+                        {
+                            Level1.delta.X = -165;
+                            Level1.delta.Y = -459;
+
+                        }
+                        else if (Level1.newCheckPoint == 3)
+                        {
+                            Level1.delta.X = -3;
+                            Level1.delta.Y = -1074;
+
+                        }
+                        else if (Level1.newCheckPoint == 4)
+                        {
+                            Level1.delta.X = -636;
+                            Level1.delta.Y = -960;
+                        }
+                        Level1.hearts.currentAnimation = 0;
+                        player.setAnimationConfiguration(0);
+                        player.HP = 1000;
+                        player.Ih = 0;
+                        player.dead = false;
+                       
+                    }
                 }
-               
+                else if (id != 10)
+                    if (distance <= 15)
+                    {
+
+                        Level1.hitPlayer = true;
+                        if (player.HP > 0)
+                        {
+                            player.howmuchDamaged++;//for frames hearts
+                                                    //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
+                            player.HP -= 20;
+                            player.setAnimationConfiguration(1);
+                            if (player.howmuchDamaged % 5 == 0)
+                                player.Ih++;
+
+
+                            
+
+                        }
+                        if (player.HP == 0)
+                        {
+                            player.howmuchDamaged = 0;
+                            player.Ih = 0;
+                            player.dead = true;
+                          
+
+                        }
+                        
+                    }
+                    else
+                    {
+                        Level1.hitPlayer = false;
+
+                    }
+                if (player.dead)
+                {
+                    player.posX = player.OldposX;
+                    player.posY = player.OldposY;
+                    if (Level1.newCheckPoint == 0)
+                    {
+                        Level1.delta.X = 0;
+                        Level1.delta.Y = 0;
+
+                        //delta = new Point()
+                        //Level1.delta.X = -(int)player.posX / 2 - 32;
+                        //Level1.delta.Y = -(int)player.posY / 2 - 32;
+                    }
+                    else if (Level1.newCheckPoint == 1)
+                    {
+                        Level1.delta.X = 0;
+                        Level1.delta.Y = -3;
+                    }
+                    else if (Level1.newCheckPoint == 2)
+                    {
+                        Level1.delta.X = -165;
+                        Level1.delta.Y = -459;
+
+                    }
+                    else if (Level1.newCheckPoint == 3)
+                    {
+                        Level1.delta.X = -3;
+                        Level1.delta.Y = -1074;
+
+                    }
+                    else if (Level1.newCheckPoint == 4)
+                    {
+                        Level1.delta.X = -636;
+                        Level1.delta.Y = -960;
+                    }
+                    Level1.hearts.currentAnimation = 0;
+                    player.setAnimationConfiguration(0);      
+                    player.HP = 1000;
+                    player.Ih = 0;
+                    player.dead = false;
+                   
+                }
             }
-            else
-            {
-                Level1.hitPlayer = false;
-              
-            }
-            if(player.dead)
-            {
-                player.posX = player.OldposX;
-                player.posY = player.OldposY;
-                Level1.delta.X = 0;
-                Level1.delta.Y = 0;
-                player.HP = 1000;
-                player.dead = false;
-                player.Ih = 0;
-            }
-            
         }
         public void IfEnemiesCollide(List<Enemy> enemies)
         {
@@ -158,134 +310,321 @@ namespace Project.Enemies
             }
 
         }
-        public void ownMove(Entity player)
+
+        public void FlipEnemy(Entity player,List<Enemy>enemies)
         {
-            float posXvar = posX;
-            float posYvar = posY;
-            float playerposXvar = player.posX;
-            float playerposYvar = player.posY;
-
-
-            if (posX > oldPosX + 2 || posY > oldPosY + 2 || posX < oldPosX || posY < oldPosY)
-            {
-                isMoving = true;
-            }
-            else
-                isMoving = false;
-
-            if (posX < 0)
-                posXvar = (-1) * posX;
-
-            if (posY < 0)
-                posYvar = (-1) * posY;
-
-            if (player.posX < 0)
-                playerposXvar = (-1) * player.posX;
-
-            if (player.posY < 0)
-                playerposYvar = player.posY * (-1);
-
-            if (playerposXvar - posXvar < 0)
-                radius = (-1) * (playerposXvar - posXvar);
-            else
-                radius = (playerposXvar - posXvar);
-
-            if (playerposYvar - posYvar < 0)
-                radius2 = (-1) * (playerposYvar - posYvar);
-            else
-                radius2 = (playerposYvar - posYvar);
-
-            double distance = GetDistance((double)player.posX, (double)player.posY, (double)posX, (double)posY);
-
-            if ((radius <= 20 || radius2 <= 20))
-            {
-                if (player.flip == 1 && player.posX > posX)
-                    flip = 1;
-                else if (player.flip == -1 && player.posX < posX)
-                    flip = -1;
-            }
-
-            if (distance >= 30)
-            {
-                flip = 1;
-            }
-
-
-            //if (distance >= 30)
+            //if (!Level1.enemies[Level1.newBossIndex].enemyDead)
             //{
-            //    if (id == 1)
-            //    {
-            //        posX += 2;
-            //        if(posX > oldPosX)
-            //        posX -= 2;
-                    
-
-
-            //    }
-            //}
-            if (distance <= 30)
-            {
-               
-                if (player.posX  > posX)
+                for (int i = 0; i < enemies.Count; i++)
                 {
-                    posX  += EnemySpeedX;
-                }
-                else
-                {
-                    posX  -= EnemySpeedX;
-                }
+                    double distance = GetDistance((double)player.posX, (double)player.posY, (double)enemies[i].posX, (double)enemies[i].posY);
+                    if (enemies[i].isMoving)
+                    {
+                    if (enemies[i].id != 10)
+                    {
+                        if (distance <= 30)
+                        {
+                            if (player.posX < enemies[i].posX)
+                            {
+                                enemies[i].flip = -1;
 
-                if (player.posY  > posY)
-                {
+                            }
+                            if (player.posX > enemies[i].posX)
+                            {
+                                enemies[i].flip = 1;
+                            }
+                        }
+                        else
+                        {
+                            if (player.posX < enemies[i].posX)
+                            {
+                                enemies[i].flip = 1;
+                            }
+                            if (player.posX > enemies[i].posX)
+                            {
+                                enemies[i].flip = -1;
+                            }
+                        }
+                    }
+                    else if(enemies[i].id == 10)
+                    {
+                        if (distance <= 100)
+                        {
+                            player.velocity = 4;
+                            if (player.posX < enemies[i].posX)
+                            {
+                                enemies[i].flip = -1;
 
-                    posY += EnemySpeedY;
-                }
-                else
-                    posY -= EnemySpeedY;
-
+                            }
+                            if (player.posX > enemies[i].posX)
+                            {
+                                enemies[i].flip = 1;
+                            }
+                        }
+                        else
+                        {
+                            player.velocity = 3;
+                            if (player.posX < enemies[i].posX)
+                            {
+                                enemies[i].flip = 1;
+                            }
+                            if (player.posX > enemies[i].posX)
+                            {
+                                enemies[i].flip = -1;
+                            }
+                        }
+                    }
+                    }
+                //}
             }
-            else
-            {
-                
-                if (posX < oldPosX)
-                {
-                    posX += EnemySpeedX;
-                }
-                else
-                {
-                    posX -= EnemySpeedX;
-                }
-
-                if (posY < oldPosY)
-                {
-                    posY += EnemySpeedY;
-                }
-                else
-                {
-
-                    posY -= EnemySpeedY;
-                }
-
-            }
-            
         }
 
+        public void ownMove(Entity player)
+        {
+            if (!Level1.enemies[Level1.newBossIndex].enemyDead)
+            {
+                float posXvar = posX;
+                float posYvar = posY;
+                float playerposXvar = player.posX;
+                float playerposYvar = player.posY;
+
+
+
+
+                //if (posX < 0)
+                //    posXvar = (-1) * posX;
+
+                //if (posY < 0)
+                //    posYvar = (-1) * posY;
+
+                //if (player.posX < 0)
+                //    playerposXvar = (-1) * player.posX;
+
+                //if (player.posY < 0)
+                //    playerposYvar = player.posY * (-1);
+
+                //if (playerposXvar - posXvar < 0)
+                //    radius = (-1) * (playerposXvar - posXvar);
+                //else
+                //    radius = (playerposXvar - posXvar);
+
+                //if (playerposYvar - posYvar < 0)
+                //    radius2 = (-1) * (playerposYvar - posYvar);
+                //else
+                //    radius2 = (playerposYvar - posYvar);
+
+                double distance = GetDistance((double)player.posX, (double)player.posY, (double)posX, (double)posY);
+
+                //if (id != 10)
+                //    if ((radius <= 30 || radius2 <= 30))
+                //    {
+                //        if (player.flip == 1 && player.posX > posX)
+                //            flip = 1;
+                //        else if (player.flip == -1 && player.posX < posX)
+                //            flip = -1;
+                //    }
+                //if (id == 10)
+                //    if ((radius <= 100 || radius2 <= 100))
+                //    {
+                //        if (player.flip == 1 && player.posX > posX)
+                //            flip = 1;
+                //        else if (player.flip == -1 && player.posX < posX)
+                //            flip = -1;
+                //        else if (player.flip == 1 && player.posX < posX)
+                //            flip = -1;
+                //        else if (player.flip == -1 && player.posX > posX)
+                //            flip = 1;
+
+                //    }
+                //if (id != 10)
+                //    if (distance >= 30)
+                //    {
+                //        flip = 1;
+
+                //    }
+                //if (id == 10)
+                //    if (distance >= 100)
+                //    {
+                //        if (player.posX < posX)
+                //            flip = 1;
+                //        if (player.posX > posX)
+                //            flip = -1;
+                //    }
+
+                
+
+
+                if (id != 10)
+                {
+                    if (distance <= 30)
+                    {
+                        if (player.posX > posX)
+                        {
+                            posX += EnemySpeedX;
+                        }
+                        else
+                        {
+                            posX -= EnemySpeedX;
+                        }
+
+                        if (player.posY > posY)
+                        {
+
+                            posY += EnemySpeedY;
+                        }
+                        else
+                            posY -= EnemySpeedY;
+
+                    }
+                    else
+                    {
+
+                        if (posX < oldPosX)
+                        {
+                            posX += EnemySpeedX;
+                        }
+                        else
+                        {
+                            posX -= EnemySpeedX;
+                        }
+
+                        if (posY < oldPosY)
+                        {
+                            posY += EnemySpeedY;
+                        }
+                        else
+                        {
+
+                            posY -= EnemySpeedY;
+                        }
+
+                    }
+                }
+                else if (id == 10)
+                {
+                    if (distance <= 100)
+                    {
+                        if (isMoving)
+                        {
+                            setEnemyAnimationConfiguration(1);
+                            if (Level1.hitPlayer)
+                                setEnemyAnimationConfiguration(6);
+
+
+                        }
+                        else
+                        {
+                            setEnemyAnimationConfiguration(0);
+                            if (Level1.hitPlayer)
+                                setEnemyAnimationConfiguration(6);
+                        }
+                        if (player.posX > posX)
+                        {
+                            posX += EnemySpeedX;
+                        }
+                        else
+                        {
+                            posX -= EnemySpeedX;
+
+                        }
+
+                        if (player.posY > posY)
+                        {
+
+                            posY += EnemySpeedY;
+                        }
+                        else
+                            posY -= EnemySpeedY;
+
+                    }
+                    else
+                    {
+
+                        if (isMoving)
+                        {
+
+                            setEnemyAnimationConfiguration(1);
+
+                        }
+                        else
+                            setEnemyAnimationConfiguration(0);
+                        if (posX < oldPosX)
+                        {
+                            posX += EnemySpeedX;
+                        }
+                        else
+                        {
+                            posX -= EnemySpeedX;
+                        }
+
+                        if (posY < oldPosY)
+                        {
+                            posY += EnemySpeedY;
+                        }
+                        else
+                        {
+
+                            posY -= EnemySpeedY;
+                        }
+
+
+                    }
+
+
+                }
+            }
+            
+            if (Level1.enemies[Level1.newBossIndex].enemyDead)
+            {
+                Level1.enemies[Level1.newBossIndex].setEnemyAnimationConfiguration(9);
+                //Wait(10);
+                Level1.enemies[Level1.newBossIndex].isMoving = false;
+                Level1.hitPlayer = false;
+
+                
+            }
+        
+    }
+
+        
+       
         public void playEnemyAnimation(Graphics g)
         {
-            if (id == 1) 
+            if (id == 1)
             {
-                
-                if (currentFrame < currentLimit - 1 )
+
+                if (currentFrame < currentLimit - 1)
                     currentFrame++;
                 else
                     currentFrame = 0;
             }
-            if (id == 2) 
-            { 
-                if (currentFrame < currentLimit -1)
+            if (id == 2)
+            {
+                if (currentFrame < currentLimit - 1)
                     currentFrame++;
                 else
-                    currentFrame = 0; 
+                    currentFrame = 0;
+            }
+            if (id == 10)
+            {
+
+
+
+                if (currentAnimation == 9)
+                {
+                    if (currentFrame < currentLimit - 1)
+                        currentFrame++;
+                    else
+                        currentFrame = 5;
+                }
+                else
+                {
+                    if (currentFrame < currentLimit - 2)
+                        currentFrame++;
+                    else
+                        currentFrame = 0;
+                }
+
             }
             if (id == 1)
             {
@@ -296,6 +635,11 @@ namespace Project.Enemies
             {
                 g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2 + Level1.delta.X+14, (int)posY + Level1.delta.Y + 5), new Size(flip * sizeid2, sizeid2)), 32 * currentFrame, 34 * currentAnimation, sizeid2, sizeid2, GraphicsUnit.Pixel);
             }
+            if(id == 10)
+            {
+
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid10W / 2 + Level1.delta.X +14, (int)posY -30 + Level1.delta.Y + 5), new Size(flip * sizeid10W, sizeid10H)), 95 * currentFrame, 95 * currentAnimation, sizeid10W, sizeid10H, GraphicsUnit.Pixel);
+            }
         }
 
         public void setEnemyAnimationConfiguration(int currentAnimation)
@@ -305,8 +649,16 @@ namespace Project.Enemies
             switch (currentAnimation)
             {
                 case 0:
-
                     currentLimit = EnemyIdleFrames;
+                    break;
+                case 1:
+                    currentLimit = EnemyRunFrames;
+                    break;
+                case 6:
+                    currentLimit = BossAttack;
+                    break;
+                case 9:
+                    currentLimit = BossDeath;
 
                     break;
             }

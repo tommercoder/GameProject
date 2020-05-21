@@ -63,6 +63,16 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _5074b60051bcd63719329c03cf53b754 {
+            get {
+                object obj = ResourceManager.GetObject("_5074b60051bcd63719329c03cf53b754", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap astronaut {
             get {
                 object obj = ResourceManager.GetObject("astronaut", resourceCulture);
@@ -117,6 +127,15 @@ namespace Project.Properties {
             get {
                 object obj = ResourceManager.GetObject("dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream deadBoss {
+            get {
+                return ResourceManager.GetStream("deadBoss", resourceCulture);
             }
         }
         
@@ -213,6 +232,26 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap forcheckpoint {
+            get {
+                object obj = ResourceManager.GetObject("forcheckpoint", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap forcheckpoint2 {
+            get {
+                object obj = ResourceManager.GetObject("forcheckpoint2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hearts {
             get {
                 object obj = ResourceManager.GetObject("hearts", resourceCulture);
@@ -233,10 +272,30 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Minotaur___Sprite_Sheet {
+            get {
+                object obj = ResourceManager.GetObject("Minotaur___Sprite_Sheet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap orig {
             get {
                 object obj = ResourceManager.GetObject("orig", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] place_down_on_surface {
+            get {
+                object obj = ResourceManager.GetObject("place_down_on_surface", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -291,6 +350,16 @@ namespace Project.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playerred2 {
+            get {
+                object obj = ResourceManager.GetObject("playerred2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream sound_1 {
@@ -305,6 +374,15 @@ namespace Project.Properties {
         internal static System.IO.UnmanagedMemoryStream sound_2 {
             get {
                 return ResourceManager.GetStream("sound_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream sound_battle {
+            get {
+                return ResourceManager.GetStream("sound_battle", resourceCulture);
             }
         }
         
@@ -347,6 +425,15 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream sound_sword {
+            get {
+                return ResourceManager.GetStream("sound_sword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream sound_teleport {
             get {
                 return ResourceManager.GetStream("sound_teleport", resourceCulture);
@@ -369,6 +456,16 @@ namespace Project.Properties {
         internal static System.Drawing.Bitmap weapon_axe {
             get {
                 object obj = ResourceManager.GetObject("weapon_axe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap weapon_big_gold {
+            get {
+                object obj = ResourceManager.GetObject("weapon_big_gold", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

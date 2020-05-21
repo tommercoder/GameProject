@@ -22,7 +22,7 @@ namespace Project
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FormMenu());//main
             Application.Run(new Level1());//level1 testing so
-            //Application.Run(new EnterNickName());
+           //Application.Run(new EnterNickName());
 
         }
     }

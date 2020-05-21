@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.Entities;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -33,6 +34,13 @@ namespace Project.chests_and_staff
             currentLimit = chestIdle;
             ChestSprite = chestSprite;
         }
+        public staff(int posx,int posy,int ID,Image chestSprite)
+        {
+            posX = posx;
+            posY = posy;
+            id = ID;
+            ChestSprite = chestSprite;
+        }
         public void drawIdleChest(Graphics g)
         {
             
@@ -41,16 +49,19 @@ namespace Project.chests_and_staff
         }
         public void PlayAnimation(Graphics g)
         {
-
-            if (currentFrame < currentLimit - 1)
-                currentFrame++;
-            else
+            if (id == 1)
             {
-                if(currentAnimation ==0)
-                currentFrame = 0;
-                if (currentAnimation == 1)
-                    currentFrame = 1;
+                if (currentFrame < currentLimit - 1)
+                    currentFrame++;
+                else
+                {
+                    if (currentAnimation == 0)
+                        currentFrame = 0;
+                    if (currentAnimation == 1)
+                        currentFrame = 1;
+                }
             }
+           
                 if (id == 1)
                 {
                 if(currentAnimation==0)
@@ -58,10 +69,15 @@ namespace Project.chests_and_staff
                 if(currentAnimation==1)
                     g.DrawImage(ChestSprite, new Rectangle(new Point(posX + Level1.delta.X+7, posY + Level1.delta.Y+3), new Size(32, 32)), 30 * currentFrame, 30 * currentAnimation, 32, 32, GraphicsUnit.Pixel);
                 // isOpened = true;
-            }
+                
+                }
+          
             }
            
-        
+        public void playFlask(Graphics g,Entity player)
+        {
+            g.DrawImage(ChestSprite, new Rectangle(new Point(((int)posX) + Level1.delta.X, (int)posY - player.currentFrame +Level1.delta.Y), new Size(32, 32)), 0, 0, 32, 32, GraphicsUnit.Pixel);
+        }
 
         public void setAnimation(int currentAnimation)
         {

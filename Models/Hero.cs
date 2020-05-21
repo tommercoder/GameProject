@@ -21,6 +21,11 @@ namespace Project.Models
         public static int Enemy2RunFrames = 4;
         public static int Enemy2IdleFrames = 4;
 
+        public static int BossIdleFrames = 5;
+        public static int BossRunFrames = 8;
+        public static int BossAttackFrames = 9;
+        public static int BossDeathFrames = 6;
+
 
         public static int OpenChestFrames = 2;
         public static int IdleChestFrames = 1;

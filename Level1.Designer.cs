@@ -41,6 +41,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.axWindowsMediaPlayer2 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.axWindowsMediaPlayer3 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.tutorialLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer3)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -111,11 +119,68 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(385, 177);
+            this.label1.Location = new System.Drawing.Point(385, 194);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 13;
             this.label1.Text = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // axWindowsMediaPlayer1
+            // 
+            this.axWindowsMediaPlayer1.Enabled = true;
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(63, 34);
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(75, 23);
+            this.axWindowsMediaPlayer1.TabIndex = 14;
+            this.axWindowsMediaPlayer1.Visible = false;
+            this.axWindowsMediaPlayer1.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter);
+            // 
+            // axWindowsMediaPlayer2
+            // 
+            this.axWindowsMediaPlayer2.Enabled = true;
+            this.axWindowsMediaPlayer2.Location = new System.Drawing.Point(168, 34);
+            this.axWindowsMediaPlayer2.Name = "axWindowsMediaPlayer2";
+            this.axWindowsMediaPlayer2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer2.OcxState")));
+            this.axWindowsMediaPlayer2.Size = new System.Drawing.Size(75, 23);
+            this.axWindowsMediaPlayer2.TabIndex = 15;
+            this.axWindowsMediaPlayer2.Visible = false;
+            // 
+            // axWindowsMediaPlayer3
+            // 
+            this.axWindowsMediaPlayer3.Enabled = true;
+            this.axWindowsMediaPlayer3.Location = new System.Drawing.Point(100, 101);
+            this.axWindowsMediaPlayer3.Name = "axWindowsMediaPlayer3";
+            this.axWindowsMediaPlayer3.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer3.OcxState")));
+            this.axWindowsMediaPlayer3.Size = new System.Drawing.Size(75, 23);
+            this.axWindowsMediaPlayer3.TabIndex = 16;
+            this.axWindowsMediaPlayer3.Visible = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(47, 124);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.TabIndex = 18;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
+            // 
+            // tutorialLabel
+            // 
+            this.tutorialLabel.AutoSize = true;
+            this.tutorialLabel.BackColor = System.Drawing.Color.Transparent;
+            this.tutorialLabel.Font = new System.Drawing.Font("Press Start K", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tutorialLabel.ForeColor = System.Drawing.Color.White;
+            this.tutorialLabel.Location = new System.Drawing.Point(139, 292);
+            this.tutorialLabel.Name = "tutorialLabel";
+            this.tutorialLabel.Size = new System.Drawing.Size(0, 11);
+            this.tutorialLabel.TabIndex = 19;
+            this.tutorialLabel.TextChanged += new System.EventHandler(this.tutorialLabel_TextChanged);
             // 
             // Level1
             // 
@@ -124,6 +189,11 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(734, 711);
+            this.Controls.Add(this.tutorialLabel);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.axWindowsMediaPlayer3);
+            this.Controls.Add(this.axWindowsMediaPlayer2);
+            this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label7);
@@ -141,10 +211,13 @@
             this.Name = "Level1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shadow Knight";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(Level1_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Level1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Level1_FormClosed);
             this.Load += new System.EventHandler(this.Level1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +235,10 @@
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label1;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer2;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer3;
+        public System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label tutorialLabel;
     }
 }

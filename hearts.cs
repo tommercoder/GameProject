@@ -19,6 +19,7 @@ namespace Project
         public int currentState;
         public int fullHearts;
         public int i;
+
         public hearts(int posX,int posY,int fullHearts,int currentState,Image heartsImage)
         {
             this.posX = posX;
@@ -31,22 +32,22 @@ namespace Project
         
         }
 
-        public void drawHearts(Graphics g,Entity entity)
+        public void drawHearts(Graphics g, Entity entity)
         {
-            
-            if(currentFrame < currentLimit - 1)
+
+            if (currentFrame < currentLimit - 1)
                 currentFrame++;
             else
             {
 
-                if (entity.howmuchDamaged > 0 && !entity.dead)
+                if (entity.howmuchDamaged > 0 && !entity.dead )
                 {
 
                     if (entity.howmuchDamaged % 5 == 0)
                     {
-                        
+
                         currentAnimation = entity.Ih;
-                        
+
                     }
                 }
                 else if (entity.HP < 1000 && entity.collidedead)
@@ -55,10 +56,10 @@ namespace Project
                     currentAnimation = 0;
                 
                 }
-                else if(!entity.dead)
-                {
-                    currentAnimation = 0;
-                }
+                //else if (entity.dead)
+                //{
+                //    currentAnimation = 0;
+                //}
 
                 currentFrame = 5;
             }
@@ -76,7 +77,6 @@ namespace Project
                     break;
                 case 1:
                     currentLimit = currentState;
-                    
                     break;
 
 
