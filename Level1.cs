@@ -617,6 +617,7 @@ namespace Project
                     enemies[i].isMoving = false;
 
 
+
                 enemies[i].ownMove(player);
             }
 
