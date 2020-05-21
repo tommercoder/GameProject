@@ -123,6 +123,16 @@ namespace Project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Control_menu {
+            get {
+                object obj = ResourceManager.GetObject("Control_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dark {
             get {
                 object obj = ResourceManager.GetObject("dark", resourceCulture);
