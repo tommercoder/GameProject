@@ -407,5 +407,17 @@
   <ItemGroup>
     <None Include="Resources\Control_menu.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy6.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

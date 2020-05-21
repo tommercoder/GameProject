@@ -34,6 +34,10 @@ namespace Project
         public Image chest;
         public Image mobSheet;
         public Image mobSheet2;
+        public Image mobSheet3;
+        public Image mobSheet4;
+        public Image mobSheet5;
+        public Image mobSheet6;
         public Image heartsImage;
         public Image bossSheet;
         public Image FlaskSheet;
@@ -233,51 +237,82 @@ namespace Project
             chest = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\chest.png"));
             mobSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Enemy1.png"));
             mobSheet2 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\enemy2.png"));
+            mobSheet3 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\enemy3.png"));
+            mobSheet4 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\enemy4.png"));
+            mobSheet5 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\enemy5.png"));
+            mobSheet6 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\BOSS.png"));
+            
             bossSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Minotaur - Sprite Sheet.png"));
             heartsImage = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\hearts2.png"));
             FlaskSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\flask_big_blue.png"));
+            
             //enemies
             enemies = new List<Enemy>
             {
 
 
                 new Enemy(200, 520, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-                new Enemy(134, 540,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                new Enemy(248, 341,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
 
-                new Enemy(350, 350, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
+                new Enemy(542, 701, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
 
-                new Enemy(400,400,/*1007,836,*/10,Hero.BossIdleFrames,Hero.BossRunFrames,Hero.BossAttackFrames,Hero.BossDeathFrames,bossSheet),//DO NOT CHANGE BOSS 
-                  // new Enemy(300, 350,2, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
-                   // new Enemy(45, 500,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-               // new Enemy(32, 380, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
-               // new Enemy(-20,-20,1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                new Enemy(1007,836,10,Hero.BossIdleFrames,Hero.BossRunFrames,Hero.BossAttackFrames,Hero.BossDeathFrames,bossSheet),//DO NOT CHANGE BOSS 
+               
+                new Enemy(143, 1184, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
+                new Enemy(191, 1718, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
+                new Enemy(698, 1757, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
+                 new Enemy(38, 185,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                 new Enemy(290, 1241,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                 new Enemy(491, 14,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                 new Enemy(38, 302, 5,Hero.Enemy5IdleFrames, Hero.Enemy5RunFrames, mobSheet5),
+                 new Enemy(134, 540,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
+                 new Enemy(53, 464,5, Hero.Enemy5IdleFrames, Hero.Enemy5RunFrames, mobSheet5),
+                 new Enemy(353, 14,5, Hero.Enemy5IdleFrames, Hero.Enemy5RunFrames, mobSheet5),
+                 new Enemy(62, 977,5, Hero.Enemy5IdleFrames, Hero.Enemy5RunFrames, mobSheet5),
+
+                new Enemy(300, 500,3, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet3),
+                new Enemy(323, 317,3, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet3),
+                new Enemy(530, 242,3, Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet3),
+                new Enemy(266, 242,4, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet4),
+                new Enemy(257, 149,4, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet4),
+                new Enemy(527, 449,4, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet4),
+                new Enemy(473, 1001,4, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet4),
+                new Enemy(290, 1370,4, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet4),
+                new Enemy(464, 1757,4, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet4),
+               // new Enemy(32, 380, 5,Hero.Enemy5IdleFrames, Hero.Enemy5RunFrames, mobSheet5),
+                new Enemy(533,860,6,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet6),
+                new Enemy(260,962,6,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet6),
+                new Enemy(92,1577,6,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet6),
+                new Enemy(974,1757,6,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet6),
+                new Enemy(671,1364,6,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet6),
+
             };
 
             flasks = new List<staff>
             {
-                new staff(100,100,1,FlaskSheet),
-                new staff(100,110,1,FlaskSheet),
-                new staff(100,120,1,FlaskSheet),
-                new staff(100,130,1,FlaskSheet),
-                new staff(100,140,1,FlaskSheet),
+                new staff(125,1622,1,FlaskSheet),
+                new staff(764,845,1,FlaskSheet),
+                new staff(995,635,1,FlaskSheet),
+                new staff(1244  ,830,1,FlaskSheet),
+                new staff(1001,1109 ,1,FlaskSheet),
             };
 
 
             //player
             player = new Entity(32, 32, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames, Hero.RedFrames, dwarfSheet);
             //chest
-            Chest = new staff(100, 40, 1, Hero.IdleChestFrames, Hero.OpenChestFrames, chest);
+           // Chest = new staff(100, 40, 1, Hero.IdleChestFrames, Hero.OpenChestFrames, chest);
 
 
             //hearts image
             hearts = new hearts(580, 10, Hero.fullHearts, Hero.heartsFrames, heartsImage);
             //weapons
-            weapon = new Weapons(90, 30, 1, weaponSheet);
-            weapon1 = new Weapons(80, 30, 2, weaponSheet1);
-            weapon2 = new Weapons(70, 30, 3, weaponSheet2);
-            weapon5 = new Weapons(60, 30, 5, weaponSheet5);
-            weapon4 = new Weapons(50, 30, 4, weaponSheet4);
-            weapon6 = new Weapons(40, 30, 6, weaponSheet6);
+            weapon = new Weapons(90, 30, 1, weaponSheet);//20
+            weapon1 = new Weapons(995, 1079, 2, weaponSheet1);//150
+            weapon2 = new Weapons(485, 533, 3, weaponSheet2);//40
+            weapon5 = new Weapons(60, 30, 5, weaponSheet5);//20
+            weapon4 = new Weapons(41, 1139, 4, weaponSheet4);//50
+            weapon6 = new Weapons(1127, 1760, 6, weaponSheet6);//70
             weapons.Add(weapon);
             weapons.Add(weapon1);
             weapons.Add(weapon2);
@@ -382,14 +417,15 @@ namespace Project
                     break;
                 case Keys.X:
                     Xpressed = true;
-                    if (!Chest.isOpened)
-                    {
-                        chestOpen(Chest);
-                        double distance = GetDistance(player.posX, player.posY, Chest.posX, Chest.posY);
+                    //if (!Chest.isOpened)
+                    //{
+                    //    chestOpen(Chest);
+                    //    double distance = GetDistance(player.posX, player.posY, Chest.posX, Chest.posY);
 
-                        if (distance < 20)
-                            Chest.setAnimation(1);
-                    }
+                    //    if (distance < 20)
+                    //        Chest.setAnimation(1);
+                    //    Chest.isOpened = true;
+                    //}
 
                     break;
                 case Keys.Space:
@@ -543,7 +579,7 @@ namespace Project
             for (int i = 0; i < flasks.Count; i++)
             {
                 double distancetoflask = GetDistance((double)player.posX, (double)player.posY, (double)flasks[i].posX, (double)flasks[i].posY);
-                if (distancetoflask <= 15)
+                if (distancetoflask <= 25)
                 {
                     player.HP = 1000;
                     player.setAnimationConfiguration(2);
@@ -621,8 +657,8 @@ namespace Project
                 enemies[i].ownMove(player);
             }
 
-            //label1.Text = Convert.ToString(player.posX);
-            //label2.Text = Convert.ToString(player.posY);
+            label1.Text = Convert.ToString(player.posX);
+            label2.Text = Convert.ToString(player.posY);
             //label2.Text = Convert.ToString(enemies[3].isMoving);
             label3.Text = Convert.ToString("player.dead" + player.dead);
 
@@ -702,13 +738,13 @@ namespace Project
                 enemies[i].playEnemyAnimation(g);
             }
 
-            double distance = GetDistance(player.posX, player.posY, Chest.posX, Chest.posY);
+           
             
-            Chest.PlayAnimation(g);
-            //for(int i = 0;i < flasks.Count;i++)
-            //{
-            //    flasks[i].playFlask(g,player);
-            //}
+          //  Chest.PlayAnimation(g);
+            for (int i = 0; i < flasks.Count; i++)
+            {
+                flasks[i].playFlask(g, player);
+            }
 
             player.PlayAnimation(g);
            

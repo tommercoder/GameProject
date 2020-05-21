@@ -48,6 +48,12 @@ namespace Project
             button_exit.MouseLeave += (s, e) => {
                 button_exit.ForeColor = Color.Aqua;//change color back
             };
+            button2.MouseEnter += (s, e) => {
+                button2.ForeColor = Color.White;//change color to coral
+            };
+            button2.MouseLeave += (s, e) => {
+                button2.ForeColor = Color.Aqua;//change color back
+            };
             KeyDown += new KeyEventHandler(FormMenu_KeyDown);
 
         }

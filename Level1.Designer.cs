@@ -59,6 +59,7 @@
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "label3";
+            this.label3.Visible = false;
             // 
             // label4
             // 
@@ -68,6 +69,7 @@
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "label4";
+            this.label4.Visible = false;
             // 
             // label5
             // 
@@ -77,6 +79,7 @@
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "label5";
+            this.label5.Visible = false;
             // 
             // label6
             // 
@@ -86,6 +89,7 @@
             this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 10;
             this.label6.Text = "label6";
+            this.label6.Visible = false;
             // 
             // timer3
             // 
@@ -106,6 +110,7 @@
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 11;
             this.label7.Text = "label7";
+            this.label7.Visible = false;
             // 
             // label2
             // 
@@ -115,6 +120,7 @@
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 12;
             this.label2.Text = "label2";
+            this.label2.Visible = false;
             // 
             // label1
             // 
@@ -124,6 +130,7 @@
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 13;
             this.label1.Text = "label1";
+            this.label1.Visible = false;
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // axWindowsMediaPlayer1
