@@ -197,5 +197,15 @@ namespace Project
         {
               
         }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Contrl a = new Contrl();
+            a.ShowDialog();
+        }
+
+        private void Control_Click(object sender, EventArgs e)
+        {
+        
+        }
     }
 }
