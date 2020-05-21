@@ -447,7 +447,7 @@ namespace Project
                         timer2.Stop();
                         timer3.Stop();
                         timer4.Stop();
-
+                        player.hitPressed = false;
                         FormMenu fm = new FormMenu();
                         if (checkBox1.Checked == false)
                             fm.check_sound.Checked = false;

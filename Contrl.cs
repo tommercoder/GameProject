@@ -15,6 +15,12 @@ namespace Project
         public Contrl()
         {
             InitializeComponent();
+            button_exit.MouseEnter += (s, e) => {
+                button_exit.ForeColor = Color.White;//change color to coral
+            };
+            button_exit.MouseLeave += (s, e) => {
+                button_exit.ForeColor = Color.Aqua;//change color back
+            };
         }
 
         private void button1_Click(object sender, EventArgs e)
