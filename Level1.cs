@@ -74,13 +74,10 @@ namespace Project
         public int newDeltaX;
         public int newDeltaY;
         ///checkpoints
-        Point check1 = new Point(290, 14);
-        Point check2 = new Point(539, 551);
-        Point check3 = new Point(50, 1178);
-        Point check4 = new Point(1007, 1109);
+        
 
         /// ////////////////////
-        public static int newBossIndex = 3;
+        public static int newBossIndex = 0;
         /// //////////////////
 
         public Level1()
@@ -156,7 +153,7 @@ namespace Project
                     break;
             }
 
-            if (player.dirX == 0 && player.dirY == 0)
+            if (player.dirX == 0 && player.dirY == 0 && !hitPlayer)
             {
                 player.isMoving = false;
                 player.setAnimationConfiguration(0);
@@ -250,13 +247,14 @@ namespace Project
             enemies = new List<Enemy>
             {
 
-
+                new Enemy(1007,836,10,Hero.BossIdleFrames,Hero.BossRunFrames,Hero.BossAttackFrames,Hero.BossDeathFrames,bossSheet),//DO NOT CHANGE BOSS 
+                
                 new Enemy(200, 520, 1,Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
                 new Enemy(248, 341,1, Hero.EnemyIdleFrames, Hero.EnemyRunFrames, mobSheet),
 
                 new Enemy(542, 701, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
 
-                new Enemy(1007,836,10,Hero.BossIdleFrames,Hero.BossRunFrames,Hero.BossAttackFrames,Hero.BossDeathFrames,bossSheet),//DO NOT CHANGE BOSS 
+               
                
                 new Enemy(143, 1184, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
                 new Enemy(191, 1718, 2,Hero.Enemy2IdleFrames, Hero.Enemy2RunFrames, mobSheet2),
@@ -429,8 +427,6 @@ namespace Project
 
                     break;
                 case Keys.Space:
-
-
                     break;
                 case Keys.Escape:
                     string message = "Do you want to close the game?\n" +
@@ -579,11 +575,11 @@ namespace Project
             for (int i = 0; i < flasks.Count; i++)
             {
                 double distancetoflask = GetDistance((double)player.posX, (double)player.posY, (double)flasks[i].posX, (double)flasks[i].posY);
-                if (distancetoflask <= 25)
+                if (distancetoflask <= 15)
                 {
                     player.HP = 1000;
                     player.setAnimationConfiguration(2);
-                    // hearts.setAnimation(0);
+                     hearts.setAnimation(0);
                     //reDrawHearts = true;
                     player.Ih = 0;
                     flasks.RemoveAt(i);
@@ -613,8 +609,8 @@ namespace Project
         
         public void EnemyUpdate(object sedner,EventArgs e)
         {
-            if (enemies.Count == 0)
-                hitPlayer = false;
+            //if (enemies.Count == 0)
+              //s  hitPlayer = false;
 
             for (int i = 0; i < enemies.Count; i++)
             {
@@ -657,16 +653,16 @@ namespace Project
                 enemies[i].ownMove(player);
             }
 
-            label1.Text = Convert.ToString(player.posX);
-            label2.Text = Convert.ToString(player.posY);
-            //label2.Text = Convert.ToString(enemies[3].isMoving);
-            label3.Text = Convert.ToString("player.dead" + player.dead);
+            label1.Text = Convert.ToString(hitPlayer);
+            //label2.Text = Convert.ToString(player.posY);
+            ////label2.Text = Convert.ToString(enemies[3].isMoving);
+            //label3.Text = Convert.ToString("player.dead" + player.dead);
 
-            label4.Text = Convert.ToString(player.HP); 
+            //label4.Text = Convert.ToString(player.HP); 
            
-            label5.Text = Convert.ToString(hearts.currentAnimation);
-            label6.Text = Convert.ToString(delta.X);
-            label7.Text = Convert.ToString(delta.Y);
+            //label5.Text = Convert.ToString(hearts.currentAnimation);
+            //label6.Text = Convert.ToString(delta.X);
+            //label7.Text = Convert.ToString(delta.Y);
 
 
         }

@@ -114,7 +114,7 @@ namespace Project.Enemies
             currentLimit = BossIdle;
             flip = 1;
             if (id == 10)
-                HP = 1500;
+                HP = 150;
             isMoving = false;
 
         }
@@ -133,10 +133,10 @@ namespace Project.Enemies
                     if (distance <= 50)
                     {
                             
-                            Level1.hitPlayer = true;
+                           
                         if (player.HP > 0)
                         {
-                           
+                            Level1.hitPlayer = true;
                             player.howmuchDamaged++;//for frames hearts
                                                     //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
                             player.HP -= 20;
@@ -154,7 +154,7 @@ namespace Project.Enemies
                             player.howmuchDamaged = 0;
                             player.Ih = 0;
                             player.dead = true;
-                            
+                            //Level1.hitPlayer = false;
 
                         }
                        
@@ -218,6 +218,7 @@ namespace Project.Enemies
                         Level1.hitPlayer = true;
                         if (player.HP > 0)
                         {
+                           
                             player.howmuchDamaged++;//for frames hearts
                                                     //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
                             player.HP -= 20;
@@ -234,7 +235,7 @@ namespace Project.Enemies
                             player.howmuchDamaged = 0;
                             player.Ih = 0;
                             player.dead = true;
-                          
+                            //Level1.hitPlayer = false;
 
                         }
                         
@@ -337,6 +338,7 @@ namespace Project.Enemies
                     {
                         if (distance <= 30)
                         {
+                            
                             if (player.posX < enemies[i].posX)
                             {
                                 enemies[i].flip = -1;
@@ -346,6 +348,8 @@ namespace Project.Enemies
                             {
                                 enemies[i].flip = 1;
                             }
+                            if (distance <= 15)
+                                Level1.hitPlayer = true;
                         }
                         else
                         {
@@ -363,7 +367,7 @@ namespace Project.Enemies
                     {
                         if (distance <= 100)
                         {
-                            player.velocity = 4;
+                            player.velocity = 5;
                             if (player.posX < enemies[i].posX)
                             {
                                 enemies[i].flip = -1;
@@ -373,6 +377,8 @@ namespace Project.Enemies
                             {
                                 enemies[i].flip = 1;
                             }
+                            if (distance <= 50)
+                                Level1.hitPlayer = true;
                         }
                         else
                         {
@@ -611,6 +617,7 @@ namespace Project.Enemies
                 Level1.enemies[Level1.newBossIndex].setEnemyAnimationConfiguration(9);
                 //Wait(10);
                 Level1.enemies[Level1.newBossIndex].isMoving = false;
+                
                 Level1.hitPlayer = false;
 
                 
