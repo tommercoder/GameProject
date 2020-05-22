@@ -405,9 +405,6 @@
     <None Include="Resources\forcheckpoint2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Control_menu.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\enemy3.png" />
   </ItemGroup>
   <ItemGroup>
@@ -418,6 +415,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\enemy6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Control_menu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
