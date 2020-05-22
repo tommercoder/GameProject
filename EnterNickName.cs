@@ -67,7 +67,9 @@ namespace Project
             this.Hide();
             
             fm.ShowDialog();
+            
             this.Close();
+            
             
         }
         //private void EnterNickName_KeyDown(object sender, KeyEventArgs e)

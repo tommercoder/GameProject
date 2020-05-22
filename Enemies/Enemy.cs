@@ -114,7 +114,7 @@ namespace Project.Enemies
             currentLimit = BossIdle;
             flip = 1;
             if (id == 10)
-                HP = 150;
+                HP = 1500;
             isMoving = false;
 
         }
@@ -367,7 +367,7 @@ namespace Project.Enemies
                     {
                         if (distance <= 100)
                         {
-                            player.velocity = 5;
+                            player.velocity = 4;
                             if (player.posX < enemies[i].posX)
                             {
                                 enemies[i].flip = -1;

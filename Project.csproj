@@ -70,12 +70,6 @@
       <DependentUpon>EnterNickName.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\Entity.cs" />
-    <Compile Include="FormLevelSelect.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLevelSelect.Designer.cs">
-      <DependentUpon>FormLevelSelect.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,12 +97,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="restartinc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="restartinc.Designer.cs">
-      <DependentUpon>restartinc.cs</DependentUpon>
-    </Compile>
     <Compile Include="sound.cs" />
     <Compile Include="weapons\Weapons.cs" />
     <EmbeddedResource Include="Contrl.resx">
@@ -116,9 +104,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EnterNickName.resx">
       <DependentUpon>EnterNickName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLevelSelect.resx">
-      <DependentUpon>FormLevelSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
@@ -133,9 +118,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="restartinc.resx">
-      <DependentUpon>restartinc.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

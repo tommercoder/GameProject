@@ -444,7 +444,10 @@ namespace Project
                         timer3.Stop();
                         timer4.Stop();
                         player.hitPressed = false;
+                        player.id = 0;
+                        player.Freehands = true;
                         FormMenu fm = new FormMenu();
+                        fm.label1.Text = nicknameRemember;
                         if (checkBox1.Checked == false)
                             fm.check_sound.Checked = false;
                         else
@@ -457,6 +460,7 @@ namespace Project
 
                         escapePressed = true;
                         this.Close();
+                        this.Dispose();
 
                     }
                     else
@@ -811,9 +815,10 @@ namespace Project
             
             if (checkBox1.Checked == true)
             {
+
                 axWindowsMediaPlayer2.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\sound_battle.wav");
-                axWindowsMediaPlayer2.settings.volume = 4;
-                axWindowsMediaPlayer2.Ctlcontrols.play();
+                axWindowsMediaPlayer2.settings.volume = 5;
+                axWindowsMediaPlayer2.settings.setMode("loop", true);
             }
             
         }
