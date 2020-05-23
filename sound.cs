@@ -50,7 +50,7 @@ namespace Project
         public static void play_sound_battle()
         {
             if (sound_enabled)
-                sound_battle.PlaySync();
+                sound_battle.PlayLooping();
         }
         public static void play_button_exit()
         {
