@@ -67,7 +67,9 @@ namespace Project
             this.Hide();
             
             fm.ShowDialog();
+            
             this.Close();
+            
             
         }
         //private void EnterNickName_KeyDown(object sender, KeyEventArgs e)
@@ -95,8 +97,8 @@ namespace Project
         }
         private void textBox1_KeyUp(object sender,KeyEventArgs e)
         {
-            e.Handled = false;
-            e.SuppressKeyPress = false;
+            //e.Handled = false;
+            //e.SuppressKeyPress = false;
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -105,7 +107,7 @@ namespace Project
             if (e.KeyCode == Keys.Enter)
             {
                // Parent.SelectNextControl(textBox1, true, true, true, true);
-                e.Handled = e.SuppressKeyPress = true;
+                //e.Handled = e.SuppressKeyPress = true;
                 
                 button1_Click(this, new EventArgs());
             }

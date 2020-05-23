@@ -22,8 +22,13 @@ namespace Project.Enemies
 
         public int sizeid1;
         public int sizeid2;
+        public int sizeid3;
+        public int sizeid4;
+        public int sizeid5;
+        public int sizeid6;
         public int sizeid10W;
         public int sizeid10H;
+       
 
         public float oldPosX;
         public float oldPosY;
@@ -63,6 +68,11 @@ namespace Project.Enemies
             this.mobSheet = mobSheet;
             sizeid1 = 16;
             sizeid2 = 34;
+            sizeid3 = 24;
+            sizeid4 = 16;
+            sizeid5 = 16;
+            sizeid6 = 16;
+
             isMoving = false;
             enemyDead = false;
             currentFrame = 0;
@@ -73,11 +83,13 @@ namespace Project.Enemies
             if (id == 2)
                 HP = 110;
             if (id == 3)//blue
-                HP = 30;
-            if (id == 4)//red demon
                 HP = 40;
+            if (id == 4)//red demon
+                HP = 30;
             if (id == 5)//white
                 HP = 20;
+            if (id == 6)
+                HP = 60;
 
 
         }
@@ -121,10 +133,10 @@ namespace Project.Enemies
                     if (distance <= 50)
                     {
                             
-                            Level1.hitPlayer = true;
+                           
                         if (player.HP > 0)
                         {
-                           
+                            Level1.hitPlayer = true;
                             player.howmuchDamaged++;//for frames hearts
                                                     //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
                             player.HP -= 20;
@@ -142,7 +154,7 @@ namespace Project.Enemies
                             player.howmuchDamaged = 0;
                             player.Ih = 0;
                             player.dead = true;
-                            
+                            //Level1.hitPlayer = false;
 
                         }
                        
@@ -150,6 +162,7 @@ namespace Project.Enemies
                     else
                     {
                         Level1.hitPlayer = false;
+                        //player.setAnimationConfiguration(0);
                         //if (id == 10)
                         //setEnemyAnimationConfiguration(0);
 
@@ -205,6 +218,7 @@ namespace Project.Enemies
                         Level1.hitPlayer = true;
                         if (player.HP > 0)
                         {
+                           
                             player.howmuchDamaged++;//for frames hearts
                                                     //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
                             player.HP -= 20;
@@ -221,7 +235,7 @@ namespace Project.Enemies
                             player.howmuchDamaged = 0;
                             player.Ih = 0;
                             player.dead = true;
-                          
+                            //Level1.hitPlayer = false;
 
                         }
                         
@@ -229,7 +243,7 @@ namespace Project.Enemies
                     else
                     {
                         Level1.hitPlayer = false;
-
+                      //  player.setAnimationConfiguration(0);
                     }
                 if (player.dead)
                 {
@@ -324,6 +338,7 @@ namespace Project.Enemies
                     {
                         if (distance <= 30)
                         {
+                            
                             if (player.posX < enemies[i].posX)
                             {
                                 enemies[i].flip = -1;
@@ -333,6 +348,8 @@ namespace Project.Enemies
                             {
                                 enemies[i].flip = 1;
                             }
+                            if (distance <= 15)
+                                Level1.hitPlayer = true;
                         }
                         else
                         {
@@ -360,6 +377,8 @@ namespace Project.Enemies
                             {
                                 enemies[i].flip = 1;
                             }
+                            if (distance <= 50)
+                                Level1.hitPlayer = true;
                         }
                         else
                         {
@@ -458,6 +477,18 @@ namespace Project.Enemies
                 {
                     if (distance <= 30)
                     {
+                        if (isMoving)
+                        {
+                            setEnemyAnimationConfiguration(1);
+                            
+
+
+                        }
+                        else
+                        {
+                            setEnemyAnimationConfiguration(0);
+                           
+                        }
                         if (player.posX > posX)
                         {
                             posX += EnemySpeedX;
@@ -478,7 +509,14 @@ namespace Project.Enemies
                     }
                     else
                     {
+                        if (isMoving)
+                        {
 
+                            setEnemyAnimationConfiguration(1);
+
+                        }
+                        else
+                            setEnemyAnimationConfiguration(0);
                         if (posX < oldPosX)
                         {
                             posX += EnemySpeedX;
@@ -579,6 +617,7 @@ namespace Project.Enemies
                 Level1.enemies[Level1.newBossIndex].setEnemyAnimationConfiguration(9);
                 //Wait(10);
                 Level1.enemies[Level1.newBossIndex].isMoving = false;
+                
                 Level1.hitPlayer = false;
 
                 
@@ -590,25 +629,17 @@ namespace Project.Enemies
        
         public void playEnemyAnimation(Graphics g)
         {
-            if (id == 1)
-            {
 
-                if (currentFrame < currentLimit - 1)
-                    currentFrame++;
-                else
-                    currentFrame = 0;
-            }
-            if (id == 2)
+            if (id != 10 )
             {
                 if (currentFrame < currentLimit - 1)
                     currentFrame++;
                 else
                     currentFrame = 0;
             }
+            
             if (id == 10)
             {
-
-
 
                 if (currentAnimation == 9)
                 {
@@ -628,12 +659,28 @@ namespace Project.Enemies
             }
             if (id == 1)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid1 / 2 + Level1.delta.X+14, (int)posY + Level1.delta.Y + 5), new Size(flip * sizeid1, sizeid1)), 16 * currentFrame, 16 * currentAnimation, sizeid1, sizeid1, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid1 / 2 + Level1.delta.X+14, (int)posY + Level1.delta.Y + 5), new Size(flip * sizeid1, sizeid1)), 16 * currentFrame,  currentAnimation, sizeid1, sizeid1, GraphicsUnit.Pixel);
                 
             }
             if (id == 2)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2 + Level1.delta.X+14, (int)posY + Level1.delta.Y + 5), new Size(flip * sizeid2, sizeid2)), 32 * currentFrame, 34 * currentAnimation, sizeid2, sizeid2, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2 + Level1.delta.X+14, (int)posY + Level1.delta.Y + 5), new Size(flip * sizeid2, sizeid2)), 32 * currentFrame, 40 * currentAnimation, sizeid2, sizeid2, GraphicsUnit.Pixel);
+            }
+            if(id == 3)
+            {
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * 24 / 2 + Level1.delta.X + 14, (int)posY + Level1.delta.Y + 5), new Size(flip * 24, 29)),20 * currentFrame,29* currentAnimation, 24, 29, GraphicsUnit.Pixel);
+            }
+            if(id == 4)
+            {
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid4 / 2 + Level1.delta.X + 14, (int)posY + Level1.delta.Y + 5), new Size(flip * 21, 33)), 16 * currentFrame,  currentAnimation, 21, 33, GraphicsUnit.Pixel);
+            }
+            if(id == 5)
+            {
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * 21 / 2 + Level1.delta.X + 14, (int)posY + Level1.delta.Y + 5), new Size(flip * 23, 30)), 20 * currentFrame, 30 * currentAnimation, 23, 30, GraphicsUnit.Pixel);
+            }
+            if(id == 6)
+            {
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * 32 / 2 + Level1.delta.X + 14, (int)posY + Level1.delta.Y + 5), new Size(flip * 32, 33)), 31 * currentFrame, 50 * currentAnimation, 32, 33, GraphicsUnit.Pixel);
             }
             if(id == 10)
             {

@@ -43,6 +43,7 @@ namespace Project.weapons
                 damage = 20;
             if (id == 6)//big HAMMER FOR boss
                 damage = 80;
+            
         }
         public void hit(Graphics g, Entity player)
         {
@@ -228,6 +229,7 @@ namespace Project.weapons
                                if (enemies[i].id != 10)
                                 {
                                     player.setAnimationConfiguration(0);
+                                   if(Level1.newBossIndex!=0)
                                     Level1.newBossIndex--;
                                     enemies.RemoveAt(i);
                                     
@@ -263,7 +265,8 @@ namespace Project.weapons
                                 if (enemies[i].id != 10)
                                 {
                                     player.setAnimationConfiguration(0);
-                                    Level1.newBossIndex--;
+                                    if (Level1.newBossIndex != 0)
+                                        Level1.newBossIndex--;
                                     enemies.RemoveAt(i);
                                    
                                     
@@ -297,7 +300,8 @@ namespace Project.weapons
                                 if (enemies[i].id != 10)
                                 {
                                     player.setAnimationConfiguration(0);
-                                    Level1.newBossIndex--;
+                                    if (Level1.newBossIndex != 0)
+                                        Level1.newBossIndex--;
                                     enemies.RemoveAt(i);
                                    
                                    
@@ -331,7 +335,8 @@ namespace Project.weapons
                                 if (enemies[i].id != 10)
                                 {
                                     player.setAnimationConfiguration(0);
-                                    Level1.newBossIndex--;
+                                    if (Level1.newBossIndex != 0)
+                                        Level1.newBossIndex--;
                                     enemies.RemoveAt(i);
                                     
                                 }

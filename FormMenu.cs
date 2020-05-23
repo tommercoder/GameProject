@@ -19,7 +19,7 @@ namespace Project
         public FormMenu()
         {
             
-            Program.fm = this;
+            
 
             InitializeComponent();
             //start_level1();///for level1 
@@ -48,6 +48,13 @@ namespace Project
             button_exit.MouseLeave += (s, e) => {
                 button_exit.ForeColor = Color.Aqua;//change color back
             };
+            button2.MouseEnter += (s, e) => {
+                button2.ForeColor = Color.White;//change color to coral
+            };
+            button2.MouseLeave += (s, e) => {
+                button2.ForeColor = Color.Aqua;//change color back
+            };
+           
             KeyDown += new KeyEventHandler(FormMenu_KeyDown);
 
         }
@@ -99,11 +106,11 @@ namespace Project
             sound.dont_play_menu();
             //this.Hide();
             this.Close();
+            this.Dispose();
         }
         private void start_selectionForm()
         {
-            FormLevelSelect levelSelect = new FormLevelSelect();
-            levelSelect.ShowDialog();
+            
         }
         
         private void start_level1()
@@ -177,10 +184,14 @@ namespace Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            EnterNickName en = new EnterNickName();
-            en.ShowDialog();
-            this.Close();
+            Application.Restart();
+            //this.Hide();
+            //sound.dont_play_menu();
+            //axWindowsMediaPlayer1.Ctlcontrols.stop();
+            //EnterNickName en = new EnterNickName();
+            //en.ShowDialog();
+            //this.Close();
+            
         }
 
         private void button1_Paint(object sender, PaintEventArgs e)
@@ -196,6 +207,22 @@ namespace Project
         private void axWindowsMediaPlayer1_Enter_1(object sender, EventArgs e)
         {
               
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            Contrl a = new Contrl();
+            a.ShowDialog();
+        }
+
+        private void Control_Click(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }
