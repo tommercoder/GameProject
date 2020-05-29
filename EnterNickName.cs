@@ -18,7 +18,7 @@ namespace Project
         public EnterNickName()
         {
             InitializeComponent();
-            
+            BackgroundImage = Properties.Resources.nick;
             button1.MouseEnter += (s, e) => {
                 button1.ForeColor = Color.White;//change color to coral
             };
