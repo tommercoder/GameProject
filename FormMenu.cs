@@ -24,34 +24,32 @@ namespace Project
             InitializeComponent();
             
 
-           
-
-            
-            button_start.MouseEnter += (s, e) => {
-                button_start.ForeColor = Color.White;//change color to coral
+            button_start.MouseEnter += (s, e) => 
+            {
+                button_start.ForeColor = Color.White;
             };
             button_start.MouseLeave += (s, e) => {
-                button_start.ForeColor = Color.Aqua;//change color back
+                button_start.ForeColor = Color.Aqua;
             };
 
             button1.MouseEnter += (s, e) => {
-                button1.ForeColor = Color.White;//change color to coral
+                button1.ForeColor = Color.White;
             };
             button1.MouseLeave += (s, e) => {
-                button1.ForeColor = Color.Aqua;//change color back
+                button1.ForeColor = Color.Aqua;
             };
 
             button_exit.MouseEnter += (s, e) => {
-                button_exit.ForeColor = Color.White;//change color to coral
+                button_exit.ForeColor = Color.White;
             };
             button_exit.MouseLeave += (s, e) => {
-                button_exit.ForeColor = Color.Aqua;//change color back
+                button_exit.ForeColor = Color.Aqua;
             };
             button2.MouseEnter += (s, e) => {
-                button2.ForeColor = Color.White;//change color to coral
+                button2.ForeColor = Color.White;
             };
             button2.MouseLeave += (s, e) => {
-                button2.ForeColor = Color.Aqua;//change color back
+                button2.ForeColor = Color.Aqua;
             };
            
             KeyDown += new KeyEventHandler(FormMenu_KeyDown);

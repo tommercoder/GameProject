@@ -15,11 +15,8 @@ using System.Threading;
 
 namespace Project
 {
-
     public partial class game : Form
     {
-
-
 
         public static Point delta;
 

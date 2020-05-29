@@ -16,23 +16,15 @@ namespace Project.Controller
         public static int cellSize = 32;
         public static int[,] map = new int[mapHeight, mapWidth];
         public static Image spriteSheet;
-       // public static Image spriteSheet1;
+       
         public static int I;
         public static int J;
-        /// <summary>
-        /// old collision
-        /// List <Rectangle> tile = new List<Rectangle>();
-        /// in every g.draw image
-        /// Rectangle r = new Rectangle(j*cellsize,i*cellsize);
-        /// tile.add(r);
-        /// 
-        /// 
-        /// </summary>
+        
         public static void Init()
         {
             map = GetMap();
             spriteSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\Tileset1.png"));
-            //spriteSheet1 = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\forcheckpoint2.png"));
+            
         }
         public static int[,] GetMap()
         {

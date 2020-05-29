@@ -13,13 +13,8 @@ namespace Project.Entities
         public float OldposY;
         public float howmuchDamaged;
         public int HP;
-        public float velocityX = 0.5f;//speed
-        public float velocityY = 0.5f;//speed
-        public float gravity = 0.5f;
-        public int offset = 1;
         public float velocity = 3;
         public int playerSpeed;
-
         public float dirX;
         public float dirY;
         public bool isMoving;
@@ -97,14 +92,12 @@ namespace Project.Entities
             else
                 currentFrame = 0;
             
-                g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2 + game.delta.X + 14, (int)posY + game.delta.Y), new Size(flip * size, size)), 26 * currentFrame, 32 * currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
+           g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2 + game.delta.X + 14, (int)posY + game.delta.Y), new Size(flip * size, size)), 26 * currentFrame, 32 * currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
             
-            //g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 26 * currentFrame, 32* currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
+            
 
 
         }
-
-       
 
         public void setAnimationConfiguration(int currentAnimation)
         {
