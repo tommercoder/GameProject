@@ -47,7 +47,7 @@ namespace Project.weapons
         }
         public void hit(Graphics g, Entity player)
         {
-            foreach (Weapons weapon in Level1.weapons)
+            foreach (Weapons weapon in game.weapons)
             {
 
                 if (player.hitPressed && weapon.id == 1)
@@ -56,42 +56,42 @@ namespace Project.weapons
                     {
                         if (id != 6 && id != 5)
                         {
-                            g.TranslateTransform(player.posX - 6 + Level1.delta.X + 14/*/ 2.0f*/, player.posY + 44 / 2.0f + Level1.delta.Y);
+                            g.TranslateTransform(player.posX - 6 + game.delta.X + 14/*/ 2.0f*/, player.posY + 44 / 2.0f + game.delta.Y);
                             g.RotateTransform(90);
-                            g.TranslateTransform(-(player.posX - 6 + Level1.delta.X + 14), -(player.posY + 44 / 2.0F + Level1.delta.Y));
+                            g.TranslateTransform(-(player.posX - 6 + game.delta.X + 14), -(player.posY + 44 / 2.0F + game.delta.Y));
                         }
                         if(id == 6)
                         {
-                            g.TranslateTransform(player.posX + 3 + Level1.delta.X + 14/*/ 2.0f*/, player.posY + 48 / 2.0f + Level1.delta.Y);
+                            g.TranslateTransform(player.posX + 3 + game.delta.X + 14/*/ 2.0f*/, player.posY + 48 / 2.0f + game.delta.Y);
                             g.RotateTransform(90);
-                            g.TranslateTransform(-(player.posX - 6 + Level1.delta.X + 14), -(player.posY + 44 / 2.0F + Level1.delta.Y));
+                            g.TranslateTransform(-(player.posX - 6 + game.delta.X + 14), -(player.posY + 44 / 2.0F + game.delta.Y));
                         }
                         if(id == 5)
                         {
-                            g.TranslateTransform(player.posX + 1 + Level1.delta.X + 14/*/ 2.0f*/, player.posY + 52 / 2.0f + Level1.delta.Y);
+                            g.TranslateTransform(player.posX + 1 + game.delta.X + 14/*/ 2.0f*/, player.posY + 52 / 2.0f + game.delta.Y);
                             g.RotateTransform(90);
-                            g.TranslateTransform(-(player.posX - 6 + Level1.delta.X + 14), -(player.posY + 44 / 2.0F + Level1.delta.Y));
+                            g.TranslateTransform(-(player.posX - 6 + game.delta.X + 14), -(player.posY + 44 / 2.0F + game.delta.Y));
                         }
                     }
                     else if (player.flip == -1)
                     {
                         if (id != 6 && id != 5)
                         {
-                            g.TranslateTransform(player.posX + 6 + Level1.delta.X + 14/*/ 2.0f*/, player.posY + 66 / 2.0f + Level1.delta.Y);
+                            g.TranslateTransform(player.posX + 6 + game.delta.X + 14/*/ 2.0f*/, player.posY + 66 / 2.0f + game.delta.Y);
                             g.RotateTransform(-90);
-                            g.TranslateTransform(-(player.posX - 6 + Level1.delta.X + 14), -(player.posY + 50 / 2.0F + Level1.delta.Y));
+                            g.TranslateTransform(-(player.posX - 6 + game.delta.X + 14), -(player.posY + 50 / 2.0F + game.delta.Y));
                         }
                         if(id==6)
                         {
-                            g.TranslateTransform(player.posX - 3 + Level1.delta.X + 14/*/ 2.0f*/, player.posY + 70 / 2.0f + Level1.delta.Y);
+                            g.TranslateTransform(player.posX - 3 + game.delta.X + 14/*/ 2.0f*/, player.posY + 70 / 2.0f + game.delta.Y);
                             g.RotateTransform(-90);
-                            g.TranslateTransform(-(player.posX - 6 + Level1.delta.X + 14), -(player.posY + 44 / 2.0F + Level1.delta.Y));
+                            g.TranslateTransform(-(player.posX - 6 + game.delta.X + 14), -(player.posY + 44 / 2.0F + game.delta.Y));
                         }
                         if(id == 5)
                         {
-                            g.TranslateTransform(player.posX - 2 + Level1.delta.X + 14/*/ 2.0f*/, player.posY + 72 / 2.0f + Level1.delta.Y);
+                            g.TranslateTransform(player.posX - 2 + game.delta.X + 14/*/ 2.0f*/, player.posY + 72 / 2.0f + game.delta.Y);
                             g.RotateTransform(-90);
-                            g.TranslateTransform(-(player.posX - 6 + Level1.delta.X + 14), -(player.posY + 44 / 2.0F + Level1.delta.Y));
+                            g.TranslateTransform(-(player.posX - 6 + game.delta.X + 14), -(player.posY + 44 / 2.0F + game.delta.Y));
                         }
                     }
                 }
@@ -110,18 +110,18 @@ namespace Project.weapons
                     }
                     if (id == 2)
                     {
-                        posXforHit = ((int)posX - player.flip * 22 / 2 + 14 + (int)player.posX - (int)posX + Level1.delta.X);
-                        posYforHit = ((int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y);
+                        posXforHit = ((int)posX - player.flip * 22 / 2 + 14 + (int)player.posX - (int)posX + game.delta.X);
+                        posYforHit = ((int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + game.delta.Y);
                     }
                     if (id == 3)
                     {
-                        posXforHit = ((int)posX - player.flip * 22 / 2 + 14 + (int)player.posX - (int)posX + Level1.delta.X);
-                        posYforHit = ((int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y);
+                        posXforHit = ((int)posX - player.flip * 22 / 2 + 14 + (int)player.posX - (int)posX + game.delta.X);
+                        posYforHit = ((int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + game.delta.Y);
                     }
                     if(id == 5)
                     {
-                        posXforHit = ((int)posX - player.flip * 22 / 2 + 14 + (int)player.posX - (int)posX + Level1.delta.X);
-                        posYforHit = ((int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y);
+                        posXforHit = ((int)posX - player.flip * 22 / 2 + 14 + (int)player.posX - (int)posX + game.delta.X);
+                        posYforHit = ((int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + game.delta.Y);
                     }
                 }
             }
@@ -130,30 +130,30 @@ namespace Project.weapons
         {
             if (id == 1 && !onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 18 / 2 + 14) + (int)player.posX - (int)posX + Level1.delta.X, (int)posY - 1 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y), new Size(player.flip * 6, 30)), 0, 0, 6, 30, GraphicsUnit.Pixel);//catana
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 18 / 2 + 14) + (int)player.posX - (int)posX + game.delta.X, (int)posY - 1 - player.currentFrame + (int)player.posY - (int)posY + game.delta.Y), new Size(player.flip * 6, 30)), 0, 0, 6, 30, GraphicsUnit.Pixel);//catana
             }
 
             if (id == 2 && !onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2 + 14) + (int)player.posX - (int)posX + Level1.delta.X, (int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y), new Size(player.flip * 12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2 + 14) + (int)player.posX - (int)posX + game.delta.X, (int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + game.delta.Y), new Size(player.flip * 12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
             }
 
             if (id == 3 && !onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2 + 14) + (int)player.posX - (int)posX + Level1.delta.X, (int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y), new Size(player.flip * 12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2 + 14) + (int)player.posX - (int)posX + game.delta.X, (int)posY - 3 - player.currentFrame + (int)player.posY - (int)posY + game.delta.Y), new Size(player.flip * 12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
             }
 
             if (id == 5 && !onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 18 / 2 + 14) + (int)player.posX - (int)posX + Level1.delta.X  , (int)posY + 8 -  player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y), new Size(player.flip * 9, 21)), 0, 0, 9, 21, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 18 / 2 + 14) + (int)player.posX - (int)posX + game.delta.X  , (int)posY + 8 -  player.currentFrame + (int)player.posY - (int)posY + game.delta.Y), new Size(player.flip * 9, 21)), 0, 0, 9, 21, GraphicsUnit.Pixel);//big weapon
             }
             if (id == 4 && !onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2 + 14) + (int)player.posX - (int)posX + Level1.delta.X, (int)posY - 2 - player.currentFrame + (int)player.posY - (int)posY + Level1.delta.Y), new Size(player.flip * 10, 30)), 0, 0, 10, 30, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 22 / 2 + 14) + (int)player.posX - (int)posX + game.delta.X, (int)posY - 2 - player.currentFrame + (int)player.posY - (int)posY + game.delta.Y), new Size(player.flip * 10, 30)), 0, 0, 10, 30, GraphicsUnit.Pixel);//big weapon
             }
             if (id == 6 && !onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 18 / 2 + 14) + (int)player.posX - (int)posX + Level1.delta.X, (int)posY - 4  /*-player.currentFrame*/ + (int)player.posY - (int)posY + Level1.delta.Y), new Size(player.flip * 11, 37)), 0, 0, 11, 37, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX - player.flip * 18 / 2 + 14) + (int)player.posX - (int)posX + game.delta.X, (int)posY - 4  /*-player.currentFrame*/ + (int)player.posY - (int)posY + game.delta.Y), new Size(player.flip * 11, 37)), 0, 0, 11, 37, GraphicsUnit.Pixel);//big weapon
             }
 
 
@@ -162,29 +162,29 @@ namespace Project.weapons
         {
             if (id == 1 && onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX) + Level1.delta.X, (int)posY - player.currentFrame + Level1.delta.Y), new Size(6, 30)), 0, 0, 6, 30, GraphicsUnit.Pixel);//catana
+                g.DrawImage(weaponSheet, new Rectangle(new Point(((int)posX) + game.delta.X, (int)posY - player.currentFrame + game.delta.Y), new Size(6, 30)), 0, 0, 6, 30, GraphicsUnit.Pixel);//catana
             }
             if (id == 2 && onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + Level1.delta.X, (int)posY - player.currentFrame + Level1.delta.Y), new Size(12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + game.delta.X, (int)posY - player.currentFrame + game.delta.Y), new Size(12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
             }
 
             if (id == 3 && onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + Level1.delta.X, (int)posY - player.currentFrame + Level1.delta.Y), new Size(12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + game.delta.X, (int)posY - player.currentFrame + game.delta.Y), new Size(12, 30)), 0, 0, 12, 30, GraphicsUnit.Pixel);//big weapon
             }
             if (id == 4 && onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + Level1.delta.X, (int)posY - player.currentFrame + Level1.delta.Y), new Size(10,30)), 0, 0, 10, 30, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + game.delta.X, (int)posY - player.currentFrame + game.delta.Y), new Size(10,30)), 0, 0, 10, 30, GraphicsUnit.Pixel);//big weapon
             }
 
             if (id == 5 && onFloor )
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + Level1.delta.X, (int)posY - player.currentFrame + Level1.delta.Y), new Size(9, 21)), 0, 0, 9, 21, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + game.delta.X, (int)posY - player.currentFrame + game.delta.Y), new Size(9, 21)), 0, 0, 9, 21, GraphicsUnit.Pixel);//big weapon
             }
             if (id == 6 && onFloor)
             {
-                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + Level1.delta.X, (int)posY - player.currentFrame + Level1.delta.Y), new Size(10,37)), 0, 0, 10, 37, GraphicsUnit.Pixel);//big weapon
+                g.DrawImage(weaponSheet, new Rectangle(new Point((int)posX + game.delta.X, (int)posY - player.currentFrame + game.delta.Y), new Size(10,37)), 0, 0, 10, 37, GraphicsUnit.Pixel);//big weapon
             }
         }
 
@@ -194,7 +194,7 @@ namespace Project.weapons
             {
                 for (int i = 0; i < enemies.Count; i++)
                 {
-                    double distance1 = Level1.GetDistance(weapons[wp].posXforHit, weapons[wp].posYforHit, enemies[i].posX, enemies[i].posY);
+                    double distance1 = game.GetDistance(weapons[wp].posXforHit, weapons[wp].posYforHit, enemies[i].posX, enemies[i].posY);
                   
                     
                     //if (weapons[wp].id == 1 && !weapons[wp].onFloor)
@@ -229,8 +229,8 @@ namespace Project.weapons
                                if (enemies[i].id != 10)
                                 {
                                     player.setAnimationConfiguration(0);
-                                   if(Level1.newBossIndex!=0)
-                                    Level1.newBossIndex--;
+                                   if(game.newBossIndex!=0)
+                                    game.newBossIndex--;
                                     enemies.RemoveAt(i);
                                     
                                    
@@ -265,8 +265,8 @@ namespace Project.weapons
                                 if (enemies[i].id != 10)
                                 {
                                     player.setAnimationConfiguration(0);
-                                    if (Level1.newBossIndex != 0)
-                                        Level1.newBossIndex--;
+                                    if (game.newBossIndex != 0)
+                                        game.newBossIndex--;
                                     enemies.RemoveAt(i);
                                    
                                     
@@ -300,8 +300,8 @@ namespace Project.weapons
                                 if (enemies[i].id != 10)
                                 {
                                     player.setAnimationConfiguration(0);
-                                    if (Level1.newBossIndex != 0)
-                                        Level1.newBossIndex--;
+                                    if (game.newBossIndex != 0)
+                                        game.newBossIndex--;
                                     enemies.RemoveAt(i);
                                    
                                    
@@ -335,8 +335,8 @@ namespace Project.weapons
                                 if (enemies[i].id != 10)
                                 {
                                     player.setAnimationConfiguration(0);
-                                    if (Level1.newBossIndex != 0)
-                                        Level1.newBossIndex--;
+                                    if (game.newBossIndex != 0)
+                                        game.newBossIndex--;
                                     enemies.RemoveAt(i);
                                     
                                 }

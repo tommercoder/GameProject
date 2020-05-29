@@ -21,16 +21,16 @@ namespace Project.Controller
                 {
                     if (MapController.map[i, j] == 0)
                     {
-                        Level1.collide = true;
-                        //entity.dead = true;
+                        game.collide = true;
+                        
                         entity.collidedead = true;
                         entity.howmuchDamaged = 0; 
                     }
                     else
                     {
                         entity.isMoving = true;
-                        Level1.collide = false;
-                        //entity.dead = false;
+                        game.collide = false;
+                        
                         entity.collidedead = false;
                     }
                 }

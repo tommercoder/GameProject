@@ -16,7 +16,7 @@ using System.Threading;
 namespace Project
 {
 
-    public partial class Level1 : Form
+    public partial class game : Form
     {
 
 
@@ -73,14 +73,11 @@ namespace Project
         public string nicknameRemember = " ";
         public int newDeltaX;
         public int newDeltaY;
-        ///checkpoints
         
-
-        /// ////////////////////
         public static int newBossIndex = 0;
-        /// //////////////////
 
-        public Level1()
+
+        public game()
         {
 
             this.BackColor = Color.FromArgb(47, 47, 46);
@@ -165,7 +162,7 @@ namespace Project
         {
             foreach (Weapons weapon in weapons)
             {
-                double distance = GetDistance(weapon.posX + Level1.delta.X - Level1.delta.X, weapon.posY + Level1.delta.Y - Level1.delta.Y, player.posX + Level1.delta.X - Level1.delta.X, player.posY + Level1.delta.Y - Level1.delta.Y);
+                double distance = GetDistance(weapon.posX + game.delta.X - game.delta.X, weapon.posY + game.delta.Y - game.delta.Y, player.posX + game.delta.X - game.delta.X, player.posY + game.delta.Y - game.delta.Y);
                 if (player.Freehands == true)
                 {
                     if (distance < 15)
@@ -187,12 +184,11 @@ namespace Project
             {
                 staff.isOpened = true;
 
-                //label1.Text = "chest opened";
+                
 
 
             }
-            // else
-            //  label1.Text = " >20";
+            
 
         }
         public void Qpressed(Entity player, List<Weapons> weapons)
@@ -298,8 +294,7 @@ namespace Project
 
             //player
             player = new Entity(32, 32, Hero.IdleFrames, Hero.runFrames, Hero.attackFrames, Hero.deathFrames, Hero.RedFrames, dwarfSheet);
-            //chest
-           // Chest = new staff(100, 40, 1, Hero.IdleChestFrames, Hero.OpenChestFrames, chest);
+           
 
 
             //hearts image
@@ -381,12 +376,7 @@ namespace Project
 
                 //hit
                 case Keys.E:
-                    //if (player.Freehands == false && checkBox1.Checked)
-                    //{
-                    //    axWindowsMediaPlayer1.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\sound_sword.wav");
-                    //    axWindowsMediaPlayer1.settings.volume = 13;
-                    //    axWindowsMediaPlayer1.Ctlcontrols.play();
-                    //}
+                    
                     
                     player.hitPressed = true;
 
@@ -402,12 +392,7 @@ namespace Project
                     break;
 
                 case Keys.Q:
-                    //throw out
-                    //if (player.Freehands == false && checkBox1.Checked)
-                    //{
-                    //    axWindowsMediaPlayer3.URL = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Resources\\place_down_on_surface.mp3");
-                    //    axWindowsMediaPlayer3.Ctlcontrols.play();
-                    //}
+                   
                     Qpressed(player, weapons);
                     break;
                 case Keys.F:
@@ -429,9 +414,8 @@ namespace Project
                 case Keys.Space:
                     break;
                 case Keys.Escape:
-                    string message = "Do you want to close the game?\n" +
-                        "All progress will not save!";
-                    string title = "Close Window";
+                    string message = "all progress is not saved, are you sure?";
+                    string title = "Close Game";
                     MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                     DialogResult result = MessageBox.Show(message, title, buttons);
                     if (result == DialogResult.Yes)
@@ -569,7 +553,7 @@ namespace Project
 
 
                 player.HP = 1000;
-                //player.dead = false;
+                
                 player.Ih = 0;
                 hearts.currentAnimation = 0;
                 reDrawHearts = true;
@@ -584,31 +568,14 @@ namespace Project
                     player.HP = 1000;
                     player.setAnimationConfiguration(2);
                      hearts.setAnimation(0);
-                    //reDrawHearts = true;
+                   
                     player.Ih = 0;
                     flasks.RemoveAt(i);
                 }
             }
 
 
-            //////////////////////////////////////////////////////////////////////
-            //foreach (collideobjects col in MapController.collideList)
-            //{
-
-            //    if (player.posX < col.posX + col.size &&
-
-            //        player.posX + player.size - 16 > col.posX &&
-
-            //        player.posY < col.posY + col.size &&
-
-            //        player.posY + player.size - 16 > col.posY)                       ///square to square collision
-            //    {
-
-            //        label1.Text = "collide";
-            //        player.isMoving = false;
-            //        collide = true;
-            //    }
-            //}
+           
         }
         
         public void EnemyUpdate(object sedner,EventArgs e)
@@ -657,16 +624,7 @@ namespace Project
                 enemies[i].ownMove(player);
             }
 
-            label1.Text = Convert.ToString(hitPlayer);
-            //label2.Text = Convert.ToString(player.posY);
-            ////label2.Text = Convert.ToString(enemies[3].isMoving);
-            //label3.Text = Convert.ToString("player.dead" + player.dead);
-
-            //label4.Text = Convert.ToString(player.HP); 
-           
-            //label5.Text = Convert.ToString(hearts.currentAnimation);
-            //label6.Text = Convert.ToString(delta.X);
-            //label7.Text = Convert.ToString(delta.Y);
+            
 
 
         }
@@ -740,7 +698,7 @@ namespace Project
 
            
             
-          //  Chest.PlayAnimation(g);
+          
             for (int i = 0; i < flasks.Count; i++)
             {
                 flasks[i].playFlask(g, player);
@@ -749,14 +707,7 @@ namespace Project
             player.PlayAnimation(g);
            
             hearts.drawHearts(g, player);
-            //foreach (staff flask in flasks)
-            //{
-            //    flask.playFlask(g, player);
-            //}
-            //if (reDrawHearts)
-            //{
-            //    hearts.drawHearts(g, player);
-            //}
+            
 
             for (int i = 0; i < weapons.Count; i++)
             {
@@ -795,13 +746,6 @@ namespace Project
 
         private void Level1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //if (escapePressed || !escapePressed)
-            //{
-            //    this.Hide();
-            //    FormMenu fm = new FormMenu();
-            //    fm.ShowDialog();
-            //    this.Close();
-            //}
             
         }
 

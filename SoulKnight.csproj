@@ -32,6 +32,28 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -59,7 +81,6 @@
     <Compile Include="Contrl.Designer.cs">
       <DependentUpon>Contrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller\collideobjects.cs" />
     <Compile Include="Controller\MapController.cs" />
     <Compile Include="Controller\PhysicsController.cs" />
     <Compile Include="Enemies\Enemy.cs" />
@@ -77,11 +98,11 @@
       <DependentUpon>FormMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="hearts.cs" />
-    <Compile Include="Level1.cs">
+    <Compile Include="game.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Level1.Designer.cs">
-      <DependentUpon>Level1.cs</DependentUpon>
+    <Compile Include="game.Designer.cs">
+      <DependentUpon>game.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Hero.cs" />
     <Compile Include="msg.cs">
@@ -108,8 +129,8 @@
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Level1.resx">
-      <DependentUpon>Level1.cs</DependentUpon>
+    <EmbeddedResource Include="game.resx">
+      <DependentUpon>game.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="msg.resx">
       <DependentUpon>msg.cs</DependentUpon>

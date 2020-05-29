@@ -15,15 +15,14 @@ namespace Project
     public partial class FormMenu : Form
     {
         public bool isCheckedMusicButton = false;
-        public Level1 level = new Level1();
+        public game level = new game();
         public FormMenu()
         {
             
             
 
             InitializeComponent();
-            //start_level1();///for level1 
-            //sound.play_menu();
+            
 
            
 
@@ -77,8 +76,7 @@ namespace Project
             }
            
            
-            // button_start.FlatAppearance.BorderSize = 0;
-            //    button_start.FlatStyle = FlatStyle.Flat;
+           
         }
         private void Wait(double seconds)
         {
@@ -96,15 +94,12 @@ namespace Project
                 axWindowsMediaPlayer1.URL = "C:\\Users\\admin\\Desktop\\projectGITHUB\\Resources\\sound_button_exit.wav";
                 axWindowsMediaPlayer1.Ctlcontrols.play();
             }
-            //sound.play_button_exit();
             
             Wait(0.4);
 
-            //SoundPlayer player = new SoundPlayer(Properties.Resources.sound_button_exit);
-
-            //player.PlaySync();
+            
             sound.dont_play_menu();
-            //this.Hide();
+           
             this.Close();
             this.Dispose();
         }
@@ -118,7 +113,7 @@ namespace Project
             this.Hide();
             sound.dont_play_menu();
             level.ShowDialog();
-            //sound.sound_off();
+           
             
             this.Close();
         }
@@ -126,8 +121,7 @@ namespace Project
         {
             start_level1();
        
-            // sound.play_button_exit();
-            //start_selectionForm();
+            
 
         }
       
@@ -136,15 +130,7 @@ namespace Project
           
         }
 
-        //public bool optionselected
-        //{
-        //    get
-        //    {
-        //        return check_sound.checked; }
-        //        set {
-        //            check_sound.checked = value; } // the set is optional
-        //        }
-
+       
       
         public void check_sound_CheckedChanged(object sender, EventArgs e)
         {
@@ -185,12 +171,7 @@ namespace Project
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Restart();
-            //this.Hide();
-            //sound.dont_play_menu();
-            //axWindowsMediaPlayer1.Ctlcontrols.stop();
-            //EnterNickName en = new EnterNickName();
-            //en.ShowDialog();
-            //this.Close();
+            
             
         }
 

@@ -16,7 +16,7 @@ namespace Project.Enemies
     public class Enemy
     {
 
-        //Image[] image = 
+        
         public float posX;
         public float posY;
 
@@ -124,7 +124,7 @@ namespace Project.Enemies
         }
         public void hitEntity(Entity player)
         {
-            if (!Level1.enemies[Level1.newBossIndex].enemyDead)
+            if (!game.enemies[game.newBossIndex].enemyDead)
             {
                 double distance = GetDistance(player.posX, player.posY, posX, posY);
                 
@@ -136,9 +136,9 @@ namespace Project.Enemies
                            
                         if (player.HP > 0)
                         {
-                            Level1.hitPlayer = true;
+                            game.hitPlayer = true;
                             player.howmuchDamaged++;//for frames hearts
-                                                    //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
+                                                    
                             player.HP -= 20;
                             player.setAnimationConfiguration(1);
                             if (player.howmuchDamaged % 5 == 0)
@@ -154,17 +154,15 @@ namespace Project.Enemies
                             player.howmuchDamaged = 0;
                             player.Ih = 0;
                             player.dead = true;
-                            //Level1.hitPlayer = false;
+                           
 
                         }
                        
                     }
                     else
                     {
-                        Level1.hitPlayer = false;
-                        //player.setAnimationConfiguration(0);
-                        //if (id == 10)
-                        //setEnemyAnimationConfiguration(0);
+                        game.hitPlayer = false;
+                        
 
                     }
                     if (player.dead)
@@ -172,38 +170,36 @@ namespace Project.Enemies
 
                         player.posX = player.OldposX;
                         player.posY = player.OldposY;
-                        if (Level1.newCheckPoint == 0)
+                        if (game.newCheckPoint == 0)
                         {
-                            Level1.delta.X = 0;
-                            Level1.delta.Y = 0;
+                            game.delta.X = 0;
+                            game.delta.Y = 0;
 
-                            //delta = new Point()
-                            //Level1.delta.X = -(int)player.posX / 2 - 32;
-                            //Level1.delta.Y = -(int)player.posY / 2 - 32;
+                           
                         }
-                        else if (Level1.newCheckPoint == 1)
+                        else if (game.newCheckPoint == 1)
                         {
-                            Level1.delta.X = 0;
-                            Level1.delta.Y = -3;
+                            game.delta.X = 0;
+                            game.delta.Y = -3;
                         }
-                        else if (Level1.newCheckPoint == 2)
+                        else if (game.newCheckPoint == 2)
                         {
-                            Level1.delta.X = -165;
-                            Level1.delta.Y = -459;
+                            game.delta.X = -165;
+                            game.delta.Y = -459;
 
                         }
-                        else if (Level1.newCheckPoint == 3)
+                        else if (game.newCheckPoint == 3)
                         {
-                            Level1.delta.X = -3;
-                            Level1.delta.Y = -1074;
+                            game.delta.X = -3;
+                            game.delta.Y = -1074;
 
                         }
-                        else if (Level1.newCheckPoint == 4)
+                        else if (game.newCheckPoint == 4)
                         {
-                            Level1.delta.X = -636;
-                            Level1.delta.Y = -960;
+                            game.delta.X = -636;
+                            game.delta.Y = -960;
                         }
-                        Level1.hearts.currentAnimation = 0;
+                        game.hearts.currentAnimation = 0;
                         player.setAnimationConfiguration(0);
                         player.HP = 1000;
                         player.Ih = 0;
@@ -215,12 +211,12 @@ namespace Project.Enemies
                     if (distance <= 15)
                     {
 
-                        Level1.hitPlayer = true;
+                        game.hitPlayer = true;
                         if (player.HP > 0)
                         {
                            
                             player.howmuchDamaged++;//for frames hearts
-                                                    //if(Math.Abs(player.howmuchDamaged%5) < double.Epsilon)
+                                                  
                             player.HP -= 20;
                             player.setAnimationConfiguration(1);
                             if (player.howmuchDamaged % 5 == 0)
@@ -242,45 +238,45 @@ namespace Project.Enemies
                     }
                     else
                     {
-                        Level1.hitPlayer = false;
+                        game.hitPlayer = false;
                       //  player.setAnimationConfiguration(0);
                     }
                 if (player.dead)
                 {
                     player.posX = player.OldposX;
                     player.posY = player.OldposY;
-                    if (Level1.newCheckPoint == 0)
+                    if (game.newCheckPoint == 0)
                     {
-                        Level1.delta.X = 0;
-                        Level1.delta.Y = 0;
+                        game.delta.X = 0;
+                        game.delta.Y = 0;
 
                         //delta = new Point()
                         //Level1.delta.X = -(int)player.posX / 2 - 32;
                         //Level1.delta.Y = -(int)player.posY / 2 - 32;
                     }
-                    else if (Level1.newCheckPoint == 1)
+                    else if (game.newCheckPoint == 1)
                     {
-                        Level1.delta.X = 0;
-                        Level1.delta.Y = -3;
+                        game.delta.X = 0;
+                        game.delta.Y = -3;
                     }
-                    else if (Level1.newCheckPoint == 2)
+                    else if (game.newCheckPoint == 2)
                     {
-                        Level1.delta.X = -165;
-                        Level1.delta.Y = -459;
+                        game.delta.X = -165;
+                        game.delta.Y = -459;
 
                     }
-                    else if (Level1.newCheckPoint == 3)
+                    else if (game.newCheckPoint == 3)
                     {
-                        Level1.delta.X = -3;
-                        Level1.delta.Y = -1074;
+                        game.delta.X = -3;
+                        game.delta.Y = -1074;
 
                     }
-                    else if (Level1.newCheckPoint == 4)
+                    else if (game.newCheckPoint == 4)
                     {
-                        Level1.delta.X = -636;
-                        Level1.delta.Y = -960;
+                        game.delta.X = -636;
+                        game.delta.Y = -960;
                     }
-                    Level1.hearts.currentAnimation = 0;
+                    game.hearts.currentAnimation = 0;
                     player.setAnimationConfiguration(0);      
                     player.HP = 1000;
                     player.Ih = 0;
@@ -349,7 +345,7 @@ namespace Project.Enemies
                                 enemies[i].flip = 1;
                             }
                             if (distance <= 15)
-                                Level1.hitPlayer = true;
+                                game.hitPlayer = true;
                         }
                         else
                         {
@@ -378,7 +374,7 @@ namespace Project.Enemies
                                 enemies[i].flip = 1;
                             }
                             if (distance <= 50)
-                                Level1.hitPlayer = true;
+                                game.hitPlayer = true;
                         }
                         else
                         {
@@ -400,7 +396,7 @@ namespace Project.Enemies
 
         public void ownMove(Entity player)
         {
-            if (!Level1.enemies[Level1.newBossIndex].enemyDead)
+            if (!game.enemies[game.newBossIndex].enemyDead)
             {
                 float posXvar = posX;
                 float posYvar = posY;
@@ -545,7 +541,7 @@ namespace Project.Enemies
                         if (isMoving)
                         {
                             setEnemyAnimationConfiguration(1);
-                            if (Level1.hitPlayer)
+                            if (game.hitPlayer)
                                 setEnemyAnimationConfiguration(6);
 
 
@@ -553,7 +549,7 @@ namespace Project.Enemies
                         else
                         {
                             setEnemyAnimationConfiguration(0);
-                            if (Level1.hitPlayer)
+                            if (game.hitPlayer)
                                 setEnemyAnimationConfiguration(6);
                         }
                         if (player.posX > posX)
@@ -612,13 +608,13 @@ namespace Project.Enemies
                 }
             }
             
-            if (Level1.enemies[Level1.newBossIndex].enemyDead)
+            if (game.enemies[game.newBossIndex].enemyDead)
             {
-                Level1.enemies[Level1.newBossIndex].setEnemyAnimationConfiguration(9);
+                game.enemies[game.newBossIndex].setEnemyAnimationConfiguration(9);
                 //Wait(10);
-                Level1.enemies[Level1.newBossIndex].isMoving = false;
+                game.enemies[game.newBossIndex].isMoving = false;
                 
-                Level1.hitPlayer = false;
+                game.hitPlayer = false;
 
                 
             }
@@ -659,33 +655,33 @@ namespace Project.Enemies
             }
             if (id == 1)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid1 / 2 + Level1.delta.X+14, (int)posY + Level1.delta.Y + 5), new Size(flip * sizeid1, sizeid1)), 16 * currentFrame,  currentAnimation, sizeid1, sizeid1, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid1 / 2 + game.delta.X+14, (int)posY + game.delta.Y + 5), new Size(flip * sizeid1, sizeid1)), 16 * currentFrame,  currentAnimation, sizeid1, sizeid1, GraphicsUnit.Pixel);
                 
             }
             if (id == 2)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2 + Level1.delta.X+14, (int)posY + Level1.delta.Y + 5), new Size(flip * sizeid2, sizeid2)), 32 * currentFrame, 40 * currentAnimation, sizeid2, sizeid2, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid2 / 2 + game.delta.X+14, (int)posY + game.delta.Y + 5), new Size(flip * sizeid2, sizeid2)), 32 * currentFrame, 40 * currentAnimation, sizeid2, sizeid2, GraphicsUnit.Pixel);
             }
             if(id == 3)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * 24 / 2 + Level1.delta.X + 14, (int)posY + Level1.delta.Y + 5), new Size(flip * 24, 29)),20 * currentFrame,29* currentAnimation, 24, 29, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * 24 / 2 + game.delta.X + 14, (int)posY + game.delta.Y + 5), new Size(flip * 24, 29)),20 * currentFrame,29* currentAnimation, 24, 29, GraphicsUnit.Pixel);
             }
             if(id == 4)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid4 / 2 + Level1.delta.X + 14, (int)posY + Level1.delta.Y + 5), new Size(flip * 21, 33)), 16 * currentFrame,  currentAnimation, 21, 33, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid4 / 2 + game.delta.X + 14, (int)posY + game.delta.Y + 5), new Size(flip * 21, 33)), 16 * currentFrame,  currentAnimation, 21, 33, GraphicsUnit.Pixel);
             }
             if(id == 5)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * 21 / 2 + Level1.delta.X + 14, (int)posY + Level1.delta.Y + 5), new Size(flip * 23, 30)), 20 * currentFrame, 30 * currentAnimation, 23, 30, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * 21 / 2 + game.delta.X + 14, (int)posY + game.delta.Y + 5), new Size(flip * 23, 30)), 20 * currentFrame, 30 * currentAnimation, 23, 30, GraphicsUnit.Pixel);
             }
             if(id == 6)
             {
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * 32 / 2 + Level1.delta.X + 14, (int)posY + Level1.delta.Y + 5), new Size(flip * 32, 33)), 31 * currentFrame, 50 * currentAnimation, 32, 33, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * 32 / 2 + game.delta.X + 14, (int)posY + game.delta.Y + 5), new Size(flip * 32, 33)), 31 * currentFrame, 50 * currentAnimation, 32, 33, GraphicsUnit.Pixel);
             }
             if(id == 10)
             {
 
-                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid10W / 2 + Level1.delta.X +14, (int)posY -30 + Level1.delta.Y + 5), new Size(flip * sizeid10W, sizeid10H)), 95 * currentFrame, 95 * currentAnimation, sizeid10W, sizeid10H, GraphicsUnit.Pixel);
+                g.DrawImage(mobSheet, new Rectangle(new Point((int)posX - flip * sizeid10W / 2 + game.delta.X +14, (int)posY -30 + game.delta.Y + 5), new Size(flip * sizeid10W, sizeid10H)), 95 * currentFrame, 95 * currentAnimation, sizeid10W, sizeid10H, GraphicsUnit.Pixel);
             }
         }
 

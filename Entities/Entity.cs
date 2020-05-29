@@ -77,12 +77,12 @@ namespace Project.Entities
 
         public void Move()
         {
-            if (Level1.Apressed || Level1.Dpressed)
+            if (game.Apressed || game.Dpressed)
             {
                 posX += dirX;
                 //OldposX += dirX;
             }
-            if (Level1.Wpressed || Level1.Spressed)
+            if (game.Wpressed || game.Spressed)
             {
                 //OldposY += dirY;
                 posY += dirY;
@@ -97,7 +97,7 @@ namespace Project.Entities
             else
                 currentFrame = 0;
             
-                g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2 + Level1.delta.X + 14, (int)posY + Level1.delta.Y), new Size(flip * size, size)), 26 * currentFrame, 32 * currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
+                g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2 + game.delta.X + 14, (int)posY + game.delta.Y), new Size(flip * size, size)), 26 * currentFrame, 32 * currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
             
             //g.DrawImage(spriteSheet, new Rectangle(new Point((int)posX - flip * size / 2, (int)posY), new Size(flip * size, size)), 26 * currentFrame, 32* currentAnimation, size, size, GraphicsUnit.Pixel);//new size i can change:)
 

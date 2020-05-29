@@ -22,7 +22,7 @@ namespace Project.chests_and_staff
         public int id;
 
        public staff(int posx,int posy,int ID,int chestIdle,int openFrames,Image chestSprite)
-        {
+       {
             isOpened = false;
             posX = posx;
             posY = posy;
@@ -44,7 +44,7 @@ namespace Project.chests_and_staff
         public void drawIdleChest(Graphics g)
         {
             
-            g.DrawImage(ChestSprite, new Rectangle(new Point(posX + Level1.delta.X, posY + Level1.delta.Y), new Size(32, 32)), 32 * currentFrame, 32 * currentAnimation, 32, 32, GraphicsUnit.Pixel);
+            g.DrawImage(ChestSprite, new Rectangle(new Point(posX + game.delta.X, posY + game.delta.Y), new Size(32, 32)), 32 * currentFrame, 32 * currentAnimation, 32, 32, GraphicsUnit.Pixel);
             
         }
         public void PlayAnimation(Graphics g)
@@ -65,9 +65,9 @@ namespace Project.chests_and_staff
                 if (id == 1)
                 {
                 if(currentAnimation==0)
-                    g.DrawImage(ChestSprite, new Rectangle(new Point(posX + Level1.delta.X, posY + Level1.delta.Y), new Size(32, 32)), 30 * currentFrame, 30 * currentAnimation, 32, 32, GraphicsUnit.Pixel);
+                    g.DrawImage(ChestSprite, new Rectangle(new Point(posX + game.delta.X, posY + game.delta.Y), new Size(32, 32)), 30 * currentFrame, 30 * currentAnimation, 32, 32, GraphicsUnit.Pixel);
                 if(currentAnimation==1)
-                    g.DrawImage(ChestSprite, new Rectangle(new Point(posX + Level1.delta.X+7, posY + Level1.delta.Y+3), new Size(32, 32)), 30 * currentFrame, 30 * currentAnimation, 32, 32, GraphicsUnit.Pixel);
+                    g.DrawImage(ChestSprite, new Rectangle(new Point(posX + game.delta.X+7, posY + game.delta.Y+3), new Size(32, 32)), 30 * currentFrame, 30 * currentAnimation, 32, 32, GraphicsUnit.Pixel);
                 // isOpened = true;
                 
                 }
@@ -76,7 +76,7 @@ namespace Project.chests_and_staff
            
         public void playFlask(Graphics g,Entity player)
         {
-            g.DrawImage(ChestSprite, new Rectangle(new Point(((int)posX) + Level1.delta.X, (int)posY - player.currentFrame +Level1.delta.Y), new Size(32, 32)), 0, 0, 32, 32, GraphicsUnit.Pixel);
+            g.DrawImage(ChestSprite, new Rectangle(new Point(((int)posX) + game.delta.X, (int)posY - player.currentFrame +game.delta.Y), new Size(32, 32)), 0, 0, 32, 32, GraphicsUnit.Pixel);
         }
 
         public void setAnimation(int currentAnimation)

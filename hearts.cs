@@ -43,7 +43,7 @@ namespace Project
                 if (entity.howmuchDamaged > 0 && !entity.dead )
                 {
 
-                    if (entity.howmuchDamaged % 5 == 0)
+                    if(entity.howmuchDamaged % 5 == 0)
                     {
 
                         currentAnimation = entity.Ih;
@@ -56,10 +56,7 @@ namespace Project
                     currentAnimation = 0;
                 
                 }
-                //else if (entity.dead)
-                //{
-                //    currentAnimation = 0;
-                //}
+              
 
                 currentFrame = 5;
             }

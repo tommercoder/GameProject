@@ -31,5 +31,10 @@ namespace Project
             Application.Exit();
             this.Close();
         }
+
+        private void msg_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
